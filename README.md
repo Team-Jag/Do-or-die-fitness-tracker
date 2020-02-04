@@ -16,6 +16,8 @@ Thoughts so far:
 * Achievement unlocker
 * WIFI module => can be used for location tracker (function call to return a dummy location) => for tracking distance run?
 * GPS tracker to discourage pubs?
+* Shaking the M5Stack will make the character: 1. voice "stop shaking me", 2. animate shaking character
+* Mystery button: poking the character makes it voice cute sounds?
   
 M5STACK MODULES:
 * Decibel meter?
