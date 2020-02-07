@@ -18,6 +18,12 @@ Thoughts so far:
 * GPS tracker to discourage pubs?
 * Shaking the M5Stack will make the character: 1. voice "stop shaking me", 2. animate shaking character
 * Mystery button: poking the character makes it voice cute sounds?
+
+**DESIRED FUNCTIONALITIES:** (What we want to add but probably wont have time for)
+* Track extended range of motions from the gyro for different exercises e.g. squats, starjumps, sit ups, push ups, etc
+* Evolution of the tamagotchi-esque avatar with increasing levels
+* Integration with real fitness brands as sponsors, e.g. 10% off protein bars to sell at in-game shop
+* Augmented reality version so that you can see a gamified version of real life, and levels above players heads
   
 M5STACK MODULES:
 * Decibel meter?
