@@ -2,6 +2,11 @@
 
 Aims - incentive for healthier life by gamifying health fitness tracker
 
+**TO DO**
+*interface/begin interfacing front end with backend to make sure all works correctly
+*finish front end
+*talk about the 3 user groups thing mentioned in last workshop
+
 Thoughts so far:
 
 **CORE FUNCTIONALITIES:**
