@@ -1,10 +1,12 @@
-# Do-or-die-fitness-tracker
+Do-or-die-fitness-tracker
 
 Aims - incentive for healthier life by gamifying health fitness tracker
 
-**TO DO**
+**TO DO:**
 *interface/begin interfacing front end with backend to make sure all works correctly
+
 *finish front end
+
 *talk about the 3 user groups thing mentioned in last workshop
 
 Thoughts so far:
