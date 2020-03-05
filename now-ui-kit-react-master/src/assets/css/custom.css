@@ -1,0 +1,23 @@
+.description,
+.card-description,
+.footer-big p {
+  color: #636161;
+  font-weight: 300; }
+
+
+.btn-outline-primary {
+    color: #2CA8FF;
+    border-color: #2CA8FF; }
+
+.blockquote {
+    border-left: none;
+    border: 1px solid #888888;
+    padding: 20px;
+    font-size: 2em;
+    line-height: 1.8; }
+
+  .landing-page .link {
+      font-size: 10px;
+      color: #2CA8FF;
+      text-decoration: none;
+  }
