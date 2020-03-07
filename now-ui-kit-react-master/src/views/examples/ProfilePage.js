@@ -66,152 +66,83 @@ function ProfilePage() {
             </div>
             <h3 className="title">About me</h3>
             <h5 className="description">
-              An artist of considerable range, Ryan — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure. An artist of considerable range.
+              I only take credit bets with rankers in the top 1000, if you're
+              not in that group, don't @ me. First user to reach 10,000km walked
+              within a month, and only user to ever hold the #1 spot in the
+              leaderboards. Also I'm F2P.
             </h5>
+<h3 className="title">Ongoing Challenges</h3>
+<Row>
+	    <Col>
+			<p>A Mile A Day</p>
+                        <img
+                          alt="..."
+                          className="img-raised"
+                          src={require("assets/img/walkicon1.png")}
+                        ></img>
+   			<p>1.6km<br/>
+  			14hr50m<br/><br/></p>
+			<p>Never Stop</p>
+			<img
+                          alt="..."
+                          className="img-raised"
+                          src={require("assets/img/shoewalk1.png")}
+                        ></img>
+   			<p>&infin;km<br/>
+   			1hr<br/><br/></p>
+                      </Col>
+                      <Col>
+			<p>Group Walking</p>
+			<img
+                          alt="..."
+                          className="img-raised"
+                          src={require("assets/img/groupwalk1.png")}
+                        ></img>
+   			<p>20km<br/>
+   			6d10hr25m<br/><br/></p>
+			<p>Run From Life</p>
+  			<img
+                          alt="..."
+                          className="img-raised"
+                          src={require("assets/img/run1.png")}
+                        ></img>
+   			<p>100km<br/>
+			8hr17m<br/><br/></p>
+                      </Col>
+   </Row>
+<h3 className="title">Achievements</h3>
             <Row>
-              <Col className="ml-auto mr-auto" md="6">
-                <h4 className="title text-center">My Portfolio</h4>
-                <div className="nav-align-center">
-                  <Nav
-                    className="nav-pills-info nav-pills-just-icons"
-                    pills
-                    role="tablist"
-                  >
-                    <NavItem>
-                      <NavLink
-                        className={pills === "1" ? "active" : ""}
-                        href="#pablo"
-                        onClick={e => {
-                          e.preventDefault();
-                          setPills("1");
-                        }}
-                      >
-                        <i className="now-ui-icons design_image"></i>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={pills === "2" ? "active" : ""}
-                        href="#pablo"
-                        onClick={e => {
-                          e.preventDefault();
-                          setPills("2");
-                        }}
-                      >
-                        <i className="now-ui-icons location_world"></i>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={pills === "3" ? "active" : ""}
-                        href="#pablo"
-                        onClick={e => {
-                          e.preventDefault();
-                          setPills("3");
-                        }}
-                      >
-                        <i className="now-ui-icons sport_user-run"></i>
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
-                </div>
-              </Col>
-              <TabContent className="gallery" activeTab={"pills" + pills}>
-                <TabPane tabId="pills1">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
+                      <Col>
+			<p>Extreme Strider</p>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/grace.jpg")}
-                        ></img>
+                          src={require("assets/img/tired1.png")}
+                        ></img><br/><br/><br/><br/>
+			<p>Close Call</p>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
+                          src={require("assets/img/neardeath1.png")}
+                        ></img><br/><br/><br/><br/>
                       </Col>
-                      <Col md="6">
+                      <Col>
+			<p>Champion</p>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
+                          src={require("assets/img/winicon1.png")}
+                        ></img><br/><br/><br/><br/>
+			<p >In The Red</p>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
+                          src={require("assets/img/death1.png")}
+                        ></img><br/><br/><br/><br/>
                       </Col>
                     </Row>
-                  </Col>
-                </TabPane>
-                <TabPane tabId="pills2">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                      </Col>
-                    </Row>
-                  </Col>
-                </TabPane>
-                <TabPane tabId="pills3">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/pic1.jpg")}
-                        ></img>
-                      </Col>
-                    </Row>
-                  </Col>
-                </TabPane>
-              </TabContent>
-            </Row>
+               
+            
           </Container>
         </div>
         <DefaultFooter />
