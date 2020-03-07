@@ -71,13 +71,15 @@ function ExamplesNavbar() {
               <DropdownItem href="/landing-page">
                 Home
               </DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+              <DropdownItem href="/profile-page">
                 Your Profile
               </DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Challenges
+              <DropdownItem href="/challenge-page">
+                Create A Challenge
               </DropdownItem>
-
+	      <DropdownItem href="/challenge-choice-page">
+                Available Challenges
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
           <div className="navbar-translate">
