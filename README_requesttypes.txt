@@ -12,7 +12,8 @@
 // From M5Stack/web requesting user profile from database
 {
     "type": "pull profile",
-    "user_id": "1"
+    "user_id": ""              //at the time of the login we do not have the uder Id... 
+    "user_name": "Mario"       //...so the databse should look at the username if the field ID is empty
 }
  
 // From web/M5Stack requesting database to send all challenges that user are enrolled in
