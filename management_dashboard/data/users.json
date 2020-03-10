@@ -1,0 +1,36 @@
+{
+  "sponsor": {
+    "challenge_id": [
+      "1",
+      "2"
+    ],
+    "sponsor_id": "11"
+  },
+  "challenge": [
+    {
+      "reward": "800",
+      "step_goal": "10000",
+      "challenge_id": "1",
+      "challenge_name": "10K Step Challenge",
+      "end_time": "20-02-28 14:20",
+      "description": "stepstep",
+      "current_time": "2020-02-30T08:35:30.0108Z"
+    },
+    {
+      "reward": "200",
+      "step_goal": "2000",
+      "challenge_id": "2",
+      "challenge_name": "Challenge 2",
+      "end_time": "20-02-28 14:20",
+      "description": "runrun",
+      "current_time": "2020-02-30T08:35:30.0108Z"
+    }
+  ],
+  "user": [{
+    "user_id": "1234",
+    "user_name": "User1",
+    "total_steps": "1000",
+    "remaining_sec": "2200",
+    "current_time": "2020-02-30T08:35:30.0108Z"
+  }]
+}
