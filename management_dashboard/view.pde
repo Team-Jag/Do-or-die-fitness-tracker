@@ -7,7 +7,7 @@ int is_expanded = 0;
 
 void refreshDashboardData() {
     // We just rebuild the view rather than updating existing
-   /* for (String status: Status.LIST) {
+    /* for (String status: Status.LIST) {
         cp5.remove(status + " total ");
         cp5.remove(status);
         cp5.remove(status + " chart ");
@@ -18,13 +18,21 @@ void refreshDashboardData() {
 
 void updateDashboardData() {
     refreshData();
-    surface.setTitle("Stack Delivery Management Dashboard");
-  /*  for (String status: Status.LIST) {
+    surface.setTitle("Management Dashboard");
+    
+    view.build_metric("total steps", 1000); 
+    view.build_list("users", users); 
+    view.build_Chart("total steps", 1000, 2000, 3000, 4000); 
+    
+    /*
+    for (String status: Status.LIST) {
         view.build_metric(status + " total ", (float) api.getOrdersByStatus(status).length);
         view.build_list(status, api.getOrdersByStatus(status));
+        // but we're not doing status ? 
         view.build_Chart(status + " chart ", api.getOrdersByStatus(Status.OPEN).length, api.getOrdersByStatus(Status.CLOSED).length, api.getOrdersByStatus(Status.PROCESSING).length, api.getOrdersByStatus(Status.DELIVERED).length);
-    } */
+    }  */
 }
+ 
 
 // The main class which contains the dynamic build of the dashboard. Advantage being more metrics can be added with ease.
 public class Dashboard_view {
@@ -42,11 +50,11 @@ public class Dashboard_view {
     int chart_size = 140;
 
     void build_Chart(String chart_name, int val, int val1, int val2, int val3) {
-        Chart chart = cp5.addChart(chart_name)
+        Chart chart = cp5.addChart(chart_name) 
             .setPosition(horiz_margin_spacing + chart_spacing, 5.5 * vert_margin_spacing)
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
-            .setView(int(random(6)) + 1); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
+            .setView(PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
         chart.getColor().setBackground(color(255, 100));
         chart.addDataSet(chart_name);
         chart.setColors(chart_name, color(255), color(0, 255, 0));
