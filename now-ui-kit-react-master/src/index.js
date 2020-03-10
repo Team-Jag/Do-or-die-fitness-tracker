@@ -32,20 +32,33 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import ChallengePage from "views/examples/ChallengePage.js";
+import ChallengeChoicePage from "views/examples/ChallengeChoicePage.js";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
-        <Route path="/index" render={props => <Index {...props} />} />
+        <Route path="/index" render={props => <LandingPage  {...props} />} />
         <Route
           path="/nucleo-icons"
           render={props => <NucleoIcons {...props} />}
         />
         <Route
+          path="/challenge-page"
+          render={props => <ChallengePage {...props} />}
+        />
+
+        <Route
+          path="/challenge-choice-page"
+          render={props => <ChallengeChoicePage {...props} />}
+        />
+
+        <Route
           path="/landing-page"
           render={props => <LandingPage {...props} />}
         />
+
         <Route
           path="/profile-page"
           render={props => <ProfilePage {...props} />}

@@ -1,4 +1,5 @@
 import React from "react";
+//import useScript1 from 'views/examples/MQTT-client';
 
 // reactstrap components
 import {
@@ -21,11 +22,21 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 var dropdown="Please Select";
 
+//const MyComponent = props => {
+  //useScript1('MQTT-client.js');
+
+  // rest of your component
+//}
+
+
+
 function ChallengePage(){
   const [pills, setPills] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
+    document.body.classList.add("sidebar-collapse");
+
     return function cleanup() {
       document.body.classList.remove("sidebar-collapse");
     };
@@ -38,7 +49,7 @@ function ChallengePage(){
         <div className="section">
           <Container>
             <form align="middle">
-            <label>Event Name: <input type="text" name="name" /></label><p/>
+            <label>Event Name: <input id= "name" type="text" name="name" /></label><p/>
             <label>Start Date: <input type="date" name="startdate" /></label><p/>
             <label>End Date: <input type="date" name="enddate" /></label><p/>
             <label>Location: <input type="text" name="location" /></label><p/>
@@ -49,7 +60,11 @@ function ChallengePage(){
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </select><p/>
-            <input type="submit" value="Submit" />
+
+
+             <button className="submit-button" >Place Order</button> 
+
+
             </form>
             <Row>
               <Col className="ml-auto mr-auto" md="6">
