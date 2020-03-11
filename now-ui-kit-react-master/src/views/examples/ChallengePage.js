@@ -1,9 +1,8 @@
 import React from "react";
-//import useScript1 from 'views/examples/MQTT-client';
+import Mqtt from './MQTTclient.js';
 
 // reactstrap components
 import {
-  Button,
   NavItem,
   NavLink,
   Nav,
@@ -12,7 +11,7 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
+  
 } from "reactstrap";
 
 // core components
@@ -20,15 +19,7 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import DefaultHeader from "components/Headers/ChallengeHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
-var dropdown="Please Select";
-
-//const MyComponent = props => {
-  //useScript1('MQTT-client.js');
-
-  // rest of your component
-//}
-
-
+// var dropdown="Please Select";
 
 function ChallengePage(){
   const [pills, setPills] = React.useState("2");
@@ -48,24 +39,7 @@ function ChallengePage(){
 	<DefaultHeader />
         <div className="section">
           <Container>
-            <form align="middle">
-            <label>Event Name: <input id= "name" type="text" name="name" /></label><p/>
-            <label>Start Date: <input type="date" name="startdate" /></label><p/>
-            <label>End Date: <input type="date" name="enddate" /></label><p/>
-            <label>Location: <input type="text" name="location" /></label><p/>
-            <label>User Bonus: <input type="number" name="reward" /></label><p/>
-            <label>Asset URL: <input type="url" name="sponsorimgurl" /></label><p/>
-            <label>Price Point: </label><select defaultValue={dropdown}>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select><p/>
-
-
-             <button className="submit-button" >Place Order</button> 
-
-
-            </form>
+          <Mqtt type = "set-challenge" />
             <Row>
               <Col className="ml-auto mr-auto" md="6">
                 <h4 className="title text-center">Previous Events</h4>

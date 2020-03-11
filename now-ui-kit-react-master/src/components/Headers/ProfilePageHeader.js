@@ -21,6 +21,7 @@ function ProfilePageHeader() {
       };
     }
   });
+  
   return (
     <>
       <div
@@ -38,7 +39,7 @@ function ProfilePageHeader() {
           <div className="photo-container">
             <img alt="..." src={require("assets/img/ryan.jpg")}></img>
           </div>
-          <h3 className="title">Ryan Sieger</h3>
+          <h3 className="title">{global.userName}</h3>
           <p className="category">Weekly Stats</p>
           <div className="content">
             <div className="social-description">

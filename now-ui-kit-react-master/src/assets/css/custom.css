@@ -25,3 +25,14 @@
   .submit-button{
     background-color: #2CA8FF;
   }
+
+  .challenge-textfield{
+    height: 100px;
+    position: relative;
+    margin-right: 100px;
+    vertical-align: top
+  }
+
+  .form-label{
+    width: 200px
+  }

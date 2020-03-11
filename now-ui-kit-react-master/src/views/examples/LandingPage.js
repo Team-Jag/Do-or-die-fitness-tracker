@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 
 // reactstrap components
 import {
@@ -8,7 +9,6 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  CardFooter,
   Row,
   Col
 } from "reactstrap";
@@ -18,9 +18,14 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
+
+
 function LandingPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+  // const [lastFocus, setLastFocus] = React.useState(false);
+  const [input, setInput] = useState('');
+
+
   React.useEffect(() => {
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
@@ -48,7 +53,7 @@ function LandingPage() {
                 <Button className="btn-round" color="primary" outline size="lg"
                 href="#id1"
                 >
-                <i className="fa fa-heart" i/>
+                <i className="fa fa-heart" />
                 <span> </span>
                 Create my Account
                 </Button>
@@ -134,7 +139,10 @@ function LandingPage() {
                     <p className="category text-info">Player</p>
                     <p className="description">
                       This game changed my life, everyday feels like a new challenge. Before I was mostly looking at {" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=10207688649325270&set=t.639414625&type=3&theater" target="_blank">cat pictures</a>
+                      <a href="https://www.facebook.com/photo.php?fbid=10207688649325270&set=t.639414625&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >cat pictures</a>
                       {" "}
                       But now I am exercising all the time.
                     </p>
@@ -159,8 +167,10 @@ function LandingPage() {
                     <p className="category text-info">Player</p>
                     <p className="description">
                       Absolutely love this game. I am killing it!{" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=10208294300620020&set=pob.100006272557266&type=3&theater" target="_blank">
-                        See
+                      <a href="https://www.facebook.com/photo.php?fbid=10208294300620020&set=pob.100006272557266&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >See
                       </a>{" "}
                       for yourslef what I have achieved so far. Please sign up now and compete with me.
                     </p>
@@ -185,7 +195,10 @@ function LandingPage() {
                     <p className="category text-info">Sponsor</p>
                     <p className="description">
                       This app it took to make {" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=864115786953645&set=t.1467280468&type=3&theater" target="_blank">
+                      <a href="https://www.facebook.com/photo.php?fbid=864115786953645&set=t.1467280468&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >
                         my gym
                       </a>{" "}
                       successful. Since we are working with Do Or Die new members come to my gym all the time to complete their challenges.
@@ -226,9 +239,11 @@ function LandingPage() {
                     type="text"
                     onFocus={() => setFirstFocus(true)}
                     onBlur={() => setFirstFocus(false)}
+                    value={input}
+                    onInput={e => setInput(e.target.value)}
+
                   ></Input>
                 </InputGroup>
-
 
                 <div className="send-button">
                   <Button
@@ -236,7 +251,6 @@ function LandingPage() {
                     className="btn-round"
                     color="info"
                     href="/profile-page"
-
                     size="lg"
                   >
                   Sign up now

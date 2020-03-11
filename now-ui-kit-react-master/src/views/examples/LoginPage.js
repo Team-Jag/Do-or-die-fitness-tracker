@@ -1,17 +1,12 @@
 import React from "react";
+import Mqtt from './MQTTclient.js';
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Col
 } from "reactstrap";
@@ -21,8 +16,6 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 
 function LoginPage() {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -48,7 +41,7 @@ function LoginPage() {
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form action="" className="form" method="">
+                <div action="" className="form" method="">
                   <CardHeader className="text-center">
                     <div className="logo-container">
                       <img
@@ -58,54 +51,9 @@ function LoginPage() {
                     </div>
                   </CardHeader>
                   <CardBody>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (firstFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons users_circle-08"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="User Name..."
-                        type="text"
-                        onFocus={() => setFirstFocus(true)}
-                        onBlur={() => setFirstFocus(false)}
-                      ></Input>
-                    </InputGroup>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons text_caps-small"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="Password..."
-                        type="password"
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
-                      ></Input>
-                    </InputGroup>
+                    <Mqtt type = "login" />
                   </CardBody>
                   <CardFooter className="text-center">
-                    <Button
-                      block
-                      className="btn-round"
-                      color="info"
-                      href="/profile-page"
-          
-                      size="lg"
-                    >
-                      Login
-                    </Button>
                     <div className="pull-left">
                       <h6>
                         <a
@@ -120,15 +68,16 @@ function LoginPage() {
                       <h6>
                         <a
                           className="link"
-                          href=""
-                          onClick={()=> window.open("https://www.mentalhealth.org.uk/your-mental-health/getting-help", "_blank")}
+                          href="https://www.mentalhealth.org.uk/your-mental-health/getting-help"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           Need Help?
                         </a>
                       </h6>
                     </div>
                   </CardFooter>
-                </Form>
+                </div>
               </Card>
             </Col>
           </Container>
