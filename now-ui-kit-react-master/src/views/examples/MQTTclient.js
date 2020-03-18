@@ -2,6 +2,8 @@
 import React from "react";
 import jQuery from 'jquery';
 import Paho from 'paho-mqtt';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
 
 import {
   Button,
@@ -12,10 +14,14 @@ import {
 
 } from "reactstrap";
 
+import ProfilePage from "views/examples/ProfilePage.js";
+
+
 class Mqtt extends React.Component {
 
   constructor(props) {
     super(props);
+
 
     this.state = {
         challenge_name: '',
@@ -24,8 +30,7 @@ class Mqtt extends React.Component {
         challenge_end_date: '20-03-31',
         challenge_reward: '',
         login_username: '',
-
-
+        redirectState: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.pushNewChallenge = this.pushNewChallenge.bind(this);
@@ -67,6 +72,22 @@ class Mqtt extends React.Component {
   }
 
 
+redirectToProfile(){
+  if (this.state.redirect) {
+    return(
+         <Redirect to={{
+               pathname: '/profile-page',
+               // state: {login_username: this.state.login_username}
+           }} />)
+  }
+}
+
+handleLogin(){
+  this.setState({
+  redirect: true
+})
+}
+
 renderLogin(){
   return(
     <form >
@@ -95,11 +116,15 @@ renderLogin(){
         type="password"
       ></Input>
     </InputGroup>
+
+    {this.redirectToProfile()}
+
     <Button
       block
       className="btn-round"
       color="info"
-      href="/profile-page"
+      // href="/profile-page"
+      onClick={this.handleLogin.bind(this)}
       size="lg"
       >    Login
     </Button>
@@ -111,7 +136,6 @@ renderLogin(){
   loginChange(type,event){
     this.setState({[type]: event.target.value});
     global.userName= event.target.value;
-    console.log(global.userName);
   }
 
 

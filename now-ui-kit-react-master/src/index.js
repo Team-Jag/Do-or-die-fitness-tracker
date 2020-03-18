@@ -20,10 +20,12 @@ import ChallengeChoicePage from "views/examples/ChallengeChoicePage.js";
 
 
 
+
 global.userID = 0;
 global.userName = 'Tester';
 
 ReactDOM.render(
+
   <BrowserRouter>
     <Switch>
       <Switch>
@@ -49,7 +51,9 @@ ReactDOM.render(
 
         <Route
           path="/profile-page"
-          render={props => <ProfilePage {...props} />}
+          render={props => <ProfilePage  {...props}  />}
+
+
         />
         <Route path="/login-page" render={props => <LoginPage {...props} />} />
         <Redirect to="/index" />

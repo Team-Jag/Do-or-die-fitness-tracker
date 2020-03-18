@@ -1,5 +1,7 @@
 import React from "react";
 
+import { BrowserRouter, Route } from 'react-router-dom'
+
 // reactstrap components
 import {
   Button,
@@ -13,9 +15,11 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
+import Mqtt from "./MQTTclient.js";
 
-function ProfilePage() {
-  // const [pills, setPills] = React.useState("2");
+function ProfilePage(state) {
+  // console.log(state.location.state.login_username);
+
   React.useEffect(() => {
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");
