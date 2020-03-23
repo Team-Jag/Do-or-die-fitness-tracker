@@ -1,13 +1,9 @@
 import React from "react";
-import { useState } from 'react';
+import Mqtt from './MQTTclient.js';
 
 // reactstrap components
 import {
   Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col
@@ -21,10 +17,6 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 
 function LandingPage() {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  // const [lastFocus, setLastFocus] = React.useState(false);
-  const [input, setInput] = useState('');
-
 
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -223,52 +215,10 @@ function LandingPage() {
             <h4 className="description">We cannot wait to have you with us! it takes 1 minute register and give life to your avatar. <br />
             Start now, your clock is ticking...</h4>
             <Row>
-              <Col className="text-center ml-auto mr-auto" lg="6" md="8">
-                <InputGroup
-                  className={
-                    "input-lg" + (firstFocus ? " input-group-focus" : "")
-                  }
-                >
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="User Name..."
-                    type="text"
-                    onFocus={() => setFirstFocus(true)}
-                    onBlur={() => setFirstFocus(false)}
-                    value={input}
-                    onInput={e => setInput(e.target.value)}
 
-                  ></Input>
-                </InputGroup>
+                <Mqtt type = "sign-up" />
 
-                <div className="send-button">
-                  <Button
-                    block
-                    className="btn-round"
-                    color="info"
-                    href="/profile-page"
-                    size="lg"
-                  >
-                  Sign up now
-                  </Button>
-                  <div className="pull-middle">
-                    <h6>
-                      <a
-                        className="link"
-                        href="/login-page"
-                      >
-                        Login to existing Account
-                      </a>
-                    </h6>
-                  </div>
 
-                </div>
-
-              </Col>
             </Row>
           </Container>
         </div>
