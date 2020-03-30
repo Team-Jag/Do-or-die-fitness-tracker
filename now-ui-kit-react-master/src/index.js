@@ -21,7 +21,7 @@ import ChallengeChoicePage from "views/examples/ChallengeChoicePage.js";
 
 
 
-global.userID = 0;
+
 global.userName = 'Tester';
 
 ReactDOM.render(

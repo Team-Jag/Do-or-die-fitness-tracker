@@ -159,7 +159,7 @@ renderProfile(){
 
 requestProfile(){
   if(this.state.total_steps !== 0){
-    this.wait(500);
+    this.wait(1000);
   }
   console.log("Requesting profile...");
   var newRequest = {
@@ -268,7 +268,6 @@ renderLogin(){
       block
       className="btn-round"
       color="info"
-      // href="/profile-page"
       onClick={this.handleLogin.bind(this)}
       size="lg"
       >    Login
