@@ -1,11 +1,12 @@
 // Presentation logic
 ListBox l;
 Chart overview;
+// creates a dropdown list
 DropdownList current_users; 
 DropdownList upcoming, current, completed;
 int is_expanded = 0;
 
-
+// called each time
 void refreshDashboardData() {
     // We just rebuild the view rather than updating existing
     // will need to update this to remove the user stuff 
@@ -18,16 +19,20 @@ void refreshDashboardData() {
     updateDashboardData();
 }
 
+// basic idea is we'll have a user and challenge view, for the manager (possibly sponsor? see the slack for 
+// the drawings of how we want it to look but totally up to you)
 void updateDashboardData() {
     refreshData();
+    // just the title of the screen
     surface.setTitle("Do or Die Management Dashboard");
-    
     JSONArray users = db.users.getJSONArray("user");
     JSONObject user = users.getJSONObject(0);
     int steps = user.getInt("total_steps"); 
+    // don't think we need the metrics - creates those weird charts at side
     //view.build_metric(users + " total ", user.getInt("total_steps"));
     view.build_list("userrr", user);
     view.build_Chart(users + " chart ", user.getInt("total_steps"), user.getInt("remaining_sec"));
+    // when you drop down
     view.build_expanded(user.getString("user_ID"), user);
 }
  
@@ -52,6 +57,7 @@ public class Dashboard_view {
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
             .setView(PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
+            // the website has all the diff types of charts so you can play around, he had it as random before
         chart.getColor().setBackground(color(255, 100));
         chart.addDataSet(chart_name);
         chart.setColors(chart_name, color(000), color(0, 255, 0));
@@ -81,16 +87,20 @@ public class Dashboard_view {
         list_spacing = list_spacing + list_x_size + 10;
         list.clear();
         list.open();
+        // keep adding the remaining_sec, mainly just a test for now so update as you want 
           for(int i = 0; i < 10; i ++){
               list.addItem(users.getString("remaining_sec"), i);
          }
      }
 
+// i had to keep messing with the horizontal and vertical spacing below to get it to work 
     void build_expanded(String userid, JSONObject user) {
         if (is_expanded == 1) {
+        // basically switch it round
             cp5.get("users").remove();
             cp5.get("challenges").remove();
             is_expanded = 0;
+            // haven't used below yet 
           //  button_state = 0; // this ensures that the creation of buttons aren't reported for call backs
         }
 
