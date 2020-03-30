@@ -1,9 +1,13 @@
 Do-or-die-fitness-tracker
 
 **1.Architecture**
+
 **1a Overall**
+
 Text
+
 **1b Desktop**
+
 Text
 **1c Web**
 Text
