@@ -1,10 +1,14 @@
 Do-or-die-fitness-tracker
 
 **1.Architecture**
-  * a. Overall
-  * b.Desktop
-  * c.Web
-  * d.M5
+**1a Overall**
+Text
+**1b Desktop**
+Text
+**1c Web**
+Text
+**1d M5**
+Text
   
 Design & Technology
 Desktop
