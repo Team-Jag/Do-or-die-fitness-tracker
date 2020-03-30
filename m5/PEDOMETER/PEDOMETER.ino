@@ -32,9 +32,11 @@ MPU9250 IMU;
 //JSON STUFF
 StaticJsonDocument<500> doc; //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
 char requestDefault[] = "{\"user_type\":\"user\",\"user_id\":\"1234\",\"user_name\":\"User1\",\"total_steps\":\"2200\",\"remaining_sec\":\"2200\",\"current_time\":\"2020-02-30T08:35:30.0108Z\"}";
-
-//setup globals for step calculations
-int total_steps = 0; //this is the key one which we send in request
+//local user id to identify specific stack
+//REQUEST TYPE: send time and steps and user id etc 
+//have a step channel
+String stack_id = "stack1";
+int total_steps = 0;
 int curr_z;
 int curr_x;
 int curr_y;
@@ -47,18 +49,18 @@ bool step_flag = false;
 //mqtt client setup 
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
 
-const char* ssid = "UoB Guest";                 // Set name of Wifi Network
-const char* password = "cr5jdMktTnp7";   
+const char* ssid = "android";                 // Set name of Wifi Network
+const char* password = "Dorking1998";   
 
 
 const char* MQTT_clientname = "m5stack"; // Make up a short name
-const char* MQTT_sub_topic = "doordie_m5"; // pub/sub topics
-const char* MQTT_pub_topic = "doordie_m5"; // You might want to create your own
+const char* MQTT_sub_topic = "doordie_steps"; // pub/sub topics
+const char* MQTT_pub_topic = "doordie_steps"; // You might want to create your own
 
 const char* server = "broker.mqttdashboard.com";
 const int port = 1883;
 
-Timer publishing_timer(2000);
+Timer publishing_timer(100);
 
 //global time LEFT FOR LIFE
 int defaultTime = 1000;
@@ -73,8 +75,8 @@ void setup() {
     Serial.println("*** RESET ***\n");
    //mqtt stuff here
   M5.Lcd.println("Reset, connecting...");
-  //setupWifiWithPassword();
-  setupWifi();
+  setupWifiWithPassword();
+  //setupWifi();
   setupMQTT();
   M5.Lcd.println("SETUP COMPLETE\n");
   
@@ -237,20 +239,27 @@ void userSetup() {
 
 void updateJSON() {
   //format json object before sending with info from the stepcounter ie step incrementations
-  
+  //only need this on startup
 }
 
-void sendRequest() {
+void sendRequest(String type) {
   //we have a json object, updated from default request
   //updateJSON(); to update relevent fields ie time and stepcount, timestamps etc
   //serializeJson into a string
   //send through broker
-  M5.Lcd.print("\nUPDATED GLOBAL STEPS\n");
-  if (publishing_timer.isReady()) {
-    String new_string = requestDefault;
-    new_string += millis();
-    publishMessage( new_string );
-    publishing_timer.reset();  
+  String request_type;
+  //{
+    //"type": "push step",
+    //"user_id": "1"
+  //}
+  
+  if (type == "push step") {
+    if (publishing_timer.isReady()) {
+      String new_string = "{\"type\":\"push step\", \"user_id\":\"1\"}"; //HACK
+      //new_string += millis();
+      publishMessage( new_string );
+      publishing_timer.reset();  
+    }
   }
 }
 
@@ -267,11 +276,6 @@ void recieveRequest() {
   //run tests make sure all fields are there
   //update globals ie current user name, state, etc
   //return
-}
-
-void calculateTime() {
-  //time calculation algorithm here
-  //base on time
 }
 
 //actual pedometer, subject to change
@@ -297,8 +301,8 @@ void updateSteps() {
       //if we are not currently in a "step", but goes outside threshold
       if ((sum >= 350 || sum < -350) && step_flag == false) {
         step_flag = true;
-        total_steps++;
-        sendRequest(); //each time we update step count we send a request of global total steps
+        total_steps++; // we don't need this, just send request type
+        sendRequest("push step"); //each time we update step count we send a request of global total steps
       }
 
       if ((sum < 350 && sum > -350) && step_flag == true) {
@@ -316,8 +320,8 @@ void publishMessage( String message ) {
     if( message.length() > 0 ) {
 
       // Convert to char array
-      char msg[ message.length() ];
-      message.toCharArray( msg, message.length() );
+      char msg[ message.length() +1];
+      message.toCharArray( msg, message.length()+1 );
 
       //M5.Lcd.println( message );
 
@@ -334,7 +338,7 @@ void publishMessage( String message ) {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-
+  //this is listener, watch on network
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
