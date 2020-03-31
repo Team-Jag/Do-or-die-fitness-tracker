@@ -1,4 +1,3 @@
-<<<<<<< m5
 =======
 # Do or Die Fitness Tracker
 ## Welcome to Do or Die!
