@@ -28,6 +28,13 @@ function ChallengeChoicePage() {
         <div className="section">
           <Container>
             <div align="middle" class="tg-wrap"><table id="tg-VvxLO">
+    
+    <div>
+
+<Mqtt type = "challenges" />
+
+    </div>
+    
   <tr>
     <th>Name</th>
     <th>Requirement (km)</th>
