@@ -12,7 +12,7 @@ Product Description
 * Chris Buehler <christoph.buehler.2019@bristol.ac.uk>
 
 
-## 1.[System Design](../blob/master/Portfolio/SystemDesign.md)
+## 1. [System Design](../blob/master/Portfolio/SystemDesign.md)
 View our [system design document](../blob/master/Portfolio/SystemDesign.md) to see:
 * System architecture
 * Object-oriented design of key sub-systems
