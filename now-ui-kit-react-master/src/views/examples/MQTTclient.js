@@ -30,6 +30,7 @@ class Mqtt extends React.Component {
         challenge_step_goal: '',
         challenge_end_date: '20-03-31',
         challenge_reward: '',
+        challenge_loaded: false,
       //login/signup page
         login_username: '',
         redirect: false,
@@ -64,6 +65,9 @@ class Mqtt extends React.Component {
       }
       if(this.props.type === "profile"){
         return(this.renderProfile())
+      }
+      if(this.props.type === "challenges"){
+        return(this.renderGetChallenges())
       }
   }
 
@@ -274,6 +278,38 @@ renderLogin(){
     </Button>
     </form>
   );
+}
+  
+renderGetChallenges(){
+   if(this.state.mqttConnected === true){
+    this.requestChallenges()
+  }  
+   return(
+    <div>
+    <div className="content">
+      <div className="social-description">
+        <h2>{this.state.challenge_name}</h2>
+        <p>name</p>
+      </div>
+      <div className="social-description">
+        <h2>{this.state.challenge_reward}</h2>
+        <p>reward</p>
+      </div>
+      <div className="social-description">
+        <h2>{this.state.challenge_end_date}</h2>
+        <p>end date</p>
+      </div>
+    </div>
+  
+  )
+}
+
+requestChallenges(){
+  console.log("Requesting challenges...")
+  var newRequest1 = {
+    type: "pull all challenges"
+ }
+  this.requestToServer(JSON.stringify(newRequest1))
 }
 
 renderSetChallenge(){
