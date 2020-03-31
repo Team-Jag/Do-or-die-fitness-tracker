@@ -21,6 +21,7 @@ function ProfilePageHeader() {
       };
     }
   });
+
   return (
     <>
       <div
@@ -38,22 +39,8 @@ function ProfilePageHeader() {
           <div className="photo-container">
             <img alt="..." src={require("assets/img/ryan.jpg")}></img>
           </div>
-          <h3 className="title">Ryan Sieger</h3>
-          <p className="category">Weekly Stats</p>
-          <div className="content">
-            <div className="social-description">
-              <h2>35km</h2>
-              <p>Distance</p>
-            </div>
-            <div className="social-description">
-              <h2>19hrs</h2>
-              <p>Life Gained</p>
-            </div>
-            <div className="social-description">
-              <h2>#1</h2>
-              <p>Ranking</p>
-            </div>
-          </div>
+          <h3 className="title">{global.userName}</h3>
+
         </Container>
       </div>
     </>

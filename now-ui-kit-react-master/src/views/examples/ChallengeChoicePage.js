@@ -3,15 +3,7 @@ import React from "react";
 // reactstrap components
 import {
   Button,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
   Container,
-  Row,
-  Col,
-  UncontrolledTooltip
 } from "reactstrap";
 
 // core components
@@ -20,7 +12,7 @@ import ChallengeChoiceHeader from "components/Headers/ChallengeChoiceHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 function ChallengeChoicePage() {
-  const [pills, setPills] = React.useState("2");
+  // const [pills, setPills] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");

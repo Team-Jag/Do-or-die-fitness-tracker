@@ -1,14 +1,10 @@
 import React from "react";
+import Mqtt from './MQTTclient.js';
 
 // reactstrap components
 import {
   Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
-  CardFooter,
   Row,
   Col
 } from "reactstrap";
@@ -19,8 +15,7 @@ import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 function LandingPage() {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+
   React.useEffect(() => {
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
@@ -48,7 +43,7 @@ function LandingPage() {
                 <Button className="btn-round" color="primary" outline size="lg"
                 href="#id1"
                 >
-                <i className="fa fa-heart" i/>
+                <i className="fa fa-heart" />
                 <span> </span>
                 Create my Account
                 </Button>
@@ -134,7 +129,10 @@ function LandingPage() {
                     <p className="category text-info">Player</p>
                     <p className="description">
                       This game changed my life, everyday feels like a new challenge. Before I was mostly looking at {" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=10207688649325270&set=t.639414625&type=3&theater" target="_blank">cat pictures</a>
+                      <a href="https://www.facebook.com/photo.php?fbid=10207688649325270&set=t.639414625&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >cat pictures</a>
                       {" "}
                       But now I am exercising all the time.
                     </p>
@@ -159,8 +157,10 @@ function LandingPage() {
                     <p className="category text-info">Player</p>
                     <p className="description">
                       Absolutely love this game. I am killing it!{" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=10208294300620020&set=pob.100006272557266&type=3&theater" target="_blank">
-                        See
+                      <a href="https://www.facebook.com/photo.php?fbid=10208294300620020&set=pob.100006272557266&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >See
                       </a>{" "}
                       for yourslef what I have achieved so far. Please sign up now and compete with me.
                     </p>
@@ -185,7 +185,10 @@ function LandingPage() {
                     <p className="category text-info">Sponsor</p>
                     <p className="description">
                       This app it took to make {" "}
-                      <a href="https://www.facebook.com/photo.php?fbid=864115786953645&set=t.1467280468&type=3&theater" target="_blank">
+                      <a href="https://www.facebook.com/photo.php?fbid=864115786953645&set=t.1467280468&type=3&theater"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >
                         my gym
                       </a>{" "}
                       successful. Since we are working with Do Or Die new members come to my gym all the time to complete their challenges.
@@ -210,51 +213,9 @@ function LandingPage() {
             <h4 className="description">We cannot wait to have you with us! it takes 1 minute register and give life to your avatar. <br />
             Start now, your clock is ticking...</h4>
             <Row>
-              <Col className="text-center ml-auto mr-auto" lg="6" md="8">
-                <InputGroup
-                  className={
-                    "input-lg" + (firstFocus ? " input-group-focus" : "")
-                  }
-                >
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="User Name..."
-                    type="text"
-                    onFocus={() => setFirstFocus(true)}
-                    onBlur={() => setFirstFocus(false)}
-                  ></Input>
-                </InputGroup>
 
+                <Mqtt type = "sign-up" />
 
-                <div className="send-button">
-                  <Button
-                    block
-                    className="btn-round"
-                    color="info"
-                    href="/profile-page"
-
-                    size="lg"
-                  >
-                  Sign up now
-                  </Button>
-                  <div className="pull-middle">
-                    <h6>
-                      <a
-                        className="link"
-                        href="/login-page"
-                      >
-                        Login to existing Account
-                      </a>
-                    </h6>
-                  </div>
-
-                </div>
-
-              </Col>
             </Row>
           </Container>
         </div>

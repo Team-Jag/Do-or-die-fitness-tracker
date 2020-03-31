@@ -1,8 +1,12 @@
+MQTT Channels:
+Steps:doordie_steps
+Web: doordie_web
+
+
+
 // From database sending user profile
 {
     "type": "push profile",
-    "user_id": "1",
-    "challenge_id": ["1", "2"],
     "user_name": "Mario",
     "total_steps": "2200",
     "remaining_sec": "2000",
@@ -12,13 +16,13 @@
 // From M5Stack/web requesting user profile from database
 {
     "type": "pull profile",
-    "user_id": "1"
+    "user_name": "Mario"       
 }
  
 // From web/M5Stack requesting database to send all challenges that user are enrolled in
 {
     "type": "pull user challenges",
-    "user_id": "1"
+    "user_name": "Mario"
 }
   
 // From database sending all challenges that user is enrolled in
@@ -79,7 +83,7 @@
 // From M5Stack, increment one step in database, no response from database
 {
     "type": "push step",
-    "user_id": "1"
+    "user_name": "Mario"
 }
 
 // From web, when sponsor adds new challenge, no response from database
@@ -97,6 +101,6 @@
 // From web, when user selects challenge, no response from database - additional functionality
 {
     "type": "push select challenge",
-    "user_id": "3",
+    "user_name": "Mario",
     "challenge_id": "1"
 }
