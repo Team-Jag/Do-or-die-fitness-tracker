@@ -1,4 +1,4 @@
-# Do-or-die-fitness-tracker
+# Do or Die Fitness Tracker
 ## Welcome to Do or Die
 Product Description
 
@@ -12,12 +12,25 @@ Product Description
 * Chris Buehler <christoph.buehler.2019@bristol.ac.uk>
 
 
-## 1. System Design
-https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/master/Portfolio/SystemDesign.md
+## 1.[System Design] (../blob/master/Portfolio/SystemDesign.md)
+View our [system design document] (../blob/master/Portfolio/SystemDesign.md) to see:
+* System architecture
+* Object-oriented design of key sub-systems
+* Requirements of key sub-systems
+* The evolution of UI wireframes for key sub-systems
+* Details of the communication protocols in use
+* Details of the data persistence mechanisms in use
+* Details of web technologies in use
 
-## 2. System Implementation
-https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/master/Portfolio/SystemImplementation.md
+## 2. [System Implementation] (../blob/master/Portfolio/SystemImplementation.md)
+View our [system implementation document] (../blob/master/Portfolio/SystemImplementation.md) to see:
+* Breakdown of our project into sprints
+* Design evaluation
+* Social and ethical implications of our work
 
-## 3. Project Evaluation
-https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/master/Portfolio/ProjectEvaluation
+## 3. [Project Evaluation] (../blob/master/Portfolio/ProjectEvaluation.md)
+View our [project evaluation] (../blob/master/Portfolio/ProjectEvaluation.md) to see:
+* Reflective discussion of the success of the project
+* Discussion of future work
+* Reflection on working practices of our group
 
