@@ -1,5 +1,5 @@
 # Do or Die Fitness Tracker
-## Welcome to Do or Die
+## Welcome to Do or Die!
 Product Description
 
 
