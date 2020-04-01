@@ -1,7 +1,4 @@
 #include <M5Stack.h>
-#include "utility/MPU9250.h"
-#include "utility/quaternionFilters.h"
-
 #include <WiFi.h>
 #include <esp_wifi.h>
 WiFiClient wifi_client;
@@ -23,7 +20,6 @@ String json_status;
 String stack_id = "stack1";
 int total_steps = 0;
 int defaultTime = 1000;
-Timer publishing_timer(100);
 Pedometer step_counter;
 
 //mqtt client setup 
@@ -110,12 +106,9 @@ void sendRequest(String type)
   //}
   
   if (type == "push step") {
-    if (publishing_timer.isReady()) {
       String new_string = "{\"type\":\"push step\", \"user_id\":\"1\"}"; //HACK
       //new_string += millis();
       publishMessage( new_string );
-      publishing_timer.reset();  
-    }
   }
 }
 
@@ -200,12 +193,10 @@ void setupWifiWithPassword()
 
 void reconnect()
 {
-
   // Loop until we're reconnected
   while (!ps_client.connected()) {
     M5.Lcd.setCursor(0,60);
     Serial.print("Attempting MQTT connection...");
-
     // Attempt to connect
     // Sometimes a connection with HiveMQ is refused
     // because an old Client ID is not erased.  So to
@@ -241,11 +232,7 @@ void reconnect()
 
 String generateID()
 {
-
   String id_str = MQTT_clientname;
   id_str += random(0,9999);
-
   return id_str;
 }
-
-//END OF MQTT, NOW IT'S THE EXAMPLE CODE STUFF BELOW
