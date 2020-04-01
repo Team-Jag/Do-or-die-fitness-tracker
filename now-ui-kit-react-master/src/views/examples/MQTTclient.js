@@ -23,6 +23,7 @@ class Mqtt extends React.Component {
     this.state = {
         mqttConnected: false,
       //new challenge page
+        challenge_id: '',
         challenge_name: '',
         challenge_description: '',
         challenge_step_goal: '',
@@ -297,7 +298,7 @@ renderGetChallenges(){
   else{
    return(
      <React.Fragment>
-        <div align="middle" class="tg-wrap"><table id="tg-VvxLO">
+        <div align="middle" class="tg-wrap"><table onClick={this.pushSelectedChallenge.bind(this)} id="tg-VvxLO">
         <tr>
           <th>Name</th>
           <th>Description</th>
@@ -313,7 +314,7 @@ renderGetChallenges(){
               <td>{listitem.step_goal}</td>
               <td>{listitem.end_time}</td>
               <td>{listitem.reward}</td>
-              <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
+              <td><Button className="submit-button" value={listitem.challenge_id} onClick={(event) => this.handleChange('challenge_id', event)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
             </tr>
           ))}
         </table></div>
@@ -374,6 +375,16 @@ return(
 
   	this.requestToServer(JSON.stringify(newChallenge));
     alert("You successfully created a new challenge");
+  }
+
+  pushSelectedChallenge(event){
+    var selectedChallenge = {
+      type: "push select challenge",
+      user_name: global.userName,
+      challenge_id: this.state.challenge_id
+    }
+    this.requestToServer(JSON.stringify(selectedChallenge));
+    alert("You successfully joined this challenge");
   }
 
   // called when the client connects
