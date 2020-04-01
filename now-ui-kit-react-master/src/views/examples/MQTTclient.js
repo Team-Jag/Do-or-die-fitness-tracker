@@ -29,6 +29,7 @@ class Mqtt extends React.Component {
         challenge_step_goal: '',
         challenge_end_date: '20-03-31',
         challenge_reward: '',
+        challenges_loaded: false,
         challenge_array: [],
       //login/signup page
         login_username: '',
@@ -283,13 +284,14 @@ requestChallenges(){
   console.log("Requesting challenges...")
   var newRequest1 = {
     type: "pull all challenges"
- }
+  }
   this.requestToServer(JSON.stringify(newRequest1))
 }
 
 renderGetChallenges(){
-   if(this.state.mqttConnected === true){
+   if(this.state.mqttConnected === true && this.state.challenges_loaded === false){
     this.requestChallenges()
+    this.setState({challenges_loaded: true})
   }
   if(this.state.challenge_array.length === 0)
   {
@@ -298,7 +300,7 @@ renderGetChallenges(){
   else{
    return(
      <React.Fragment>
-        <div align="middle" class="tg-wrap"><table onClick={this.pushSelectedChallenge.bind(this)} id="tg-VvxLO">
+        <div align="middle" class="tg-wrap"><table id="ccp">
         <tr>
           <th>Name</th>
           <th>Description</th>
@@ -314,13 +316,23 @@ renderGetChallenges(){
               <td>{listitem.step_goal}</td>
               <td>{listitem.end_time}</td>
               <td>{listitem.reward}</td>
-              <td><Button className="submit-button" value={listitem.challenge_id} onClick={(event) => this.handleChange('challenge_id', event)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
+              <td><Button className="submit-button" onClick={(event) => this.pushSelectedChallenge(event,listitem.challenge_id)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
             </tr>
           ))}
         </table></div>
       </React.Fragment>
   );
 }
+}
+
+pushSelectedChallenge(event,id){
+var selectedChallenge = {
+  type: "push select challenge",
+  user_name: global.userName,
+  challenge_id: id
+  }
+  this.requestToServer(JSON.stringify(selectedChallenge));
+  alert("You successfully joined this challenge");
 }
 
 renderSetChallenge(){
@@ -375,16 +387,6 @@ return(
 
   	this.requestToServer(JSON.stringify(newChallenge));
     alert("You successfully created a new challenge");
-  }
-
-  pushSelectedChallenge(event){
-    var selectedChallenge = {
-      type: "push select challenge",
-      user_name: global.userName,
-      challenge_id: this.state.challenge_id
-    }
-    this.requestToServer(JSON.stringify(selectedChallenge));
-    alert("You successfully joined this challenge");
   }
 
   // called when the client connects
