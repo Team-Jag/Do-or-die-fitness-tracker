@@ -28,6 +28,7 @@ Web: doordie_web
 // From database sending all challenges that user is enrolled in
 {
     "type": "push user challenges",
+    "user_name": "Mario",
     "challenge": [
     {
         "challenge_id": "1",
@@ -58,6 +59,34 @@ Web: doordie_web
 // From database, send all challenges data to web
 {
     "type": "push all challenges",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": "20-02-28 14:20",
+        "step_goal": "10000",
+        "reward": "800",
+        "current_time": "2020-02-30T08:35:30.0108Z"
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": "20-02-28 14:20",
+        "step_goal": "2000",
+        "reward": "200",
+        "current_time": "2020-02-30T08:35:30.0108Z"
+    }]
+}
+
+// From database to web, send user info and enrolled challenges, no response from database
+{
+    "type": "push web profile",
+    "user_name": "Mario",
+    "total_steps": "2200",
+    "remaining_sec": "2000",
     "challenge": [
     {
         "challenge_id": "1",
