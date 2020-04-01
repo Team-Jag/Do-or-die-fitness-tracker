@@ -6,6 +6,9 @@
  Modified by Brent Wilkins July 19, 2016
  */
 
+#include "utility/MPU9250.h"
+#include "utility/quaternionFilters.h"
+
 class Pedometer {
 
   private:
@@ -17,7 +20,6 @@ class Pedometer {
     float moving_average = 0; //sum of all elements divided by ELEMENTS
     bool step_flag = false;
     boolean stepTaken;
-
 
     void readGyro() {
      IMU.readAccelData(IMU.accelCount);  // Read the x/y/z adc values
