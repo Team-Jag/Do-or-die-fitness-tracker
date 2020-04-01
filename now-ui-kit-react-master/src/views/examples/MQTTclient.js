@@ -13,9 +13,7 @@ import {
   InputGroup,
   Col,
   Row,
-
 } from "reactstrap";
-
 
 class Mqtt extends React.Component {
 
@@ -30,7 +28,7 @@ class Mqtt extends React.Component {
         challenge_step_goal: '',
         challenge_end_date: '20-03-31',
         challenge_reward: '',
-        challenge_loaded: false,
+        challenge_array: [],
       //login/signup page
         login_username: '',
         redirect: false,
@@ -54,9 +52,6 @@ class Mqtt extends React.Component {
   }
 
   render(){
-      if(this.props.type === "set-challenge"){
-        return(this.renderSetChallenge())
-      }
       if(this.props.type === "login"){
         return(this.renderLogin())
       }
@@ -68,6 +63,9 @@ class Mqtt extends React.Component {
       }
       if(this.props.type === "challenges"){
         return(this.renderGetChallenges())
+      }
+      if(this.props.type === "set-challenge"){
+        return(this.renderSetChallenge())
       }
   }
 
@@ -279,30 +277,6 @@ renderLogin(){
     </form>
   );
 }
-  
-renderGetChallenges(){
-   if(this.state.mqttConnected === true){
-    this.requestChallenges()
-  }  
-   return(
-    <div>
-    <div className="content">
-      <div className="social-description">
-        <h2>{this.state.challenge_name}</h2>
-        <p>name</p>
-      </div>
-      <div className="social-description">
-        <h2>{this.state.challenge_reward}</h2>
-        <p>reward</p>
-      </div>
-      <div className="social-description">
-        <h2>{this.state.challenge_end_date}</h2>
-        <p>end date</p>
-      </div>
-    </div>
-  
-  )
-}
 
 requestChallenges(){
   console.log("Requesting challenges...")
@@ -312,8 +286,45 @@ requestChallenges(){
   this.requestToServer(JSON.stringify(newRequest1))
 }
 
+renderGetChallenges(){
+   if(this.state.mqttConnected === true){
+    this.requestChallenges()
+  }
+  if(this.state.challenge_array.length === 0)
+  {
+    return <div> <h2> Loading challenges... </h2> </div>
+  }
+  else{
+   return(
+     <React.Fragment>
+        <div align="middle" class="tg-wrap"><table id="tg-VvxLO">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Step Goal</th>
+          <th>End Date</th>
+          <th>Reward</th>
+          <th></th>
+        </tr>
+          {this.state.challenge_array.map(listitem => (
+            <tr>
+              <td>{listitem.challenge_name}</td>
+              <td>{listitem.description}</td>
+              <td>{listitem.step_goal}</td>
+              <td>{listitem.end_time}</td>
+              <td>{listitem.reward}</td>
+              <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
+            </tr>
+          ))}
+        </table></div>
+      </React.Fragment>
+  );
+}
+}
+
 renderSetChallenge(){
-  return(
+return(
+    <div>
     <form align="left" onSubmit={this.validateChallengeInput.bind(this)} >
     <label className ="form-label">Challenge Name:  </label>
     <input type="text"  value={this.state.challenge_name} onChange={(event) => this.handleChange('challenge_name', event)} /><p/>
@@ -328,6 +339,7 @@ renderSetChallenge(){
 
     <button className="submit-button">Create Challenge</button>
     </form>
+    </div>
   )
 }
 
@@ -406,6 +418,11 @@ renderSetChallenge(){
     console.log("Mgtt.onMessageArrived:"+message.payloadString);
     var json_message = JSON.parse(message.payloadString);
 
+    if(json_message.type === 'push all challenges'){
+      console.log("attempt to get array");
+      this.setState({challenge_array: json_message.challenge})
+    }
+
     if(json_message.type === 'push profile' && json_message.user_name === global.userName){
       console.log("HELLLO");
       this.setState({
@@ -415,7 +432,8 @@ renderSetChallenge(){
         dummy_counter: this.state.dummy_counter + 1
       })
     }
-  }
+}
+
   //wait function called after sever request, to avoid spaming the server
   wait(ms){
    var start = new Date().getTime();
