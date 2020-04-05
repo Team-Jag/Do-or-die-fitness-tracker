@@ -17,8 +17,9 @@ class Timer {
 
     // Constructor, call with the number of milliseconds
     // you wish to schedule some code on.
-    Timer( unsigned long period_ms ) {
+    Timer( unsigned long period_ms , boolean startupState) {
       period = period_ms;
+      READY = startupState;
       last_ts = millis();
     }
 
@@ -32,7 +33,6 @@ class Timer {
       if ( millis() - last_ts > period ) {
         READY = true;
       } 
-      
       return READY; 
     }
 
