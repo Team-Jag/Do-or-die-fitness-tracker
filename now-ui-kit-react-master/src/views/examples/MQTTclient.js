@@ -177,7 +177,7 @@ requestProfile(){
   }
   console.log("Requesting profile...");
   var newRequest = {
-    type: "pull profile",
+    type: "pull web profile",
     user_name: global.userName
   }
   this.requestToServer(JSON.stringify(newRequest));
