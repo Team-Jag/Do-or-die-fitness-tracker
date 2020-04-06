@@ -1,5 +1,6 @@
+=======
 # Do or Die Fitness Tracker
-## Welcome to Do or Die
+## Welcome to Do or Die!
 Product Description
 
 
@@ -33,4 +34,4 @@ View our [project evaluation](../master/Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
-
+>>>>>>> develop
