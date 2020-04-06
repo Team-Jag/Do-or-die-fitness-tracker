@@ -1,10 +1,14 @@
 # 1. System Design :
 ## a. Architecture of the entire system
+Ana
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web
 Application etc.)
 ### Desktop
+Team
 ### Web
+Team
 ### M5
+Team
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 ### Desktop
