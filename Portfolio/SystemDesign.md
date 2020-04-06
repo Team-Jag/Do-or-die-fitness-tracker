@@ -19,6 +19,9 @@ Team
 ### Web
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
+Team M5
 ## f. Details of the data persistence mechanisms in use (including a rational for your
 choice)
+Team Processing
 ## g. Details of web technologies in use (including a rational for your choice)
+Team Web
