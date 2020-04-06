@@ -13,9 +13,15 @@ Web: doordie_web
     "current_time": "2020-02-30T08:35:30.0108Z"
 }
   
-// From M5Stack/web requesting user profile from database
+// From M5Stack requesting user profile from database
 {
     "type": "pull profile",
+    "user_name": "Mario"       
+}
+
+// From web requesting user profile from database
+{
+    "type": "pull web profile",
     "user_name": "Mario"       
 }
  
