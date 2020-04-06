@@ -25,8 +25,8 @@ uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
 const char* ssid = "VM5649012"; // Set name of Wifi Network
 const char* password = "cr5jdMktTnp7";   
 const char* MQTT_clientname = "m5stack"; // Make up a short name
-const char* MQTT_sub_topic = "doordie_web"; // pub/sub topics
-const char* mainTopic = "doordie_web"; // You might want to create your own
+const char* MQTT_sub_topic = "doordie_weeb"; // pub/sub topics
+const char* mainTopic = "doordie_weeb"; // You might want to create your own
 const char* stepTopic = "doordie_steps"; // You might want to create your own
 const uint16_t BACKGROUNDCOLOR = 0x0000;
 
