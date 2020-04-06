@@ -1,17 +1,19 @@
 {"user": [
   {
-    "user_id": "1",
     "challenge_id": [
       "1",
       "2"
     ],
     "user_name": "Mario",
-    "total_steps": 2200,
+    "total_steps": 2287,
     "remaining_sec": "2000",
     "current_time": "2020-02-30T08:35:30.0108Z"
   },
   {
-    "user_id": "2",
+    "challenge_id": [
+      "1",
+      "2"
+    ],
     "user_name": "Luigi",
     "total_steps": 0,
     "remaining_sec": "3000",
