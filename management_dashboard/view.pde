@@ -44,9 +44,10 @@ void updateDashboardData() {
     
      
     view.build_list("USERS", users); //builds list with all the other stuff
-    view.build_PieChart("users alive", user.getInt("total_steps"), user.getInt("remaining_sec"), 50, 450);
+    view.build_PieChart("users alive", view.countLivePlayers(users), user.getInt("remaining_sec"), 50, 450);
     
     view.build_LineChart("users daily", total_users, 4, 7, 350, 450);
+    
     view.build_BarChart("users, challenges, sponsers", total_challenges, total_users+1, total_sponsers, 650, 450);
     
     view.createButton("current users", str(total_users), 250, 100);
@@ -94,6 +95,20 @@ public class Dashboard_view {
     int R = 96;
     int G = 224;
     int B = 252;
+
+    int countLivePlayers(JSONArray users) {
+       int live = 0, i;
+       JSONObject curr_user;
+       
+       for (i = 0; i < users.size(); i++) {
+            curr_user = users.getJSONObject(i);
+            if (curr_user.getInt("remaining_sec") > 0) {
+                live++;
+                println(live); //for debug
+            }
+       }
+       return live;
+    }
 
     void build_PieChart(String chart_name, int val, int val1, int x, int y) {
         Chart chart = cp5.addChart(chart_name)
