@@ -25,14 +25,12 @@ void refreshDashboardData() {
 void updateDashboardData() {
     ControlFont cf2 = new ControlFont(createFont("Helvetica",10));
     refreshData();
-    // just the title of the screen
     surface.setTitle("Do or Die Admin Dashboard");
-    //i wanted a title in the middle but not quite working yet
     view.build_title("Do or Die", 250, 0);
     
     JSONArray users = db.users.getJSONArray("user");
-    JSONArray challenge = db.challenges.getJSONArray("challenge"); //need data api functions
-    //JSONArray sponser = db.challenges.getJSONArray("sponser");
+    JSONArray challenge = db.challenges.getJSONArray("challenge"); 
+    //JSONArray sponser = db.challenges.getJSONArray("sponser"); //need data api functions
     JSONObject user = users.getJSONObject(0);
     int total_users = users.size();
     int total_sponsers = 1;
@@ -42,13 +40,13 @@ void updateDashboardData() {
     // don't think we need the metrics - creates those weird charts at side
     //view.build_metric(users + " total ", user.getInt("total_steps"));
     
-     
     view.build_list("USERS", users); //builds list with all the other stuff
-    view.build_PieChart("users alive", view.countLivePlayers(users), user.getInt("remaining_sec"), 50, 450);
     
-    view.build_LineChart("users daily", total_users, 4, 7, 350, 450);
     
-    view.build_BarChart("users, challenges, sponsers", total_challenges, total_users+1, total_sponsers, 650, 450);
+    view.build_LineChart("users daily", 0, 4, 7, 250, 140);
+    view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
+    view.build_BarChart("users, challenges, sponsers", total_challenges, total_users+1, total_sponsers, 680, 450);
+    view.build_PieChart("users alive", users.size(), view.countLivePlayers(users), 680, 290); //players alive out of total players
     
     view.createButton("current users", str(total_users), 250, 100);
     view.createButton("active challenges", str(total_challenges), 380, 100);
@@ -115,7 +113,7 @@ public class Dashboard_view {
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
-            .setColorCaptionLabel(color(255))
+            .setColorCaptionLabel(color(255)) //for some reason this doesn't work for anything that is not a line graph
             .setView(Chart.PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             // the website has all the diff types of charts so you can play around, he had it as random before
             
@@ -131,15 +129,15 @@ public class Dashboard_view {
      void build_LineChart(String chart_name, int val, int val1, int val3, int x, int y) {
         Chart chart = cp5.addChart(chart_name)
             .setPosition(x, y)
-            .setSize(chart_size, chart_size)
+            .setSize(chart_size+200, chart_size+50)
             .setRange(0, 10)
             .setColorCaptionLabel(color(255))
             .setView(Chart.LINE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             
-        chart.getColor().setBackground(color(0,0));
+        chart.getColor().setBackground(color(12,23,45));
         chart.addDataSet(chart_name);
         chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1, val3, 5, 2, 5, 1);
+        chart.updateData(chart_name, val, val1, 5, 2, 5, 1, val3, val3);
         chart_spacing = chart_spacing + chart_size + (chart_size / 5);
     }
     
@@ -147,7 +145,7 @@ public class Dashboard_view {
         Chart chart = cp5.addChart(chart_name)
             .setColorLabel(255)
             .setPosition(x, y)
-            .setSize(chart_size, chart_size)
+            .setSize(chart_size, chart_size-20)
             .setRange(0, 10)
             .setColorCaptionLabel(color(255))
             .setView(Chart.BAR); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
