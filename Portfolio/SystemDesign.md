@@ -1,10 +1,24 @@
 # 1. System Design :
 ## a. Architecture of the entire system
-* *Ana volunteered to write this section* *
-## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web
-Application etc.)
+Architecture of the system uses a central controller database dealing with recieving and sending requests, using MQTT protocol to communicate between devices. Three key devices of system:
+
+Processing - dealing with sending and recieving requests, parsing to make sure request is not malformed, storing user information in a central database, and visualising general consumer data such as total users of the app.
+
+M5 - stateless device to update the database when user step count is incremented, and inform user when player death occurs.
+
+Web - allows user to log in and provide information about their account, user information and challenges.
+
+See relevant sections for further information about specific subsystems. 
+
+## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
 ### Desktop
-Team
+Key classes for desktop app include:
+
+* **data** - retrieves user, sponser, challenge information from the database. 
+* **events** - recieves and processes MQTT payloads, passes on information into view to rebuild UI with every new request.
+* **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
+
 ### Web
 For more detail on web technologies see section **1g.** bellow.
 React is ideal to implement a object oriented design. Our website conists of functional components (classes- one for each site/view) and a MQTT class which is integrated into the different views.
@@ -28,10 +42,13 @@ In our prototype we implemented the following user stories for our three key use
 * 1. **User Profile** On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time (see user Story 2.)
 * 2. **User Activity** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture.
 * 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
-* 4. **Admin** can visit a dashboard with key statistics around our game * *Ana please write more here on the requirements* *
+* 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data.
+* *Ana please write more here on the requirements* *
 
 **These four user stories translate into the following requirements for our sub-systems:**
 ### Desktop
+Administration interface for data visualisation. Allow backend to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
+
 ### Web
 * 1. **User Profile**
   * a. Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
@@ -51,9 +68,12 @@ In our prototype we implemented the following user stories for our three key use
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
 * *Team M5 please write this section* *
-## f. Details of the data persistence mechanisms in use (including a rational for your
-choice)
+## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 * *Team Processing please write this section* *
+Each user and challenge is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistance we used user.json, sponser.json and challenges.json files to store user data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile. Each user object contains a challenges array which contains all currently enrolled challenges by integer. These reference the challenge_id parameter in challenges.json in order to keep payload lengths below the MQTT maximum. This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
+
+M5 device is stateless therefore does not store information locally apart from created variables. These are then pulled from the database via a pull_user request type. 
+
 ## g. Details of web technologies in use (including a rational for your choice)
 Our website is react based and build on top of a simple react/bootsrap template.
 The choice for these technologies was driven by some key needs of our website/team that ultimately led us to choose this set up:
