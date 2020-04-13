@@ -40,18 +40,23 @@ void updateDashboardData() {
     // don't think we need the metrics - creates those weird charts at side
     //view.build_metric(users + " total ", user.getInt("total_steps"));
     
-    view.build_list("USERS", users); //builds list with all the other stuff
+    
     view.buildSearch(10, 0); //possibly search for a specific player?
     
     view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
-    view.build_BarChart("users, challenges, sponsers", total_challenges, total_users+1, total_sponsers, 680, 450);
-    view.build_PieChart("users alive", users.size(), view.countLivePlayers(users), 680, 290); //players alive out of total players
+    
+    view.build_chartLabel("users                    challenges          sponsers", 680, 640);
+    view.build_BarChart("totals", total_challenges, total_users+1, total_sponsers, 680, 470);
+    
+    view.build_chartLabel("users alive", 680, 440);
+    view.build_PieChart("live_users", users.size(), view.countLivePlayers(users), 680, 250); //players alive out of total players
     
     view.createButton("current users", str(total_users), 250, 100);
     view.createButton("active challenges", str(total_challenges), 380, 100);
     view.createButton("total sponsers", str(total_sponsers), 510, 100);
     
+    view.build_list("USERS", users); //builds list with all the other stuff
     // when you drop down
     view.build_expanded(user.getString("user_ID"), user); //this is for user list
 }
@@ -126,6 +131,8 @@ public class Dashboard_view {
     }
 
     void build_PieChart(String chart_name, int val, int val1, int x, int y) {
+        
+      
         Chart chart = cp5.addChart(chart_name)
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
@@ -135,12 +142,24 @@ public class Dashboard_view {
             // the website has all the diff types of charts so you can play around, he had it as random before
             
             
-        chart.getColor().setBackground(color(0,0));
+        chart.getColor().setBackground(color(12,23,45));
         chart.addDataSet(chart_name);
         chart.setColors(chart_name, color(255),color(0, 124, 158));
         chart.updateData(chart_name, val, val1);
         chart_spacing = chart_spacing + chart_size + (chart_size / 5);
         
+        
+    }
+    
+    //this is a hack
+    void build_chartLabel(String text, int x, int y) {
+        Textlabel caption; //workaround for chart label problem
+      
+       caption = cp5.addTextlabel(text)
+           .setText(text)
+           .setPosition(x, y)
+           .setColorValue(255);
+    
     }
     
      void build_LineChart(String chart_name, int val, int val1, int val3, int x, int y) {
@@ -167,7 +186,7 @@ public class Dashboard_view {
             .setColorCaptionLabel(color(255))
             .setView(Chart.BAR); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             
-        chart.getColor().setBackground(color(0,0));
+        chart.getColor().setBackground(color(12,23,45));
         chart.addDataSet(chart_name);
         chart.setColors(chart_name, color(255),color(0, 124, 158));
         chart.updateData(chart_name, val, val1, val3);
@@ -233,9 +252,6 @@ public class Dashboard_view {
          }
      }
 
-    void controlEvent(ControlEvent event) {
-      println(event);
-    }
 // i had to keep messing with the horizontal and vertical spacing below to get it to work 
     void build_expanded(String userid, JSONObject user) {
         
