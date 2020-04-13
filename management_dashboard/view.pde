@@ -41,7 +41,7 @@ void updateDashboardData() {
     //view.build_metric(users + " total ", user.getInt("total_steps"));
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    
+    view.buildSearch(10, 0);
     
     view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
@@ -82,7 +82,7 @@ public class Dashboard_view {
     int metrics_horizontal = 100;
     
     int user_view_hoz = 0;
-    int user_view_vert = 0;
+    int user_view_vert = 30;
     
     int challenge_view_hoz = 0;
     int challenge_view_vert = 20;
@@ -106,6 +106,23 @@ public class Dashboard_view {
             }
        }
        return live;
+    }
+
+    void buildSearch(int x, int y) {
+      cp5.addTextfield("")
+     .setPosition(x,y)
+     .setSize(100,20)
+     .setFocus(true)
+     .setColor(color(R,G,B))
+     ;
+     
+      cp5.addButton("search")
+        .setValue(0)
+        .setPosition(x+110, y)
+        .setColorBackground(color(0,135,166))
+        .setColorActive(color(0))
+        .setColorForeground(color(R,G,B))
+        .setSize(50, 20);
     }
 
     void build_PieChart(String chart_name, int val, int val1, int x, int y) {
