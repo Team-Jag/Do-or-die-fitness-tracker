@@ -1,0 +1,8 @@
+Colouring convention for all UX:
+
+Primary Colours:
+*Light blue #2CA8FF
+*White
+
+Secondary Colours
+*Orange #fa7a50 (e.g. when hovering over a button)
