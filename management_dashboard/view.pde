@@ -45,8 +45,10 @@ void updateDashboardData() {
      
     view.build_list("USERS", users); //builds list with all the other stuff
     view.build_PieChart("users alive", user.getInt("total_steps"), user.getInt("remaining_sec"), 50, 450);
+    
     view.build_LineChart("users daily", total_users, 4, 7, 350, 450);
-    view.build_BarChart("total sponsers ", total_challenges, total_users+1, total_sponsers, 650, 450);
+    view.build_BarChart("users, challenges, sponsers", total_challenges, total_users+1, total_sponsers, 650, 450);
+    
     view.createButton("current users", str(total_users), 250, 100);
     view.createButton("active challenges", str(total_challenges), 380, 100);
     view.createButton("total sponsers", str(total_sponsers), 510, 100);
@@ -98,22 +100,25 @@ public class Dashboard_view {
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
-            .setColorLabel(134)
-            .setView(PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
+            .setColorCaptionLabel(color(255))
+            .setView(Chart.PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             // the website has all the diff types of charts so you can play around, he had it as random before
-        chart.getColor().setBackground(color(0, 0));
+            
+            
+        chart.getColor().setBackground(color(0,0));
         chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255), color(0, 124, 158));
+        chart.setColors(chart_name, color(255),color(0, 124, 158));
         chart.updateData(chart_name, val, val1);
         chart_spacing = chart_spacing + chart_size + (chart_size / 5);
+        
     }
     
      void build_LineChart(String chart_name, int val, int val1, int val3, int x, int y) {
         Chart chart = cp5.addChart(chart_name)
-            
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
+            .setColorCaptionLabel(color(255))
             .setView(Chart.LINE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             
         chart.getColor().setBackground(color(0,0));
@@ -125,10 +130,11 @@ public class Dashboard_view {
     
      void build_BarChart(String chart_name, int val, int val1, int val3, int x, int y) {
         Chart chart = cp5.addChart(chart_name)
-            
+            .setColorLabel(255)
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
             .setRange(0, 10)
+            .setColorCaptionLabel(color(255))
             .setView(Chart.BAR); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
             
         chart.getColor().setBackground(color(0,0));
@@ -199,6 +205,8 @@ public class Dashboard_view {
 
 // i had to keep messing with the horizontal and vertical spacing below to get it to work 
     void build_expanded(String userid, JSONObject user) {
+        
+      
         if (is_expanded == 1) {
         // basically switch it round
             cp5.get("users").remove();
@@ -209,57 +217,39 @@ public class Dashboard_view {
         }
 
       ListBox challenges = cp5.addListBox("challenge view")
-            .setPosition((3 * challenge_view_hoz), 2 * challenge_view_vert)
-            .setSize(200, 100)
+            .setPosition((3 * challenge_view_hoz), 6 * challenge_view_vert)
+            .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
             .setColorBackground(color(0,135,166))
             .setColorActive(color(R,G,B))
             .setColorForeground(color(R, G, B));
+            
+             
 
       ListBox users = cp5.addListBox("user view")
             .setPosition((2 * user_view_hoz), 1 * user_view_vert)
-            .setSize(200, 100)
+            .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
             .setColorBackground(color(0,135,166))
             .setColorActive(color(R,G,B))
             .setColorForeground(color(R, G, B));
 
+    
       
-/*
-        users.addItem(user.getInt("total_steps"), 0);
-        users.addItem(user.getInt("remaining_sec"), 1); */
-        
+  
+        users.addItem("daily", 0);
+        users.addItem("weekly", 1); 
+        users.addItem("monthly", 0);
+        users.addItem("all time", 1); 
        
-        // create the buttons, these would be inside expanded for some reason?
-        /*cp5.addButton("current users: "+2) //+total_users
-            
-            .setValue(0)
-            .setPosition((3 * metrics_horizontal), 2 * metrics_vertical + 75)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
-            .setSize(100, 19);
-            
-
-        cp5.addButton("active challenges: "+2) //+total challenges
-            .setValue(0)
-            .setPosition((3 * metrics_horizontal + 110), 2 * metrics_vertical + 75)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
-            .setSize(100, 19);
-
-        cp5.addButton("sponsers: "+0) //+total_sponsers 
-            .setValue(0)
-            .setPosition((3 * metrics_horizontal + 220), 2 * metrics_vertical + 75)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
-            .setSize(100, 19);*/
-
-        is_expanded = 1;
+        challenges.addItem("daily", 0);
+        challenges.addItem("weekly", 1); 
+        challenges.addItem("monthly", 0);
+        challenges.addItem("all time", 1); 
+      
+        is_expanded = 0;
     }
     
     void createButton(String name, String value, int x, int y) {
