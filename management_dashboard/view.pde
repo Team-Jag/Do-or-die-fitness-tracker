@@ -41,7 +41,7 @@ void updateDashboardData() {
     //view.build_metric(users + " total ", user.getInt("total_steps"));
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    view.buildSearch(10, 0);
+    view.buildSearch(10, 0); //possibly search for a specific player?
     
     view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
@@ -233,6 +233,9 @@ public class Dashboard_view {
          }
      }
 
+    void controlEvent(ControlEvent event) {
+      println(event);
+    }
 // i had to keep messing with the horizontal and vertical spacing below to get it to work 
     void build_expanded(String userid, JSONObject user) {
         
@@ -265,9 +268,6 @@ public class Dashboard_view {
             .setColorBackground(color(0,135,166))
             .setColorActive(color(R,G,B))
             .setColorForeground(color(R, G, B));
-
-    
-      
   
         users.addItem("daily", 0);
         users.addItem("weekly", 1); 
