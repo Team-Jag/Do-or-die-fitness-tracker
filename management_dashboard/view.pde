@@ -68,7 +68,7 @@ public class Dashboard_view {
     int metric_y_size = 20;
     
     int list_spacing = 0;
-    int list_x_size = 160;
+    int list_x_size = 250;
     int list_y_size = 350;
     
     int chart_spacing = 100;
@@ -86,8 +86,8 @@ public class Dashboard_view {
     int challenge_view_hoz = 0;
     int challenge_view_vert = 20;
     
-    int main_list_hoz = 350;
-    int main_list_vert = 10;
+    int main_list_hoz = 305;
+    int main_list_vert = 0;
     
     int R = 96;
     int G = 224;
