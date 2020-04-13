@@ -30,7 +30,7 @@ In our prototype we implemented the following user stories for our three key use
 * 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
 * 4. **Admin** can visit a dashboard with key statistics around our game * *Ana please write more here on the requirements* *
 
-**These four user stories translate into the following requirements for our sub-systems: **
+**These four user stories translate into the following requirements for our sub-systems:**
 ### Desktop
 ### Web
 * 1. **User Profile**
