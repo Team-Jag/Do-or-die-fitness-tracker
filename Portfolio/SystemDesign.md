@@ -14,10 +14,10 @@ See relevant sections for further information about specific subsystems.
 ### Desktop
 Key classes for desktop app include:
 
-data - retrieves user, sponser, challenge information from the database. 
-events - recieves and processes MQTT payloads, passes on information into view to rebuild UI with every new request.
-tests - the test class contains unit tests to ensure edge cases are handles gracefully.
-view - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
+* **data** - retrieves user, sponser, challenge information from the database. 
+* **events** - recieves and processes MQTT payloads, passes on information into view to rebuild UI with every new request.
+* **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
 
 ### Web
 For more detail on web technologies see section **1g.** bellow.
@@ -47,7 +47,7 @@ In our prototype we implemented the following user stories for our three key use
 
 **These four user stories translate into the following requirements for our sub-systems:**
 ### Desktop
-Administration interface 
+Administration interface for data visualisation. Allow backend to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
 
 ### Web
 * 1. **User Profile**
@@ -68,8 +68,7 @@ Administration interface
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
 * *Team M5 please write this section* *
-## f. Details of the data persistence mechanisms in use (including a rational for your
-choice)
+## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 * *Team Processing please write this section* *
 Each user and challenge is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistance we used user.json, sponser.json and challenges.json files to store user data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile. Each user object contains a challenges array which contains all currently enrolled challenges by integer. These reference the challenge_id parameter in challenges.json in order to keep payload lengths below the MQTT maximum. This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
 
