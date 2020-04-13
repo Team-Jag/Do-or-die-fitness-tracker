@@ -24,10 +24,16 @@ Web: doordie_web
     "user_name": "Mario"       
 }
  
-// From web/M5Stack requesting database to send all challenges that user are enrolled in
+// From web requesting database to send all challenges that user are enrolled in
 {
     "type": "pull user challenges",
     "user_name": "Mario"
+}
+
+//From M5 request all challenges of user
+{
+	"type":"M5 pull challenges",
+	"user_name":"Mario"
 }
 
 // From database send all challenges to m5 Stack
