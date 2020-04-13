@@ -30,6 +30,28 @@ Web: doordie_web
     "type": "pull user challenges",
     "user_name": "Mario"
 }
+
+// From database send all challenges to m5 Stack
+{
+    "t": "p ch",
+    "u_n": "Mario",
+    "ch": [
+    {
+        "name": "10K Step",
+        "des": "stepstep",
+        "end": "20-02-28 14:20",
+        "goal": "10000",
+        "rwrd": "800"
+    },
+  
+    {	
+	"name": "Ch 2",
+        "des": "runrun",
+        "end": "20-02-28 14:20",
+        "goal": "2000",
+        "rwrd": "800",
+    }]
+}
   
 // From database sending all challenges that user is enrolled in
 {
