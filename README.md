@@ -10,10 +10,6 @@ Do or Die is a wearable fitness tracker, designed to inspire users to get active
  
 In order to ensure that their Bean does not die, the user must meet personal and sponsor-set step goals. When they reach their goals, time is added to their Bean's health bar. However, if the user fails to get active and meet their challenges consistently, the Bean's health bar will slowly decrease towards death. 
 
-// Insert picture of web
-
-On the Do or Die website, the user can track their progress (... other web things ...) 
-
 The goal is therefore simple, keep the Bean's health bar above death by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## Team Members
