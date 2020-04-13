@@ -1,7 +1,9 @@
 # Do or Die Fitness Tracker
-## Welcome to Do or Die!
-Product Description
 
+Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
+
+## Product Description
+Product Description
 
 ## Team Members
 * Davide Bernardi <db16981@bristol.ac.uk>
