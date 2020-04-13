@@ -1,9 +1,8 @@
 # Do or Die Fitness Tracker
-
 Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
 
 ## Product Description
-Product Description
+Do or Die is a wearable fitness tracker, designed to inspire users to 
 
 ## Team Members
 * Davide Bernardi <db16981@bristol.ac.uk>
