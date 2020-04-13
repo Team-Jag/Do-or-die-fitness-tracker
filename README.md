@@ -1,8 +1,11 @@
 # Do or Die Fitness Tracker
+  // Insert picture of do or die logo here
 Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
 
 ## Product Description
-Do or Die is a wearable fitness tracker, designed to inspire users to get active while having fun and keeping their Bean alive. In order to ensure that their Bean does not die, the user must meet personal and sponsor-set step goals. When they reach their goals, time is added to their Bean's health bar. However, if the user fails to meet their goals consistently, the Bean's health bar will slowly decrease towards death. The user must get active, or face the death of their Bean. 
+Do or Die is a wearable fitness tracker, designed to inspire users to get active while challenging them to keep their Bean alive! (want to include a sentence introducing the Bean)
+ // Insert picture of Bean here
+In order to ensure that their Bean does not die, the user must meet personal and sponsor-set step goals. When they reach their goals, time is added to their Bean's health bar. However, if the user fails to get active and meet their goals consistently, the Bean's health bar will slowly decrease towards death. It is therefore, Do or Die. Do you have what it takes?
 
 ## Team Members
 * Davide Bernardi <db16981@bristol.ac.uk>
