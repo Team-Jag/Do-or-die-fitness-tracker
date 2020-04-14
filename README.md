@@ -1,17 +1,24 @@
-=======
 # Do or Die Fitness Tracker
-## Welcome to Do or Die!
-Product Description
+  // Insert picture of do or die logo here
+  
+Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
 
+## Product Description
+Do or Die is a wearable fitness tracker, designed to inspire users to get active while challenging them to keep their Bean alive! The user's new friend Bean can be found on the face of their fitness tracker. 
+
+ // Insert picture of Bean here
+ 
+In order to ensure that their Bean does not die, the user must meet personal and sponsor-set step goals. When they reach their goals, time is added to their Bean's health bar. However, if the user fails to get active and meet their challenges consistently, the Bean's health bar will slowly decrease towards death. 
+
+The goal is therefore simple, keep the Bean's health bar above death by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## Team Members
-* Graciela Putri <tl19232@bristol.ac.uk>
-* Anastasia Shmyglya <ge19548@bristol.ac.uk>
-* Amy Conroy <ac16888@bristol.ac.uk>
-* Oliver Skeates <an19572@bristol.ac.uk>
 * Davide Bernardi <db16981@bristol.ac.uk>
 * Chris Buehler <christoph.buehler.2019@bristol.ac.uk>
-
+* Amy Conroy <ac16888@bristol.ac.uk>
+* Graciela Putri <tl19232@bristol.ac.uk>
+* Anastasia Shmyglya <ge19548@bristol.ac.uk>
+* Oliver Skeates <an19572@bristol.ac.uk>
 
 ## 1. [System Design](../master/Portfolio/SystemDesign.md)
 View our [system design document](../master/Portfolio/SystemDesign.md) to see:
@@ -34,4 +41,3 @@ View our [project evaluation](../master/Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
->>>>>>> develop

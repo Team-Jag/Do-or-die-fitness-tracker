@@ -7,33 +7,41 @@ WiFiClient wifi_client;
 #include <PubSubClient.h>
 PubSubClient ps_client( wifi_client );
 
+//Local Libraries
 #include "Timer.h"
 #include "Pedometer.h"
 
 //JSON
 #include <ArduinoJson.h>
-StaticJsonDocument<500> doc; //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
+StaticJsonDocument<500> JSONin; //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
+StaticJsonDocument<500> JSONprofile;
+StaticJsonDocument<500> JSONstep;
 char requestDefault[] = "{\"user_type\":\"user\",\"user_id\":\"1234\",\"user_name\":\"User1\",\"total_steps\":\"2200\",\"remaining_sec\":\"2200\",\"current_time\":\"2020-02-30T08:35:30.0108Z\"}";
-String json_status;
-
-//DoOrDie Variables
-String stack_id = "stack1";
-int total_steps = 0;
-int defaultTime = 1000;
-Pedometer step_counter;
+String stepMsg;
+String profileMsg;
 
 //mqtt client setup 
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
-
 const char* ssid = "VM5649012"; // Set name of Wifi Network
 const char* password = "cr5jdMktTnp7";   
-
 const char* MQTT_clientname = "m5stack"; // Make up a short name
-const char* MQTT_sub_topic = "doordie_steps"; // pub/sub topics
-const char* MQTT_pub_topic = "doordie_steps"; // You might want to create your own
+const char* MQTT_sub_topic = "doordie_web"; // pub/sub topics
+const char* mainTopic = "doordie_web"; // You might want to create your own
+const char* stepTopic = "doordie_steps"; // You might want to create your own
+const uint16_t BACKGROUNDCOLOR = 0x0000;
 
 const char* server = "broker.mqttdashboard.com";
 const int port = 1883;
+
+//DoOrDie Variables
+String user_name = "Mario";
+int total_steps = 0;
+int max_sec = 10000;
+int remaining_sec = 6013;
+Pedometer step_counter;
+Timer pullTimer(5000, true);
+String showMe;
+Timer drawTimer(100,true);
 
 void setup()
 {
@@ -49,71 +57,46 @@ void setup()
   setupWifiWithPassword();
   //setupWifi();
   step_counter.setup();
+  setupJSON();
   setupMQTT();
   M5.Lcd.println("SETUP COMPLETE\n");
   delay(3000);
   M5.Lcd.fillScreen(BLACK);
-  
-  testingStuff();
-} //END OF SETUP
+} //setup
 
 void loop()
 {
-  if(step_counter.loop()) {
-    total_steps++; // we don't need this, just send request type
-    sendRequest("push step"); //each time we update step count we send a request of global total steps
-  }
-
    //MQTT PUBLISHING
    if (!ps_client.connected()) {
      reconnect();
    }
    ps_client.loop();
-   M5.Lcd.setCursor(200, 0); M5.Lcd.printf("Steps: %6d", total_steps);
-   M5.Lcd.setCursor(0, 60);
-     if( M5.Lcd.getCursorY() > M5.Lcd.height() ) {
-    M5.Lcd.fillScreen( BLACK );
-    M5.Lcd.setCursor( 0, 10 );
-  }
-} //END OF MAIN LOOP
 
-void testingStuff()
-{
-  //test JSON
-  DeserializationError error = deserializeJson(doc, requestDefault); //make a valid JSON STRING into a json tree object, do this on recieving request
-  //serializeJson(doc, "validjsonobject") //this is the inverse, and makes a string from JSON TREE OBJECT do this before sending request
-  
-  if (error) {
-    //M5.Lcd.print("deserializeJson() failure: \n");
-    json_status = "deserializeJson failed, invalidJSon\n";
-    M5.Lcd.print(error.c_str());  
-  } else {
-    json_status = "JSON fine\n";
-    M5.Lcd.print("JSON fine\n");  
+  //Send Pull Profile request to server every X milliseconds 
+  if(pullTimer.isReady()) {
+    pullProfile();
+    pullTimer.reset();
   }
-}
 
-void sendRequest(String type)
-{
-  //we have a json object, updated from default request
-  //updateJSON(); to update relevent fields ie time and stepcount, timestamps etc
-  //serializeJson into a string
-  //send through broker
-  String request_type;
-  //{
-    //"type": "push step",
-    //"user_id": "1"
-  //}
-  
-  if (type == "push step") {
-      String new_string = "{\"type\":\"push step\", \"user_id\":\"1\"}"; //HACK
-      //new_string += millis();
-      publishMessage( new_string );
+  //If a step is taken, perform onStepTaken(), i.e. increase local step counter and publish step on MQTT
+  if(step_counter.loop()) {
+    onStepTaken();
   }
-}
+
+  drawTimeBar(false);
+  if(drawTimer.isReady()) {
+    drawBean();
+    drawTimer.reset();
+  }
+  
+  M5.Lcd.setCursor(0, 200); M5.Lcd.println(showMe); //showMe is the string that gets updated with what we want on the screen at any time
+  //M5.Lcd.setCursor(0, 0); M5.Lcd.printf("Time: %10d", remaining_sec);
+  M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
+ 
+} //loop
 
 //MQTT BROKER FUNCTIONS
-void publishMessage( String message )
+void publishMessage( String message , const char* topic)
 {
 
   if( ps_client.connected() ) {
@@ -124,37 +107,98 @@ void publishMessage( String message )
       char msg[ message.length()+1];
       message.toCharArray( msg, message.length()+1 );
 
-      //M5.Lcd.println( message );
-
       // Send
-      ps_client.publish( MQTT_pub_topic, msg );
+      ps_client.publish( topic, msg );
     }
-
   } else {
-    Serial.println("Can't publish message: Not connected to MQTT :( ");
+    M5.Lcd.println("Can't publish message: Not connected to MQTT :( ");
   }
 }
 
 void callback(char* topic, byte* payload, unsigned int length)
 {
-  //this is listener, watch on network
-  M5.Lcd.setTextColor( WHITE );
-  m5.Lcd.setCursor(0,90);
-  M5.Lcd.print("Message arrived [");
-  M5.Lcd.print(topic);
-  M5.Lcd.print("] ");
-
+  M5.Lcd.fillScreen(0x0000);
   String in_str = "";
 
   // Copy chars to a String for convenience.
-  // Also prints to USB serial for debugging
   for (int i=0;i<length;i++) {
     in_str += (char)payload[i];
   }
-  M5.Lcd.println();
-  M5.Lcd.print(" << Rx: " );
-  M5.Lcd.println( in_str );
+  Serial.println(in_str);
+
+  showMe = topic;
+  showMe += ":\n";
+  showMe += in_str;
+
+  deserializeJson(JSONin, in_str);
+  if ( JSONin["type"].as<String>() == "push profile" && JSONin["user_name"] == user_name) {
+    total_steps = JSONin["total_steps"];
+    remaining_sec = JSONin["remaining_sec"];
+    drawTimeBar(true);  
+  }
 }
+
+void setupJSON() 
+{
+  JSONstep["type"]="push step";
+  JSONstep["user_name"]=user_name;
+  serializeJson(JSONstep, stepMsg);
+  JSONprofile["type"]="pull profile";
+  JSONprofile["user_name"]=user_name;
+  serializeJson(JSONprofile, profileMsg);
+}
+
+void pullProfile()
+{
+    publishMessage(profileMsg, mainTopic);
+}
+
+void onStepTaken()
+{
+  total_steps++;
+  publishMessage(stepMsg, stepTopic );
+}
+
+void drawTimeBar(bool clearBackground)
+{
+  int x = 0;
+  int y = 0;
+  int w = 100;
+  int h = 10;
+  uint8_t val = (remaining_sec * 100) / max_sec;
+  if(clearBackground){
+    M5.Lcd.fillRect(x+1,y+1,w,h,BACKGROUNDCOLOR);
+  }
+    
+  M5.Lcd.progressBar(x+1,y+1,w,h, val);
+  M5.Lcd.drawRect(x,y,w+2,h+2,0xFFFF);
+}
+
+void drawBean() 
+{
+  int eyeWidth = 30;
+  int r = 60;
+  int x = M5.Lcd.width()/2;
+  int y = M5.Lcd.height()/2;
+  M5.Lcd.fillCircle(x, y, r, 0xFC9F);
+  drawEye(x-eyeWidth,y-10,20);
+  drawEye(x+eyeWidth,y-10,20);
+}
+
+void drawEye(int x, int y, int r)
+{
+  M5.Lcd.fillCircle(x, y, r, 0xFFFF);
+  M5.Lcd.fillCircle(x,y+(r/2),r/2,0x0000);
+}
+
+/* ************************************************************************************
+ *  ***********************************************************************************
+ *  ***********************************************************************************
+ *  END OF CODE - DON'T CHANGE BEYOND THIS POINT
+ *  ***********************************************************************************
+ *  ***********************************************************************************
+ * *************************************************************************************/
+
 
 void setupMQTT()
 {
@@ -214,9 +258,9 @@ void reconnect()
       Serial.println("connected");
 
       // Once connected, publish an announcement...
-      ps_client.publish( MQTT_pub_topic, "reconnected");
+      ps_client.publish( stepTopic, "reconnected");
       // ... and resubscribe
-      M5.Lcd.println(ps_client.subscribe( MQTT_sub_topic ));
+      ps_client.subscribe( MQTT_sub_topic );
     } else {
       M5.Lcd.println(" - Coudn't connect to HiveMQ :(");
       M5.Lcd.println("   Trying again.");
@@ -227,7 +271,7 @@ void reconnect()
       delay(5000);
     }
   }
-  M5.Lcd.println(" - Success!  Connected to HiveMQ\n\n");
+  showMe = " - Success!  Connected to HiveMQ\n\n";
 }
 
 String generateID()
