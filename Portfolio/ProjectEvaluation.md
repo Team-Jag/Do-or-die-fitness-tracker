@@ -1,4 +1,4 @@
-![DoOrDieLogo](/Portfolio/Images/ProjectEvalLogo.png)
+![DoOrDieLogo](/Portfolio/Images/projectEvalLogo.png)
 
 # 3. Project Evaluation [20pts]:
 ## a. Reflective discussion of the success of the project
