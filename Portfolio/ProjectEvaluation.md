@@ -1,3 +1,5 @@
+![DoOrDieLogo](/Portfolio/Images/ProjectEvalLogo.png)
+
 # 3. Project Evaluation [20pts]:
 ## a. Reflective discussion of the success of the project
 ## b. Discussion of future work (in terms of design, development and evaluation)
