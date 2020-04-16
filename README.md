@@ -1,4 +1,4 @@
-![logo](/Portfolio/Images/Do or Die Logo.png)
+![logo](/Portfolio/Images/DoorDieLogo.png)
 
 ## Product Description
 Do or Die is a wearable fitness tracker, designed to inspire users to get active while challenging them to keep their Bean alive! The user's new friend Bean can be found on the face of their fitness tracker. 
