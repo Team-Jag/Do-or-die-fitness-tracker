@@ -1,4 +1,3 @@
-![DoOrDieLogo](/Portfolio/Images/SystemDesignLogo.png)
 # 1. System Design :
 ## a. Architecture of the entire system
 * *Ana volunteered to write this section* *
