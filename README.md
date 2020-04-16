@@ -1,5 +1,5 @@
 # Do or Die Fitness Tracker
-  // Insert picture of do or die logo here
+![logo](/Portfolio/Images/logo.png)
   
 Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
 
