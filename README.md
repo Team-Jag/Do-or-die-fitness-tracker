@@ -1,13 +1,11 @@
 ![logo](/Portfolio/Images/DoorDieLogo.png)
 
 ## Product Description
-Do or Die is a wearable fitness tracker, designed to inspire users to get active while challenging them to keep their Bean alive! The user's new friend Bean can be found on the face of their fitness tracker. 
+Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
 
- // Insert picture of Bean here
- 
-In order to ensure that their Bean does not die, the user must meet personal and sponsor-set step goals. When they reach their goals, time is added to their Bean's health bar. However, if the user fails to get active and meet their challenges consistently, the Bean's health bar will slowly decrease towards death. 
+If setting your own goals is not enough motivation, meet our Sponsors! With new challenges weekly, and amazing prizes up for grabs, there's even more reason to keep your Bean's health level up. On top of that, once you register with Do or Die you can access your account details on our website where you can keep track of long term progress, and challenge your friends along the way. 
 
-The goal is therefore simple, keep the Bean's health bar above death by getting out and getting active. This is Do or Die, do you have what it takes?
+The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## Team Members
 * Davide Bernardi <db16981@bristol.ac.uk>
