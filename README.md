@@ -1,4 +1,4 @@
-![logo](/Portfolio/Images/logo.png)
+![logo](/Portfolio/Images/logo2.png)
   
 Do or Die was created for the COMSM1401 Software Engineering and Group Project unit at the University of Bristol. 
 
