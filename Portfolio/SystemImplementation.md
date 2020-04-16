@@ -1,3 +1,4 @@
+![DoOrDieSystemImplementation](/Portfolio/Images/SystemImpLogo.png)
 # 2. System Implementation [40pts]:
 ## a. Breakdown of project into sprints (showing the users stories implemented in each).
 
