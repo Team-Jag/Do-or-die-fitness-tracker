@@ -2,60 +2,68 @@
 #include <WiFi.h>
 #include <esp_wifi.h>
 WiFiClient wifi_client;
-
-// PubSubClient external library.
 #include <PubSubClient.h>
 PubSubClient ps_client( wifi_client );
 
-//Local Libraries
+//GLOBAL VARIABLES
+String user_name = "Mario";
+int total_steps = 0;
+int max_sec = 10000;
+int remaining_sec = 6013;
+const uint16_t BACKGROUNDCOLOR = 0x0000;
+const uint16_t BEANCOLOR = 0xFC9F;
+int lifeleft; // value between 0 and 100 representing % of life left 
+
+
+
+//Classes
 #include "Timer.h"
 #include "Pedometer.h"
+#include "Bean.h"
+#include "TextBox.h"
+#include "TimeBar.h"
+#include "View.h"
+#include "Campaign.h"
+#include "CampaignsView.h"
+
+
 
 //JSON
 #include <ArduinoJson.h>
 StaticJsonDocument<500> JSONin; //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
 StaticJsonDocument<500> JSONprofile;
 StaticJsonDocument<500> JSONstep;
-char requestDefault[] = "{\"user_type\":\"user\",\"user_id\":\"1234\",\"user_name\":\"User1\",\"total_steps\":\"2200\",\"remaining_sec\":\"2200\",\"current_time\":\"2020-02-30T08:35:30.0108Z\"}";
 String stepMsg;
 String profileMsg;
 
-//mqtt client setup 
+//MQTT Variables
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
 const char* ssid = "VM5649012"; // Set name of Wifi Network
 const char* password = "cr5jdMktTnp7";   
-const char* MQTT_clientname = "m5stack"; // Make up a short name
-const char* MQTT_sub_topic = "doordie_web"; // pub/sub topics
-const char* mainTopic = "doordie_web"; // You might want to create your own
-const char* stepTopic = "doordie_steps"; // You might want to create your own
-const uint16_t BACKGROUNDCOLOR = 0x0000;
-
+const char* MQTT_clientname = "m5stack"; //Useless.
 const char* server = "broker.mqttdashboard.com";
 const int port = 1883;
 
-//DoOrDie Variables
-String user_name = "Mario";
-int total_steps = 0;
-int max_sec = 10000;
-int remaining_sec = 6013;
+const char* MQTT_sub_topic = "doordie_web"; // Only topic used for message reading
+const char* mainTopic = "doordie_web"; // Topic used for all other communication
+const char* stepTopic = "doordie_steps"; // Topic reserved for step updating
+
+
+//Other Variables
 Pedometer step_counter;
 Timer pullTimer(5000, true);
 String showMe;
-Timer drawTimer(100,true);
+Timer drawTimer(50,true);
+View homeScreen;
 
 void setup()
 {
-  M5.begin();
-  M5.Power.begin();
-  Wire.begin();
-
-  Serial.begin(115200);
-  delay(10);
+  M5.begin(); M5.Power.begin(); Wire.begin(); //Start M5
+  Serial.begin(115200); delay(10); //Start Serial (for debugging)
   M5.Lcd.setTextSize(1);
   M5.Lcd.println("*** RESET ***\n");
   M5.Lcd.println("Connecting...");
   setupWifiWithPassword();
-  //setupWifi();
   step_counter.setup();
   setupJSON();
   setupMQTT();
@@ -83,22 +91,23 @@ void loop()
     onStepTaken();
   }
 
-  drawTimeBar(false);
   if(drawTimer.isReady()) {
-    drawBean();
+    lifeleft = (remaining_sec * 100) / max_sec;
+    homeScreen.move();
+    homeScreen.draw();
+    M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
     drawTimer.reset();
   }
   
-  M5.Lcd.setCursor(0, 200); M5.Lcd.println(showMe); //showMe is the string that gets updated with what we want on the screen at any time
+  /*M5.Lcd.setCursor(0, 200); M5.Lcd.println(showMe); //showMe is the string that gets updated with what we want on the screen at any time
   //M5.Lcd.setCursor(0, 0); M5.Lcd.printf("Time: %10d", remaining_sec);
-  M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
+  */
  
 } //loop
 
 //MQTT BROKER FUNCTIONS
 void publishMessage( String message , const char* topic)
 {
-
   if( ps_client.connected() ) {
     // Make sure the message isn't blank.
     if( message.length() > 0 ) {
@@ -134,7 +143,6 @@ void callback(char* topic, byte* payload, unsigned int length)
   if ( JSONin["type"].as<String>() == "push profile" && JSONin["user_name"] == user_name) {
     total_steps = JSONin["total_steps"];
     remaining_sec = JSONin["remaining_sec"];
-    drawTimeBar(true);  
   }
 }
 
@@ -157,38 +165,6 @@ void onStepTaken()
 {
   total_steps++;
   publishMessage(stepMsg, stepTopic );
-}
-
-void drawTimeBar(bool clearBackground)
-{
-  int x = 0;
-  int y = 0;
-  int w = 100;
-  int h = 10;
-  uint8_t val = (remaining_sec * 100) / max_sec;
-  if(clearBackground){
-    M5.Lcd.fillRect(x+1,y+1,w,h,BACKGROUNDCOLOR);
-  }
-    
-  M5.Lcd.progressBar(x+1,y+1,w,h, val);
-  M5.Lcd.drawRect(x,y,w+2,h+2,0xFFFF);
-}
-
-void drawBean() 
-{
-  int eyeWidth = 30;
-  int r = 60;
-  int x = M5.Lcd.width()/2;
-  int y = M5.Lcd.height()/2;
-  M5.Lcd.fillCircle(x, y, r, 0xFC9F);
-  drawEye(x-eyeWidth,y-10,20);
-  drawEye(x+eyeWidth,y-10,20);
-}
-
-void drawEye(int x, int y, int r)
-{
-  M5.Lcd.fillCircle(x, y, r, 0xFFFF);
-  M5.Lcd.fillCircle(x,y+(r/2),r/2,0x0000);
 }
 
 /* ************************************************************************************
