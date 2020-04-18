@@ -6,6 +6,7 @@ class View {
     TextBox b3;
     TimeBar bar;
     Bean bean;
+    Timer drawTimer = Timer(50,true);
 
 
   public:
@@ -28,6 +29,22 @@ class View {
       b3.draw();
       bean.draw();
     }
+
+    void loop() {
+        if(drawTimer.isReady()) {
+          move();
+          draw();
+          M5.Lcd.fillRect(240, 0,80,10,BACKGROUNDCOLOR);
+          M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
+          drawTimer.reset();
+        }
+       Serial.print(currView);
+       if(M5.BtnB.read()) {
+         M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+         
+         currView = camp;
+         Serial.println(currView);
+       }
+    }
  
 } ;
-

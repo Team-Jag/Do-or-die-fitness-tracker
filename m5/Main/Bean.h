@@ -65,8 +65,6 @@ class Bean {
         jumping = false;
         jumpTimer.reset();
       }
-
-      Serial.print(y);
       
     }
 

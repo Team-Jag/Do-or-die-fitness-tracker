@@ -5,6 +5,17 @@ WiFiClient wifi_client;
 #include <PubSubClient.h>
 PubSubClient ps_client( wifi_client );
 
+enum currentView {
+  home,
+  camp,
+  statistics,
+};
+
+typedef struct campaign {
+    String name;
+    String description;
+}campaign;
+
 //GLOBAL VARIABLES
 String user_name = "Mario";
 int total_steps = 0;
@@ -13,6 +24,7 @@ int remaining_sec = 6013;
 const uint16_t BACKGROUNDCOLOR = 0x0000;
 const uint16_t BEANCOLOR = 0xFC9F;
 int lifeleft; // value between 0 and 100 representing % of life left 
+currentView currView;
 
 
 
@@ -23,7 +35,6 @@ int lifeleft; // value between 0 and 100 representing % of life left
 #include "TextBox.h"
 #include "TimeBar.h"
 #include "View.h"
-#include "Campaign.h"
 #include "CampaignsView.h"
 
 
@@ -53,8 +64,9 @@ const char* stepTopic = "doordie_steps"; // Topic reserved for step updating
 Pedometer step_counter;
 Timer pullTimer(5000, true);
 String showMe;
-Timer drawTimer(50,true);
 View homeScreen;
+campaign **campaigns;
+CampaignsView campaignsView;
 
 void setup()
 {
@@ -67,6 +79,9 @@ void setup()
   step_counter.setup();
   setupJSON();
   setupMQTT();
+  currView = home;
+  /*getCampaigns(3);
+  campaignsView = CampaignsView(campaigns,3);*/
   M5.Lcd.println("SETUP COMPLETE\n");
   delay(3000);
   M5.Lcd.fillScreen(BLACK);
@@ -91,19 +106,30 @@ void loop()
     onStepTaken();
   }
 
-  if(drawTimer.isReady()) {
-    lifeleft = (remaining_sec * 100) / max_sec;
-    homeScreen.move();
-    homeScreen.draw();
-    M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
-    drawTimer.reset();
+  lifeleft = (remaining_sec * 100) / max_sec;
+  if(currView==home) {
+    homeScreen.loop();
+  } else if (currView==camp) {
+    /*campaignsView.loop();*/
   }
-  
-  /*M5.Lcd.setCursor(0, 200); M5.Lcd.println(showMe); //showMe is the string that gets updated with what we want on the screen at any time
-  //M5.Lcd.setCursor(0, 0); M5.Lcd.printf("Time: %10d", remaining_sec);
-  */
  
 } //loop
+
+void getCampaigns(int campaignsAmount) {
+  campaigns = (campaign **)malloc(campaignsAmount*sizeof(campaign *));
+  //This would happen during the callback
+  campaigns[0] = addCampaign("Campaign One", "This is your first campaign, congratulations !!");
+  campaigns[1] = addCampaign("Run to Stop COVID19", "Campaign sponsored by COOLCOMPANY&CO ");
+  campaigns[2] = addCampaign("Fun Campaign Woop Woop", "This campaign is a very fun, you'll love it! ");
+}
+
+campaign* addCampaign(String name, String description) {
+  campaign *c;
+  c = (campaign *)malloc(sizeof(campaign));
+  c->name = name;
+  c->description = description;
+  return c;
+}
 
 //MQTT BROKER FUNCTIONS
 void publishMessage( String message , const char* topic)
