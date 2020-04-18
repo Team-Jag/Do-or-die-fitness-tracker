@@ -15,6 +15,7 @@ const uint16_t BEANCOLOR = 0xFC9F;
 int lifeleft; // value between 0 and 100 representing % of life left 
 
 
+
 //Classes
 #include "Timer.h"
 #include "Pedometer.h"
@@ -24,6 +25,8 @@ int lifeleft; // value between 0 and 100 representing % of life left
 #include "View.h"
 #include "Campaign.h"
 #include "CampaignsView.h"
+
+
 
 //JSON
 #include <ArduinoJson.h>
@@ -90,7 +93,6 @@ void loop()
 
   if(drawTimer.isReady()) {
     lifeleft = (remaining_sec * 100) / max_sec;
-    homeScreen.delet();
     homeScreen.move();
     homeScreen.draw();
     M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);

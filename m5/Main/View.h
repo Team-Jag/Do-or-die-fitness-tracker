@@ -16,10 +16,6 @@ class View {
       b3.set("Interact",2);
     }
 
-    void delet() {
-      bean.delet();
-    }
-
     void move() {
       bar.move();
       bean.move();
@@ -34,3 +30,4 @@ class View {
     }
  
 } ;
+
