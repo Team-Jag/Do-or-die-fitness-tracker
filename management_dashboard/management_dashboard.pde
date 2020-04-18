@@ -16,7 +16,7 @@ Database db = new Database();
 
 void setup() {
    cp5 = new ControlP5(this);
-   // size(900, 700);
+   size(900, 700);
    // connect to the broker
    client = new MQTTClient(this);
    // connect to the broker and use a random string for clientid
@@ -31,4 +31,9 @@ void setup() {
 
 // we don't really use the draw function as controlP5 does the work
 void draw() {
+   // updates time left for users in database
+   if(millis() - time >= 1000) {
+      u_api.updateTimeRemaining();
+      time = millis();
+   }
 }
