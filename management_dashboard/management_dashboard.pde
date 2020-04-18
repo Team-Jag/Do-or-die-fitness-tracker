@@ -32,4 +32,9 @@ void setup() {
 // we don't really use the draw function as controlP5 does the work
 void draw() {
   background(0);
+  // updates time left for users in database
+  if(millis() - time >= 1000) {
+     u_api.updateTimeRemaining();
+     time = millis();
+  }
 }
