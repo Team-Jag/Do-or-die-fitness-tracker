@@ -13,9 +13,7 @@ import {
   InputGroup,
   Col,
   Row,
-
 } from "reactstrap";
-
 
 class Mqtt extends React.Component {
 
@@ -25,12 +23,14 @@ class Mqtt extends React.Component {
     this.state = {
         mqttConnected: false,
       //new challenge page
+        challenge_id: '',
         challenge_name: '',
         challenge_description: '',
         challenge_step_goal: '',
         challenge_end_date: '20-03-31',
         challenge_reward: '',
-        challenge_loaded: false,
+        challenges_loaded: false,
+        challenge_array: [],
       //login/signup page
         login_username: '',
         redirect: false,
@@ -38,6 +38,7 @@ class Mqtt extends React.Component {
         total_steps: 0,
         remaining_sec: 0,
         ranking: 8364,
+        user_challenges: [],
         dummy_counter: 0, // used to calculate a dummy ranking
 
     };
@@ -54,9 +55,6 @@ class Mqtt extends React.Component {
   }
 
   render(){
-      if(this.props.type === "set-challenge"){
-        return(this.renderSetChallenge())
-      }
       if(this.props.type === "login"){
         return(this.renderLogin())
       }
@@ -69,12 +67,36 @@ class Mqtt extends React.Component {
       if(this.props.type === "challenges"){
         return(this.renderGetChallenges())
       }
+      if(this.props.type === "set-challenge"){
+        return(this.renderSetChallenge())
+      }
   }
 
 renderProfile(){
   if (this.state.mqttConnected === true){
     this.requestProfile();
   }
+  if(this.state.user_challenges.length === 0)
+  {
+    return(
+    <div>
+    <h2 align="middle" classname="title">Loading...</h2>
+      <iframe
+        style={{
+          position: "relative",
+          top: 0,
+          left: 0,
+          width: 1080,
+          height: 640,
+        }}
+        src="https://www.youtube.com/embed/1svA2sGhDEE"
+        align="middle"
+        title="Pink Windmill Kids"
+      />
+      </div>
+    )
+  }
+  else {
   return(
     <div>
     <p className="category">Your Stats</p>
@@ -100,31 +122,19 @@ renderProfile(){
       leaderboards. Also I'm F2P.
     </h5>
       <h3 className="title">Ongoing Challenges</h3>
-        <Row>
-          <Col>
-              <p>A Mile A Day</p>  <img  alt="..."  className="img-raised"  src={require("assets/img/walkicon1.png")} ></img>
-              <p>1.6km<br/>
-              14hr50m<br/><br/></p>
-              <p>Never Stop</p>
-              <img alt="..."  className="img-raised" src={require("assets/img/shoewalk1.png")} ></img>
-              <p>&infin;km<br/>
-              1hr<br/><br/></p>
-          </Col>
-          <Col>
-              <p>Group Walking</p>
-              <img  alt="..."  className="img-raised"  src={require("assets/img/groupwalk1.png")} ></img>
-              <p>20km<br/>
-              6d10hr25m<br/><br/></p>
-              <p>Run From Life</p>
-              <img
-                                alt="..."
-                                className="img-raised"
-                                src={require("assets/img/run1.png")}
-                              ></img>
-              <p>100km<br/>
-              8hr17m<br/><br/></p>
-                            </Col>
-              </Row>
+      <React.Fragment>
+         <div align="middle" class="tg-wrap"><table id="ccp">
+         {this.state.user_challenges.map(listitem => (
+           <tr>
+             <td>{listitem.challenge_name}</td>
+             <td>{listitem.description}</td>
+             <td>{listitem.step_goal}</td>
+             <td>{listitem.end_time}</td>
+             <td>{listitem.reward}</td>
+           </tr>
+         ))}
+         </table></div>
+      </React.Fragment>
               <h3 className="title">Achievements</h3>
                   <Row>
                             <Col>
@@ -158,7 +168,7 @@ renderProfile(){
             </Row>
   </div>
 
-  )
+)}
 }
 
 requestProfile(){
@@ -167,7 +177,7 @@ requestProfile(){
   }
   console.log("Requesting profile...");
   var newRequest = {
-    type: "pull profile",
+    type: "pull web profile",
     user_name: global.userName
   }
   this.requestToServer(JSON.stringify(newRequest));
@@ -279,41 +289,65 @@ renderLogin(){
     </form>
   );
 }
-  
-renderGetChallenges(){
-   if(this.state.mqttConnected === true){
-    this.requestChallenges()
-  }  
-   return(
-    <div>
-    <div className="content">
-      <div className="social-description">
-        <h2>{this.state.challenge_name}</h2>
-        <p>name</p>
-      </div>
-      <div className="social-description">
-        <h2>{this.state.challenge_reward}</h2>
-        <p>reward</p>
-      </div>
-      <div className="social-description">
-        <h2>{this.state.challenge_end_date}</h2>
-        <p>end date</p>
-      </div>
-    </div>
-  
-  )
-}
 
 requestChallenges(){
   console.log("Requesting challenges...")
   var newRequest1 = {
     type: "pull all challenges"
- }
+  }
   this.requestToServer(JSON.stringify(newRequest1))
 }
 
+renderGetChallenges(){
+   if(this.state.mqttConnected === true && this.state.challenges_loaded === false){
+    this.requestChallenges()
+    this.setState({challenges_loaded: true})
+  }
+  if(this.state.challenge_array.length === 0)
+  {
+    return <div> <h2> Loading challenges... </h2> </div>
+  }
+  else{
+   return(
+     <React.Fragment>
+        <div align="middle" class="tg-wrap"><table id="ccp">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Step Goal</th>
+          <th>End Date</th>
+          <th>Reward</th>
+          <th></th>
+        </tr>
+          {this.state.challenge_array.map(listitem => (
+            <tr>
+              <td>{listitem.challenge_name}</td>
+              <td>{listitem.description}</td>
+              <td>{listitem.step_goal}</td>
+              <td>{listitem.end_time}</td>
+              <td>{listitem.reward}</td>
+              <td><Button className="submit-button" onClick={(event) => this.pushSelectedChallenge(event,listitem.challenge_id)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
+            </tr>
+          ))}
+        </table></div>
+      </React.Fragment>
+  );
+}
+}
+
+pushSelectedChallenge(event,id){
+var selectedChallenge = {
+  type: "push select challenge",
+  user_name: global.userName,
+  challenge_id: id
+  }
+  this.requestToServer(JSON.stringify(selectedChallenge));
+  alert("You successfully joined this challenge");
+}
+
 renderSetChallenge(){
-  return(
+return(
+    <div>
     <form align="left" onSubmit={this.validateChallengeInput.bind(this)} >
     <label className ="form-label">Challenge Name:  </label>
     <input type="text"  value={this.state.challenge_name} onChange={(event) => this.handleChange('challenge_name', event)} /><p/>
@@ -328,6 +362,7 @@ renderSetChallenge(){
 
     <button className="submit-button">Create Challenge</button>
     </form>
+    </div>
   )
 }
 
@@ -406,16 +441,23 @@ renderSetChallenge(){
     console.log("Mgtt.onMessageArrived:"+message.payloadString);
     var json_message = JSON.parse(message.payloadString);
 
-    if(json_message.type === 'push profile' && json_message.user_name === global.userName){
+    if(json_message.type === 'push all challenges'){
+      console.log("attempt to get array");
+      this.setState({challenge_array: json_message.challenge})
+    }
+
+    if(json_message.type === 'push web profile' && json_message.user_name === global.userName){
       console.log("HELLLO");
       this.setState({
         total_steps: json_message.total_steps,
         remaining_sec: json_message.remaining_sec,
+        user_challenges: json_message.challenges,
         ranking: Math.max(1, Math.round(8378 -json_message.total_steps +this.state.dummy_counter/3,0)), //dummy formula: so that it looks like your ranking changes when the step count goes up
         dummy_counter: this.state.dummy_counter + 1
       })
     }
-  }
+}
+
   //wait function called after sever request, to avoid spaming the server
   wait(ms){
    var start = new Date().getTime();

@@ -2,7 +2,6 @@ import React from "react";
 
 // reactstrap components
 import {
-  Button,
   Container,
 } from "reactstrap";
 
@@ -10,6 +9,7 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ChallengeChoiceHeader from "components/Headers/ChallengeChoiceHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
+import Mqtt from "./MQTTclient.js";
 
 function ChallengeChoicePage() {
   // const [pills, setPills] = React.useState("2");
@@ -27,55 +27,10 @@ function ChallengeChoicePage() {
         <ChallengeChoiceHeader />
         <div className="section">
           <Container>
-            <div align="middle" class="tg-wrap"><table id="tg-VvxLO">
-    
-    <div>
 
-<Mqtt type = "challenges" />
+          <Mqtt type = "challenges" />
 
-    </div>
-    
-  <tr>
-    <th>Name</th>
-    <th>Requirement (km)</th>
-    <th>Duration</th>
-    <th>Reward</th>
-    <th>Location</th>
-    <th>Select</th>
-  </tr>
-  <tr>
-    <td>Can't Stop Won't Stop</td>
-    <td>2</td>
-    <td>1 hour</td>
-    <td>10 Crystals</td>
-    <td></td>
-    <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
-  </tr>
-  <tr>
-    <td>Godly Marathon</td>
-    <td>5000</td>
-    <td>1 year</td>
-    <td>Legendary Bundle</td>
-    <td></td>
-    <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
-  </tr>
-  <tr>
-    <td>Group Activities</td>
-    <td>10</td>
-    <td>1 day</td>
-    <td>x2 Rewards (12 Hours)</td>
-    <td>PureGym, Bristol</td>
-    <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
-  </tr>
-  <tr>
-    <td>Offering to Xenu</td>
-    <td>25</td>
-    <td>4 days</td>
-    <td>+3 Days of Life</td>
-    <td>Church of Scientology</td>
-    <td><Button variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
-  </tr>
-</table></div>
+            <div align="middle" class="tg-wrap"></div>
           </Container>
         </div>
         <DefaultFooter />

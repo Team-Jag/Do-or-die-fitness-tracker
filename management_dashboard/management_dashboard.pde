@@ -9,7 +9,7 @@ String MQTT_m5_topic = "doordie_m5";
 
 ControlP5 cp5;
 MQTTClient client;
-//Dashboard_view view = new Dashboard_view();
+Dashboard_view view = new Dashboard_view();
 UserData u_api = new UserData();
 ChallengeData c_api = new ChallengeData();
 Database db = new Database();
@@ -26,14 +26,15 @@ void setup() {
    // run_tests();
 
    // refresh the dashboard with the information
-   //updateDashboardData();
+   updateDashboardData();
 }
 
 // we don't really use the draw function as controlP5 does the work
 void draw() {
-   // updates time left for users in database
-   if(millis() - time >= 1000) {
-      u_api.updateTimeRemaining();
-      time = millis();
-   }
+  background(0);
+  // updates time left for users in database
+  if(millis() - time >= 1000) {
+     u_api.updateTimeRemaining();
+     time = millis();
+  }
 }

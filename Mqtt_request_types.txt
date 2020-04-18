@@ -1,0 +1,161 @@
+MQTT Channels:
+Steps:doordie_steps
+Web: doordie_web
+
+
+
+// From database sending user profile
+{
+    "type": "push profile",
+    "user_name": "Mario",
+    "total_steps": 2200,
+    "remaining_sec": 2000,
+}
+  
+// From M5Stack requesting user profile from database
+{
+    "type": "pull profile",
+    "user_name": "Mario"       
+}
+
+// From web requesting user profile from database
+{
+    "type": "pull web profile",
+    "user_name": "Mario"       
+}
+ 
+// From web requesting database to send all challenges that user are enrolled in
+{
+    "type": "pull user challenges",
+    "user_name": "Mario"
+}
+
+//From M5 request all challenges of user
+{
+	"type":"M5 pull challenges",
+	"user_name":"Mario"
+}
+
+// From database send all challenges to m5 Stack
+{
+    "t": "p ch",
+    "u_n": "Mario",
+    "ch": [
+    {
+        "name": "10K Step",
+        "des": "step",
+        "end": 1589500800,		// epoch time for 15 may
+        "goal": 10000,
+        "rwrd": 800
+    },
+  
+    {	
+	"name": "Run",
+        "des": "run",
+        "end": 1589500800,
+        "goal": 2000,
+        "rwrd": 800,
+    }]
+}
+  
+// From database sending all challenges that user is enrolled in
+{
+    "type": "push user challenges",
+    "user_name": "Mario",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+  
+// From web requesting database to send challenges
+{
+    "type": "pull all challenges"
+}
+ 
+// From database, send all challenges data to web
+{
+    "type": "push all challenges",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+
+// From database to web, send user info and enrolled challenges, no response from database
+{
+    "type": "push web profile",
+    "user_name": "Mario",
+    "total_steps": "2200",
+    "remaining_sec": "2000",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+  
+// From M5Stack, increment one step in database, no response from database
+{
+    "type": "push step",
+    "user_name": "Mario"
+}
+
+// From web, when sponsor adds new challenge, no response from database
+{
+    "type": "push new challenge",
+    "challenge_id": "3",
+    "challenge_name": "Challenge 2",
+    "description": "runrun",
+    "end_time": 1589500800,
+    "step_goal": 2000,
+    "reward": 200
+}
+
+// From web, when user selects challenge, no response from database - additional functionality
+{
+    "type": "push select challenge",
+    "user_name": "Mario",
+    "challenge_id": "1"
+}
