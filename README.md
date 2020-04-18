@@ -15,8 +15,8 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * Anastasia Shmyglya <ge19548@bristol.ac.uk>
 * Oliver Skeates <an19572@bristol.ac.uk>
 
-## 1. [System Design](../master/Portfolio/SystemDesign.md)
-View our [system design document](../master/Portfolio/SystemDesign.md) to see:
+## 1. [System Design](../develop/Portfolio/SystemDesign.md)
+View our [system design document](../develop/Portfolio/SystemDesign.md) to see:
 * System architecture
 * Object-oriented design of key sub-systems
 * Requirements of key sub-systems
@@ -25,14 +25,14 @@ View our [system design document](../master/Portfolio/SystemDesign.md) to see:
 * Details of the data persistence mechanisms in use
 * Details of web technologies in use
 
-## 2. [System Implementation](../master/Portfolio/SystemImplementation.md)
-View our [system implementation document](../master/Portfolio/SystemImplementation.md) to see:
+## 2. [System Implementation](../develop/Portfolio/SystemImplementation.md)
+View our [system implementation document](../develop/Portfolio/SystemImplementation.md) to see:
 * Breakdown of our project into sprints
 * Design evaluation
 * Social and ethical implications of our work
 
-## 3. [Project Evaluation](../master/Portfolio/ProjectEvaluation.md)
-View our [project evaluation](../master/Portfolio/ProjectEvaluation.md) to see:
+## 3. [Project Evaluation](../develop/Portfolio/ProjectEvaluation.md)
+View our [project evaluation](../develop/Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
