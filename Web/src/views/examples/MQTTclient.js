@@ -42,7 +42,6 @@ class Mqtt extends React.Component {
         ranking: 8364,
         user_challenges: [],
         image_name: "default-avatar.jpg",
-        profile_type: 'user',
         dummy_counter: 0, // used to calculate a dummy ranking
 
     };
@@ -83,21 +82,10 @@ renderProfile(){
   if(this.state.user_challenges.length === 0)
   {
     return(
-    <div>
-    <h2 align="middle" className="title">Loading...</h2>
-      <iframe
-        style={{
-          position: "relative",
-          top: 0,
-          left: 0,
-          width: 1080,
-          height: 640,
-        }}
-        src="https://www.youtube.com/embed/1svA2sGhDEE"
-        align="middle"
-        title="Pink Windmill Kids"
-      />
-      </div>
+    <div align="middle"><br/><br/><br/><br/>
+      <img alt="" src={process.env.PUBLIC_URL + '/img/loading.gif'}></img>
+      <br/><br/><br/><br/>
+    </div>
     )
   }
   else {
@@ -159,15 +147,19 @@ createNewProfile(){
   var newRequest = {
 
     user_name: global.userName,
+<<<<<<< HEAD:Web/src/views/examples/MQTTclient.js
     user_type: this.state.profile_type,
     type: "push new profile"
+=======
+    user_type: global.profile_type
+>>>>>>> 22a32217828742a3aeef6fec442f355f11eda465:now-ui-kit-react-master/src/views/examples/MQTTclient.js
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
 
 requestProfile(){
   if(this.state.total_steps !== 0){
-    this.wait(1000);
+    this.wait(60000);
   }
   console.log("Requesting profile...");
   var newRequest = {
@@ -239,18 +231,10 @@ redirectToProfile(){
           console.log("redirect changed to true")
           this.setState({redirect: true})
         }
-        if(this.state.account_exists === false)
-        {
-          this.setState({redirect: false})
-        }
     }
     if(this.state.page_name === 'sign-up')
     {
         console.log("we're on the sign up page")
-        if(this.state.account_exists === true)
-        {
-          this.setState({redirect: false})
-        }
         if(this.state.account_exists === false)
         {
           this.createNewProfile()
@@ -284,6 +268,14 @@ handleChange(type,event) {
 handleCheckBox(type,event) {
   this.setState({[type]: event.target.checked});
   console.log('type is: ' + type + ' and value is ' + event.target.checked)
+  if(event.target.checked === true)
+  {
+    global.profile_type='sponsor'
+  }
+  if(event.target.checked === false)
+  {
+    global.profile_type='user'
+  }
 }
 
 handleImgChange(type,event) {
@@ -351,7 +343,11 @@ renderGetChallenges(){
   }
   if(this.state.challenge_array.length === 0)
   {
-    return <div> <h2> Loading challenges... </h2> </div>
+    return(
+    <div align="middle"><br/><br/><br/><br/>
+      <img alt="" src={process.env.PUBLIC_URL + '/img/loading.gif'}></img>
+      <br/><br/><br/><br/>
+    </div>)
   }
   else{
    return(
@@ -501,10 +497,10 @@ return(
         account_exists: json_message.hasOwnProperty("total_steps"),
         data_received: true,
         user_challenges: json_message.challenge,
-        profile_type: json_message.user_type,
         ranking: Math.max(1, Math.round(8378 -json_message.total_steps +this.state.dummy_counter/3,0)), //dummy formula: so that it looks like your ranking changes when the step count goes up
         dummy_counter: this.state.dummy_counter + 1
       })
+      global.profile_type=json_message.user_type
     }
 }
 

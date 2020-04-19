@@ -23,6 +23,7 @@ import ChallengeChoicePage from "views/examples/ChallengeChoicePage.js";
 
 
 global.userName = 'Tester';
+global.profile_type = 'user';
 
 ReactDOM.render(
 
