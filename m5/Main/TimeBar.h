@@ -4,19 +4,35 @@ class TimeBar {
     int y = 0;
     int w = 100;
     int h = 10;
-    boolean changed;
+    boolean changed = true;
     uint8_t val = 100;
     int oldval;
 
   public:
+
     TimeBar() {
 
+    }
+
+    TimeBar(int xin, int yin, int win, int hin) {
+      x = xin;
+      y = yin;
+      w = win;
+      h = hin;
     }
 
     void move() {
       //With this, we only draw the bar if there has been a change
       oldval = val;
       val = lifeleft;
+      if (oldval != val) {
+        changed = true;
+      }
+    }
+
+    void move(int otherval) {
+      oldval = val;
+      val = otherval;
       if (oldval != val) {
         changed = true;
       }

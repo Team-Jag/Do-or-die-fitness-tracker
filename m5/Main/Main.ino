@@ -28,6 +28,7 @@ int lifeleft; // value between 0 and 100 representing % of life left
 int maxlife = 100;
 currentView currView;
 boolean campRequested = true;
+boolean statsRequested = true;
 boolean dead = false;
 
 
@@ -40,6 +41,7 @@ boolean dead = false;
 #include "TimeBar.h"
 #include "View.h"
 #include "CampaignsView.h"
+#include "StatsView.h"
 
 
 
@@ -69,8 +71,8 @@ Pedometer step_counter;
 Timer pullTimer(5000, true);
 String showMe;
 View homeScreen;
-campaign **campaigns;
 CampaignsView campaignsView;
+StatsView statsView;
 
 void setup()
 {
@@ -120,6 +122,13 @@ void loop()
         campaignsView.setReady(false);
       }
       campaignsView.loop();
+    } else if (currView == statistics) {
+      if (!statsRequested) {
+        publishMessage("Give me stats!", mainTopic);
+        statsRequested = true;
+        statsView.setReady(false);
+      }
+      statsView.loop();
     }
     if (remaining_sec == 0) {
       dead = true;
@@ -161,6 +170,11 @@ void callback(char* topic, byte* payload, unsigned int length)
   if (in_str.equals("Give me campaigns!")) { //This would be replaced by a JSON deserialization of a real message from the database
     setupCampaigns();
     campaignsView.setReady(true);
+  }
+
+  if (in_str.equals("Give me stats!")) { //This would be replaced by a JSON deserialization of a real message from the database
+    statsView.setupStats(37000, 70000, 10000);
+    statsView.setReady(true);
   }
 
   deserializeJson(JSONin, in_str);
