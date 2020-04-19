@@ -145,14 +145,9 @@ renderProfile(){
 createNewProfile(){
   console.log("Creating new profile...");
   var newRequest = {
-
+    type: "push new profile",
     user_name: global.userName,
-<<<<<<< HEAD:Web/src/views/examples/MQTTclient.js
-    user_type: this.state.profile_type,
-    type: "push new profile"
-=======
     user_type: global.profile_type
->>>>>>> 22a32217828742a3aeef6fec442f355f11eda465:now-ui-kit-react-master/src/views/examples/MQTTclient.js
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
