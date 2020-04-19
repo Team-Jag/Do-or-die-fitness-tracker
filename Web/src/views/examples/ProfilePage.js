@@ -28,7 +28,7 @@ function ProfilePage(state) {
     <>
     <div
       className="background"
-//      style={{backgroundImage: "url(" + require("assets/img/blue.jpg") + ")"}}
+      style={{backgroundImage: "url(" + require("assets/img/blue.jpg") + ")"}}
     >
     <Container>
       <ExamplesNavbar />
