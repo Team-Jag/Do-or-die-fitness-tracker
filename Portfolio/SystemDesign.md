@@ -2,6 +2,7 @@
 
 # 1. System Design :
 ## a. Architecture of the entire system
+
 Architecture of the system uses a central controller database dealing with recieving and sending requests, using MQTT protocol to communicate between devices. Three key devices of system:
 
 Processing - dealing with sending and recieving requests, parsing to make sure request is not malformed, storing user information in a central database, and visualising general consumer data such as total users of the app.
@@ -44,6 +45,7 @@ In our prototype we implemented the following user stories for our three key use
 * 1. **User Profile** On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time (see user Story 2.)
 * 2. **User Activity** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture.
 * 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
+
 * 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data.
 * *Ana please write more here on the requirements* *
 
@@ -70,11 +72,13 @@ Administration interface for data visualisation. Allow backend to deal with send
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
 * *Team M5 please write this section* *
+
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 * *Team Processing please write this section* *
 Each user and challenge is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistance we used user.json, sponser.json and challenges.json files to store user data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile. Each user object contains a challenges array which contains all currently enrolled challenges by integer. These reference the challenge_id parameter in challenges.json in order to keep payload lengths below the MQTT maximum. This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
 
 M5 device is stateless therefore does not store information locally apart from created variables. These are then pulled from the database via a pull_user request type. 
+
 
 ## g. Details of web technologies in use (including a rational for your choice)
 Our website is react based and build on top of a simple react/bootsrap template.
@@ -85,3 +89,4 @@ The choice for these technologies was driven by some key needs of our website/te
 * 4. **Support for Object Oriented Design:** To support our object oriented design we were looking for a framwork that supports the use of a strong object oriented design. React components are ideal to build class based software (see chapter 1.b).
 
 The key component of our design is the Mqtt class... * *Oli please write more on the details* *
+
