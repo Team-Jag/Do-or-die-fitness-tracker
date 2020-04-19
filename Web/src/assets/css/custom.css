@@ -58,8 +58,8 @@ z-index: -1;
     margin-bottom: 20px;
     box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3); }
 
-table#ccp {
-  width: 80%;
-  font-size: 16px;
-  border-spacing: 15px;
+    .ccp {
+    width: 80%;
+    font-size: 16px;
+    border-spacing: 15px;
 }
