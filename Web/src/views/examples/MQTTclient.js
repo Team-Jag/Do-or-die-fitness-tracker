@@ -79,7 +79,7 @@ renderProfile(){
   if (this.state.mqttConnected === true){
     this.requestProfile();
   }
-  if(this.state.user_challenges.length === 0)
+  if(this.state.total_steps === -1)
   {
     return(
     <div align="middle"><br/><br/><br/><br/>
@@ -88,6 +88,39 @@ renderProfile(){
     </div>
     )
   }
+  else if(this.state.user_challenges.length === 0){
+  return(
+    <div>
+        <div className="profile_photo">
+          <img alt="..." src={process.env.PUBLIC_URL + '/img/'+this.state.image_name}></img>
+        </div>
+        <div align="middle" >
+          <select onChange={(event) => this.handleImgChange('image_name', event)} id="choices">
+            <option value='default-avatar'>Default</option>
+            <option value='virus'>Quentin Quarantino</option>
+            <option value='skull'>Skully</option>
+            <option value='octo'>Dr Octo</option>
+            <option value='penguin'>Very Happy Feet</option>
+          </select>
+        </div>
+        <h2 className="title">{global.userName}</h2><br/>
+    <h4 className="category">My Stats</h4>
+    <div className="content">
+      <div className="social-description">
+        <h2>{this.state.total_steps}</h2>
+        <p>Steps</p>
+      </div>
+      <div className="social-description">
+        <h2>{this.state.remaining_sec}</h2>
+        <p>Seconds Lifetime</p>
+      </div>
+      <div className="social-description">
+        <h2>#{this.state.ranking}</h2>
+        <p>Ranking</p>
+      </div>
+    </div>
+    </div>
+  )}
   else {
   return(
     <div>
@@ -101,10 +134,6 @@ renderProfile(){
             <option value='skull'>Skully</option>
             <option value='octo'>Dr Octo</option>
             <option value='penguin'>Very Happy Feet</option>
-            <a href="https://www.freepik.com/free-photos-vectors/christmas">Christmas vector created by rawpixel.com - www.freepik.com</a>
-            <a href="https://www.freepik.com/free-photos-vectors/pattern">Pattern vector created by vectorpocket - www.freepik.com</a>
-            <a href="https://www.freepik.com/free-photos-vectors/hand">Hand vector created by sergey_kandakov - www.freepik.com</a>
-            <a href="https://www.freepik.com/free-photos-vectors/green">Green photo created by crowf - www.freepik.com</a>
           </select>
         </div>
         <h2 className="title">{global.userName}</h2><br/>
@@ -125,7 +154,7 @@ renderProfile(){
     </div>
       <h3 className="title">My Challenges</h3>
       <React.Fragment>
-         <div align="middle" class="tg-wrap"><table id="ccp">
+         <div align="middle" className="tg-wrap"><table className="ccp">
          {this.state.user_challenges.map(listitem => (
            <tr>
              <td>{listitem.challenge_name}</td>
@@ -347,7 +376,7 @@ renderGetChallenges(){
   else{
    return(
      <React.Fragment>
-        <div align="middle" class="tg-wrap"><table id="ccp">
+        <div align="middle" className="tg-wrap"><table className="ccp">
         <tr>
           <th>Name</th>
           <th>Description</th>
