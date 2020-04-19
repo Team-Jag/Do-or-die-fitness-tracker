@@ -157,9 +157,10 @@ renderProfile(){
 createNewProfile(){
   console.log("Creating new profile...");
   var newRequest = {
-    type: "push new profile",
+
     user_name: global.userName,
-    user_type: this.state.profile_type
+    user_type: this.state.profile_type,
+    type: "push new profile"
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
