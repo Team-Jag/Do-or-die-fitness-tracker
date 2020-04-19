@@ -36,8 +36,8 @@ function LandingPage() {
               <Col className="ml-auto mr-auto text-center" md="8">
                 <h2 className="title">Do Or Die</h2>
                 <h4 className="description">
-                Do Or Die is the untimate game of 2020. Keep your avatar alive by staying active, rest for to long and it will die. It is you choice!
-                Register now, connect to your existing Step-Tracker or Smartphone and start playing. d
+                Do or Die is the untimate game of 2020. Keep your avatar alive by staying active, rest for too long and it will die. It is your choice!
+                Register now, connect to your existing Step-Tracker or Smartphone and start playing.
                 </h4>
 
                 <Button className="btn-round" color="primary" outline size="lg"
@@ -85,28 +85,27 @@ function LandingPage() {
                     The more active you are the longer your avatar lives. Stop and it dies...
                   </h3>
                   <p>
-                    Text...The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens with climate change. Even if the
-                    Arctic continues to be one of the fastest-warming regions of
-                    the world, it will always be plunged into bitterly cold
-                    polar dark every winter. And year-by-year, for all kinds of
-                    natural reasons, there’s huge variety of the state of the
-                    ice.
+                    Do or Die is a wearable fitness tracker, designed to inspire
+                    users to get active and have fun while doing so. There to
+                    motivate you is the your new friend Bean, found on the face
+                    of your fitness tracker. The more active you are, the more time
+                    that is added to Bean's health bar. However, if you fail to meet
+                    your step goals, Bean's health bar will slowly decrease. So be
+                    careful as once the health bar reaches zero, Bean will die. Get
+                    active, meet your step goals, and keep Bean alive.
                   </p>
                   <p>
-                    For a start, it does not automatically follow that a record
-                    amount of ice will melt this summer. More important for
-                    determining the size of the annual thaw is the state of the
-                    weather as the midnight sun approaches and temperatures
-                    rise. But over the more than 30 years of satellite records,
-                    scientists have observed a clear pattern of decline,
-                    decade-by-decade.
+                    If setting your own goals is not enough motivation, meet
+                    our Sponsors! With new challenges weekly, and amazing prizes
+                    up for grabs, there's even more reason to keep your Bean's health
+                    level up. On top of that, once you register with Do or Die
+                    you can access your account details on our website where you can
+                    keep track of long term progress, and challenge your friends along the way.
                   </p>
                   <p>
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens with climate change.
+                    The goal is therefore simple, keep the Bean's health bar
+                    above zero by getting out and getting active. This is Do or Die, do
+                    you have what it takes?
                   </p>
                 </Col>
               </Row>
