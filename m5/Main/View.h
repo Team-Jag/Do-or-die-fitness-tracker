@@ -38,11 +38,16 @@ class View {
         M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
         drawTimer.reset();
       }
-      Serial.print(currView);
       if (M5.BtnA.read()) {
         M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+        delay(100);
         campRequested = false;
         currView = camp;
+      } else if (M5.BtnB.read()) {
+        M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+        delay(100);
+        statsRequested = false;
+        currView = statistics;
       }
     }
 

@@ -26,17 +26,20 @@ class CampaignsView {
         M5.Lcd.setCursor(0, 30); M5.Lcd.println("Campaign Description:"); M5.Lcd.print(campaigns[index].description);
         if (M5.BtnA.read()) {
           M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+          delay(100);
           currView = home;
           return;
         }
         if (M5.BtnB.read()) {
           M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+          delay(100);
           index -= 1;
           if(index < 0) {
             index = size-1;
           }
         } else if (M5.BtnC.read()) {
           M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+          delay(100);
           index += 1;
           if(index > size-1) {
             index = 0;
