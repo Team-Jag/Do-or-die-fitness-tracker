@@ -154,7 +154,7 @@ createNewProfile(){
 
 requestProfile(){
   if(this.state.total_steps !== 0){
-    this.wait(60000);
+    this.wait(1000);
   }
   console.log("Requesting profile...");
   var newRequest = {
