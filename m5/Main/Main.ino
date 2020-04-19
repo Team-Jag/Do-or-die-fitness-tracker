@@ -43,7 +43,7 @@ boolean dead = false;
 #include "CampaignsView.h"
 #include "StatsView.h"
 
-
+extern unsigned char logo[];
 
 //JSON
 #include <ArduinoJson.h>
@@ -79,17 +79,17 @@ void setup()
   M5.begin(); M5.Power.begin(); Wire.begin(); //Start M5
   Serial.begin(115200); delay(10); //Start Serial (for debugging)
   M5.Lcd.setTextSize(1);
-  M5.Lcd.println("*** RESET ***\n");
-  M5.Lcd.println("Connecting...");
+  m5.Lcd.setTextColor(BACKGROUNDCOLOR);
+  M5.Lcd.drawBitmap(0,0,320,240,(uint16_t *)logo);  
   setupWifiWithPassword();
   step_counter.setup();
   setupJSON();
   setupMQTT();
   currView = home;
-  M5.Lcd.println("SETUP COMPLETE\n");
-  delay(3000);
+  M5.Lcd.setCursor(140,220); M5.Lcd.print("Ready!");
+  delay(1000);
   M5.Lcd.fillScreen(BACKGROUNDCOLOR);
-  m5.Lcd.setTextColor(TEXTCOLOR);
+
 } //setup
 
 void loop()
@@ -240,18 +240,22 @@ void setupWifi()
 
 void setupWifiWithPassword()
 {
-  M5.Lcd.println("Original MAC address: " + String(WiFi.macAddress()));
+  Serial.println("Original MAC address: " + String(WiFi.macAddress()));
   //esp_base_mac_addr_set(guestMacAddress); Commented out to use original M5 MAC address
-  M5.Lcd.println("Borrowed MAC address: " + String(WiFi.macAddress()));
-
-  M5.Lcd.println("Connecting to network: " + String(ssid));
+  Serial.println("Borrowed MAC address: " + String(WiFi.macAddress()));
+  Serial.println("Connecting to network: " + String(ssid));
   WiFi.begin(ssid, password);
-
+  int dotsAmount = 0;
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    M5.Lcd.println("CONNECTING...");
+    M5.Lcd.drawBitmap(0,0,320,240,(uint16_t *)logo); 
+    M5.Lcd.setCursor(140,200); M5.Lcd.print("CONNECTING ");
+    for(int i = 0; i < dotsAmount; i++) {
+      M5.Lcd.print(". ");
+    }
+    dotsAmount = (dotsAmount+1)%4;
   }
-  M5.Lcd.println("IP address allocated: " + String(WiFi.localIP()));
+  Serial.println("IP address allocated: " + String(WiFi.localIP()));
 
 }
 
