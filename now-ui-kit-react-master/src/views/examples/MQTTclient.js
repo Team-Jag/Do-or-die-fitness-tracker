@@ -4,7 +4,6 @@ import React from "react";
 import Paho from 'paho-mqtt';
 import { Redirect } from "react-router-dom";
 
-
 import {
   Button,
   Input,
@@ -12,7 +11,6 @@ import {
   InputGroupText,
   InputGroup,
   Col,
-  Row,
 } from "reactstrap";
 
 class Mqtt extends React.Component {
@@ -22,6 +20,9 @@ class Mqtt extends React.Component {
 
     this.state = {
         mqttConnected: false,
+        page_name: '',
+        account_exists: false,
+        data_received: false,
       //new challenge page
         challenge_id: '',
         challenge_name: '',
@@ -33,12 +34,15 @@ class Mqtt extends React.Component {
         challenge_array: [],
       //login/signup page
         login_username: '',
+        is_sponsor: false,
         redirect: false,
       //ProfilePage
-        total_steps: 0,
+        total_steps: -1,
         remaining_sec: 0,
         ranking: 8364,
         user_challenges: [],
+        image_name: "default-avatar.jpg",
+        profile_type: 'user',
         dummy_counter: 0, // used to calculate a dummy ranking
 
     };
@@ -80,7 +84,7 @@ renderProfile(){
   {
     return(
     <div>
-    <h2 align="middle" classname="title">Loading...</h2>
+    <h2 align="middle" className="title">Loading...</h2>
       <iframe
         style={{
           position: "relative",
@@ -99,7 +103,24 @@ renderProfile(){
   else {
   return(
     <div>
-    <p className="category">Your Stats</p>
+        <div className="profile_photo">
+          <img alt="..." src={process.env.PUBLIC_URL + '/img/'+this.state.image_name}></img>
+        </div>
+        <div align="middle" >
+          <select onChange={(event) => this.handleImgChange('image_name', event)} id="choices">
+            <option value='default-avatar'>Default</option>
+            <option value='virus'>Quentin Quarantino</option>
+            <option value='skull'>Skully</option>
+            <option value='octo'>Dr Octo</option>
+            <option value='penguin'>Very Happy Feet</option>
+            <a href="https://www.freepik.com/free-photos-vectors/christmas">Christmas vector created by rawpixel.com - www.freepik.com</a>
+            <a href="https://www.freepik.com/free-photos-vectors/pattern">Pattern vector created by vectorpocket - www.freepik.com</a>
+            <a href="https://www.freepik.com/free-photos-vectors/hand">Hand vector created by sergey_kandakov - www.freepik.com</a>
+            <a href="https://www.freepik.com/free-photos-vectors/green">Green photo created by crowf - www.freepik.com</a>
+          </select>
+        </div>
+        <h2 className="title">{global.userName}</h2><br/>
+    <h4 className="category">My Stats</h4>
     <div className="content">
       <div className="social-description">
         <h2>{this.state.total_steps}</h2>
@@ -114,14 +135,7 @@ renderProfile(){
         <p>Ranking</p>
       </div>
     </div>
-    <h3 className="title">About me</h3>
-    <h5 className="description">
-      I only take credit bets with rankers in the top 1000, if you're
-      not in that group, don't @ me. First user to reach 10,000km walked
-      within a month, and only user to ever hold the #1 spot in the
-      leaderboards. Also I'm F2P.
-    </h5>
-      <h3 className="title">Ongoing Challenges</h3>
+      <h3 className="title">My Challenges</h3>
       <React.Fragment>
          <div align="middle" class="tg-wrap"><table id="ccp">
          {this.state.user_challenges.map(listitem => (
@@ -134,41 +148,20 @@ renderProfile(){
            </tr>
          ))}
          </table></div>
-      </React.Fragment>
-              <h3 className="title">Achievements</h3>
-                  <Row>
-                            <Col>
-              <p>Extreme Strider</p>
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/tired1.png")}
-                ></img><br/><br/><br/><br/>
-<p>Close Call</p>
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/neardeath1.png")}
-                ></img><br/><br/><br/><br/>
-              </Col>
-              <Col>
-<p>Champion</p>
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/winicon1.png")}
-                ></img><br/><br/><br/><br/>
-<p >In The Red</p>
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/death1.png")}
-                ></img><br/><br/><br/><br/>
-              </Col>
-            </Row>
+      </React.Fragment><br/><br/>
   </div>
 
 )}
+}
+
+createNewProfile(){
+  console.log("Creating new profile...");
+  var newRequest = {
+    type: "push new profile",
+    user_name: global.userName,
+    user_type: this.state.profile_type
+  }
+  this.requestToServer(JSON.stringify(newRequest));
 }
 
 requestProfile(){
@@ -184,6 +177,10 @@ requestProfile(){
 }
 
 rendersignup(){
+  if(this.state.page_name !== 'sign-up')
+  {
+    this.setState({page_name: 'sign-up'})
+  }
   return(
     <Col className="text-center ml-auto mr-auto" lg="6" md="8">
     <InputGroup>
@@ -199,6 +196,11 @@ rendersignup(){
         onChange={(event) => this.loginChange('login_username', event)}
       ></Input>
     </InputGroup>
+    <input
+      type="checkbox"
+      checked={this.state.is_sponsor}
+      onChange={(event) => this.handleCheckBox('is_sponsor', event)}
+    ></input> I am a sponsor
     <div className="send-button">
     {this.redirectToProfile()}
       <Button
@@ -226,6 +228,35 @@ rendersignup(){
 }
 
 redirectToProfile(){
+  if(this.state.mqttConnected === true && this.state.data_received === true)
+  {
+    if(this.state.page_name === 'login')
+    {
+      console.log("we're on the login page")
+        if(this.state.account_exists === true)
+        {
+          console.log("redirect changed to true")
+          this.setState({redirect: true})
+        }
+        if(this.state.account_exists === false)
+        {
+          this.setState({redirect: false})
+        }
+    }
+    if(this.state.page_name === 'sign-up')
+    {
+        console.log("we're on the sign up page")
+        if(this.state.account_exists === true)
+        {
+          this.setState({redirect: false})
+        }
+        if(this.state.account_exists === false)
+        {
+          this.createNewProfile()
+          this.setState({redirect: true})
+        }
+    }
+  }
   if (this.state.redirect) {
     return(
          <Redirect to={{
@@ -234,10 +265,9 @@ redirectToProfile(){
   }
 }
 
-handleLogin(){
-  this.setState({
-  redirect: true
-})
+handleLogin()
+{
+  this.requestProfile()
 }
 
 loginChange(type,event){
@@ -247,9 +277,24 @@ loginChange(type,event){
 
 handleChange(type,event) {
    this.setState({[type]: event.target.value});
+   console.log('type is: ' + type + ' and value is ' + event.target.value)
+}
+
+handleCheckBox(type,event) {
+  this.setState({[type]: event.target.checked});
+  console.log('type is: ' + type + ' and value is ' + event.target.checked)
+}
+
+handleImgChange(type,event) {
+   this.setState({[type]: event.target.value + '.jpg'});
+   console.log('type is: ' + type + ' and value is ' + event.target.value)
 }
 
 renderLogin(){
+  if(this.state.page_name !== 'login')
+  {
+    this.setState({page_name: 'login'})
+  }
   return(
     <form >
     <InputGroup
@@ -448,10 +493,14 @@ return(
 
     if(json_message.type === 'push web profile' && json_message.user_name === global.userName){
       console.log("HELLLO");
+      console.log(json_message.hasOwnProperty("total_steps"));
       this.setState({
         total_steps: json_message.total_steps,
         remaining_sec: json_message.remaining_sec,
-        user_challenges: json_message.challenges,
+        account_exists: json_message.hasOwnProperty("total_steps"),
+        data_received: true,
+        user_challenges: json_message.challenge,
+        profile_type: json_message.user_type,
         ranking: Math.max(1, Math.round(8378 -json_message.total_steps +this.state.dummy_counter/3,0)), //dummy formula: so that it looks like your ranking changes when the step count goes up
         dummy_counter: this.state.dummy_counter + 1
       })
