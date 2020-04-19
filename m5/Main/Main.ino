@@ -12,19 +12,23 @@ enum currentView {
 };
 
 typedef struct campaign {
-    String name;
-    String description;
-}campaign;
+  String name;
+  String description;
+} campaign;
 
 //GLOBAL VARIABLES
 String user_name = "Mario";
 int total_steps = 0;
 int max_sec = 10000;
 int remaining_sec = 6013;
-const uint16_t BACKGROUNDCOLOR = 0x0000;
+const uint16_t BACKGROUNDCOLOR = 0xFFFF;
+const uint16_t TEXTCOLOR = 0x0000;
 const uint16_t BEANCOLOR = 0xFC9F;
-int lifeleft; // value between 0 and 100 representing % of life left 
+int lifeleft; // value between 0 and 100 representing % of life left
+int maxlife = 100;
 currentView currView;
+boolean campRequested = true;
+boolean dead = false;
 
 
 
@@ -50,7 +54,7 @@ String profileMsg;
 //MQTT Variables
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
 const char* ssid = "VM5649012"; // Set name of Wifi Network
-const char* password = "cr5jdMktTnp7";   
+const char* password = "cr5jdMktTnp7";
 const char* MQTT_clientname = "m5stack"; //Useless.
 const char* server = "broker.mqttdashboard.com";
 const int port = 1883;
@@ -80,67 +84,61 @@ void setup()
   setupJSON();
   setupMQTT();
   currView = home;
-  /*getCampaigns(3);
-  campaignsView = CampaignsView(campaigns,3);*/
   M5.Lcd.println("SETUP COMPLETE\n");
   delay(3000);
-  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+  m5.Lcd.setTextColor(TEXTCOLOR);
 } //setup
 
 void loop()
 {
-   //MQTT PUBLISHING
-   if (!ps_client.connected()) {
-     reconnect();
-   }
-   ps_client.loop();
-
-  //Send Pull Profile request to server every X milliseconds 
-  if(pullTimer.isReady()) {
-    pullProfile();
-    pullTimer.reset();
+  //MQTT PUBLISHING
+  if (!ps_client.connected()) {
+    reconnect();
   }
+  ps_client.loop();
 
-  //If a step is taken, perform onStepTaken(), i.e. increase local step counter and publish step on MQTT
-  if(step_counter.loop()) {
-    onStepTaken();
-  }
+  if (!dead) {
+    //Send Pull Profile request to server every X milliseconds
+    if (pullTimer.isReady()) {
+      pullProfile();
+      pullTimer.reset();
+    }
 
-  lifeleft = (remaining_sec * 100) / max_sec;
-  if(currView==home) {
-    homeScreen.loop();
-  } else if (currView==camp) {
-    /*campaignsView.loop();*/
-  }
- 
+    //If a step is taken, perform onStepTaken(), i.e. increase local step counter and publish step on MQTT
+    if (step_counter.loop()) {
+      onStepTaken();
+    }
+
+    lifeleft = (remaining_sec * maxlife) / max_sec;
+    if (currView == home) {
+      homeScreen.loop();
+    } else if (currView == camp) {
+      if (!campRequested) {
+        publishMessage("Give me campaigns!", mainTopic);
+        campRequested = true;
+        campaignsView.setReady(false);
+      }
+      campaignsView.loop();
+    }
+    if (remaining_sec == 0) {
+      dead = true;
+      Bean bean;
+      bean.drawdead();
+    }
+  }//dead
 } //loop
-
-void getCampaigns(int campaignsAmount) {
-  campaigns = (campaign **)malloc(campaignsAmount*sizeof(campaign *));
-  //This would happen during the callback
-  campaigns[0] = addCampaign("Campaign One", "This is your first campaign, congratulations !!");
-  campaigns[1] = addCampaign("Run to Stop COVID19", "Campaign sponsored by COOLCOMPANY&CO ");
-  campaigns[2] = addCampaign("Fun Campaign Woop Woop", "This campaign is a very fun, you'll love it! ");
-}
-
-campaign* addCampaign(String name, String description) {
-  campaign *c;
-  c = (campaign *)malloc(sizeof(campaign));
-  c->name = name;
-  c->description = description;
-  return c;
-}
 
 //MQTT BROKER FUNCTIONS
 void publishMessage( String message , const char* topic)
 {
-  if( ps_client.connected() ) {
+  if ( ps_client.connected() ) {
     // Make sure the message isn't blank.
-    if( message.length() > 0 ) {
+    if ( message.length() > 0 ) {
 
       // Convert to char array
-      char msg[ message.length()+1];
-      message.toCharArray( msg, message.length()+1 );
+      char msg[ message.length() + 1];
+      message.toCharArray( msg, message.length() + 1 );
 
       // Send
       ps_client.publish( topic, msg );
@@ -152,18 +150,18 @@ void publishMessage( String message , const char* topic)
 
 void callback(char* topic, byte* payload, unsigned int length)
 {
-  M5.Lcd.fillScreen(0x0000);
   String in_str = "";
 
   // Copy chars to a String for convenience.
-  for (int i=0;i<length;i++) {
+  for (int i = 0; i < length; i++) {
     in_str += (char)payload[i];
   }
   Serial.println(in_str);
 
-  showMe = topic;
-  showMe += ":\n";
-  showMe += in_str;
+  if (in_str.equals("Give me campaigns!")) { //This would be replaced by a JSON deserialization of a real message from the database
+    setupCampaigns();
+    campaignsView.setReady(true);
+  }
 
   deserializeJson(JSONin, in_str);
   if ( JSONin["type"].as<String>() == "push profile" && JSONin["user_name"] == user_name) {
@@ -172,19 +170,19 @@ void callback(char* topic, byte* payload, unsigned int length)
   }
 }
 
-void setupJSON() 
+void setupJSON()
 {
-  JSONstep["type"]="push step";
-  JSONstep["user_name"]=user_name;
+  JSONstep["type"] = "push step";
+  JSONstep["user_name"] = user_name;
   serializeJson(JSONstep, stepMsg);
-  JSONprofile["type"]="pull profile";
-  JSONprofile["user_name"]=user_name;
+  JSONprofile["type"] = "pull profile";
+  JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, profileMsg);
 }
 
 void pullProfile()
 {
-    publishMessage(profileMsg, mainTopic);
+  publishMessage(profileMsg, mainTopic);
 }
 
 void onStepTaken()
@@ -193,10 +191,16 @@ void onStepTaken()
   publishMessage(stepMsg, stepTopic );
 }
 
+void setupCampaigns() {
+  campaignsView.addCampaign("Campaign One", "This is your first campaign, congratulations !!");
+  campaignsView.addCampaign("Another Campaign", "This is another campaign");
+  campaignsView.addCampaign("Run to Stop COVID19", "Campaign sponsored by COOLCOMPANY&CO ");
+}
+
 /* ************************************************************************************
  *  ***********************************************************************************
  *  ***********************************************************************************
- *  END OF CODE - DON'T CHANGE BEYOND THIS POINT
+    END OF CODE - DON'T CHANGE BEYOND THIS POINT
  *  ***********************************************************************************
  *  ***********************************************************************************
  * *************************************************************************************/
@@ -204,36 +208,36 @@ void onStepTaken()
 
 void setupMQTT()
 {
-    ps_client.setServer(server, port);
-    ps_client.setCallback(callback);
+  ps_client.setServer(server, port);
+  ps_client.setCallback(callback);
 }
 
 void setupWifi()
 {
-    Serial.println("Original MAC address: " + String(WiFi.macAddress()));
-    esp_base_mac_addr_set(guestMacAddress);
-    Serial.println("Borrowed MAC address: " + String(WiFi.macAddress()));
+  Serial.println("Original MAC address: " + String(WiFi.macAddress()));
+  esp_base_mac_addr_set(guestMacAddress);
+  Serial.println("Borrowed MAC address: " + String(WiFi.macAddress()));
 
-    Serial.println("Connecting to network: " + String(ssid));
-    WiFi.begin(ssid );
-    while (WiFi.status() != WL_CONNECTED) delay(5000);
-    M5.Lcd.println("IP address allocated: " + String(WiFi.localIP()));
+  Serial.println("Connecting to network: " + String(ssid));
+  WiFi.begin(ssid );
+  while (WiFi.status() != WL_CONNECTED) delay(5000);
+  M5.Lcd.println("IP address allocated: " + String(WiFi.localIP()));
 }
 
 void setupWifiWithPassword()
 {
-    M5.Lcd.println("Original MAC address: " + String(WiFi.macAddress()));
-    //esp_base_mac_addr_set(guestMacAddress); Commented out to use original M5 MAC address
-    M5.Lcd.println("Borrowed MAC address: " + String(WiFi.macAddress()));
+  M5.Lcd.println("Original MAC address: " + String(WiFi.macAddress()));
+  //esp_base_mac_addr_set(guestMacAddress); Commented out to use original M5 MAC address
+  M5.Lcd.println("Borrowed MAC address: " + String(WiFi.macAddress()));
 
-    M5.Lcd.println("Connecting to network: " + String(ssid));
-    WiFi.begin(ssid, password);
+  M5.Lcd.println("Connecting to network: " + String(ssid));
+  WiFi.begin(ssid, password);
 
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      M5.Lcd.println("CONNECTING...");
-    }
-    M5.Lcd.println("IP address allocated: " + String(WiFi.localIP()));
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    M5.Lcd.println("CONNECTING...");
+  }
+  M5.Lcd.println("IP address allocated: " + String(WiFi.localIP()));
 
 }
 
@@ -241,7 +245,7 @@ void reconnect()
 {
   // Loop until we're reconnected
   while (!ps_client.connected()) {
-    M5.Lcd.setCursor(0,60);
+    M5.Lcd.setCursor(0, 60);
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
     // Sometimes a connection with HiveMQ is refused
@@ -279,6 +283,6 @@ void reconnect()
 String generateID()
 {
   String id_str = MQTT_clientname;
-  id_str += random(0,9999);
+  id_str += random(0, 9999);
   return id_str;
 }

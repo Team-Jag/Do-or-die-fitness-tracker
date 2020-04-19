@@ -1,20 +1,20 @@
 class View {
-  
+
   private:
     TextBox b1;
     TextBox b2;
     TextBox b3;
     TimeBar bar;
     Bean bean;
-    Timer drawTimer = Timer(50,true);
+    Timer drawTimer = Timer(50, true);
 
 
   public:
 
     View() {
-      b1.set("Campaigns",0);
-      b2.set("Statistics",1);
-      b3.set("Interact",2);
+      b1.set("Campaigns", 0);
+      b2.set("Statistics", 1);
+      b3.set("Interact", 2);
     }
 
     void move() {
@@ -31,20 +31,19 @@ class View {
     }
 
     void loop() {
-        if(drawTimer.isReady()) {
-          move();
-          draw();
-          M5.Lcd.fillRect(240, 0,80,10,BACKGROUNDCOLOR);
-          M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
-          drawTimer.reset();
-        }
-       Serial.print(currView);
-       if(M5.BtnB.read()) {
-         M5.Lcd.fillScreen(BACKGROUNDCOLOR);
-         
-         currView = camp;
-         Serial.println(currView);
-       }
+      if (drawTimer.isReady()) {
+        move();
+        draw();
+        M5.Lcd.fillRect(240, 0, 80, 10, BACKGROUNDCOLOR);
+        M5.Lcd.setCursor(240, 0); M5.Lcd.printf("Steps: %6d", total_steps);
+        drawTimer.reset();
+      }
+      Serial.print(currView);
+      if (M5.BtnA.read()) {
+        M5.Lcd.fillScreen(BACKGROUNDCOLOR);
+        campRequested = false;
+        currView = camp;
+      }
     }
- 
+
 } ;
