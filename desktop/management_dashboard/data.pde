@@ -16,7 +16,9 @@ static abstract class DataType {
       DataType.ALLCHALLENGES, 
       DataType.NEWCHALLENGE, 
       DataType.SELECTCHALLENGE, 
-      DataType.STEP
+      DataType.STEP, 
+      DataType.WEBPROFILE,
+      DataType.NEWPROFILE
    };
    static final String PROFILE = "profile";
    static final String USERCHALLENGES = "user challenges";
@@ -24,6 +26,8 @@ static abstract class DataType {
    static final String NEWCHALLENGE = "new challenge";
    static final String SELECTCHALLENGE = "select challenge";
    static final String STEP = "step";
+   static final String WEBPROFILE = "web profile";
+   static final String NEWPROFILE = "new profile";
 }
 
 
@@ -97,7 +101,9 @@ public class UserData {
          for (int i = 0; i < users.size(); i++) {
             JSONObject user = users.getJSONObject(i);
             if (user != null) {
-               if (name.contains(user.getString("user_name"))) ret = user;
+               if (name.equals(user.getString("user_name"))) {
+                  ret = user;
+               }
             }
          }
       }
@@ -114,17 +120,19 @@ public class UserData {
       // key, value
       int incrementstep = user.getInt("total_steps") + 1;
       user.setInt("total_steps", incrementstep);
+      int time = user.getInt("remaining_sec");
+      user.setInt("remaining_sec", time+2);
+      u_api.saveUsertoDB(db.users);
    }
    // API CALL 4
    void pushUserProfile(String name, String topic) {
       JSONObject user = u_api.getUserByName(name);
       JSONObject ret = new JSONObject();
-      if(user != null) {      
-         ret.setString("type", RequestType.PUSH + DataType.PROFILE);
-         ret.setString("user_name", name);
+      ret.setString("type", RequestType.PUSH + DataType.PROFILE);
+      ret.setString("user_name", name);
+      if (user.get("user_name") != null) {      
          ret.setInt("total_steps", user.getInt("total_steps"));
          ret.setInt("remaining_sec", user.getInt("remaining_sec"));
-         ret.setLong("current_time", getUnixTime());
       }
       client.publish(topic, ret.toString());
    }
@@ -137,8 +145,8 @@ public class UserData {
       ret.setString("type", RequestType.PUSH + DataType.USERCHALLENGES);
       ret.setJSONArray("challenges", challenges);
       ret.setString("user_name", name);
-      if(challengeid != null) {
-         for(int i = 0; i < challengeid.size(); i++) {
+      if (challengeid != null) {
+         for (int i = 0; i < challengeid.size(); i++) {
             challenges.setJSONObject(i, c_api.getChallengeByID(challengeid.get(i).toString()));
          }
       }
@@ -147,13 +155,55 @@ public class UserData {
    // API CALL 6
    void addChallengeToUser(String name, String challengeid) {
       JSONObject user = u_api.getUserByName(name);
-      if(user != null) {
-         if(c_api.getChallengeByID(challengeid) != null) {
-           JSONArray challenges = user.getJSONArray("challengeid");
-           challenges.setString(challenges.size()+1, challengeid);
-           u_api.saveUsertoDB(db.users);
+      if (user != null) {
+         if (c_api.getChallengeByID(challengeid) != null) {
+            JSONArray challenges = user.getJSONArray("challenge_id");
+            challenges.setString(challenges.size()+1, challengeid);
+            u_api.saveUsertoDB(db.users);
          }
       }
+   }
+   // API CALL 7
+   void pushWebProfile(String name, String topic) {
+      JSONObject user = u_api.getUserByName(name);
+      JSONObject ret = new JSONObject();
+      JSONArray challenges = new JSONArray();
+      ret.setString("type", RequestType.PUSH + DataType.WEBPROFILE);
+      ret.setString("user_name", name);
+      if (user.get("user_name") != null) {      
+         JSONArray challengeid = user.getJSONArray("challenge_id");
+         ret.setString("user_type", user.getString("user_type"));
+         ret.setInt("total_steps", user.getInt("total_steps"));
+         ret.setInt("remaining_sec", user.getInt("remaining_sec"));
+         ret.setJSONArray("challenges", challenges);
+         if (challengeid != null) {
+            for (int i = 0; i < challengeid.size(); i++) {
+               challenges.setJSONObject(i, c_api.getChallengeByID(challengeid.get(i).toString()));
+            }
+         }
+      }
+      client.publish(topic, ret.toString());
+   }
+   // API CALL 8
+   void updateTimeRemaining() {
+      JSONArray users = db.users.getJSONArray("user");
+      if (users != null) {
+         for (int i = 0; i < users.size(); i++) {
+            JSONObject user = users.getJSONObject(i);
+            if (user != null) {
+               int timeLeft = user.getInt("remaining_sec");
+               if (timeLeft != 0) user.setInt("remaining_sec", timeLeft-1);
+            }
+         }
+         u_api.saveUsertoDB(db.users);
+      }
+   }
+   // API CALL 9
+   void addNewUserToDB(JSONObject user) {
+      JSONArray users = db.users.getJSONArray("user");
+      user.remove("type");
+      users.setJSONObject(db.users.size()+1, user);
+      u_api.saveUsertoDB(db.users);
    }
 }
 
@@ -163,7 +213,7 @@ public class ChallengeData {
       JSONObject ret = new JSONObject();
       JSONArray challenges = new JSONArray();
       challenges = db.challenges.getJSONArray("challenge");
-      if(challenges != null) {
+      if (challenges != null) {
          for (int i = 0; i < challenges.size(); i++) {
             JSONObject challenge = challenges.getJSONObject(i);
             if (challenge != null) {
@@ -175,7 +225,7 @@ public class ChallengeData {
    }
    // API CALL 2
    void saveChallengetoDB(JSONObject challenge) {
-      if(challenge == null) return;
+      if (challenge == null) return;
       else saveJSONObject(challenge, "data/challenges.json");
    }
    // API CALL 3

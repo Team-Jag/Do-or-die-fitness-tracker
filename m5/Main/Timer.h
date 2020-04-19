@@ -9,7 +9,7 @@ class Timer {
 
   private:
     unsigned long period;   // user requested time period
-    unsigned long last_ts;  // saved time stamp 
+    unsigned long last_ts;  // saved time stamp
     boolean READY = false;  // flag if time has elapsed
 
 
@@ -24,7 +24,7 @@ class Timer {
     }
 
     // Call to see if the time period has elapsed
-    // Note, only reset() will toggle the timer 
+    // Note, only reset() will toggle the timer
     // back to watching time again.
     boolean isReady() {
 
@@ -32,11 +32,11 @@ class Timer {
       // millis and the last time stamp taken
       if ( millis() - last_ts > period ) {
         READY = true;
-      } 
-      return READY; 
+      }
+      return READY;
     }
 
-    // Use to reset your timer. 
+    // Use to reset your timer.
     void reset() {
       last_ts = millis(); // save current system time
       READY = false;      // reset flag to false
@@ -46,7 +46,7 @@ class Timer {
       period = period_ms;
     }
 
-    
+
 };
 
 
