@@ -520,7 +520,7 @@ return(
         remaining_sec: json_message.remaining_sec,
         account_exists: json_message.hasOwnProperty("total_steps"),
         data_received: true,
-        user_challenges: json_message.challenge,
+        user_challenges: json_message.challenges,
         ranking: Math.max(1, Math.round(8378 -json_message.total_steps +this.state.dummy_counter/3,0)), //dummy formula: so that it looks like your ranking changes when the step count goes up
         dummy_counter: this.state.dummy_counter + 1
       })
