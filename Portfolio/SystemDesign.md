@@ -79,7 +79,7 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * *Can we integrate the paper prototypes here?* *
 
 ### Desktop
-[Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
+![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
 ### Web
 
 ### M5
