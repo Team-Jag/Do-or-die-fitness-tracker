@@ -42,13 +42,13 @@ Team
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 In our prototype we implemented the following user stories for our three key users **User, Sponsor and Admin**. These user stories defined our test cases and requirements and were the basis for our development effort:
-* 1. **User Profile** On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time (see user Story 2.)
-* 2. **User Activity** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture.
+* 1. **User** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture. On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time. 
+
 * 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
 
 * 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data in a user friendly way.
 
-**These four user stories translate into the following requirements for our sub-systems:**
+**These three user stories translate into the following requirements for our sub-systems:**
 ### Desktop
 Administration interface for data visualisation. Allow back-end to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
 
