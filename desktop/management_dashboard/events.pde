@@ -55,8 +55,14 @@ void messageReceived(String topic, byte[] payload) {
             break;
          case(RequestType.PUSH + DataType.NEWPROFILE):
             username = json.getString("user_name");
-            println("adding new user " + username);
-            u_api.addNewUserToDB(json);
+            String usertype = json.getString("user_type");
+            if(usertype.equals("user")) {
+               println("adding new user " + username);
+               u_api.addNewUserToDB(json);
+            } else if(usertype.equals("sponsor")) {
+               println("adding new sponsor " + username);
+               s_api.addNewSponsorToDB(json);
+            }      
             break;
          default:
             return;

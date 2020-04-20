@@ -1,8 +1,13 @@
-{
-    "sponsor": [
-        {
-            "sponsor_id": "11",
-            "challenge_id": ["1", "2"]
-        }
-    ]
-}
+{"sponsor": [
+  {
+    "challenge_id": [
+      "1",
+      "2"
+    ],
+    "user_name": "Mario's dad"
+  },
+  {"user_name": "Peach"},
+  {
+    "user_name": "Toad"
+  }
+]}
