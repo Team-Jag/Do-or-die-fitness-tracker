@@ -1,0 +1,19 @@
+{"challenge": [
+  {
+      "challenge_id": "1",
+      "challenge_name": "10K Step Challenge",
+      "description": "stepstep",
+      "end_time": 1589500800,
+      "step_goal": 10000,
+      "reward": 800
+  },
+
+  {
+      "challenge_id": "2",
+      "challenge_name": "Challenge 2",
+      "description": "runrun",
+      "end_time": 1589500800,
+      "step_goal": 2000,
+      "reward": 200
+  }
+]}
