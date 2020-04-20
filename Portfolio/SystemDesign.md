@@ -79,7 +79,11 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * *Can we integrate the paper prototypes here?* *
 
 ### Desktop
+Original multi-tab wireframe design for desktop UI:
 ![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
+
+Updated wireframe design for UI:
+
 ### Web
 
 ### M5
