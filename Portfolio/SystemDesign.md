@@ -46,12 +46,23 @@ In our prototype we implemented the following user stories for our three key use
 * 2. **User Activity** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture.
 * 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
 
-* 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data.
-* *Ana please write more here on the requirements* *
+* 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data in a user friendly way.
 
 **These four user stories translate into the following requirements for our sub-systems:**
 ### Desktop
-Administration interface for data visualisation. Allow backend to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
+Administration interface for data visualisation. Allow back-end to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
+
+**Data visualisation UI**
+* Front-end needs to pull flat totals from database for current users, sponsers, and available current challenges.
+* The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
+* We want to be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
+* We want to follow thematic colour scheme for the UI.
+
+**Data processing back-end**
+* System must be capable of processing JSON requests from the web application and inserting new users, sponsers and challenges into central database, and retaining this data in a persistant manner. 
+* System must be able to listen on the correct channel for step updates for each user, and update records accordingly.
+* System also calculates the life time remaining for each user's avatar based on step updates and time elapsed
+* System also informs user of death.
 
 ### Web
 * 1. **User Profile**
@@ -66,7 +77,9 @@ Administration interface for data visualisation. Allow backend to deal with send
 ### M5
 ## d. The evolution of UI wireframes for key sub-systems
 * *Can we integrate the paper prototypes here?* *
+
 ### Desktop
+[Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
 ### Web
 
 ### M5
