@@ -29,8 +29,7 @@ Our team utilised Github in a number of ways. In order to keep it clear across t
   
   6. Ensure that you attach your pull request to the applicable milestone (each version that we planned to release, including Alpha and Beta versions). 
   
-  7. Delete the branch and repeat!
-</p> 
+  7. Delete the branch and repeat!</p> 
 
 Linking our Kanban board with our issues helped to greater clarify who was responsible for what issues, and whether they were still in the 'To Do' category or 'In Progress'. Similarly, by then linking it with the pull requests each team member was able to see the work that was being completed and the attached code. This ensured that every team member was on the same page as to the work that was being done, who needed to complete it, and when it had been done. 
 
