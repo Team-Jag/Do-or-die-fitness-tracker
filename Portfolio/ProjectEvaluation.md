@@ -17,12 +17,18 @@ REFLECTION ON COMMUNICATION
 Our team utilised Github in a number of ways. In order to keep it clear across team members how we wanted to push code to our develop branch, we developed the following method for using Github in our team: 
 
 <p align="center"> 
-  1. Create a new branch for each feature and ensure that you pull from develop frequently. 
+  1. Create a new branch for each feature and ensure that you pull from develop frequently.
+  
   2. When you are done working on that feature, create a pull request. 
+  
   3. If applicable, link it to an existing issue to be clear what you are fixing. Likewise, link it to the applicable project Kanban board so the other team members can see the work that is being done. 
+  
   4. Another team member, typically your partner working on the same subsystem, will either approve your pull request, or request changes. 
+  
   5. You can then merge your branch with develop, marking the issue as closed. 
+  
   6. Ensure that you attach your pull request to the applicable milestone (each version that we planned to release, including Alpha and Beta versions). 
+  
   7. Delete the branch and repeat!
 </p> 
 
