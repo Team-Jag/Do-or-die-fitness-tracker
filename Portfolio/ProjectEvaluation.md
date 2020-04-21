@@ -35,8 +35,6 @@ Linking our Kanban board with our issues helped to greater clarify who was respo
 
 The greatest negative to our team's use of Github was the relative inexperience that each team member had with a large number of the features. It took each of us a while to get used to the test driven development cycle, and to ensure that we were branching off of develop and creating a pull request for each new feature. However, once we all began to get in to the habit of following the above work cycle the success became clear and our progress began to excelerate. Similarly, there was less confusion as to who was responsible for which parts of the project. 
 
-REFLECTION ON USAGE OF GITHUB: 
-
 **COMMUNICATION METHODS**
 
 While our group communicated most frequently through Facebook messenger, due to it being the most popular messaging platform amongst our group, we chose to use [Slack](https://slack.com/intl/en-gb/) to keep track of more important messages. 
