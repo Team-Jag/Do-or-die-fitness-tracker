@@ -41,6 +41,8 @@ React is ideal to implement a object oriented design. Our website conists of fun
 Team
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
+We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Sponsor, and Admin**. 
+
 In our prototype we implemented the following user stories for our three key users **User, Sponsor and Admin**. These user stories defined our test cases and requirements and were the basis for our development effort:
 * 1. **User** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture. On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time. 
 
