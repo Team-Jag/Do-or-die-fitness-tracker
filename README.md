@@ -8,12 +8,12 @@ If setting your own goals is not enough motivation, meet our Sponsors! With new 
 The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## Team Members
-* Davide Bernardi <db16981@bristol.ac.uk>
-* Chris Buehler <christoph.buehler.2019@bristol.ac.uk>
-* Amy Conroy <ac16888@bristol.ac.uk>
-* Graciela Putri <tl19232@bristol.ac.uk>
-* Anastasia Shmyglya <ge19548@bristol.ac.uk>
-* Oliver Skeates <an19572@bristol.ac.uk>
+* [Davide Bernardi](https://github.com/DavideBernardi) <db16981@bristol.ac.uk>
+* [Chris Buehler](https://github.com/Chris19138) <christoph.buehler.2019@bristol.ac.uk>
+* [Amy Conroy](https://github.com/amyconroy) <ac16888@bristol.ac.uk>
+* [Graciela Putri](https://github.com/gracielawp) <tl19232@bristol.ac.uk>
+* [Anastasia Shmyglya](https://github.com/a-shmyg) <ge19548@bristol.ac.uk>
+* [Oliver Skeates](https://github.com/OliSkeates) <an19572@bristol.ac.uk>
 
 ## 1. [System Design](../develop/Portfolio/SystemDesign.md)
 View our [system design document](../develop/Portfolio/SystemDesign.md) to see:
