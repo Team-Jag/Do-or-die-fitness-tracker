@@ -3,6 +3,7 @@ import React from "react";
 // import jQuery from 'jquery';
 import Paho from 'paho-mqtt';
 import { Redirect } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 import {
   Button,
@@ -76,6 +77,7 @@ class Mqtt extends React.Component {
   }
 
 renderProfile(){
+  console.log(this.state.user_challenges);
   if (this.state.mqttConnected === true){
     this.requestProfile();
   }
@@ -166,6 +168,13 @@ renderProfile(){
          ))}
          </table></div>
       </React.Fragment><br/><br/>
+      <Link to='/challenge-choice-page'>
+      <Button
+        className="btn-round back-btn">
+        See all available Challenges
+      </Button>
+      </Link>
+      <br></br>
   </div>
 
 )}
@@ -267,10 +276,10 @@ redirectToProfile(){
     }
   }
   if (this.state.redirect) {
-    return(
-         <Redirect to={{
-               pathname: '/profile-page',
-           }} />)
+      return(
+           <Redirect to={{
+                 pathname: '/profile-page',
+             }} />)
   }
 }
 
@@ -361,6 +370,7 @@ requestChallenges(){
 }
 
 renderGetChallenges(){
+  console.log(global.userName);
    if(this.state.mqttConnected === true && this.state.challenges_loaded === false){
     this.requestChallenges()
     this.setState({challenges_loaded: true})
@@ -396,7 +406,14 @@ renderGetChallenges(){
             </tr>
           ))}
         </table></div>
+        <Link to='/profile-page'>
+        <Button
+          className="btn-round back-btn">
+          Back to Profile
+        </Button>
+        </Link>
       </React.Fragment>
+
   );
 }
 }
@@ -513,7 +530,6 @@ return(
     }
 
     if(json_message.type === 'push web profile' && json_message.user_name === global.userName){
-      console.log("HELLLO");
       console.log(json_message.hasOwnProperty("total_steps"));
       this.setState({
         total_steps: json_message.total_steps,
