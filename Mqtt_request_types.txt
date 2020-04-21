@@ -62,7 +62,7 @@ Web: doordie_web
 {
     "type": "push user challenges",
     "user_name": "Mario",
-    "challenge": [
+    "challenges": [
     {
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
@@ -116,7 +116,7 @@ Web: doordie_web
     "user_name": "Mario",
     "total_steps": "2200",
     "remaining_sec": "2000",
-    "challenge": [
+    "challenges": [
     {
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
