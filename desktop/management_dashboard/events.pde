@@ -44,8 +44,25 @@ void messageReceived(String topic, byte[] payload) {
             c_api.addNewChallenge(json);
             break;
          case(RequestType.PUSH + DataType.SELECTCHALLENGE):
+            username = json.getString("user_name");
             println("enrolling challenge to user" + username);
-            
+            u_api.addChallengeToUser(username, json.getString("challenge_id"));
+            break;
+         case(RequestType.PULL + DataType.WEBPROFILE):
+            username = json.getString("user_name");
+            println("pushing web profile of " + username);
+            u_api.pushWebProfile(username, topic);
+            break;
+         case(RequestType.PUSH + DataType.NEWPROFILE):
+            username = json.getString("user_name");
+            String usertype = json.getString("user_type");
+            if(usertype.equals("user")) {
+               println("adding new user " + username);
+               u_api.addNewUserToDB(json);
+            } else if(usertype.equals("sponsor")) {
+               println("adding new sponsor " + username);
+               s_api.addNewSponsorToDB(json);
+            }      
             break;
          default:
             return;

@@ -8,9 +8,8 @@ Web: doordie_web
 {
     "type": "push profile",
     "user_name": "Mario",
-    "total_steps": "2200",
-    "remaining_sec": "2000",
-    "current_time": "2020-02-30T08:35:30.0108Z"
+    "total_steps": 2200,
+    "remaining_sec": 2000,
 }
   
 // From M5Stack requesting user profile from database
@@ -25,10 +24,16 @@ Web: doordie_web
     "user_name": "Mario"       
 }
  
-// From web/M5Stack requesting database to send all challenges that user are enrolled in
+// From web requesting database to send all challenges that user are enrolled in
 {
     "type": "pull user challenges",
     "user_name": "Mario"
+}
+
+//From M5 request all challenges of user
+{
+	"type":"M5 pull challenges",
+	"user_name":"Mario"
 }
 
 // From database send all challenges to m5 Stack
@@ -38,18 +43,18 @@ Web: doordie_web
     "ch": [
     {
         "name": "10K Step",
-        "des": "stepstep",
-        "end": "20-02-28 14:20",
-        "goal": "10000",
-        "rwrd": "800"
+        "des": "step",
+        "end": 1589500800,		// epoch time for 15 may
+        "goal": 10000,
+        "rwrd": 800
     },
   
     {	
-	"name": "Ch 2",
-        "des": "runrun",
-        "end": "20-02-28 14:20",
-        "goal": "2000",
-        "rwrd": "800",
+	"name": "Run",
+        "des": "run",
+        "end": 1589500800,
+        "goal": 2000,
+        "rwrd": 800,
     }]
 }
   
@@ -57,25 +62,23 @@ Web: doordie_web
 {
     "type": "push user challenges",
     "user_name": "Mario",
-    "challenge": [
+    "challenges": [
     {
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "10000",
-        "reward": "800",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
     },
   
     {
         "challenge_id": "2",
         "challenge_name": "Challenge 2",
         "description": "runrun",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "2000",
-        "reward": "200",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
     }]
 }
   
@@ -92,20 +95,18 @@ Web: doordie_web
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "10000",
-        "reward": "800",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
     },
   
     {
         "challenge_id": "2",
         "challenge_name": "Challenge 2",
         "description": "runrun",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "2000",
-        "reward": "200",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
     }]
 }
 
@@ -115,25 +116,23 @@ Web: doordie_web
     "user_name": "Mario",
     "total_steps": "2200",
     "remaining_sec": "2000",
-    "challenge": [
+    "challenges": [
     {
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "10000",
-        "reward": "800",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
     },
   
     {
         "challenge_id": "2",
         "challenge_name": "Challenge 2",
         "description": "runrun",
-        "end_time": "20-02-28 14:20",
-        "step_goal": "2000",
-        "reward": "200",
-        "current_time": "2020-02-30T08:35:30.0108Z"
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
     }]
 }
   
@@ -149,10 +148,9 @@ Web: doordie_web
     "challenge_id": "3",
     "challenge_name": "Challenge 2",
     "description": "runrun",
-    "end_time": "20-02-28 14:20",
-    "step_goal": "2000",
-    "reward": "200",
-    "current_time": "2020-02-30T08:35:30.0108Z"
+    "end_time": 1589500800,
+    "step_goal": 2000,
+    "reward": 200
 }
 
 // From web, when user selects challenge, no response from database - additional functionality

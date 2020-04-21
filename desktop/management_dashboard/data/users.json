@@ -1,0 +1,19 @@
+{"user": [
+  {
+    "challenge_done": ["2"],
+    "challenge_id": ["1"],
+    "user_name": "Mario",
+    "total_steps": 2289,
+    "remaining_sec": 3332
+  },
+  {
+    "challenge_done": [],
+    "challenge_id": [
+      "1",
+      "2"
+    ],
+    "user_name": "Luigi",
+    "total_steps": 0,
+    "remaining_sec": 1602
+  }
+]}
