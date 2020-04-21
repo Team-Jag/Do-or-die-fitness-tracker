@@ -30,7 +30,7 @@ function ChallengeChoicePage() {
 
           <Mqtt type = "challenges" />
 
-            <div align="middle" class="tg-wrap"></div>
+            <div align="middle" className="tg-wrap"></div>
           </Container>
         </div>
         <DefaultFooter />
