@@ -41,17 +41,17 @@ React is ideal to implement a object oriented design. Our website conists of fun
 Team
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
-We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Sponsor, and Admin**. 
+We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
 
-In our prototype we implemented the following user stories for our three key users **User, Sponsor and Admin**. These user stories defined our test cases and requirements and were the basis for our development effort:
-* 1. **User** A user walks around with the M5 stack in his hand and he can see his steps and time updated both on the stack and on the web version. On the stack the user will see an animated "tamagotchi" and on the web he will see his profile picture. On the web a user can create an account or login to his existing account, sign up for challenges and view his profile, including the challenges he signed up for and the total steps/remaining time. 
+<p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5 stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p> 
 
-* 3. **Sponsor Activity** can create an account or login to his existing account and create new challenges
+<p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
 
-* 4. **Admin** can visit a dashboard with key statistics around our game userbase. Used to track increase and decrease of user activity, how many total steps by all players together have been taken, and an easy way to visualise number of users and challenge for the game. The main requirement is monitoring and visualising data in a user friendly way.
+<p align="center"><b> SPONSOR:</b>Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p> 
 
-**These three user stories translate into the following requirements for our sub-systems:**
-### Desktop
+<p align="center"><b>After developing the three user stories, we translated them into the following requirements for our sub-systems:</b></p>
+
+### DESKTOP
 Administration interface for data visualisation. Allow back-end to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
 
 **Data visualisation UI**
@@ -66,7 +66,7 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * System also calculates the life time remaining for each user's avatar based on step updates and time elapsed
 * System also informs user of death.
 
-### Web
+### WEB
 * 1. **User Profile**
   * a. Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
   * b. Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
@@ -76,7 +76,8 @@ Administration interface for data visualisation. Allow back-end to deal with sen
   * a. The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
 * 3. **Sponsor activity**
   * a. The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
-### M5
+  
+### M5 STACK
 ## d. The evolution of UI wireframes for key sub-systems
 * *Can we integrate the paper prototypes here?* *
 
