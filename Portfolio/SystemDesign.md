@@ -2,6 +2,7 @@
 
 # 1. System Design :
 ## a. Architecture of the entire system
+Our initial [User Story video](../develop/Portfolio/Images/paper_prototype_video.mp4) demonstrates changes we made based on user interaction. (**test, move from this section later **) 
 
 Architecture of the system uses a central controller database dealing with recieving and sending requests, using MQTT protocol to communicate between devices. Three key devices of system:
 
