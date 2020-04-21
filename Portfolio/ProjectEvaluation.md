@@ -4,13 +4,17 @@
 ## a. Reflective discussion of the success of the project
 ## b. Discussion of future work (in terms of design, development and evaluation)
 ## c. Group Working Practices
-As our group followed the Agile principle 
+Our group used a variety of means to communicate, especially in light of the coronavirus situation. We followed the Agile communication practices, and communicated through Facebook messenger and Slack. We utilised many of Githubs features including their Project boards, to manage our issues. Each of these communication practices, and their relative success in terms of our group's working practice, will be considered in turn. 
 
 **AGILE COMMUNICATION** 
 
 Scrum concepts 
 
 REFLECTION ON COMMUNICATION 
+
+**GITHUB PROCCESS**
+
+REFLECTION ON USAGE OF GITHUB: 
 
 **COMMUNICATION METHODS**
 
@@ -22,11 +26,9 @@ The main channels that we used in our Slack organisation were core_functionaliti
 * **issues**: prior to creating an issue on github, we used this channel to highlight any specific issues we thought may arise and whether others thought that they needed to be addressed. 
 * **ideas**: here we each posted future functionalities and ideas we had about how to improve our product. 
 
+By linking our Github with Slack, each team member was also notified when another team member had created a pull request or pushed to Github. 
+
 REFLECTION ON SLACK: 
-
-**GITHUB PROCCESS**
-
-REFLECTION ON USAGE OF GITHUB: 
 
 **MANAGEMENT OF ISSUES**
 
