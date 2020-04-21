@@ -6,12 +6,12 @@
 ## c. Group Working Practices
 As our group followed the Agile principle 
 
-# AGILE COMMUNICATION 
+**AGILE COMMUNICATION** 
 Scrum concepts 
 
 REFLECTION ON COMMUNICATION 
 
-# COMMUNICATION METHODS
+**COMMUNICATION METHODS**
 
 While our group communicated most frequently through Facebook messenger, due to it being the most popular messaging platform amongst our group, we chose to use [Slack](https://slack.com/intl/en-gb/) to keep track of more important messages. 
 ![Slack](/Portfolio/Images/slack.png) 
@@ -23,15 +23,15 @@ The main channels that we used in our Slack organisation were core_functionaliti
 
 REFLECTION ON SLACK: 
 
-# GITHUB PROCCESS 
+**GITHUB PROCCESS**
 
 REFLECTION ON USAGE OF GITHUB: 
 
-# MANAGEMENT OF ISSUES 
+**MANAGEMENT OF ISSUES**
 
 REFLCTION OF MANAGEMENT OF ISSUES: 
 
-# OVERALL REFLECTION ON GROUP COMMUNICATION 
+**OVERALL REFLECTION ON GROUP COMMUNICATION**
 
 ## d. This is a chance to reflect on how coronavirus has affected your project (remote
 working practices etc)
