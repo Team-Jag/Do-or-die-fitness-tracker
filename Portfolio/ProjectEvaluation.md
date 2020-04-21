@@ -7,6 +7,7 @@
 As our group followed the Agile principle 
 
 **AGILE COMMUNICATION** 
+
 Scrum concepts 
 
 REFLECTION ON COMMUNICATION 
