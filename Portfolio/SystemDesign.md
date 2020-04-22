@@ -41,7 +41,7 @@ React is ideal to implement a object oriented design. Our website conists of fun
 
 
 ### M5
-Team
+![m5UML](/Portfolio/Images/m5uml.png)
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
