@@ -15,6 +15,8 @@ Web - allows user to log in and provide information about their account, user in
 See relevant sections for further information about specific subsystems. 
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
+Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however it developed in to the following UML diagrams for each of the three sub-systems. 
+
 ### Desktop
 Key classes for desktop app include:
 
