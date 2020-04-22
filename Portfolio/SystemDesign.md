@@ -52,6 +52,10 @@ We ensured that our product had a user-focused framework by developing three key
 
 <p align="center"><b> SPONSOR:</b>Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p> 
 
+These key stories were developped in to further user stories, which can be seen in our [Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7). However, the main ones can be seen in this use case diagram:
+
+![Use case](/Portfolio/Images/dotuml.png)
+
 <p align="center"><b>After developing the three user stories, we translated them into the following requirements for our sub-systems:</b></p>
 
 ### DESKTOP
