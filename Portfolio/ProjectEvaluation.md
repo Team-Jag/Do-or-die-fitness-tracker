@@ -8,7 +8,7 @@ Our group undertook an Agile workflow while completing our project. This allowed
 
 ### AGILE COMMUNICATION 
 
-Our working process was highly centred on the Agile principle, which are evident in a number of our working practices. We also focused mainly on using the Kanban framework, as it ensured that we had a full transparency of the work that was left to be done. We also chose to implement some methods of the Scrum process in our team, in particular organising weekly code sprints with the aim of deploying a working version of our code at the end of each sprint. 
+Our working process was highly centred on the Agile principle, which are evident in a number of our working practices. We also focused mainly on using the Kanban framework, as it ensured that we had a full transparency of the work that was left to be done. We also chose to implement some methods of the Scrum process in our team, in particular organising weekly code sprints with the aim of deploying a working version of our code at the end of each sprint. In terms of indivdiual work, we chose to pair-program in respect to each of our key subsytems (web, management dashboard, and m5 stack). 
 
 We began work on our project by breaking down our work in to user stories which are described in further detail in [the System Design section](../Portfolio/SystemDesign.md) of our portfolio. We began by ensuring that we had a clear focus of project requirements, as well as how long we expected each requirement to take, and prioritise which would come first. 
 
@@ -55,7 +55,7 @@ The main channels that we used in our Slack organisation were core_functionaliti
 
 By linking our Github with Slack, each team member was also notified when another team member had created a pull request or pushed to Github. 
 
-REFLECTION ON SLACK: 
+Slack was incredibly useful for linked our Google accounts, Github project, and keeping track of our most important resources. It also allowed for a clear platform to keep our messages focused on the Project, so that nothing would get lost. Moreover, it allowed for clear communication between each team member working on the different subsystems. 
 
 ### MANAGEMENT OF ISSUES
 
