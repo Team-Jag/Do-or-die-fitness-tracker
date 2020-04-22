@@ -20,6 +20,10 @@ These releases were planned in advance, by utilising the milestone feature on Gi
 
 **KANBAN AND SCRUM FRAMEWORKS**
 
+We mainly used the Scrum framework to ensure that we had an Agile working practice. One team member acted as the Scrum master, dictating the timelines on Github and ensuring that they were outlined on Slack as well. This ensured that we had a clear agreement amongst our team as to when our deliverables were expected by, and which user stories we were currently focused on implementing. 
+
+The deliverables in our group were determined by the [sprints that we set](../Portfolio/SystemImplementation.md), which were typically a week long but during the switch to remote working include a two week sprint. In order to delegate and prioritize our week, we used the Kanban project board on Github. Each one of our sprints relied on the success of the one before, as we aimed to push a deliverable product to our Master branch on Github every two sprints. 
+
 ### GITHUB PROCCESS
 
 Our team utilised Github in a number of ways. In order to keep it clear across team members how we wanted to push code to our develop branch, we developed the following method for using Github: 
