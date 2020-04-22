@@ -4,17 +4,25 @@
 ## a. Reflective discussion of the success of the project
 ## b. Discussion of future work (in terms of design, development and evaluation)
 ## c. Group Working Practices
-Our group used a variety of means to communicate, especially in light of the coronavirus situation. We followed the Agile communication practices, and communicated through Facebook messenger and Slack. We utilised many of Githubs features including their Project boards, to manage our issues. Each of these communication practices, and their relative success in terms of our group's working practice, will be considered in turn. 
+Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
 
-**AGILE COMMUNICATION** 
+### AGILE COMMUNICATION 
 
-Scrum concepts 
+Our working process was highly centred on the Agile principle, which are evident in a number of our working practices. We also focused mainly on using the Kanban framework, as it ensured that we had a full transparency of the work that was left to be done. We also chose to implement some methods of the Scrum process in our team, in particular organising weekly code sprints with the aim of deploying a working version of our code at the end of each sprint. 
 
-REFLECTION ON COMMUNICATION 
+We began work on our project by breaking down our work in to user stories which are described in further detail in [the System Design section](../Portfolio/SystemDesign.md) of our portfolio. We began by ensuring that we had a clear focus of project requirements, as well as how long we expected each requirement to take, and prioritise which would come first. 
 
-**GITHUB PROCCESS**
+While it was tempting at times to work solely on the subsystem that you were focused on, we found it easier to visualize our work in a [Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7). Doing this allowed our team to see how each key user story was being implemented, when it was complete, and how each user story linked together between the subsystems. By making these user stories our priority during each of our sprints, we were able to focus on what was most important to delivering our final product, and also ensure that each story was given the appropriate time during our project. 
 
-Our team utilised Github in a number of ways. In order to keep it clear across team members how we wanted to push code to our develop branch, we developed the following method for using Github in our team: 
+Our group measured our progress by working at a constant pace, and constantly ensuring that we had a working system. One of our first goals as a group was to ensure that our key subsystems were able to communicate between each other, and we constnatly maintained this by breaking away each week to work on the subsystems and coming together to test them. During our weekly testing meetings, we would ensure that we had a current working project. Once we were satisfied with the quality of our code, and that everything worked as it should, we released Version 0.1 and 0.2 of our product two weeks a part. Following this, we released Version 1.0 and Version 1.1. 
+
+These releases were planned in advance, by utilising the milestone feature on Github we were able to work towards each milestone and prioritise which issues had to be addressed before our first release. To ensure that all the work was transparent, we utilised the Kanban project board on Github in combination with Github issues. This will be addressed later on in this section. 
+
+**KANBAN AND SCRUM FRAMEWORKS**
+
+### GITHUB PROCCESS
+
+Our team utilised Github in a number of ways. In order to keep it clear across team members how we wanted to push code to our develop branch, we developed the following method for using Github: 
 
 <p align="center"> 
   1. Create a new branch for each feature and ensure that you pull from develop frequently.
@@ -35,7 +43,7 @@ Linking our Kanban board with our issues helped to greater clarify who was respo
 
 The greatest negative to our team's use of Github was the relative inexperience that each team member had with a large number of the features. It took each of us a while to get used to the test driven development cycle, and to ensure that we were branching off of develop and creating a pull request for each new feature. However, once we all began to get in to the habit of following the above work cycle the success became clear and our progress began to excelerate. Similarly, there was less confusion as to who was responsible for which parts of the project. 
 
-**COMMUNICATION METHODS**
+### COMMUNICATION TOOLS
 
 While our group communicated most frequently through Facebook messenger, due to it being the most popular messaging platform amongst our group, we chose to use [Slack](https://slack.com/intl/en-gb/) to keep track of more important messages. 
 ![Slack](/Portfolio/Images/slack.png) 
@@ -49,11 +57,11 @@ By linking our Github with Slack, each team member was also notified when anothe
 
 REFLECTION ON SLACK: 
 
-**MANAGEMENT OF ISSUES**
+### MANAGEMENT OF ISSUES
 
 REFLCTION OF MANAGEMENT OF ISSUES: 
 
-**OVERALL REFLECTION ON GROUP COMMUNICATION**
+### OVERALL REFLECTION ON GROUP WORKING PRACTICES
 
 ## d. This is a chance to reflect on how coronavirus has affected your project (remote
 working practices etc)
