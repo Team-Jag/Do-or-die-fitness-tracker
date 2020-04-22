@@ -63,5 +63,7 @@ REFLCTION OF MANAGEMENT OF ISSUES:
 
 ### OVERALL REFLECTION ON GROUP WORKING PRACTICES
 
+While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
+
 ## d. This is a chance to reflect on how coronavirus has affected your project (remote
 working practices etc)
