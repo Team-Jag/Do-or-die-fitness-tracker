@@ -92,8 +92,9 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 Original multi-tab wireframe design for desktop UI:
 ![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
 
-Updated wireframe design for UI:
+Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
+
 ### Web
 
 ### M5
