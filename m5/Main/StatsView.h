@@ -35,7 +35,7 @@ class StatsView {
           return;
         }
       } else {
-        M5.Lcd.setCursor(0, 10); M5.Lcd.println("Loading Stats . . .");
+        M5.Lcd.setCursor(10, 100); M5.Lcd.setTextSize(2); M5.Lcd.print("Loading Stats . . ."); M5.Lcd.setTextSize(1);
       }
 
     }

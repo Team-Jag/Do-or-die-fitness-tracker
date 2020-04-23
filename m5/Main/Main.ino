@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <esp_wifi.h>
 WiFiClient wifi_client;
+#define MQTT_MAX_PACKET_SIZE 1024
 #include <PubSubClient.h>
 PubSubClient ps_client( wifi_client );
 
@@ -14,6 +15,9 @@ enum currentView {
 typedef struct campaign {
   String name;
   String description;
+  int endTime;
+  int stepGoal;
+  int reward;
 } campaign;
 
 //GLOBAL VARIABLES
@@ -47,11 +51,14 @@ extern unsigned char logo[];
 
 //JSON
 #include <ArduinoJson.h>
-StaticJsonDocument<500> JSONin; //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
 StaticJsonDocument<500> JSONprofile;
 StaticJsonDocument<500> JSONstep;
+StaticJsonDocument<500> JSONstats;
+StaticJsonDocument<1000> JSONcamps;
 String stepMsg;
 String profileMsg;
+String statsMsg;
+String campsMsg;
 
 //MQTT Variables
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
@@ -80,13 +87,13 @@ void setup()
   Serial.begin(115200); delay(10); //Start Serial (for debugging)
   M5.Lcd.setTextSize(1);
   m5.Lcd.setTextColor(BACKGROUNDCOLOR);
-  M5.Lcd.drawBitmap(0,0,320,240,(uint16_t *)logo);  
+  M5.Lcd.drawBitmap(0, 0, 320, 240, (uint16_t *)logo);
   setupWifiWithPassword();
   step_counter.setup();
   setupJSON();
   setupMQTT();
   currView = home;
-  M5.Lcd.setCursor(140,220); M5.Lcd.print("Ready!");
+  M5.Lcd.setCursor(140, 220); M5.Lcd.print("Ready!");
   delay(1000);
   M5.Lcd.fillScreen(BACKGROUNDCOLOR);
 
@@ -117,7 +124,7 @@ void loop()
       homeScreen.loop();
     } else if (currView == camp) {
       if (!campRequested) {
-        publishMessage("Give me campaigns!", mainTopic);
+        publishMessage(campsMsg, mainTopic);
         campRequested = true;
         campaignsView.setReady(false);
       }
@@ -167,20 +174,32 @@ void callback(char* topic, byte* payload, unsigned int length)
   }
   Serial.println(in_str);
 
-  if (in_str.equals("Give me campaigns!")) { //This would be replaced by a JSON deserialization of a real message from the database
-    setupCampaigns();
-    campaignsView.setReady(true);
-  }
-
   if (in_str.equals("Give me stats!")) { //This would be replaced by a JSON deserialization of a real message from the database
     statsView.setupStats(37000, 70000, 10000);
     statsView.setReady(true);
   }
 
+  DynamicJsonDocument JSONin(2048); //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
   deserializeJson(JSONin, in_str);
   if ( JSONin["type"].as<String>() == "push profile" && JSONin["user_name"] == user_name) {
     total_steps = JSONin["total_steps"];
     remaining_sec = JSONin["remaining_sec"];
+  }
+
+  if ( JSONin["type"].as<String>() == "push user challenges" && JSONin["user_name"] == user_name) {
+    campaignsView.clearCampaigns();
+    JsonArray challenges = JSONin["challenges"];
+    Serial.println(challenges.size());
+    for (JsonObject challenge : challenges) {
+      String challengeName = challenge["challenge_name"];
+      String description = challenge["description"];
+      int endTime = challenge["end_time"];
+      int stepGoal = challenge["step_goal"];
+      int reward = challenge["reward"];
+      Serial.println(challengeName);
+      campaignsView.addCampaign(challengeName, description, endTime, stepGoal, reward);
+    }
+    campaignsView.setReady(true);
   }
 }
 
@@ -192,6 +211,10 @@ void setupJSON()
   JSONprofile["type"] = "pull profile";
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, profileMsg);
+  JSONprofile["type"] = "pull user challenges";
+  JSONprofile["user_name"] = user_name;
+  serializeJson(JSONprofile, campsMsg);
+  
 }
 
 void pullProfile()
@@ -203,12 +226,6 @@ void onStepTaken()
 {
   total_steps++;
   publishMessage(stepMsg, stepTopic );
-}
-
-void setupCampaigns() {
-  campaignsView.addCampaign("Campaign One", "This is your first campaign, congratulations !!");
-  campaignsView.addCampaign("Another Campaign", "This is another campaign");
-  campaignsView.addCampaign("Run to Stop COVID19", "Campaign sponsored by COOLCOMPANY&CO ");
 }
 
 /* ************************************************************************************
@@ -248,12 +265,12 @@ void setupWifiWithPassword()
   int dotsAmount = 0;
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    M5.Lcd.drawBitmap(0,0,320,240,(uint16_t *)logo); 
-    M5.Lcd.setCursor(140,200); M5.Lcd.print("CONNECTING ");
-    for(int i = 0; i < dotsAmount; i++) {
+    M5.Lcd.drawBitmap(0, 0, 320, 240, (uint16_t *)logo);
+    M5.Lcd.setCursor(140, 200); M5.Lcd.print("CONNECTING ");
+    for (int i = 0; i < dotsAmount; i++) {
       M5.Lcd.print(". ");
     }
-    dotsAmount = (dotsAmount+1)%4;
+    dotsAmount = (dotsAmount + 1) % 4;
   }
   Serial.println("IP address allocated: " + String(WiFi.localIP()));
 
