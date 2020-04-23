@@ -12,6 +12,10 @@ M5 - stateless device to update the database when user step count is incremented
 
 Web - allows user to log in and provide information about their account, user information and challenges.
 
+To maintain seperation of concerns, all data is accessed through an API public class, and requests pass through a single server (so web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexity. Unit testing each subsystem allowed for confidence of individual compenents working correctly and expectedly during integration.
+
+[Main architecture schema here]
+
 See relevant sections for further information about specific subsystems. 
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
