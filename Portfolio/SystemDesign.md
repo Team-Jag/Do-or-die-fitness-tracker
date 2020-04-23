@@ -39,10 +39,6 @@ React is ideal to implement a object oriented design. Our website conists of fun
 * **Challenge Choice Page:** Contains a Mqtt instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
 
-
-### M5
-![m5UML](/Portfolio/Images/m5uml.png)
-
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
 
@@ -85,6 +81,9 @@ Administration interface for data visualisation. Allow back-end to deal with sen
   * a. The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
 ### M5 STACK
+
+
+
 ## d. The evolution of UI wireframes for key sub-systems
 * *Can we integrate the paper prototypes here?* *
 
