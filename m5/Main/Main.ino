@@ -5,6 +5,7 @@ WiFiClient wifi_client;
 #define MQTT_MAX_PACKET_SIZE 1024
 #include <PubSubClient.h>
 PubSubClient ps_client( wifi_client );
+#include <TimeLib.h>
 
 enum currentView {
   home,
@@ -51,10 +52,6 @@ extern unsigned char logo[];
 
 //JSON
 #include <ArduinoJson.h>
-StaticJsonDocument<500> JSONprofile;
-StaticJsonDocument<500> JSONstep;
-StaticJsonDocument<500> JSONstats;
-StaticJsonDocument<1000> JSONcamps;
 String stepMsg;
 String profileMsg;
 String statsMsg;
@@ -67,11 +64,9 @@ const char* password = "cr5jdMktTnp7";
 const char* MQTT_clientname = "m5stack"; //Useless.
 const char* server = "broker.mqttdashboard.com";
 const int port = 1883;
-
 const char* MQTT_sub_topic = "doordie_web"; // Only topic used for message reading
 const char* mainTopic = "doordie_web"; // Topic used for all other communication
 const char* stepTopic = "doordie_steps"; // Topic reserved for step updating
-
 
 //Other Variables
 Pedometer step_counter;
@@ -85,8 +80,7 @@ void setup()
 {
   M5.begin(); M5.Power.begin(); Wire.begin(); //Start M5
   Serial.begin(115200); delay(10); //Start Serial (for debugging)
-  M5.Lcd.setTextSize(1);
-  m5.Lcd.setTextColor(BACKGROUNDCOLOR);
+  M5.Lcd.setTextSize(1); m5.Lcd.setTextColor(BACKGROUNDCOLOR);
   M5.Lcd.drawBitmap(0, 0, 320, 240, (uint16_t *)logo);
   setupWifiWithPassword();
   step_counter.setup();
@@ -131,7 +125,7 @@ void loop()
       campaignsView.loop();
     } else if (currView == statistics) {
       if (!statsRequested) {
-        publishMessage("Give me stats!", mainTopic);
+        publishMessage(statsMsg, mainTopic);
         statsRequested = true;
         statsView.setReady(false);
       }
@@ -175,8 +169,7 @@ void callback(char* topic, byte* payload, unsigned int length)
   Serial.println(in_str);
 
   if (in_str.equals("Give me stats!")) { //This would be replaced by a JSON deserialization of a real message from the database
-    statsView.setupStats(37000, 70000, 10000);
-    statsView.setReady(true);
+
   }
 
   DynamicJsonDocument JSONin(2048); //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
@@ -201,20 +194,36 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     campaignsView.setReady(true);
   }
+    //Dummy request, change pull to push once database implements this
+  if ( JSONin["type"].as<String>() == "pull user stats" && JSONin["user_name"] == user_name) {
+    statsView.setupStats(37000, 70000, 10000); //Dummy data at the moment, replace with real data
+    statsView.setReady(true);
+  }
+  
 }
 
 void setupJSON()
 {
+  StaticJsonDocument<500> JSONstep;
   JSONstep["type"] = "push step";
   JSONstep["user_name"] = user_name;
   serializeJson(JSONstep, stepMsg);
+
+  StaticJsonDocument<500> JSONprofile;
   JSONprofile["type"] = "pull profile";
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, profileMsg);
+
+  StaticJsonDocument<500> JSONcamps;
   JSONprofile["type"] = "pull user challenges";
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, campsMsg);
-  
+
+  StaticJsonDocument<500> JSONstats;
+  JSONprofile["type"] = "pull user stats";
+  JSONprofile["user_name"] = user_name;
+  serializeJson(JSONprofile, statsMsg);
+
 }
 
 void pullProfile()

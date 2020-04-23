@@ -32,7 +32,8 @@ class CampaignsView {
         }
         M5.Lcd.setCursor(0, 90); M5.Lcd.print("Campaign Description: "); M5.Lcd.print(campaigns[index].description);
         M5.Lcd.setCursor(0, 200); M5.Lcd.print("Reward: "); M5.Lcd.print(campaigns[index].reward);
-        M5.Lcd.setCursor(180, 200); M5.Lcd.print("Ends on: "); M5.Lcd.printf("%12d",day() campaigns[index].endTime);
+        int t = campaigns[index].endTime;
+        M5.Lcd.setCursor(150, 200); M5.Lcd.print("Ends on: "); M5.Lcd.printf("%02d/%02d/%04d %02d:%02d:%02d",day(t),month(t),year(t),hour(t),minute(t),second(t));
         if (M5.BtnA.read()) {
           M5.Lcd.fillScreen(BACKGROUNDCOLOR);
           delay(100);
