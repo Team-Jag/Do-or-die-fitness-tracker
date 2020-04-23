@@ -94,7 +94,6 @@ Original multi-tab wireframe design for desktop UI:
 
 Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
-
 ### Web
 
 ### M5
@@ -102,8 +101,8 @@ Updated wireframe design for UI in a single window:
 * *Team M5 please write this section* *
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
-* *Team Processing please write this section* *
-Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
+
+Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile using the data API. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
 
 M5 device is stateless therefore does not store information locally apart from created variables. These are then pulled from the database via a pull_user request type. 
 
