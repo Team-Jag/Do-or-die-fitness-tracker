@@ -98,6 +98,21 @@ Updated wireframe design for UI in a single window:
 
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
+
+**Processing**
+Example request from database:
+``` 
+{
+    "type": "push profile",
+    "user_name": "Mario",
+    "total_steps": 2200,
+    "remaining_sec": 2000,
+}
+```
+
+**Web**
+**M5**
 * *Team M5 please write this section* *
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
