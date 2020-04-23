@@ -12,6 +12,10 @@ M5 - stateless device to update the database when user step count is incremented
 
 Web - allows user to log in and provide information about their account, user information and challenges.
 
+To maintain seperation of concerns, all data is accessed through an API public class, and requests pass through a single server (so web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponser classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual compenents working correctly and expectedly during integration.
+
+![Architecture](/Portfolio/Images/architecture.png)
+
 See relevant sections for further information about specific subsystems. 
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
@@ -97,6 +101,21 @@ Updated wireframe design for UI in a single window:
 
 ### M5
 ## e. Details of the communication protocols in use (including a rational for your choice)
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
+
+**Processing**
+Example request from database:
+``` 
+{
+    "type": "push profile",
+    "user_name": "Mario",
+    "total_steps": 2200,
+    "remaining_sec": 2000,
+}
+```
+
+**Web**
+**M5**
 * *Team M5 please write this section* *
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
