@@ -20,7 +20,7 @@ See relevant sections for further information about specific subsystems.
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
 Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however it developed in to the following UML diagrams for each of the three sub-systems. 
 
-### Desktop
+### DESKTOP
 Key classes for desktop app include:
 
 * **data** - database API that retrieves and updates user, sponsor, challenge information.
@@ -28,7 +28,7 @@ Key classes for desktop app include:
 * **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
 
-### Web
+### WEB
 For more detail on web technologies see section **1g.** bellow.
 React is ideal to implement a object oriented design. Our website conists of functional components (classes- one for each site/view) and a MQTT class which is integrated into the different views.
 * **Mqtt Class:** This class handles all comunication with our "server" and the associated rendering. You will find a call for the Mqtt class in all the following components. The class:
@@ -41,6 +41,8 @@ React is ideal to implement a object oriented design. Our website conists of fun
 * **Profile Page:** Contains a Mqtt instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
 * **Challenge Choice Page:** Contains a Mqtt instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
+
+### M5
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
@@ -103,13 +105,13 @@ When designing the interface of the M5 Stack, we were mainly focused on the End-
 ## d. The evolution of UI wireframes for key sub-systems
 Our [User Story video](../Portfolio/Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section. 
 
-### Desktop
+### DESKTOP
 Original multi-tab wireframe design for desktop UI:
 ![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
 
 Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
-### Web
+### WEB
 
 ### M5
 ![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)
@@ -131,7 +133,7 @@ Initially our UI wireframe included a shop feature, however after adding a third
 ## e. Details of the communication protocols in use (including a rational for your choice)
 Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
 
-### Processing 
+### DESKTOP
 Example request from database:
 ``` 
 {
@@ -142,7 +144,7 @@ Example request from database:
 }
 ```
 
-### Web
+### WEB
 
 ### M5
 * *Team M5 please write this section* *
