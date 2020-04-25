@@ -83,8 +83,21 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * 3. **Sponsor activity**
   * a. The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
-### M5 STACK
+### M5 
+When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements in to two further subheadings.
 
+**Back-End**
+* The M5 must have a pedometer, able to accurately count the end-user's steps, and store them locally. 
+* The M5 must be able to communicate with the server using the shared communication contract.
+
+**Front-End**
+* To ensure customer retention, we have to implement an enganging and appealing interface. 
+* The M5 should display a live step count. 
+* The M5 should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement. 
+* The M5 must have a health bar which accurately reflects how much time Bean has left. 
+* Bean's animations and general liveliness should reflect its remaining life (i.e. it should bounce less when it is closer to death).
+* The M5 should display the challenges that the user is enrolled in. 
+* The M5 should display the user's statistics. 
 
 
 ## d. The evolution of UI wireframes for key sub-systems
