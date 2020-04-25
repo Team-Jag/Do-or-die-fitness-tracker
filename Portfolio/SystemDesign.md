@@ -101,6 +101,8 @@ When designing the interface of the M5 Stack, we were mainly focused on the End-
 
 
 ## d. The evolution of UI wireframes for key sub-systems
+Our [User Story video](../Portfolio/Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section. 
+
 ### Desktop
 Original multi-tab wireframe design for desktop UI:
 ![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
@@ -110,8 +112,6 @@ Updated wireframe design for UI in a single window:
 ### Web
 
 ### M5
-Our initial [User Story video](../Portfolio/Images/paper_prototype_video.mp4) demonstrates our initial prototype, prior to customer interaction and feedback from our peers. 
-
 ![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)
 
 The starting screen was replaced with a more professional logo, following user feedback.
