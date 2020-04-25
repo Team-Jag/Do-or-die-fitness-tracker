@@ -84,8 +84,8 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * 3. **Sponsor activity**
   * a. The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
-### M5 STACK
-
+### M5 
+When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. 
 
 
 ## d. The evolution of UI wireframes for key sub-systems
