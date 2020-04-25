@@ -1,7 +1,6 @@
 ![Do Or Die System Design](/Portfolio/Images/systemDesignLogo.png)
 
 # 1. System Design :
-![Do Or Die System Design](/Portfolio/Images/M5Images/bean.gif)
 ## a. Architecture of the entire system
 
 Architecture of the system uses a central controller database dealing with recieving and sending requests, using MQTT protocol to communicate between devices. Three key devices of system:
