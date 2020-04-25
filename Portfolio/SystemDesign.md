@@ -113,14 +113,20 @@ Updated wireframe design for UI in a single window:
 Our initial [User Story video](../Portfolio/Images/paper_prototype_video.mp4) demonstrates our initial prototype, prior to customer interaction and feedback from our peers. 
 
 ![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)
+
 The starting screen was replaced with a more professional logo, following user feedback.
 
-![Do Or Die System Design](/Portfolio/Images/M5Images/screenCollage.jpg)
+![Do Or Die System Design](/Portfolio/Images/M5Images/animation.gif)
 
+From the initial UI wireframe, we designed and animated a simple but responsive sprite. The screen was decluttered to allow the focus on the sprite, based upon feedback we received during the user testing session. 
 
 ![Do Or Die System Design](/Portfolio/Images/M5Images/statsCollage.jpg)
 
+The stats screen was implemented according to the UI wireframe, however we have not implemented the sleep detection feature due to its dificulty to develop. Therefore, different statistics have been displayed. 
+
 ![Do Or Die System Design](/Portfolio/Images/M5Images/campaignShopCollage.jpg)
+
+Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](/Portfolio/ProjectEvaluation.md). 
 
 ## e. Details of the communication protocols in use (including a rational for your choice)
 Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
