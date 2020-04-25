@@ -2,46 +2,120 @@
 # 2. System Implementation [40pts]:
 ## a. Breakdown of project into sprints (showing the users stories implemented in each).
 
-We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed and completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams we had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we interactions between substreams as needed during the week. In the following we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints. (in the end only Done items will remain on the list). 
+We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart for clarity between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. You can view the [full Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7) of the user stories that we implemented during each sprint. 
-![user gantt](/Portfolio/Images/user_gantt.png)
+In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. You can view the [full Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7) of the user stories that we implemented during each sprint. 
 
 ### Sprint 1 Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems.
 
-**Done:**
+**DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
-* Defined MVP with functions/classes/variables
+* Defined minimum viable product(MVP) with functions/classes/variables
 * Defined interactions between subsystems including the function calls and their JSON syntax 
+* Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
+
+**WIP:**
+* Implementation of communication protocol 
+
 ### Sprint 2 First Prototype (9.3-16.3) 
 The goal of this sprint was to create a very basic proof of concept.
 
-**Done:**
+**User Stories Implemented:**
+* End-user able to use pedometer accurately, steps counts persists between sessions
+
+**DONE:**
 * M5 Stack able to send a notification to server (Processing) for each new step
 * Processing able to process the notification, calculate the total steps and send it back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
-### Sprint 3 Fight corona and finish other coursework (16.3-30.3) 
-Due to the corona situation and the coursework deadlines, the team agreed to push all work to the backlog and not meet until after the deadline.
-### Sprint 4 Version Alpha (30.3-4.4) 
-The goal of this sprint is to get an alpha version of our prototype ready. This involves:
+
+**WIP:**
+* Improve the accuracy of the step count
+
+### NO SPRINT : Fight COVID-19 (16.3-30.3) 
+Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. 
+
+### Sprint 3 Alpha Version Release (30.3-6.4) 
+The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
+
+**User Stories Implemented:**
+* Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life 
+* Added a Bean sprite for the user's M5 stack, without animation
+
+**DONE:**
+* Improved accuracy of the step count
+* Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 
 **WIP:**
 * All subsystem able to receive, process and send the intended MQTT commands
 * All subsystems provide a basic version of the agreed visualization 
-### Sprint 5 Beta Version (6.4-13.4) 
-The goal of this sprint will be to get to advance our prototye, including:
-* Fix interaction issues that arise in the sprint review on 6th of April
-* Improve design and visuals
-* Extend functionalities (TBD)
-### Sprint 6 Refactor and neaten-up (13.4-20.4) 
-The goal of this sprint will be to make our prototype ready for presentation.
+* MQTT message length issue with M5 Stack 
 
-### Sprint 7 Prepare Video Demo (20.3-27.4) 
-The goal of this sprint will be to prepare and film a short demonstration video
-### Sprint 8 Write-up (27.4-4.5) 
-The goal of this sprint will be to do the write-up
+### Sprint 4 Resolving Issues and Enhancing Features (6.4-13.4) 
+The goal of this sprint will be to get to advance our prototye, including:
+* Fixed interaction issues that arose in the sprint review on 6th of April
+* Improve design and visuals
+* Extend functionalities 
+
+**User Stories Implemented:**
+* Basic animation for Bean sprite implemented
+* User can see the challenges that they are enrolled in on M5 stack (dummy data)
+* User can see basic statistics about their step count on M5 stack (dummy data)
+
+**DONE:**
+* All subsystem able to receive, process and send the intended MQTT commands
+* All subsystems provide a basic version of the agreed visualization 
+* M5 home view enhanced with animation 
+* Implementation of statistic and challenge view on M5 stack, had to use dummy data due to the MQTT message length issue
+* Agreed on how user death would work across subsystems
+
+**WIP:**
+* MQTT message length issue with M5 Stack 
+* Real data for statistics and challenges on M5 stack
+* All subsytems to handle user death 
+
+### Sprint 5 Beta Version Release (13.4-20.4) 
+The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
+
+**User Stories Implemented:**
+* User now able to see real-time challenge data on M5 stack
+* Animation for Bean now based on life left on M5 stack
+* Death screen if the time left is zero on M5 stack
+
+**DONE:**
+* MQTT message length issue resolved 
+* Replaced dummy data with appropriate server requests on M5 stack for challenges
+* Improved sprite animation: fequency and height of bounces linearly scales with time left
+* M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down
+
+**WIP:**
+* Implement interaction feature on M5 stack
+* Replace statistics dummy data with data from server on M5 stack
+
+### Sprint 6 Version 1.0 Release (20.3-27.4) 
+The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
+
+**User Stories Implemented:**
+* User able to see their statistics accurately reflected on statistic view
+
+**DONE:**
+* Replaced dummy data with appropriate server requests on M5 stack for statistics
+
+**WIP:**
+* Implement interaction feature on M5 stack
+
+### Sprint 7 Version 1.1 (optional) and Write-Up (27.4-4.5) 
+The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
+
+**User Stories Implemented:**
+* 
+
+**DONE:**
+* Implemented interaction feature on M5 stack
+
+**WIP:**
+* 
 
 ## b. Details of how you evaluated your designs (techniques used & awareness of their
 limitations)
