@@ -2,10 +2,9 @@
 # 2. System Implementation [40pts]:
 ## a. Breakdown of project into sprints (showing the users stories implemented in each).
 
-We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed and completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams we had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we interactions between substreams as needed during the week. In the following we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints. (in the end only Done items will remain on the list). 
+We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart for clarity between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. You can view the [full Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7) of the user stories that we implemented during each sprint. 
-![user gantt](/Portfolio/Images/user_gantt.png)
+In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. You can view the [full Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7) of the user stories that we implemented during each sprint. 
 
 ### Sprint 1 Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems.
@@ -14,6 +13,7 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 * Defined and agreed on overall infrastructure (shared on Slack)
 * Defined MVP with functions/classes/variables
 * Defined interactions between subsystems including the function calls and their JSON syntax 
+
 ### Sprint 2 First Prototype (9.3-16.3) 
 The goal of this sprint was to create a very basic proof of concept.
 
