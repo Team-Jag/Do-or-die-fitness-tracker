@@ -113,6 +113,8 @@ Updated wireframe design for UI in a single window:
 ### Web
 
 ### M5
+Our initial [User Story video](../Portfolio/Images/paper_prototype_video.mp4) demonstrates our initial prototype, prior to customer interaction and feedback from our peers. 
+
 ## e. Details of the communication protocols in use (including a rational for your choice)
 Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
 
