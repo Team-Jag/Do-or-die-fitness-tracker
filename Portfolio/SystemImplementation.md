@@ -9,39 +9,96 @@ In order to keep it clear which user stories were implemented during each sprint
 ### Sprint 1 Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems.
 
-**Done:**
+**DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
-* Defined MVP with functions/classes/variables
+* Defined minimum viable product(MVP) with functions/classes/variables
 * Defined interactions between subsystems including the function calls and their JSON syntax 
+* Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
+
+**WIP:**
+* Implementation of communication protocol 
 
 ### Sprint 2 First Prototype (9.3-16.3) 
 The goal of this sprint was to create a very basic proof of concept.
 
-**Done:**
+**User Stories Implemented:**
+* End-user able to use pedometer accurately, steps counts persists between sessions
+
+**DONE:**
 * M5 Stack able to send a notification to server (Processing) for each new step
 * Processing able to process the notification, calculate the total steps and send it back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
-### Sprint 3 Fight corona and finish other coursework (16.3-30.3) 
-Due to the corona situation and the coursework deadlines, the team agreed to push all work to the backlog and not meet until after the deadline.
-### Sprint 4 Version Alpha (30.3-4.4) 
-The goal of this sprint is to get an alpha version of our prototype ready. This involves:
+
+**WIP:**
+* Improve the accuracy of the step count
+
+### NO SPRINT : Fight COVID-19 (16.3-30.3) 
+Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. 
+
+### Sprint 3 Alpha Version Release (30.3-6.4) 
+The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
+
+**User Stories Implemented:**
+* Implemented a health bar, so that the user can visualize the Bean's remaining life 
+* Added a Bean sprite for the user's M5 stack, without animation
+
+**DONE:**
 
 **WIP:**
 * All subsystem able to receive, process and send the intended MQTT commands
 * All subsystems provide a basic version of the agreed visualization 
-### Sprint 5 Beta Version (6.4-13.4) 
+
+### Sprint 4 Beta Version (6.4-13.4) 
 The goal of this sprint will be to get to advance our prototye, including:
 * Fix interaction issues that arise in the sprint review on 6th of April
 * Improve design and visuals
 * Extend functionalities (TBD)
-### Sprint 6 Refactor and neaten-up (13.4-20.4) 
-The goal of this sprint will be to make our prototype ready for presentation.
 
-### Sprint 7 Prepare Video Demo (20.3-27.4) 
-The goal of this sprint will be to prepare and film a short demonstration video
-### Sprint 8 Write-up (27.4-4.5) 
-The goal of this sprint will be to do the write-up
+**User Stories Implemented:**
+* 
+
+**DONE:**
+* 
+
+**WIP:**
+* 
+
+### Sprint 5 Beta Version Release (13.4-20.4) 
+The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
+
+**User Stories Implemented:**
+* 
+
+**DONE:**
+* 
+
+**WIP:**
+* 
+
+### Sprint 6 Version 1.0 Release (20.3-27.4) 
+The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
+
+**User Stories Implemented:**
+* 
+
+**DONE:**
+* 
+
+**WIP:**
+* 
+
+### Sprint 7 Version 1.1 (optional) and Write-Up (27.4-4.5) 
+The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
+
+**User Stories Implemented:**
+* 
+
+**DONE:**
+* 
+
+**WIP:**
+* 
 
 ## b. Details of how you evaluated your designs (techniques used & awareness of their
 limitations)
