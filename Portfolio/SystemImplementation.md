@@ -40,53 +40,70 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
 
 **User Stories Implemented:**
-* Implemented a health bar, so that the user can visualize the Bean's remaining life 
+* Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life 
 * Added a Bean sprite for the user's M5 stack, without animation
 
 **DONE:**
+* Improved accuracy of the step count
+* Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 
 **WIP:**
 * All subsystem able to receive, process and send the intended MQTT commands
 * All subsystems provide a basic version of the agreed visualization 
+* MQTT message length issue with M5 Stack 
 
-### Sprint 4 Beta Version (6.4-13.4) 
+### Sprint 4 Resolving Issues and Enhancing Features (6.4-13.4) 
 The goal of this sprint will be to get to advance our prototye, including:
-* Fix interaction issues that arise in the sprint review on 6th of April
+* Fixed interaction issues that arose in the sprint review on 6th of April
 * Improve design and visuals
-* Extend functionalities (TBD)
+* Extend functionalities 
 
 **User Stories Implemented:**
-* 
+* Basic animation for Bean sprite implemented
+* User can see the challenges that they are enrolled in on M5 stack (dummy data)
+* User can see basic statistics about their step count on M5 stack (dummy data)
 
 **DONE:**
-* 
+* All subsystem able to receive, process and send the intended MQTT commands
+* All subsystems provide a basic version of the agreed visualization 
+* M5 home view enhanced with animation 
+* Implementation of statistic and challenge view on M5 stack, had to use dummy data due to the MQTT message length issue
+* Agreed on how user death would work across subsystems
 
 **WIP:**
-* 
+* MQTT message length issue with M5 Stack 
+* Real data for statistics and challenges on M5 stack
+* All subsytems to handle user death 
 
 ### Sprint 5 Beta Version Release (13.4-20.4) 
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
 
 **User Stories Implemented:**
-* 
+* User now able to see real-time challenge data on M5 stack
+* Animation for Bean now based on life left on M5 stack
+* Death screen if the time left is zero on M5 stack
 
 **DONE:**
-* 
+* MQTT message length issue resolved 
+* Replaced dummy data with appropriate server requests on M5 stack for challenges
+* Improved sprite animation: fequency and height of bounces linearly scales with time left
+* M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down
 
 **WIP:**
-* 
+* Implement interaction feature on M5 stack
+* Replace statistics dummy data with data from server on M5 stack
 
 ### Sprint 6 Version 1.0 Release (20.3-27.4) 
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
 
 **User Stories Implemented:**
-* 
+* User able to see their statistics accurately reflected on statistic view
 
 **DONE:**
-* 
+* Replaced dummy data with appropriate server requests on M5 stack for statistics
 
 **WIP:**
-* 
+* Implement interaction feature on M5 stack
 
 ### Sprint 7 Version 1.1 (optional) and Write-Up (27.4-4.5) 
 The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
@@ -95,7 +112,7 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 * 
 
 **DONE:**
-* 
+* Implemented interaction feature on M5 stack
 
 **WIP:**
 * 
