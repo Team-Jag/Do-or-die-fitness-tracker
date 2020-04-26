@@ -218,21 +218,18 @@ public class Dashboard_view {
          }
      }
 
-// i had to keep messing with the horizontal and vertical spacing below to get it to work 
     void build_expanded(String userid) {
         
       
         if (is_expanded == 1) {
-        // basically switch it round
             cp5.get("users").remove();
             cp5.get("challenges").remove();
+            cp5.get("sponsors").remove();
             is_expanded = 1;
-            // haven't used below yet 
-          //  button_state = 0; // this ensures that the creation of buttons aren't reported for call backs
         }
 
       ListBox challenges = cp5.addListBox("challenge view")
-            .setPosition((3 * challenge_view_hoz), 1 * challenge_view_vert)
+            .setPosition((3 * challenge_view_hoz), 2 * challenge_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
@@ -241,7 +238,7 @@ public class Dashboard_view {
             .setColorForeground(color(R, G, B));
 
       ListBox users = cp5.addListBox("user view")
-            .setPosition((3 * user_view_hoz), 4 * user_view_vert)
+            .setPosition((3 * user_view_hoz), 5 * user_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
@@ -250,7 +247,7 @@ public class Dashboard_view {
             .setColorForeground(color(R, G, B));
             
       ListBox sponsors = cp5.addListBox("sponsor view")
-            .setPosition((3 * challenge_view_hoz), 6 * challenge_view_vert)
+            .setPosition((3 * challenge_view_hoz), 13 * challenge_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
