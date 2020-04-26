@@ -18,7 +18,8 @@ static abstract class DataType {
       DataType.SELECTCHALLENGE, 
       DataType.STEP, 
       DataType.WEBPROFILE,
-      DataType.NEWPROFILE
+      DataType.NEWPROFILE,
+      DataType.USERSTATS
    };
    static final String PROFILE = "profile";
    static final String USERCHALLENGES = "user challenges";
@@ -28,6 +29,7 @@ static abstract class DataType {
    static final String STEP = "step";
    static final String WEBPROFILE = "web profile";
    static final String NEWPROFILE = "new profile";
+   static final String USERSTATS = "user stats";
 }
 
 
@@ -117,13 +119,14 @@ public class UserData {
    // API CALL 3
    void updateUserStep(String name) {
       JSONObject user = getUserByName(name);
-      // key, value
-      int incrementstep = user.getInt("total_steps") + 1;
-      user.setInt("total_steps", incrementstep);
-      int time = user.getInt("remaining_sec");
-      user.setInt("remaining_sec", time+2);
-      u_api.addRewardIfChallengeMet(user);
-      u_api.saveUsertoDB(db.users);
+      if(user.get("user_name") != null) {   
+         int incrementstep = user.getInt("total_steps") + 1;
+         user.setInt("total_steps", incrementstep);
+         int time = user.getInt("remaining_sec");
+         user.setInt("remaining_sec", time+2);
+         u_api.addRewardIfChallengeMet(user);
+         u_api.saveUsertoDB(db.users);
+      }
    }
    // API CALL 4
    void pushUserProfile(String name, String topic) {
@@ -131,9 +134,11 @@ public class UserData {
       JSONObject ret = new JSONObject();
       ret.setString("type", RequestType.PUSH + DataType.PROFILE);
       ret.setString("user_name", name);
-      if (user.get("user_name") != null) {      
-         ret.setInt("total_steps", user.getInt("total_steps"));
-         ret.setInt("remaining_sec", user.getInt("remaining_sec"));
+      if(user.get("user_name") != null) {       
+         if (user.get("user_name") != null) {      
+            ret.setInt("total_steps", user.getInt("total_steps"));
+            ret.setInt("remaining_sec", user.getInt("remaining_sec"));
+         }
       }
       client.publish(topic, ret.toString());
    }
@@ -141,14 +146,16 @@ public class UserData {
    void pushUserChallenges(String name, String topic) {
       JSONObject user = u_api.getUserByName(name);
       JSONObject ret = new JSONObject();
-      JSONArray challengeid = user.getJSONArray("challenge_id");
-      JSONArray challenges = new JSONArray();
-      ret.setString("type", RequestType.PUSH + DataType.USERCHALLENGES);
-      ret.setJSONArray("challenges", challenges);
       ret.setString("user_name", name);
-      if (challengeid != null) {
-         for (int i = 0; i < challengeid.size(); i++) {
-            challenges.setJSONObject(i, c_api.getChallengeByID(challengeid.get(i).toString()));
+      ret.setString("type", RequestType.PUSH + DataType.USERCHALLENGES);
+      if(user.get("user_name") != null) {
+         JSONArray challengeid = user.getJSONArray("challenge_id");
+         JSONArray challenges = new JSONArray();
+         ret.setJSONArray("challenges", challenges);
+         if (challengeid != null) {
+            for (int i = 0; i < challengeid.size(); i++) {
+               challenges.setJSONObject(i, c_api.getChallengeByID(challengeid.get(i).toString()));
+            }
          }
       }
       client.publish(topic, ret.toString());
@@ -156,7 +163,7 @@ public class UserData {
    // API CALL 6
    void addChallengeToUser(String name, String challengeid) {
       JSONObject user = u_api.getUserByName(name);
-      if (user != null) {
+      if (user.get("user_name") != null) {
          if (c_api.getChallengeByID(challengeid) != null) {
             JSONArray challenges = user.getJSONArray("challenge_id");
             challenges.setString(challenges.size()+1, challengeid);
@@ -172,6 +179,7 @@ public class UserData {
       JSONArray challenges = new JSONArray();
       ret.setString("type", RequestType.PUSH + DataType.WEBPROFILE);
       ret.setString("user_name", name);
+      
       if(user.get("user_name") != null) {    
          println("here");
          JSONArray challengeid = user.getJSONArray("challenge_id");
@@ -240,6 +248,19 @@ public class UserData {
       if(challenges.size() != 0) challenges.setString(challenges.size()+1, challengeid);
       else challenges.setString(challenges.size(), challengeid);
       u_api.saveUsertoDB(db.users);
+   }
+      // API CALL 12
+   void pushUserStats(String name, String topic) {
+      JSONObject user = u_api.getUserByName(name);
+      JSONObject ret = new JSONObject();
+      ret.setString("type", RequestType.PUSH + DataType.USERSTATS);
+      ret.setString("user_name", name);
+      if(user.get("user_name") != null) {
+         ret.setInt("daily_record", user.getInt("daily_record"));
+         ret.setInt("weekly_record", user.getInt("weekly_record"));
+         ret.setInt("weekly_current", user.getInt("weekly_current"));
+      }
+      client.publish(topic, ret.toString());
    }
 }
 
