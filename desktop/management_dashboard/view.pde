@@ -35,11 +35,17 @@ void updateDashboardData() {
     
     
     view.buildSearch(10, 0); //search for specific player
-    int[] testdata = {1,5,12,35,56,79,100,220,340,325};
+    int[] usersOverTime = {1,5,12,35,56,79,100,220,340,325};
+    int[] usersAlive = {2,10}; //  2/10 alive for now
+    int[] metrics = {sponsor.size(), challenge.size(), users.size()};
     
+    view.buildChart(Chart.LINE, "USERS OVER TIME", usersOverTime, 250, 140,200, 100, 500);
+    view.buildChart(Chart.PIE, "Users Alive", usersAlive, 250, 470, 0, 0, 500);
+    view.buildChartLabel("USERS ALIVE", 250, 670);
+    view.buildChart(Chart.BAR, "METRICS", metrics, 450, 470, 0, 0, 10);
+    view.buildChartLabel("sponsors          challenges          users", 250, 670);
     
-    view.buildChart(Chart.PIE, "test", testdata, 250, 140, 10, 10);
-    view.buildChartLabel("labeltest", 250, 350);
+    //view.buildChartLabel("labeltest", 250, 350);
     /*view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
     
@@ -66,10 +72,7 @@ public class Dashboard_view {
     int vert_margin_spacing = 10;
     int horiz_margin_spacing = 10;
     
-    int metric_x_size = 100;
-    int metric_spacing = 0;
-    int metric_y_size = 20;
-    
+   
     int list_spacing = 0;
     int list_x_size = 250;
     int list_y_size = 350;
@@ -127,13 +130,14 @@ public class Dashboard_view {
         .setSize(50, 20);
     }
     
-    //chart functions 
+    //CHART FUNCTIONS 
     
-    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY, int sizeX, int sizeY) {      
+    //generic chart build function for an array of integer data
+    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY, int sizeX, int sizeY, int scaling) {      
       Chart chart = cp5.addChart(chartName)
           .setPosition(chartX, chartY)
           .setSize(chart_size+sizeX, chart_size+sizeY)
-          .setRange(0, 500) //chart max value to show, used for scaling
+          .setRange(0, scaling) //chart max value to show, used for scaling
           .setColorCaptionLabel(color(255))
           .setView(chartType);
       
@@ -165,13 +169,11 @@ public class Dashboard_view {
            .setColorValue(255);
     
     }
+
+    //END OF CHART FUNCTIONS
     
-    //everything else
-    
-    void build_title(String text, int x, int y) { //this is a hack to get around text troubles
-        //ControlFont cf1 = new ControlFont(createFont("Arial",50));
-        
-        PFont pfont = createFont("Impact",20); // use true/false for smooth/no-smooth
+    void build_title(String text, int x, int y) { //build big main title
+        PFont pfont = createFont("Impact",20); 
         ControlFont font = new ControlFont(pfont,85);
         
         Button title = cp5.addButton(text)
@@ -201,20 +203,17 @@ public class Dashboard_view {
         list.clear();
         list.open();
         
-        //test for one user
-        
         JSONObject curr_user;
         JSONArray user_challenges;
         
-        // keep adding the remaining_sec, mainly just a test for now so update as you want 
-          for(int i = 0; i < users.size(); i ++){ //confused about this
+         for(int i = 0; i < users.size(); i ++){ //confused about this
               curr_user = users.getJSONObject(i);
               user_challenges = curr_user.getJSONArray("challenge_id");
               
               list.addItem("name: "+curr_user.getString("user_name"), i);
               list.addItem("  challenges: "+str(user_challenges.size()), i);
               list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
-              //list.addItem("  time: "+curr_user.getString("remaining_sec"), i);
+              list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
          }
      }
 
@@ -286,6 +285,5 @@ public class Dashboard_view {
     void resetSpacing() {
         chart_spacing = 0;
         list_spacing = 0;
-        metric_spacing = 0;
     }
 }
