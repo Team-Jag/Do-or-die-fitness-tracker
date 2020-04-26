@@ -9,17 +9,17 @@ PubSubClient ps_client( wifi_client );
 
 enum currentView {
   home,
-  camp,
+  chall,
   statistics,
 };
 
-typedef struct campaign {
+typedef struct challenge {
   String name;
   String description;
   int endTime;
   int stepGoal;
   int reward;
-} campaign;
+} challenge;
 
 //GLOBAL VARIABLES
 String user_name = "Mario";
@@ -32,7 +32,7 @@ const uint16_t BEANCOLOR = 0xFC9F;
 int lifeleft; // value between 0 and 100 representing % of life left
 int maxlife = 100;
 currentView currView;
-boolean campRequested = true;
+boolean challRequested = true;
 boolean statsRequested = true;
 boolean dead = false;
 
@@ -43,7 +43,7 @@ boolean dead = false;
 #include "TextBox.h"
 #include "Bar.h"
 #include "View.h"
-#include "CampaignsView.h"
+#include "ChallengesView.h"
 #include "StatsView.h"
 
 extern unsigned char logo[];
@@ -53,7 +53,7 @@ extern unsigned char logo[];
 String stepMsg;
 String profileMsg;
 String statsMsg;
-String campsMsg;
+String challsMsg;
 
 //MQTT Variables
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
@@ -70,7 +70,7 @@ const char* stepTopic = "doordie_steps"; // Topic reserved for step updating
 Pedometer step_counter;
 Timer pullTimer(5000, true);
 View homeScreen;
-CampaignsView campaignsView;
+ChallengesView challengesView;
 StatsView statsView;
 
 void setup()
@@ -113,13 +113,13 @@ void loop()
     lifeleft = (remaining_sec * maxlife) / max_sec;
     if (currView == home) {
       homeScreen.loop();
-    } else if (currView == camp) {
-      if (!campRequested) {
-        publishMessage(campsMsg, mainTopic);
-        campRequested = true;
-        campaignsView.setReady(false);
+    } else if (currView == chall) {
+      if (!challRequested) {
+        publishMessage(challsMsg, mainTopic);
+        challRequested = true;
+        challengesView.setReady(false);
       }
-      campaignsView.loop();
+      challengesView.loop();
     } else if (currView == statistics) {
       if (!statsRequested) {
         publishMessage(statsMsg, mainTopic);
@@ -173,7 +173,7 @@ void callback(char* topic, byte* payload, unsigned int length)
   }
 
   if ( JSONin["type"].as<String>() == "push user challenges" && JSONin["user_name"] == user_name) {
-    campaignsView.clearCampaigns();
+    challengesView.clearChallenges();
     JsonArray challenges = JSONin["challenges"];
     Serial.println(challenges.size());
     for (JsonObject challenge : challenges) {
@@ -183,9 +183,9 @@ void callback(char* topic, byte* payload, unsigned int length)
       int stepGoal = challenge["step_goal"];
       int reward = challenge["reward"];
       Serial.println(challengeName);
-      campaignsView.addCampaign(challengeName, description, endTime, stepGoal, reward);
+      challengesView.addChallenge(challengeName, description, endTime, stepGoal, reward);
     }
-    campaignsView.setReady(true);
+    challengesView.setReady(true);
   }
     //Dummy request, change pull to push once database implements this
   if ( JSONin["type"].as<String>() == "push user stats" && JSONin["user_name"] == user_name) {
@@ -210,10 +210,10 @@ void setupJSON()
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, profileMsg);
 
-  StaticJsonDocument<500> JSONcamps;
+  StaticJsonDocument<500> JSONchalls;
   JSONprofile["type"] = "pull user challenges";
   JSONprofile["user_name"] = user_name;
-  serializeJson(JSONprofile, campsMsg);
+  serializeJson(JSONprofile, challsMsg);
 
   StaticJsonDocument<500> JSONstats;
   JSONprofile["type"] = "pull user stats";

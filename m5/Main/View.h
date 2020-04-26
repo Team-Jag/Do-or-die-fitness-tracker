@@ -12,7 +12,7 @@ class View {
   public:
 
     View() {
-      b1.set("Campaigns", 0);
+      b1.set("Challenges", 0);
       b2.set("Statistics", 1);
       b3.set("Interact", 2);
     }
@@ -41,8 +41,8 @@ class View {
       if (M5.BtnA.read()) {
         M5.Lcd.fillScreen(BACKGROUNDCOLOR);
         delay(100);
-        campRequested = false;
-        currView = camp;
+        challRequested = false;
+        currView = chall;
       } else if (M5.BtnB.read()) {
         M5.Lcd.fillScreen(BACKGROUNDCOLOR);
         delay(100);
