@@ -7,6 +7,20 @@ DropdownList current_users;
 DropdownList upcoming, current, completed;
 int is_expanded = 0;
 
+//color scheme to keep everything consistent
+static abstract class ColorScheme {
+   static final int[] LIST = {
+      ColorScheme.MAIN, 
+      ColorScheme.HIGHLIGHTS,
+      ColorScheme.BACKGROUND,
+      ColorScheme.CHARTS1
+   };
+   static final int MAIN = #2CA8FF;
+   static final int HIGHLIGHTS = #fa7a50;
+   static final int BACKGROUND = #22247f;
+   static final int CHARTS1 = #57dcd9;
+}
+
 // called eachtime
 void refreshDashboardData() {
     // We just rebuild the view rather than updating existing
@@ -20,13 +34,12 @@ void refreshDashboardData() {
     updateDashboardData();
 }
 
-// basic idea is we'll have a user and challenge view, for the manager (possibly sponsor? see the slack for 
-// the drawings of how we want it to look but totally up to you)
 void updateDashboardData() {
+    //build basic static elements
     ControlFont cf2 = new ControlFont(createFont("Helvetica",10));
     refreshData();
     surface.setTitle("Do or Die Admin Dashboard");
-    view.build_title("Do or Die", 250, 0);
+    view.buildTitle("Do or Die", 250, 0);
     
     //retrieve files through db API
     JSONArray users = db.users.getJSONArray("user");
@@ -50,12 +63,17 @@ void updateDashboardData() {
     view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    view.build_expanded("user"); //this is for user list, need to change too
+    view.build_expanded(users, challenge, sponsor); 
 }
  
 
 // The main class which contains the dynamic build of the dashboard. Advantage being more metrics can be added with ease.
 public class Dashboard_view {
+    int colorMain = ColorScheme.MAIN;
+    int colorHighlights = ColorScheme.HIGHLIGHTS;
+    int colorBackground = ColorScheme.BACKGROUND;
+    int colorCharts = ColorScheme.CHARTS1;
+  
     int is_expanded = 0; //What to do with this?
     
     int vert_margin_spacing = 10;
@@ -97,7 +115,6 @@ public class Dashboard_view {
             curr_user = users.getJSONObject(i);
             if (curr_user.getInt("remaining_sec") > 0) {
                 live++;
-                println(live); //for debug
             }
        }
        return live;
@@ -114,10 +131,10 @@ public class Dashboard_view {
           .setColorCaptionLabel(color(255))
           .setView(chartType);
       
-        chart.getColor().setBackground(color(12,23,45)); //colour scheme, need to enum
+        chart.getColor().setBackground(color(colorBackground)); //colour scheme, need to enum
         
         chart.addDataSet(chartName);
-        chart.setColors(chartName, color(255),color(0, 124, 158));
+        chart.setColors(chartName, color(255),color(colorMain),color(colorCharts)); 
         addChartData(chart, chartName, chartData); //adds data from data array
         
         
@@ -145,24 +162,25 @@ public class Dashboard_view {
 
     //BUILD ELEMENT FUNCTIONS
     
-    void build_title(String text, int x, int y) { //build big main title
+    void buildTitle(String text, int titleX, int titleY) { //build big main title
         PFont pfont = createFont("Impact",20); 
         ControlFont font = new ControlFont(pfont,85);
         
         Button title = cp5.addButton(text)
             .setValue(0)
-            .setPosition(x, y)
-            .setColorBackground(color(0,135,166))
+            .setPosition(titleX, titleY)
+            .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
+            .setColorForeground(colorHighlights)
             .setSize(380, 90);
             
         title.getCaptionLabel().setFont(font);
     }
     
-     void buildSearch(int x, int y) {
+    //for search button, events has listener
+     void buildSearch(int searchX, int searchY) {
       cp5.addTextfield("")
-     .setPosition(x,y)
+     .setPosition(searchX,searchY)
      .setSize(100,20)
      .setFocus(true)
      .setColor(color(R,G,B))
@@ -170,24 +188,25 @@ public class Dashboard_view {
      
       cp5.addButton("search")
         .setValue(0)
-        .setPosition(x+110, y)
-        .setColorBackground(color(0,135,166))
+        .setPosition(searchX+110, searchY)
+        .setColorBackground(color(colorMain))
         .setColorActive(color(0))
-        .setColorForeground(color(R,G,B))
+        .setColorForeground(color(colorHighlights))
         .setSize(50, 20);
     }
     
+    //generic button with text
     void createButton(String name, String value, int x, int y) {
         cp5.addButton(name+": "+value) //+total_sponsers 
             .setValue(0)
             .setPosition(x, y)
-            .setColorBackground(color(0,135,166))
+            .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
+            .setColorForeground(color(colorHighlights))
             .setSize(120, 25);
     }
 
-
+    //main list for scrolling for users
     void build_list(String list_name, JSONArray users) { //this creates the main list, takes from the json user object
         ScrollableList list = cp5.addScrollableList(list_name)
             .setPosition((2 * main_list_hoz) + list_spacing+30, main_list_vert)
@@ -196,9 +215,9 @@ public class Dashboard_view {
         list.setBackgroundColor(color(0));
         list.setItemHeight(30);
         list.setBarHeight(40);
-        list.setColorBackground(color(0,135,166));
-        list.setColorForeground(color(R,G,B));
-        list.setColorActive(color(R, G, B));
+        list.setColorBackground(color(colorMain));
+        list.setColorForeground(color(colorHighlights));
+        list.setColorActive(color(0));
         list_spacing = list_spacing + list_x_size + 15;
         list.clear();
         list.open();
@@ -217,7 +236,7 @@ public class Dashboard_view {
          }
      }
 
-    void build_expanded(String userid) {
+    void build_expanded(JSONArray usersArr, JSONArray challengesArr, JSONArray sponsorsArr) {
         
       
         if (is_expanded == 1) {
@@ -232,27 +251,27 @@ public class Dashboard_view {
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(R,G,B))
-            .setColorForeground(color(R, G, B));
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(colorHighlights))
+            .setColorForeground(color(colorHighlights));
 
       ListBox users = cp5.addListBox("user view")
             .setPosition((3 * user_view_hoz), 5 * user_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(R,G,B))
-            .setColorForeground(color(R, G, B));
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights));
             
       ListBox sponsors = cp5.addListBox("sponsor view")
             .setPosition((3 * challenge_view_hoz), 13 * challenge_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(R,G,B))
-            .setColorForeground(color(R, G, B));
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights));
   
         users.addItem("daily", 0);
         users.addItem("weekly", 1); 
