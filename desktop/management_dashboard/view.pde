@@ -55,7 +55,7 @@ void updateDashboardData() {
     view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    //view.build_expanded(user.getString("user_ID"), user); //this is for user list, need to change too
+    view.build_expanded("user"); //this is for user list, need to change too
 }
  
 
@@ -142,7 +142,7 @@ public class Dashboard_view {
         chart.addDataSet(chartName);
         chart.setColors(chartName, color(255),color(0, 124, 158));
         addChartData(chart, chartName, chartData); //adds data from data array
-        chart.setLabel("FUCK YOU");
+        
         
     }
     
@@ -219,7 +219,7 @@ public class Dashboard_view {
      }
 
 // i had to keep messing with the horizontal and vertical spacing below to get it to work 
-    void build_expanded(String userid, JSONObject user) {
+    void build_expanded(String userid) {
         
       
         if (is_expanded == 1) {
@@ -232,7 +232,7 @@ public class Dashboard_view {
         }
 
       ListBox challenges = cp5.addListBox("challenge view")
-            .setPosition((3 * challenge_view_hoz), 6 * challenge_view_vert)
+            .setPosition((3 * challenge_view_hoz), 1 * challenge_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
@@ -241,7 +241,7 @@ public class Dashboard_view {
             .setColorForeground(color(R, G, B));
 
       ListBox users = cp5.addListBox("user view")
-            .setPosition((2 * user_view_hoz), 1 * user_view_vert)
+            .setPosition((3 * user_view_hoz), 4 * user_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
