@@ -176,7 +176,7 @@ Web: doordie_web
 //Send stats to M5 stack from database
 {
 	"type": "push user stats",
-	"user_name": "Mario,
+	"user_name": "Mario",
 	"daily_record": 10000,
 	"weekly_record": 39000,
 	"weekly_current": 18032
