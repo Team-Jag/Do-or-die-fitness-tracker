@@ -159,3 +159,26 @@ Web: doordie_web
     "user_name": "Mario",
     "challenge_id": "1"
 }
+
+// 
+{
+    "type": "push select challenge",
+    "user_name": "Mario",
+    "challenge_id": "1"
+}
+
+//Request stats from database
+{
+	"type": "pull user stats",
+	"user_name": "Mario
+}
+
+//Send stats to M5 stack from database
+{
+	"type": "push user stats",
+	"user_name": "Mario,
+	"daily_record": 10000,
+	"weekly_record": 39000,
+	"weekly_current": 18032
+}
+
