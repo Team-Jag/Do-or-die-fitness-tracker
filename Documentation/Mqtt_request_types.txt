@@ -35,28 +35,6 @@ Web: doordie_web
 	"type":"M5 pull challenges",
 	"user_name":"Mario"
 }
-
-// From database send all challenges to m5 Stack
-{
-    "t": "p ch",
-    "u_n": "Mario",
-    "ch": [
-    {
-        "name": "10K Step",
-        "des": "step",
-        "end": 1589500800,		// epoch time for 15 may
-        "goal": 10000,
-        "rwrd": 800
-    },
-  
-    {	
-	"name": "Run",
-        "des": "run",
-        "end": 1589500800,
-        "goal": 2000,
-        "rwrd": 800,
-    }]
-}
   
 // From database sending all challenges that user is enrolled in
 {
@@ -160,20 +138,13 @@ Web: doordie_web
     "challenge_id": "1"
 }
 
-// 
-{
-    "type": "push select challenge",
-    "user_name": "Mario",
-    "challenge_id": "1"
-}
-
-//Request stats from database
+// Request stats from database
 {
 	"type": "pull user stats",
 	"user_name": "Mario
 }
 
-//Send stats to M5 stack from database
+// Send stats to M5 stack from database
 {
 	"type": "push user stats",
 	"user_name": "Mario",
