@@ -141,7 +141,7 @@ Web: doordie_web
 // Request stats from database
 {
 	"type": "pull user stats",
-	"user_name": "Mario
+	"user_name": "Mario"
 }
 
 // Send stats to M5 stack from database
