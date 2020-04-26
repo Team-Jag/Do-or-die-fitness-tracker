@@ -43,7 +43,10 @@ void updateDashboardData() {
     
     view.buildSearch(10, 0); //possibly search for a specific player?
     
-    view.build_LineChart("users daily", 0, 4, 7, 250, 140);
+    int[] testdata = {1,23,4,234,234};
+    
+    view.buildChart(Chart.LINE, "test", testdata, 250, 140);
+    /*view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
     
     view.build_chartLabel("users                    challenges          sponsers", 680, 640);
@@ -51,6 +54,7 @@ void updateDashboardData() {
     
     view.build_chartLabel("users alive", 680, 440);
     view.build_PieChart("live_users", users.size(), view.countLivePlayers(users), 680, 250); //players alive out of total players
+    */
     
     view.createButton("current users", str(total_users), 250, 100);
     view.createButton("active challenges", str(total_challenges), 380, 100);
@@ -129,10 +133,33 @@ public class Dashboard_view {
         .setColorForeground(color(R,G,B))
         .setSize(50, 20);
     }
+    
+    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY) {
+      Chart chart = cp5.addChart(chartName)
+          .setPosition(chartX, chartY)
+          .setSize(chart_size, chart_size)
+          .setRange(0, 10)
+          .setColorCaptionLabel(color(255))
+          .setView(chartType);
+      
+        chart.getColor().setBackground(color(12,23,45)); //colour scheme
+        chart.addDataSet(chartName);
+        chart.setColors(chartName, color(255),color(0, 124, 158));
+        addChartData(chart, chartName, chartData);
+        
+        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
+    }
+    
+    void addChartData(Chart chart, String chartName, int[] data) {
+      int i;
+      
+      for (i = 0; i < data.length; i++) {
+        chart.addData(chartName, data[i]);
+      }
+      
+    }
 
     void build_PieChart(String chart_name, int val, int val1, int x, int y) {
-        
-      
         Chart chart = cp5.addChart(chart_name)
             .setPosition(x, y)
             .setSize(chart_size, chart_size)
@@ -151,9 +178,10 @@ public class Dashboard_view {
         
     }
     
-    //this is a hack
+    //workaround for chart label problem
+    
     void build_chartLabel(String text, int x, int y) {
-        Textlabel caption; //workaround for chart label problem
+        Textlabel caption; 
       
        caption = cp5.addTextlabel(text)
            .setText(text)
@@ -210,15 +238,6 @@ public class Dashboard_view {
         title.getCaptionLabel().setFont(font);
     }
 
-// curr users - build_metric
-/*
-    void build_metric(String name, int value) {
-        cp5.addNumberbox(name)
-            .setValue(value)
-            .setPosition(horiz_margin_spacing, vert_margin_spacing + metric_spacing)
-            .setSize(metric_x_size, metric_y_size);
-        metric_spacing = metric_spacing + (2 * metric_y_size);
-    } */
 
     void build_list(String list_name, JSONArray users) { //this creates the main list, takes from the json user object
         ScrollableList list = cp5.addScrollableList(list_name)
@@ -248,7 +267,7 @@ public class Dashboard_view {
               list.addItem("name: "+curr_user.getString("user_name"), i);
               list.addItem("  challenges: "+str(user_challenges.size()), i);
               list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
-              list.addItem("  time: "+curr_user.getString("remaining_sec"), i);
+              //list.addItem("  time: "+curr_user.getString("remaining_sec"), i);
          }
      }
 

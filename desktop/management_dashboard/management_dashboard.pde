@@ -34,8 +34,8 @@ void setup() {
 void draw() {
   background(0);
   // updates time left for users in database
-  if(millis() - time >= 1000) {
+  /*if(millis() - time >= 1000) {
      u_api.updateTimeRemaining();
      time = millis();
-  }
+  }*/
 }
