@@ -28,24 +28,18 @@ void updateDashboardData() {
     surface.setTitle("Do or Die Admin Dashboard");
     view.build_title("Do or Die", 250, 0);
     
+    //retrieve files through db API
     JSONArray users = db.users.getJSONArray("user");
     JSONArray challenge = db.challenges.getJSONArray("challenge"); 
-    //JSONArray sponser = db.challenges.getJSONArray("sponser"); //need data api functions
-    JSONObject user = users.getJSONObject(0);
-    int total_users = users.size();
-    int total_sponsers = 1;
-    int total_challenges = challenge.size();
-    int steps = user.getInt("total_steps"); 
-    
-    // don't think we need the metrics - creates those weird charts at side
-    //view.build_metric(users + " total ", user.getInt("total_steps"));
+    JSONArray sponsor = db.sponsors.getJSONArray("sponsor"); 
     
     
-    view.buildSearch(10, 0); //possibly search for a specific player?
+    view.buildSearch(10, 0); //search for specific player
+    int[] testdata = {1,5,12,35,56,79,100,220,340,325};
     
-    int[] testdata = {1,23,4,234,234};
     
-    view.buildChart(Chart.LINE, "test", testdata, 250, 140);
+    view.buildChart(Chart.PIE, "test", testdata, 250, 140, 10, 10);
+    view.buildChartLabel("labeltest", 250, 350);
     /*view.build_LineChart("users daily", 0, 4, 7, 250, 140);
     view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
     
@@ -56,19 +50,18 @@ void updateDashboardData() {
     view.build_PieChart("live_users", users.size(), view.countLivePlayers(users), 680, 250); //players alive out of total players
     */
     
-    view.createButton("current users", str(total_users), 250, 100);
-    view.createButton("active challenges", str(total_challenges), 380, 100);
-    view.createButton("total sponsers", str(total_sponsers), 510, 100);
+    view.createButton("current users", str(users.size()), 250, 100);
+    view.createButton("active challenges", str(challenge.size()), 380, 100);
+    view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    // when you drop down
-    view.build_expanded(user.getString("user_ID"), user); //this is for user list
+    //view.build_expanded(user.getString("user_ID"), user); //this is for user list, need to change too
 }
  
 
 // The main class which contains the dynamic build of the dashboard. Advantage being more metrics can be added with ease.
 public class Dashboard_view {
-    int is_expanded = 0;
+    int is_expanded = 0; //What to do with this?
     
     int vert_margin_spacing = 10;
     int horiz_margin_spacing = 10;
@@ -82,7 +75,7 @@ public class Dashboard_view {
     int list_y_size = 350;
     
     int chart_spacing = 100;
-    int chart_size = 180;
+    int chart_size = 180; //default size value, smallest charts can be
     
     int chart_vertical = 500;
     int chart_horizontal = 100;
@@ -134,20 +127,23 @@ public class Dashboard_view {
         .setSize(50, 20);
     }
     
-    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY) {
+    //chart functions 
+    
+    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY, int sizeX, int sizeY) {      
       Chart chart = cp5.addChart(chartName)
           .setPosition(chartX, chartY)
-          .setSize(chart_size, chart_size)
-          .setRange(0, 10)
+          .setSize(chart_size+sizeX, chart_size+sizeY)
+          .setRange(0, 500) //chart max value to show, used for scaling
           .setColorCaptionLabel(color(255))
           .setView(chartType);
       
-        chart.getColor().setBackground(color(12,23,45)); //colour scheme
+        chart.getColor().setBackground(color(12,23,45)); //colour scheme, need to enum
+        
         chart.addDataSet(chartName);
         chart.setColors(chartName, color(255),color(0, 124, 158));
-        addChartData(chart, chartName, chartData);
+        addChartData(chart, chartName, chartData); //adds data from data array
+        chart.setLabel("FUCK YOU");
         
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
     }
     
     void addChartData(Chart chart, String chartName, int[] data) {
@@ -159,67 +155,18 @@ public class Dashboard_view {
       
     }
 
-    void build_PieChart(String chart_name, int val, int val1, int x, int y) {
-        Chart chart = cp5.addChart(chart_name)
-            .setPosition(x, y)
-            .setSize(chart_size, chart_size)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255)) //for some reason this doesn't work for anything that is not a line graph
-            .setView(Chart.PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            // the website has all the diff types of charts so you can play around, he had it as random before
-            
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
-        
-        
-    }
-    
     //workaround for chart label problem
-    
-    void build_chartLabel(String text, int x, int y) {
-        Textlabel caption; 
+    void buildChartLabel(String text, int labelX, int labelY) {
+        Textlabel caption;
       
        caption = cp5.addTextlabel(text)
            .setText(text)
-           .setPosition(x, y)
+           .setPosition(labelX, labelY)
            .setColorValue(255);
     
     }
     
-     void build_LineChart(String chart_name, int val, int val1, int val3, int x, int y) {
-        Chart chart = cp5.addChart(chart_name)
-            .setPosition(x, y)
-            .setSize(chart_size+200, chart_size+50)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255))
-            .setView(Chart.LINE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1, 5, 2, 5, 1, val3, val3);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
-    }
-    
-     void build_BarChart(String chart_name, int val, int val1, int val3, int x, int y) {
-        Chart chart = cp5.addChart(chart_name)
-            .setColorLabel(255)
-            .setPosition(x, y)
-            .setSize(chart_size, chart_size-20)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255))
-            .setView(Chart.BAR); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1, val3);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
-    }
+    //everything else
     
     void build_title(String text, int x, int y) { //this is a hack to get around text troubles
         //ControlFont cf1 = new ControlFont(createFont("Arial",50));
@@ -292,11 +239,18 @@ public class Dashboard_view {
             .setColorBackground(color(0,135,166))
             .setColorActive(color(R,G,B))
             .setColorForeground(color(R, G, B));
-            
-             
 
       ListBox users = cp5.addListBox("user view")
             .setPosition((2 * user_view_hoz), 1 * user_view_vert)
+            .setSize(200, 75)
+            .setItemHeight(15)
+            .setBarHeight(15)
+            .setColorBackground(color(0,135,166))
+            .setColorActive(color(R,G,B))
+            .setColorForeground(color(R, G, B));
+            
+      ListBox sponsors = cp5.addListBox("sponsor view")
+            .setPosition((3 * challenge_view_hoz), 6 * challenge_view_vert)
             .setSize(200, 75)
             .setItemHeight(15)
             .setBarHeight(15)
@@ -313,6 +267,11 @@ public class Dashboard_view {
         challenges.addItem("weekly", 1); 
         challenges.addItem("monthly", 0);
         challenges.addItem("all time", 1); 
+        
+        sponsors.addItem("daily", 0);
+        sponsors.addItem("weekly", 1); 
+        sponsors.addItem("monthly", 0);
+        sponsors.addItem("all time", 1); 
       
         is_expanded = 0;
     }
