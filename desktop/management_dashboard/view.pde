@@ -35,26 +35,15 @@ void updateDashboardData() {
     
     
     view.buildSearch(10, 0); //search for specific player
-    int[] usersOverTime = {1,5,12,35,56,79,100,220,340,325};
-    int[] usersAlive = {2,10}; //  2/10 alive for now
-    int[] metrics = {sponsor.size(), challenge.size(), users.size()};
+    int[] usersOverTime = {1,5,12,35,56,79,100,220,340,325}; //dummy data to simulate growing playerbase
+    int[] usersAlive = {users.size() - view.countLivePlayers(users), users.size()}; //need to figure out proportions
+    int[] metrics = {sponsor.size(), challenge.size(), users.size()}; //dynamic data creation into array each time dashboard is refreshed
     
     view.buildChart(Chart.LINE, "USERS OVER TIME", usersOverTime, 250, 140,200, 100, 500);
     view.buildChart(Chart.PIE, "Users Alive", usersAlive, 250, 470, 0, 0, 500);
     view.buildChartLabel("USERS ALIVE", 250, 670);
     view.buildChart(Chart.BAR, "METRICS", metrics, 450, 470, 0, 0, 10);
-    view.buildChartLabel("sponsors          challenges          users", 250, 670);
-    
-    //view.buildChartLabel("labeltest", 250, 350);
-    /*view.build_LineChart("users daily", 0, 4, 7, 250, 140);
-    view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
-    
-    view.build_chartLabel("users                    challenges          sponsers", 680, 640);
-    view.build_BarChart("totals", total_challenges, total_users+1, total_sponsers, 680, 470);
-    
-    view.build_chartLabel("users alive", 680, 440);
-    view.build_PieChart("live_users", users.size(), view.countLivePlayers(users), 680, 250); //players alive out of total players
-    */
+    view.buildChartLabel("SPONSORS         CHALLENGES       USERS", 450, 670);
     
     view.createButton("current users", str(users.size()), 250, 100);
     view.createButton("active challenges", str(challenge.size()), 380, 100);
@@ -99,6 +88,7 @@ public class Dashboard_view {
     int G = 224;
     int B = 252;
 
+    //LIVE PLAYER COUNT
     int countLivePlayers(JSONArray users) {
        int live = 0, i;
        JSONObject curr_user;
@@ -111,23 +101,6 @@ public class Dashboard_view {
             }
        }
        return live;
-    }
-
-    void buildSearch(int x, int y) {
-      cp5.addTextfield("")
-     .setPosition(x,y)
-     .setSize(100,20)
-     .setFocus(true)
-     .setColor(color(R,G,B))
-     ;
-     
-      cp5.addButton("search")
-        .setValue(0)
-        .setPosition(x+110, y)
-        .setColorBackground(color(0,135,166))
-        .setColorActive(color(0))
-        .setColorForeground(color(R,G,B))
-        .setSize(50, 20);
     }
     
     //CHART FUNCTIONS 
@@ -170,7 +143,7 @@ public class Dashboard_view {
     
     }
 
-    //END OF CHART FUNCTIONS
+    //BUILD ELEMENT FUNCTIONS
     
     void build_title(String text, int x, int y) { //build big main title
         PFont pfont = createFont("Impact",20); 
@@ -185,6 +158,33 @@ public class Dashboard_view {
             .setSize(380, 90);
             
         title.getCaptionLabel().setFont(font);
+    }
+    
+     void buildSearch(int x, int y) {
+      cp5.addTextfield("")
+     .setPosition(x,y)
+     .setSize(100,20)
+     .setFocus(true)
+     .setColor(color(R,G,B))
+     ;
+     
+      cp5.addButton("search")
+        .setValue(0)
+        .setPosition(x+110, y)
+        .setColorBackground(color(0,135,166))
+        .setColorActive(color(0))
+        .setColorForeground(color(R,G,B))
+        .setSize(50, 20);
+    }
+    
+    void createButton(String name, String value, int x, int y) {
+        cp5.addButton(name+": "+value) //+total_sponsers 
+            .setValue(0)
+            .setPosition(x, y)
+            .setColorBackground(color(0,135,166))
+            .setColorActive(color(0))
+            .setColorForeground(color(R,G,B))
+            .setSize(120, 25);
     }
 
 
@@ -272,15 +272,7 @@ public class Dashboard_view {
         is_expanded = 0;
     }
     
-    void createButton(String name, String value, int x, int y) {
-        cp5.addButton(name+": "+value) //+total_sponsers 
-            .setValue(0)
-            .setPosition(x, y)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
-            .setSize(120, 25);
-    }
+    
 
     void resetSpacing() {
         chart_spacing = 0;
