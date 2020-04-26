@@ -9,17 +9,17 @@ PubSubClient ps_client( wifi_client );
 
 enum currentView {
   home,
-  camp,
+  chall,
   statistics,
 };
 
-typedef struct campaign {
+typedef struct challenge {
   String name;
   String description;
   int endTime;
   int stepGoal;
   int reward;
-} campaign;
+} challenge;
 
 //GLOBAL VARIABLES
 String user_name = "Mario";
@@ -32,20 +32,18 @@ const uint16_t BEANCOLOR = 0xFC9F;
 int lifeleft; // value between 0 and 100 representing % of life left
 int maxlife = 100;
 currentView currView;
-boolean campRequested = true;
+boolean challRequested = true;
 boolean statsRequested = true;
 boolean dead = false;
-
-
 
 //Classes
 #include "Timer.h"
 #include "Pedometer.h"
 #include "Bean.h"
 #include "TextBox.h"
-#include "TimeBar.h"
+#include "Bar.h"
 #include "View.h"
-#include "CampaignsView.h"
+#include "ChallengesView.h"
 #include "StatsView.h"
 
 extern unsigned char logo[];
@@ -55,7 +53,7 @@ extern unsigned char logo[];
 String stepMsg;
 String profileMsg;
 String statsMsg;
-String campsMsg;
+String challsMsg;
 
 //MQTT Variables
 uint8_t guestMacAddress[6] = {0x8C, 0xB8, 0xA4, 0x8B, 0x38, 0x70};
@@ -71,9 +69,8 @@ const char* stepTopic = "doordie_steps"; // Topic reserved for step updating
 //Other Variables
 Pedometer step_counter;
 Timer pullTimer(5000, true);
-String showMe;
 View homeScreen;
-CampaignsView campaignsView;
+ChallengesView challengesView;
 StatsView statsView;
 
 void setup()
@@ -98,7 +95,7 @@ void loop()
   //MQTT PUBLISHING
   if (!ps_client.connected()) {
     reconnect();
-  }
+  } //!ps_client.connected()
   ps_client.loop();
 
   if (!dead) {
@@ -106,23 +103,23 @@ void loop()
     if (pullTimer.isReady()) {
       pullProfile();
       pullTimer.reset();
-    }
+    } //pullTimer.isReady()
 
     //If a step is taken, perform onStepTaken(), i.e. increase local step counter and publish step on MQTT
     if (step_counter.loop()) {
       onStepTaken();
-    }
+    } //step_counter.loop()
 
     lifeleft = (remaining_sec * maxlife) / max_sec;
     if (currView == home) {
       homeScreen.loop();
-    } else if (currView == camp) {
-      if (!campRequested) {
-        publishMessage(campsMsg, mainTopic);
-        campRequested = true;
-        campaignsView.setReady(false);
+    } else if (currView == chall) {
+      if (!challRequested) {
+        publishMessage(challsMsg, mainTopic);
+        challRequested = true;
+        challengesView.setReady(false);
       }
-      campaignsView.loop();
+      challengesView.loop();
     } else if (currView == statistics) {
       if (!statsRequested) {
         publishMessage(statsMsg, mainTopic);
@@ -130,12 +127,12 @@ void loop()
         statsView.setReady(false);
       }
       statsView.loop();
-    }
+    } //currView
     if (remaining_sec == 0) {
       dead = true;
       Bean bean;
       bean.drawdead();
-    }
+    } //remaining_sec == 0
   }//dead
 } //loop
 
@@ -154,7 +151,7 @@ void publishMessage( String message , const char* topic)
       ps_client.publish( topic, msg );
     }
   } else {
-    M5.Lcd.println("Can't publish message: Not connected to MQTT :( ");
+    Serial.println("Can't publish message: Not connected to MQTT :( ");
   }
 }
 
@@ -167,11 +164,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     in_str += (char)payload[i];
   }
   Serial.println(in_str);
-
-  if (in_str.equals("Give me stats!")) { //This would be replaced by a JSON deserialization of a real message from the database
-
-  }
-
+  
   DynamicJsonDocument JSONin(2048); //intialise JSON OBJECT, allocates statically from stack, can also use heap variant if not enough space
   deserializeJson(JSONin, in_str);
   if ( JSONin["type"].as<String>() == "push profile" && JSONin["user_name"] == user_name) {
@@ -180,7 +173,7 @@ void callback(char* topic, byte* payload, unsigned int length)
   }
 
   if ( JSONin["type"].as<String>() == "push user challenges" && JSONin["user_name"] == user_name) {
-    campaignsView.clearCampaigns();
+    challengesView.clearChallenges();
     JsonArray challenges = JSONin["challenges"];
     Serial.println(challenges.size());
     for (JsonObject challenge : challenges) {
@@ -190,13 +183,16 @@ void callback(char* topic, byte* payload, unsigned int length)
       int stepGoal = challenge["step_goal"];
       int reward = challenge["reward"];
       Serial.println(challengeName);
-      campaignsView.addCampaign(challengeName, description, endTime, stepGoal, reward);
+      challengesView.addChallenge(challengeName, description, endTime, stepGoal, reward);
     }
-    campaignsView.setReady(true);
+    challengesView.setReady(true);
   }
     //Dummy request, change pull to push once database implements this
-  if ( JSONin["type"].as<String>() == "pull user stats" && JSONin["user_name"] == user_name) {
-    statsView.setupStats(37000, 70000, 10000); //Dummy data at the moment, replace with real data
+  if ( JSONin["type"].as<String>() == "push user stats" && JSONin["user_name"] == user_name) {
+    int dailyRecord = JSONin["daily_record"];
+    int weeklyRecord = JSONin["weekly_record"];
+    int weeklyTotal = JSONin["weekly_current"];
+    statsView.setupStats(weeklyTotal, weeklyRecord, dailyRecord); //Dummy data at the moment, replace with real data
     statsView.setReady(true);
   }
   
@@ -214,16 +210,15 @@ void setupJSON()
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, profileMsg);
 
-  StaticJsonDocument<500> JSONcamps;
+  StaticJsonDocument<500> JSONchalls;
   JSONprofile["type"] = "pull user challenges";
   JSONprofile["user_name"] = user_name;
-  serializeJson(JSONprofile, campsMsg);
+  serializeJson(JSONprofile, challsMsg);
 
   StaticJsonDocument<500> JSONstats;
   JSONprofile["type"] = "pull user stats";
   JSONprofile["user_name"] = user_name;
   serializeJson(JSONprofile, statsMsg);
-
 }
 
 void pullProfile()
@@ -321,7 +316,6 @@ void reconnect()
       delay(5000);
     }
   }
-  showMe = " - Success!  Connected to HiveMQ\n\n";
 }
 
 String generateID()
