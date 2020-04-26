@@ -1,19 +1,25 @@
 {"user": [
   {
+    "weekly_record": 39000,
     "challenge_done": ["2"],
     "challenge_id": ["1"],
     "user_name": "Mario",
-    "total_steps": 2289,
-    "remaining_sec": 3332
+    "daily_record": 10000,
+    "total_steps": 2381,
+    "remaining_sec": 881,
+    "weekly_current": 18032
   },
   {
+    "weekly_record": 500,
     "challenge_done": [],
     "challenge_id": [
       "1",
       "2"
     ],
     "user_name": "Luigi",
+    "daily_record": 500,
     "total_steps": 0,
-    "remaining_sec": 1602
+    "remaining_sec": 2836,
+    "weekly_current": 500
   }
 ]}

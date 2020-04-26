@@ -6,7 +6,6 @@ void clientConnected() {
    println("client connected to broker");
    client.subscribe(MQTT_steps_topic);
    client.subscribe(MQTT_web_topic);
-   client.subscribe(MQTT_m5_topic);
 }
 
 void connectionLost() {
@@ -63,6 +62,11 @@ void messageReceived(String topic, byte[] payload) {
                println("adding new sponsor " + username);
                s_api.addNewSponsorToDB(json);
             }      
+            break;
+         case(RequestType.PULL + DataType.USERSTATS):
+            username = json.getString("user_name");
+            println("pushing user stats of " + username);
+            u_api.pushUserStats(username, topic);
             break;
          default:
             return;

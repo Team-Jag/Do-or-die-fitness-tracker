@@ -5,7 +5,6 @@ import controlP5.*;
 
 String MQTT_steps_topic = "doordie_steps";
 String MQTT_web_topic = "doordie_web";
-String MQTT_m5_topic = "doordie_m5";
 
 ControlP5 cp5;
 MQTTClient client;
