@@ -4,7 +4,7 @@ class View {
     TextBox b1;
     TextBox b2;
     TextBox b3;
-    TimeBar bar;
+    Bar bar;
     Bean bean;
     Timer drawTimer = Timer(50, true);
 

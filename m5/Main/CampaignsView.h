@@ -5,7 +5,7 @@ class CampaignsView {
     TextBox b1;
     TextBox b2;
     TextBox b3;
-    TimeBar progressBar = TimeBar(0, 70, 310, 15);
+    Bar progressBar = Bar(0, 70, 310, 15);
     Timer drawTimer = Timer(50, true);
     int size = 0;
     int index = 0;

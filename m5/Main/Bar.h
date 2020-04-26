@@ -1,4 +1,4 @@
-class TimeBar {
+class Bar {
   private:
     int x = 0;
     int y = 0;
@@ -10,11 +10,11 @@ class TimeBar {
 
   public:
 
-    TimeBar() {
+    Bar() {
 
     }
 
-    TimeBar(int xin, int yin, int win, int hin) {
+    Bar(int xin, int yin, int win, int hin) {
       x = xin;
       y = yin;
       w = win;
