@@ -143,10 +143,10 @@ Our Internet of Things product was developed utilising the M5Stack platform. Due
 
 To implement the MQTT communication protocol in our IoT product, we chose to use [HiveMQ](https://www.hivemq.com). Our team established two channels, 'doordie_web' and 'doordie_steps'. 
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), however we will expand on the key communication protocols between subsystems below. 
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), however we will expand on the key communication protocols and the request types between subsystems below. 
 
 ### DESKTOP AND M5STACK 
-To send user profile data to the M5Stack from the database:
+To send a user's profile data to the M5Stack from the database:
 ``` 
 {
     "type": "push profile",
@@ -160,6 +160,69 @@ This is only sent when M5 sends a request to the MQTT broker:
 {
     "type": "pull profile",
     "user_name": "Mario"
+}
+```
+
+Processing sends all challenges a user is enrolled in to be updated on their M5Stack:
+```
+{
+    "type": "push user challenges",
+    "user_name": "Mario",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+This is sent when the M5Stack requests the challenges of the user: 
+```
+{
+   	"type": "M5 pull challenges",
+	   "user_name": "Mario"
+}
+```
+
+The M5Stack uses this request type to increment one step in the database, but there will be no response: 
+
+```
+{
+    "type": "push step",
+    "user_name": "Mario"
+}
+```
+
+To update the statistics of the user on the M5Stack: 
+
+```
+{
+	"type": "pull user stats",
+	"user_name": "Mario"
+}
+```
+
+The database uses the following request type to send stats to the M5Stack: 
+```
+{
+	"type": "push user stats",
+	"user_name": "Mario",
+	"daily_record": 10000,
+	"weekly_record": 39000,
+	"weekly_current": 18032
 }
 ```
 
