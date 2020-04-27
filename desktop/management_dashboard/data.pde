@@ -32,7 +32,6 @@ static abstract class DataType {
    static final String USERSTATS = "user stats";
 }
 
-
 // Example use of public class for metric as we use multiple (modular design)
 public class Metric {
    public String name;
@@ -52,6 +51,8 @@ private class Database {
    Database() {
    }
 }
+
+Database db = new Database();
 
 // copy any JSON objects on disk into working memory and update timestamps
 void refreshData() {
