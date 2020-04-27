@@ -13,6 +13,7 @@ UserData u_api = new UserData();
 ChallengeData c_api = new ChallengeData();
 SponsorData s_api = new SponsorData();
 Database db = new Database();
+int time;
 
 void setup() {
    cp5 = new ControlP5(this);
