@@ -115,6 +115,18 @@ Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
 ### WEB
 
+Original web wireframe design for desktop profile:
+![Wireframe-web](/Portfolio/Images/web-wireframe.jpg)
+
+Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
+![Web-screenshot](/Portfolio/Images/web-screenshot.jpg)
+
+Sign-up screen draft
+![Web-signupdraft](/Portfolio/Images/signup-draft.jpg)
+
+Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
+![Web-signupfinal](/Portfolio/Images/signup-final.jpg)
+
 ### M5
 ![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)
 
