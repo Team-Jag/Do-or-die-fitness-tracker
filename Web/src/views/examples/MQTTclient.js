@@ -29,9 +29,9 @@ class Mqtt extends React.Component {
         challenge_id: '',
         challenge_name: '',
         challenge_description: '',
-        challenge_step_goal: '',
+        challenge_step_goal: 0,
         challenge_end_date: '20-03-31',
-        challenge_reward: '',
+        challenge_reward: 0,
         challenges_loaded: false,
         challenge_array: [],
       //login/signup page
@@ -491,21 +491,21 @@ return(
       type: "push new challenge",
       challenge_id: "C" + this.makeid(6),
       challenge_name: this.state.challenge_name,
-      description: this.state.challenge_description,
-      end_time: this.state.challenge_end_date,
-      step_goal: this.state.challenge_step_goal,
-      reward: this.state.challenge_reward,
+      description:  this.state.challenge_description,
+      end_time: 1589976000 , //this.state.challenge_end_date,
+      step_goal: parseInt(this.state.challenge_step_goal),
+      reward: parseInt(this.state.challenge_reward),
       creator_id: global.userName
     }
-    if(global.profile_type === 'sponsor')
-    {
+    //if(global.profile_type === 'sponsor')
+  //  {
       this.requestToServer(JSON.stringify(newChallenge));
       alert("You successfully created a new challenge");
-    }
-    else
-    {
-      alert("You don't have the authority to create a challenge");
-    }
+  //  }
+  //  else
+  //  {
+  //    alert("You don't have the authority to create a challenge");
+  //  }
   }
 
   // called when the client connects
