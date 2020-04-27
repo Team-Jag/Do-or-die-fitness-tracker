@@ -22,11 +22,13 @@ Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initi
 
 ### DESKTOP
 Key classes for desktop app include:
-![Processing-uml](/Portfolio/Images/Processing-UML.png)
+
 * **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
-* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database.
+* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class additionally contained event listeners for buttons and lists in the UI.
 * **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
+
+![Processing-uml](/Portfolio/Images/Processing-UML.png)
 
 ### WEB
 
