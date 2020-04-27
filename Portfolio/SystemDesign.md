@@ -24,9 +24,11 @@ Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initi
 Key classes for desktop app include:
 
 * **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
-* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database.
+* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class additionally contained event listeners for buttons and lists in the UI.
 * **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
+
+![Processing-uml](/Portfolio/Images/Processing-UML.png)
 
 ### WEB
 
@@ -118,6 +120,19 @@ Original multi-tab wireframe design for desktop UI:
 
 Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
+
+Final decided layout for admin UI:
+![UI-layout](/Portfolio/Images/dashboard-main.png)
+
+Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
+![UI-search](/Portfolio/Images/search-user.png) ![UI-search](/Portfolio/Images/null-user.png)
+
+Selecting a specific statistic from UI:
+![UI-select-chart](/Portfolio/Images/select-chart.png)
+
+Different selected charts showing data for each parameter, such as users, sponsors, challenges.
+![UI-selected-charts](/Portfolio/Images/selected-charts.png)
+
 ### WEB
 
 Original web wireframe design for desktop profile:
