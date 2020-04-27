@@ -1,6 +1,6 @@
 ![Do Or Die System Design](/Portfolio/Images/systemDesignLogo.png)
 
-# 1. System Design :
+# 1. System Design [40 pts] :
 ## a. Architecture of the entire system
 
 Architecture of the system uses a central controller database API that handles receiving and sending requests, using MQTT protocol, to communicate between devices. Three key devices of system:
