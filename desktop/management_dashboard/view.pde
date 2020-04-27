@@ -66,24 +66,27 @@ void updateDashboardData() {
     view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
     //over time charts;
-    view.buildChart(Chart.LINE, "CHALLENGES WEEKLY", usersOverTime, 10, 70, 35, -30, 500);
+    view.buildChart(Chart.LINE, "CHALLENGE", usersOverTime, 10, 70, 35, -30, 500);
     
-    view.buildChart(Chart.LINE, "USERS WEEKLY", usersOverTime, 10, 270, 35, -30, 500);
+    view.buildChart(Chart.LINE, "USER", usersOverTime, 10, 270, 35, -30, 500);
     
-     view.buildChart(Chart.LINE, "SPONSORS WEEKLY", usersOverTime, 10, 470, 35, -30, 500);
+    view.buildChart(Chart.LINE, "SPONSOR", usersOverTime, 10, 470, 35, -30, 500);
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    view.build_expanded(users, challenge, sponsor); 
+    view.build_expanded(); 
     
 }
  
 
 // The main class which contains the dynamic build of the dashboard. Advantage being more metrics can be added with ease.
 public class Dashboard_view {
-    int colorMain = ColorScheme.MAIN;
+    int colorMain = ColorScheme.MAIN; //colours
     int colorHighlights = ColorScheme.HIGHLIGHTS;
     int colorBackground = ColorScheme.BACKGROUND;
     int colorCharts = ColorScheme.CHARTS1;
+    
+    int textCompletedChallNum = 0; //we need this as a state because when removing dynamic profile we don't know who's was before
+    int textEnrolledChallNum = 0;
   
     int is_expanded = 0; //What to do with this?
     
@@ -170,27 +173,28 @@ public class Dashboard_view {
     //BUILD ELEMENT FUNCTIONS
     
     void buildProfile(String user) {
-         JSONObject  userProfile = u_api.getUserByName(user);
+         JSONObject  userProfile = u_api.getUserByName(user); //returns JSON object of a specific user
          JSONObject challenge;
          int i;
          int challengePosition = 190; //start of challenge lists
          int challengeSpacing = 30; //how far apart should start
          String username = userProfile.getString("user_name");
          
-         resetProfile();
+         resetProfile(textCompletedChallNum, textEnrolledChallNum); //amount of list items previous state created
         
         if (username != null) {
           //textarea only does 1 line per string with no carriage returns, so we need many
           buildTextArea("textname","PROFILE FOR: "+username, 650, 100);
-          buildTextArea("textsteps","CURRENT STEPS: "+str(userProfile.getInt("total_steps")), 650, 130);
+          buildTextArea("textsteps","CURRENT STEPS: "+str(userProfile.getInt("total_steps")), 650, 130); //fetch things from object
           buildTextArea("texttime","TIME REMAINING: "+str(userProfile.getInt("remaining_sec")), 650, 160);
           
           //challenges part, to build dynamically
           buildTextArea("textcomplete", "COMPLETED CHALLENGES: ", 650, 190);
           
           JSONArray completeChallenges = userProfile.getJSONArray("challenge_done");
+          textCompletedChallNum = completeChallenges.size();
           
-          for (i = 0; i < completeChallenges.size(); i++) { //completeChallenges.getJSONObject(i);
+          for (i = 0; i < completeChallenges.size(); i++) { 
             String challengeID = completeChallenges.getString(i);
             challenge = c_api.getChallengeByID(challengeID);
             buildTextArea("textcompletechallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
@@ -201,12 +205,13 @@ public class Dashboard_view {
           challengePosition+=30;
           
           JSONArray enrolledChallenges = userProfile.getJSONArray("challenge_id");
+          textEnrolledChallNum = enrolledChallenges.size();
           
           for (i = 0; i < enrolledChallenges.size(); i++) {
             String challengeID = enrolledChallenges.getString(i);
             challenge = c_api.getChallengeByID(challengeID);
             buildTextArea("textenrolledchallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
-            challengePosition = challengePosition + (challengeSpacing*i+30);
+            
           }
           
         } else {
@@ -308,7 +313,7 @@ public class Dashboard_view {
         
      }
 
-    void build_expanded(JSONArray usersArr, JSONArray challengesArr, JSONArray sponsorsArr) {
+    void build_expanded() {
         
       
         if (is_expanded == 1) {
@@ -366,12 +371,35 @@ public class Dashboard_view {
         is_expanded = 0;
     }
     
-    void resetProfile() {
+    void resetSelectionList() {
+      cp5.remove("challenge view");
+      cp5.remove("user view");
+      cp5.remove("sponsor view");
+    }
+    
+    void resetChart(String chartName) {
+      cp5.remove(chartName);
+    }
+    
+    void resetProfile(int completedChallenges, int enrolledChallenges) { //we need to know how many to remove
+      int i;
+      
       cp5.remove("textname");
       cp5.remove("textnouser");
       cp5.remove("textsteps");
       cp5.remove("texttime");
       cp5.remove("textno_user");
+      cp5.remove("textenrolled");
+      cp5.remove("textcomplete");
+      
+      for (i = 0; i < completedChallenges; i++) {
+        cp5.remove("textcompletechallenge"+i);
+      }
+      
+      for (i = 0; i < enrolledChallenges; i++) {
+        cp5.remove("textenrolledchallenge"+i);
+      }
+      
     }
 
     void resetSpacing() {
