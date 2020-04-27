@@ -117,6 +117,16 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 **WIP:**
 * 
 
-## b. Details of how you evaluated your designs (techniques used & awareness of their
-limitations)
-## c. Discussion of Social and Ethical implications of the work
+## b. Details of how you evaluated your designs (techniques used & awareness of their limitations)
+## c. Social and Ethical Implications of Do or Die Fitness Tracker
+### Social Benefits
+We designed our fitness tracker in hopes of providing incentives to individuals to maintain a healthy lifestyle and keep active. Our choice in the gamification of a fitness tracker was aimed to associate exercise with positive feelings of motivation and fun, while also providing a challenge (the Bean's life timer countdown). These were attempted to be achieved by implementing challenges that can significantly boost the lifetime of the user's Bean as well as small lifetime rewards when the user walks/runs around. There is also a ranking system implemented on the website as a way to further motivate the user to achieve higher ranks by effectively exercising more. We also hope to provide the user companionship with the Bean, a character which behaves like a pet/tamagotchi.
+
+### Data Privacy
+For our prototype, we currently only require a username to be able to create an account on the website and use our fitness tracker. It is also possible to provide other types of information on the web account, such as a profile photo and biography. Our device only collects data on steps taken and only physically stores the username and Wi-Fi password, but no geolocation data is stored. When the device syncs with the database, data on the number of steps taken is transferred. For each user, the management database stores the username, steps taken, challenges enrolled or finished, and the lifetime of the Bean. Although data provided by users are limited and only few identifiers are stored (username, which can be a fake or real name, and profile picture), this data can potentially be exploited by hackers. Another issue also arises in data withdrawal, as presently our software has no implementations yet to be able to remove all user data provided and collected.
+
+### Data Usage
+There are possible concerns on how personal fitness data can be used in the future. Such recent concerns include the John Hancock program, in which an insurance company required a fitness tracker to sell their interactive policies based on the user's activity level recorded. As fitness trackers are essentially pedometers, they may not be able to track accurate fitness data in other forms of exercises, such as cycling or swimming. Moreover, our fitness tracker has not been tested or adapted to the less well-able bodied, such as the handicapped. Hence, a possible issue was raised in which the disadvantaged could be forced to buy more expensive insurance policies due to the inaccurate fitness data gathered.
+
+### Social Implications
+As our platform relies on both rewards and punishments, in the forms of increasing the life timer and the Bean dying respectively, there may be implications on the user's state of mental health. Attachment to the Bean and its impending doom and subsequent death might lead to a sense of significant loss. Additional potential stressors include the leaderboard ranking system implemented based on the number of steps taken by the user that can be viewed on the website. The user then might relate their fitness levels with their rankings, which might discourage them further to attempt exercising if they are constantly stuck with low rankings.
