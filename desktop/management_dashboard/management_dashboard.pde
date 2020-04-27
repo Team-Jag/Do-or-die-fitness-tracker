@@ -12,7 +12,6 @@ Dashboard_view view = new Dashboard_view();
 UserData u_api = new UserData();
 ChallengeData c_api = new ChallengeData();
 SponsorData s_api = new SponsorData();
-Database db = new Database();
 int time;
 
 void setup() {
