@@ -182,10 +182,13 @@ renderProfile(){
 
 createNewProfile(){
   console.log("Creating new profile...");
+  var today = new Date();
+  date = today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
   var newRequest = {
     type: "push new profile",
     user_name: global.userName,
-    user_type: global.profile_type
+    user_type: global.profile_type,
+    current_time: date
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
@@ -275,11 +278,22 @@ redirectToProfile(){
         }
     }
   }
-  if (this.state.redirect) {
+  if (this.state.redirect)
+  {
+    if(this.state.page_name === 'sign-up' && global.profile_type==='sponsor')
+    {
+      return(
+           <Redirect to={{
+                 pathname: '/challenge-page',
+             }} />)
+    }
+    else
+    {
       return(
            <Redirect to={{
                  pathname: '/profile-page',
              }} />)
+    }
   }
 }
 
@@ -466,7 +480,7 @@ return(
     console.log(JSON.stringify(this.state.challenge_name));
     console.log("Pushing New Challenge");
     var today = new Date(),
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()+'T'+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds()+'.'+today.getMilliseconds()+'Z';
+    date = today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
   	var newChallenge = {
       type: "push new challenge",
       challenge_id: "C" + this.makeid(6),
@@ -475,11 +489,18 @@ return(
       end_time: this.state.challenge_end_date,
       step_goal: this.state.challenge_step_goal,
       reward: this.state.challenge_reward,
-      current_time: date
+      current_time: date,
+      creator_id: global.userName
     }
-
-  	this.requestToServer(JSON.stringify(newChallenge));
-    alert("You successfully created a new challenge");
+    if(global.profile_type === 'sponsor')
+    {
+      this.requestToServer(JSON.stringify(newChallenge));
+      alert("You successfully created a new challenge");
+    }
+    else
+    {
+      alert("You don't have the authority to create a challenge");
+    }
   }
 
   // called when the client connects

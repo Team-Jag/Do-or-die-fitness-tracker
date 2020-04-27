@@ -118,6 +118,13 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 * 
 
 ## b. Details of how you evaluated your designs (techniques used & awareness of their limitations)
+
+Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
+
+Potential limitations of using the evaluation matrix are the chance of concentrating on features of too little significance, instead of concentrating on user centric features we instead focused on what was achievable in a given sprint timeframe. The scores assigned to each metric are also entirely subjective, so a more complex analysis would have been more appropriate to critically determine the value of a feature.
+
+As we were following the Agile method for development of our product, at the end of each sprint we performed exhaustive tests on each sub-system where the results were discussed in our scrum meetings performed over Google Hangout. Once these tested features were tested and working, we decided on each successive feature to implement in the design based on an informal SWOT analysis first as individual pairs from each team, then agreeding as an overall team on pre-approved ideas from the pairs dependent on timeline and other subteam requirements. We believed the SWOT evaluation method to be more useful in our design approach over each sprint than the evaluation matrix.
+
 ## c. Social and Ethical Implications of Do or Die Fitness Tracker
 ### Social Benefits
 We designed our fitness tracker in hopes of providing incentives to individuals to maintain a healthy lifestyle and keep active. Our choice in the gamification of a fitness tracker was aimed to associate exercise with positive feelings of motivation and fun, while also providing a challenge (the Bean's life timer countdown). These were attempted to be achieved by implementing challenges that can significantly boost the lifetime of the user's Bean as well as small lifetime rewards when the user walks/runs around. There is also a ranking system implemented on the website as a way to further motivate the user to achieve higher ranks by effectively exercising more. We also hope to provide the user companionship with the Bean, a character which behaves like a pet/tamagotchi.
