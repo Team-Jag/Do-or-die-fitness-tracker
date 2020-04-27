@@ -29,7 +29,7 @@ Key classes for desktop app include:
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
 
 ### WEB
-For more detail on web technologies see section **1g.** bellow.
+For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
 ![web-uml](/Portfolio/Images/web-uml.png)
 
