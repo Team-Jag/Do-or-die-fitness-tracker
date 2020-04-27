@@ -29,11 +29,15 @@ Key classes for desktop app include:
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
 
 ### WEB
-For more detail on web technologies see section **1g.** bellow.
-React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and a MQTT class which is integrated into the different views.
+
+For more detail on web technologies see section **1g.** below.
+React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
+![web-uml](/Portfolio/Images/web-uml.png)
+
 * **MQTT Class:** This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
+
   * encapsulates - it hides the detail of the server communication from the other components
-  * is abstract - with a simple interface that can be called by all components
+  * acts abstract - with a simple interface that can be called by all components
   * inherits its basic methods from the react components
   * is polymorphic - it can handle all sorts of data: from profile to challenge data  
 * **Landing Page:** Contains all the static content and the MQTT instance for creating a new profile
@@ -75,15 +79,18 @@ Administration interface for data visualisation. Allows back-end to deal with se
 * System should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### WEB
-* 1. **User Profile**
-  * a. Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
-  * b. Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
-  * c. Render a profile picture depending on the user name (the profile picture will be available on the webserver)
-  * d. Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
-* 2. **User activity**
-  * a. The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
-* 3. **Sponsor activity**
-  * a. The website must have an input form for new challenges that the sponsor can fill in. The input of the sponsor gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
+
+Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
+
+**User**
+  * Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
+  * Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
+  * Render a profile picture depending on the user name (the profile picture will be available on the webserver)
+  * Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
+  * The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
+  
+**Sponsor**
+  * The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
 ### M5 
 When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
@@ -112,6 +119,18 @@ Original multi-tab wireframe design for desktop UI:
 Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
 ### WEB
+
+Original web wireframe design for desktop profile:
+![Wireframe-web](/Portfolio/Images/web-wireframe.jpg)
+
+Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
+![Web-screenshot](/Portfolio/Images/web-screenshot.PNG)
+
+Sign-up screen draft
+![Web-signupdraft](/Portfolio/Images/signup-draft.png)
+
+Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
+![Web-signupfinal](/Portfolio/Images/signup-final.PNG)
 
 ### M5
 ![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)

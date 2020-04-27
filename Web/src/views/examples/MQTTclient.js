@@ -18,6 +18,7 @@ class Mqtt extends React.Component {
 
   constructor(props) {
     super(props);
+    this.moment = require('moment');
 
     this.state = {
         mqttConnected: false,
@@ -157,12 +158,20 @@ renderProfile(){
       <h3 className="title">My Challenges</h3>
       <React.Fragment>
          <div align="middle" className="tg-wrap"><table className="ccp">
+         <tr>
+           <th>Name</th>
+           <th>Description</th>
+           <th>Step Goal</th>
+           <th>End Date</th>
+           <th>Reward</th>
+           <th></th>
+         </tr>
          {this.state.user_challenges.map(listitem => (
            <tr>
              <td>{listitem.challenge_name}</td>
              <td>{listitem.description}</td>
              <td>{listitem.step_goal}</td>
-             <td>{listitem.end_time}</td>
+             <td>{this.moment(listitem.end_time*1000).format('YYYY-MM-DD HH:mm').replace('Invalid date','')}</td>
              <td>{listitem.reward}</td>
            </tr>
          ))}
@@ -182,13 +191,12 @@ renderProfile(){
 
 createNewProfile(){
   console.log("Creating new profile...");
-  var today = new Date();
-  date = today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
+  const now = Date.now();
   var newRequest = {
     type: "push new profile",
     user_name: global.userName,
     user_type: global.profile_type,
-    current_time: date
+    joined_date: now
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
@@ -414,7 +422,7 @@ renderGetChallenges(){
               <td>{listitem.challenge_name}</td>
               <td>{listitem.description}</td>
               <td>{listitem.step_goal}</td>
-              <td>{listitem.end_time}</td>
+              <td>{this.moment(listitem.end_time*1000).format('YYYY-MM-DD HH:mm').replace('Invalid date','')}</td>
               <td>{listitem.reward}</td>
               <td><Button className="submit-button" onClick={(event) => this.pushSelectedChallenge(event,listitem.challenge_id)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
             </tr>
@@ -479,8 +487,6 @@ return(
   pushNewChallenge(event){
     console.log(JSON.stringify(this.state.challenge_name));
     console.log("Pushing New Challenge");
-    var today = new Date(),
-    date = today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
   	var newChallenge = {
       type: "push new challenge",
       challenge_id: "C" + this.makeid(6),
@@ -489,7 +495,6 @@ return(
       end_time: this.state.challenge_end_date,
       step_goal: this.state.challenge_step_goal,
       reward: this.state.challenge_reward,
-      current_time: date,
       creator_id: global.userName
     }
     if(global.profile_type === 'sponsor')
