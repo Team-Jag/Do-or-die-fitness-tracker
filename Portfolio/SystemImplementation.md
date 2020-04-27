@@ -17,6 +17,7 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 * Defined minimum viable product(MVP) with functions/classes/variables
 * Defined interactions between subsystems including the function calls and their JSON syntax 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
+* Design up a basic UI interface mockup for admin user story
 
 **WIP:**
 * Implementation of communication protocol 
@@ -32,6 +33,7 @@ The goal of this sprint was to create a very basic proof of concept.
 * Processing able to process the notification, calculate the total steps and send it back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
+* Decided on a UI interface for admin user story, and made a mockup Processing interface using dummy cp5 elements
 
 **WIP:**
 * Improve the accuracy of the step count
@@ -43,8 +45,9 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
 
 **User Stories Implemented:**
-* Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life 
+* Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life
 * Added a Bean sprite for the user's M5 stack, without animation
+* Added dummy charts in admin view for visualisation of data
 
 **DONE:**
 * Improved accuracy of the step count
@@ -65,6 +68,8 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Basic animation for Bean sprite implemented
 * User can see the challenges that they are enrolled in on M5 stack (dummy data)
 * User can see basic statistics about their step count on M5 stack (dummy data)
+* Admin can see charts of total users, challenges, sponsors
+* Admin dashboard pulls data from backend database API
 
 **DONE:**
 * All subsystem able to receive, process and send the intended MQTT commands
@@ -85,6 +90,7 @@ The goal of this sprint was to release the Beta version of our product, and push
 * User now able to see real-time challenge data on M5 stack
 * Animation for Bean now based on life left on M5 stack
 * Death screen if the time left is zero on M5 stack
+* Admin can see a list of all users and proportion of players currently alive
 
 **DONE:**
 * MQTT message length issue resolved 
@@ -101,6 +107,8 @@ The goal of this sprint was to clean up our code, and implement any final featur
 
 **User Stories Implemented:**
 * User able to see their statistics accurately reflected on statistic view
+* Admin can search for a specific user profile and see their information
+* Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
