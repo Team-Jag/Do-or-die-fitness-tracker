@@ -75,16 +75,30 @@ void messageReceived(String topic, byte[] payload) {
    //refreshDashboardData();
 }
 
-/*
+
 void controlEvent(ControlEvent theEvent) {
- // expand order if clicked via API call
- if (theEvent.getController().getValueLabel().getText().contains("O") == true) {
- // call the api and get the JSON packet
- expanded_order = api.getOrdersByStatus(theEvent.getController().getName())[(int) theEvent.getController().getValue()].getString("order_id");
- view.build_expanded_order(expanded_order);
- }
+ // search bar button
+   String username;
+   
+   username = cp5.get(Textfield.class,"search_user").getText();
+   
+   println(theEvent.getController().getName());
+   println("from listener "+username);
+   
+   view.buildProfile(username);
+  
  }
  
+ void search(int buttonVal) {
+   
+   println("search callback");
+   if (buttonVal == 0) {
+      buttonVal = 1; 
+   }
+ }
+ 
+ 
+ /*
  // call back on button click
  public void accept(int theValue) {
  if (button_state > 2) {

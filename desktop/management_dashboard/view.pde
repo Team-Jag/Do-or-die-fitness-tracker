@@ -30,6 +30,7 @@ void refreshDashboardData() {
         cp5.remove(status);
         cp5.remove(status + " chart ");
     } */
+    
     view.resetSpacing();
     updateDashboardData();
 }
@@ -52,18 +53,28 @@ void updateDashboardData() {
     int[] usersAlive = {users.size() - view.countLivePlayers(users), users.size()}; //need to figure out proportions
     int[] metrics = {sponsor.size(), challenge.size(), users.size()}; //dynamic data creation into array each time dashboard is refreshed
     
-    view.buildChart(Chart.LINE, "USERS OVER TIME", usersOverTime, 250, 140,200, 100, 500);
+    //main charts
+    view.buildChart(Chart.LINE, "USERS OVER ALL TIME", usersOverTime, 250, 140,200, 100, 500);
     view.buildChart(Chart.PIE, "Users Alive", usersAlive, 250, 470, 0, 0, 500);
     view.buildChartLabel("USERS ALIVE", 250, 670);
     view.buildChart(Chart.BAR, "METRICS", metrics, 450, 470, 0, 0, 10);
     view.buildChartLabel("SPONSORS         CHALLENGES       USERS", 450, 670);
     
+    //basic metrics
     view.createButton("current users", str(users.size()), 250, 100);
     view.createButton("active challenges", str(challenge.size()), 380, 100);
     view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
+    //over time charts;
+    view.buildChart(Chart.LINE, "CHALLENGES WEEKLY", usersOverTime, 10, 70, 35, -30, 500);
+    
+    view.buildChart(Chart.LINE, "USERS WEEKLY", usersOverTime, 10, 270, 35, -30, 500);
+    
+     view.buildChart(Chart.LINE, "SPONSORS WEEKLY", usersOverTime, 10, 470, 35, -30, 500);
+    
     view.build_list("USERS", users); //builds list with all the other stuff
     view.build_expanded(users, challenge, sponsor); 
+    
 }
  
 
@@ -79,7 +90,7 @@ public class Dashboard_view {
     int vert_margin_spacing = 10;
     int horiz_margin_spacing = 10;
     
-   
+   //this can probably be trimmed
     int list_spacing = 0;
     int list_x_size = 250;
     int list_y_size = 350;
@@ -101,10 +112,6 @@ public class Dashboard_view {
     
     int main_list_hoz = 305;
     int main_list_vert = 0;
-    
-    int R = 96;
-    int G = 224;
-    int B = 252;
 
     //LIVE PLAYER COUNT
     int countLivePlayers(JSONArray users) {
@@ -162,6 +169,42 @@ public class Dashboard_view {
 
     //BUILD ELEMENT FUNCTIONS
     
+    void buildProfile(String user) {
+         JSONObject  userProfile = u_api.getUserByName(user);
+         JSONObject  challenges;
+         
+         String username = userProfile.getString("user_name");
+         
+         resetProfile();
+        
+        if (username != null) {
+          buildTextArea("textname","PROFILE FOR: "+username, 650, 100);
+          buildTextArea("textsteps","CURRENT STEPS: "+str(userProfile.getInt("total_steps")), 650, 130);
+          buildTextArea("texttime","TIME REMAINING: "+str(userProfile.getInt("remaining_sec")), 650, 160);
+          
+        } else {
+          
+          buildTextArea("textno_user","USER DOES NOT EXIST", 650, 100);
+        }
+    }
+    
+    void buildTextArea(String id, String text, int textX, int textY) {
+      Textarea textArea = cp5.addTextarea(id)
+                  .setPosition(textX,textY)
+                  .setSize(235,25)
+                  .setLineHeight(14)
+                  .setColor(color(128))
+                  .setColorBackground(color(255,100))
+                  .setColorForeground(color(255,100));
+                  ;
+                  
+      textArea.setText(text);
+      
+      if (text == "USER DOES NOT EXIST") {
+        textArea.setColor(#ff0000);
+      }
+    }
+    
     void buildTitle(String text, int titleX, int titleY) { //build big main title
         PFont pfont = createFont("Impact",20); 
         ControlFont font = new ControlFont(pfont,85);
@@ -179,15 +222,15 @@ public class Dashboard_view {
     
     //for search button, events has listener
      void buildSearch(int searchX, int searchY) {
-      cp5.addTextfield("")
+      cp5.addTextfield("search_user")
      .setPosition(searchX,searchY)
      .setSize(100,20)
      .setFocus(true)
-     .setColor(color(R,G,B))
+     .setColor(color(colorMain))
      ;
      
       cp5.addButton("search")
-        .setValue(0)
+        .setValue(1)
         .setPosition(searchX+110, searchY)
         .setColorBackground(color(colorMain))
         .setColorActive(color(0))
@@ -197,7 +240,7 @@ public class Dashboard_view {
     
     //generic button with text
     void createButton(String name, String value, int x, int y) {
-        cp5.addButton(name+": "+value) //+total_sponsers 
+        cp5.addButton(name+": "+value)  
             .setValue(0)
             .setPosition(x, y)
             .setColorBackground(color(colorMain))
@@ -248,16 +291,16 @@ public class Dashboard_view {
 
       ListBox challenges = cp5.addListBox("challenge view")
             .setPosition((3 * challenge_view_hoz), 2 * challenge_view_vert)
-            .setSize(200, 75)
+            .setSize(235, 75)
             .setItemHeight(15)
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
-            .setColorActive(color(colorHighlights))
+            .setColorActive(color(0))
             .setColorForeground(color(colorHighlights));
 
       ListBox users = cp5.addListBox("user view")
-            .setPosition((3 * user_view_hoz), 5 * user_view_vert)
-            .setSize(200, 75)
+            .setPosition((3 * user_view_hoz), 8 * user_view_vert)
+            .setSize(235, 75)
             .setItemHeight(15)
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
@@ -265,8 +308,8 @@ public class Dashboard_view {
             .setColorForeground(color(colorHighlights));
             
       ListBox sponsors = cp5.addListBox("sponsor view")
-            .setPosition((3 * challenge_view_hoz), 13 * challenge_view_vert)
-            .setSize(200, 75)
+            .setPosition((3 * challenge_view_hoz), 22 * challenge_view_vert)
+            .setSize(235, 75)
             .setItemHeight(15)
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
@@ -291,7 +334,13 @@ public class Dashboard_view {
         is_expanded = 0;
     }
     
-    
+    void resetProfile() {
+      cp5.remove("textname");
+      cp5.remove("textnouser");
+      cp5.remove("textsteps");
+      cp5.remove("texttime");
+      cp5.remove("textno_user");
+    }
 
     void resetSpacing() {
         chart_spacing = 0;
