@@ -141,25 +141,25 @@ Our Internet of Things product was developed utilising the M5Stack platform. Due
 
 * MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. Due to the fact that responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
-To implement the MQTT communication protocol in our IoT product, we chose to use [HiveMQ](https://www.hivemq.com). Our team established two channels, 'doordie_web' and 'doordie_steps'. 
+To implement the MQTT communication protocol in our IoT product, we chose to use [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below.
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), however we will expand on the key communication protocols and the request types between subsystems below. 
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), this document was used by our group to ensure clear communication between subsystems. We will expand on the key communication protocols and the request types below. 
 
 ### DESKTOP AND M5STACK 
 To send a user's profile data to the M5Stack from the database:
 ``` 
 {
-    "type": "push profile",
-    "user_name": "Mario",
-    "total_steps": 2200,
-    "remaining_sec": 2000
+    	"type": "push profile",
+    	"user_name": "Mario",
+    	"total_steps": 2200,
+    	"remaining_sec": 2000
 }
 ```
 This is only sent when M5 sends a request to the MQTT broker:
 ```
 {
-    "type": "pull profile",
-    "user_name": "Mario"
+    	"type": "pull profile",
+    	"user_name": "Mario"
 }
 ```
 
@@ -193,16 +193,7 @@ This is sent when the M5Stack requests the challenges of the user:
 ```
 {
    	"type": "M5 pull challenges",
-	   "user_name": "Mario"
-}
-```
-
-The M5Stack uses this request type to increment one step in the database, but there will be no response: 
-
-```
-{
-    "type": "push step",
-    "user_name": "Mario"
+	"user_name": "Mario"
 }
 ```
 
@@ -226,8 +217,150 @@ The database uses the following request type to send stats to the M5Stack:
 }
 ```
 
-### DESKTOP AND WEB
+The M5Stack uses this request type to increment one step in the database, but there will be no response from the database. It is only for this request type that the 'doordie_steps' topic is used: 
 
+```
+{
+   	 "type": "push step",
+    	 "user_name": "Mario"
+}
+```
+
+### DESKTOP AND WEB
+When the web pushes a new profile to the database, there is no response from the database:
+```
+{	
+	"type":"push new profile",
+	"user_name":"Mario",
+	"user_type":"sponsor",
+	"joined_date":1587980814845
+}
+
+```
+
+The web requests a user profile from the database: 
+```
+{
+    "type": "pull web profile",
+    "user_name": "Mario"       
+}
+```
+
+The database uses the same request type as it does for the M5Stack to send a user profile:
+```
+{
+    "type": "push web profile",
+    "user_name": "Mario",
+    "total_steps": "2200",
+    "remaining_sec": "2000",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				// epoch time for 15 may
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+The web requests all challenges that the user is enrolled in with:
+```
+{
+    "type": "pull user challenges",
+    "user_name": "Mario"
+}
+```
+
+The database responds with the same request type used for the M5Stack to send all challenges an individual user is enrolled in:
+```
+{
+    "type": "push user challenges",
+    "user_name": "Mario",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+The web requests all challenges:
+```
+{
+    "type": "pull all challenges"
+}
+```
+
+The database sends all current challenges to the web: 
+```
+{
+    "type": "push all challenges",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+When a sponsor adds new challenges, there is no response from the database:
+```
+{
+    "type": "push new challenge",
+    "challenge_id": "3",
+    "challenge_name": "Challenge 2",
+    "description": "runrun",
+    "end_time": 1589500800,
+    "step_goal": 2000,
+    "reward": 200
+}
+```
+
+When the user selects a challenge, there is no response from the database:
+```
+{
+    "type": "push select challenge",
+    "user_name": "Mario",
+    "challenge_id": "1"
+}
+```
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 
