@@ -13,7 +13,7 @@ Web - allows user to log in and provide information about their account, user in
 
 To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
-![Architecture](/Portfolio/Images/architecture.png)
+![Architecture](/Portfolio/Images/architecture-UML.png)
 
 See relevant sections for further information about specific subsystems. 
 
