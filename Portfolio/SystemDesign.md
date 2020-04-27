@@ -3,6 +3,15 @@
 # 1. System Design [40 pts] :
 ## a. Architecture of the entire system
 
+Our Do or Die fitness tracker is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
+
+* **Internet of Things Device** : Our IoT device was an M5Stack, an Arduino we used to create a pedometer. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. 
+* **Desktop Application** : We implemented a Managment Dashboard to be used by the Admin. On our desktop application you are able to view things such as total users, an individual user's statistics, and how many users have 'died'. 
+* **Web Application** : We also implemented a web application, which will be used by the end-users of our product. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges. 
+* **Data Communication** : Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E. 
+* **Data Repository** : To keep our data persistent, we store the data in JSON files. 
+	
+
 Architecture of the system uses a central controller database API that handles receiving and sending requests, using MQTT protocol, to communicate between devices. Three key devices of system:
 
 Processing - sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
