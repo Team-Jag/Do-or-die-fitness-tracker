@@ -1,9 +1,13 @@
 MQTT Channels:
-Steps:doordie_steps
+Steps: doordie_steps
 Web: doordie_web
 
-
-
+//////////////////////////////////  M5 /////////////////////////////////////////////////////
+// From M5Stack requesting user profile from DATABASE
+{
+    "type": "pull profile",
+    "user_name": "Mario"       
+}
 // From DATABASE sending user profile to M5Stack
 {
     "type": "push profile",
@@ -12,24 +16,11 @@ Web: doordie_web
     "remaining_sec": 2000,
 }
   
-// From M5Stack requesting user profile from DATABASE
-{
-    "type": "pull profile",
-    "user_name": "Mario"       
-}
-
-// From web requesting user profile from database
-{
-    "type": "pull web profile",
-    "user_name": "Mario"       
-}
- 
 // From M5Stack to database requesting database to send all challenges that user are enrolled in
 {
     "type": "pull user challenges",
     "user_name": "Mario"
-}
-  
+}  
 // From database sending all challenges that user is enrolled in to M5Stack
 {
     "type": "push user challenges",
@@ -53,33 +44,41 @@ Web: doordie_web
         "reward": 200
     }]
 }
-  
-// From web requesting database to send challenges
+
+// From M5Stack, increment one step in database, no response from database
 {
-    "type": "pull all challenges"
+    "type": "push step",
+    "user_name": "Mario"
 }
- 
-// From database, send all challenges data to web
+
+// Request stats from database
 {
-    "type": "push all challenges",
-    "challenge": [
-    {
-        "challenge_id": "1",
-        "challenge_name": "10K Step Challenge",
-        "description": "stepstep",
-        "end_time": 1589500800,				
-        "step_goal": 10000,
-        "reward": 800
-    },
-  
-    {
-        "challenge_id": "2",
-        "challenge_name": "Challenge 2",
-        "description": "runrun",
-        "end_time": 1589500800,
-        "step_goal": 2000,
-        "reward": 200
-    }]
+	"type": "pull user stats",
+	"user_name": "Mario"
+}
+// Send stats to M5 stack from database
+{
+	"type": "push user stats",
+	"user_name": "Mario",
+	"daily_record": 10000,
+	"weekly_record": 39000,
+	"weekly_current": 18032
+}
+
+////////////////////////////////////        WEB         ///////////////////////////////////////////////////////
+
+// Push new profile from web to database, no response
+{	
+	"type":"push new profile",
+	"user_name":"Mario",
+	"user_type":"sponsor",
+	"joined_date":1587980814845
+}
+
+// From web requesting user profile from database
+{
+    "type": "pull web profile",
+    "user_name": "Mario"       
 }
 
 // From database to web, send user info and enrolled challenges
@@ -106,12 +105,34 @@ Web: doordie_web
         "step_goal": 2000,
         "reward": 200
     }]
-}
+} 
+
   
-// From M5Stack, increment one step in database, no response from database
+// From web requesting database to send challenges
 {
-    "type": "push step",
-    "user_name": "Mario"
+    "type": "pull all challenges"
+}
+// From database, send all challenges data to web
+{
+    "type": "push all challenges",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
 }
 
 // From web, when sponsor adds new challenge, no response from database
@@ -132,27 +153,3 @@ Web: doordie_web
     "user_name": "Mario",
     "challenge_id": "1"
 }
-
-// Request stats from database
-{
-	"type": "pull user stats",
-	"user_name": "Mario"
-}
-
-// Send stats to M5 stack from database
-{
-	"type": "push user stats",
-	"user_name": "Mario",
-	"daily_record": 10000,
-	"weekly_record": 39000,
-	"weekly_current": 18032
-}
-
-// Push new profile from web to database, no response
-{	
-	"type":"push new profile",
-	"user_name":"Mario",
-	"user_type":"sponsor",
-	"joined_date":1587980814845
-}
-

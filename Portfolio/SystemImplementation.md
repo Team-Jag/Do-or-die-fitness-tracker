@@ -54,6 +54,7 @@ The goal of this sprint was to release the Alpha version of our product, by push
 * Improved accuracy of the step count
 * Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
+* Web able to send and receive dummy data from the broker
 
 **WIP:**
 * All subsystem able to receive, process and send the intended MQTT request types
@@ -70,6 +71,8 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Basic animation for Bean sprite implemented
 * User can see the challenges that they are enrolled in on M5 stack (dummy data)
 * User can see basic statistics about their step count on M5 stack (dummy data)
+* Web can see their full user information and challenges if they are logged in (dummy data)
+* Web can create new customised challenges for all users
 * Admin can see charts of total users, challenges, sponsors
 * Admin dashboard pulls data from backend database API
 
@@ -89,7 +92,7 @@ The goal of this sprint will be to get to advance our prototye, including:
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
 
 **User Stories Implemented:**
-* User now able to see real-time challenge data on M5 stack
+* User now able to see real-time challenge data on M5 stack and on the Web
 * Animation for Bean now based on life left on M5 stack
 * Death screen if the time left is zero on M5 stack
 * Admin can see a list of all users and proportion of players currently alive
@@ -116,6 +119,8 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * Admin can search for a specific user profile and see their information
 * Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
 * Sponsor redirected to the create challenge page on the web 
+* On creating an account on Web, user can decide if they are a user or a sponsor, to determine if they can create challenges
+
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
