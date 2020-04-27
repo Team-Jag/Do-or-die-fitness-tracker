@@ -217,7 +217,7 @@ The database uses the following request type to send stats to the M5Stack:
 }
 ```
 
-The M5Stack uses this request type to increment one step in the database, but there will be no response from the database. It is only for this request type that the 'doordie_steps' topic is used: 
+The M5Stack uses this request type to increment one step in the database, but there will be no response from the database. It is only for this request type that the 'doordie_steps' topic is used, as we expect steps to be sent every second. This allows for scalability of our product as the number of users increases: 
 
 ```
 {
