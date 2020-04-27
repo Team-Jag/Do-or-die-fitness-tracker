@@ -153,11 +153,11 @@ Web: doordie_web
 	"weekly_current": 18032
 }
 
-//Push new profile from web to database
+// Push new profile from web to database, no response
 {	
 	"type":"push new profile",
 	"user_name":"Mario",
 	"user_type":"sponsor",
-	"current_time":"1587980814845"
+	"joined_date":"1587980814845"
 }
 
