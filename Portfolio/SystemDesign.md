@@ -31,6 +31,8 @@ Key classes for desktop app include:
 ### WEB
 For more detail on web technologies see section **1g.** bellow.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
+![web-uml](/Portfolio/Images/web-uml.png)
+
 * **Mqtt Class:** This class handles all comunication with our "server" and the associated rendering. You will find a call for the Mqtt class in all the following components. The class:
   * encapsulates - it hides the detail of the server communication from the other components
   * acts abstract - with a simple interface that can be called by all components
