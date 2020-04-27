@@ -120,6 +120,19 @@ Original multi-tab wireframe design for desktop UI:
 
 Updated wireframe design for UI in a single window:
 ![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
+
+Final decided layout for admin UI:
+![UI-layout](/Portfolio/Images/dashboard-main.png)
+
+Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
+![UI-search](/Portfolio/Images/search-user.png) ![UI-search](/Portfolio/Images/null-user.png)
+
+Selecting a specific statistic from UI:
+![UI-select-chart](/Portfolio/Images/select-chart.png)
+
+Different selected charts showing data for each parameter, such as users, sponsors, challenges.
+![UI-selected-charts](/Portfolio/Images/selected-charts.png)
+
 ### WEB
 
 Original web wireframe design for desktop profile:
