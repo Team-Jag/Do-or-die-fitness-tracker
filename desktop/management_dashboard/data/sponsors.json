@@ -4,10 +4,11 @@
       "1",
       "2"
     ],
-    "user_name": "Mario's dad"
+    "user_name": "Mario's dad",
+    "joined_date": 1587980814845
   },
-  {"user_name": "Peach"},
-  {
-    "user_name": "Toad"
+  { 
+    "user_name": "Peach",
+    "joined_date": 1587980812000
   }
 ]}

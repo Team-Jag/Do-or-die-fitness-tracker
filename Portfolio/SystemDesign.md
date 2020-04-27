@@ -3,45 +3,47 @@
 # 1. System Design :
 ## a. Architecture of the entire system
 
-Architecture of the system uses a central controller database dealing with recieving and sending requests, using MQTT protocol to communicate between devices. Three key devices of system:
+Architecture of the system uses a central controller database API that handles receiving and sending requests, using MQTT protocol, to communicate between devices. Three key devices of system:
 
-Processing - dealing with sending and recieving requests, parsing to make sure request is not malformed, storing user information in a central database, and visualising general consumer data such as total users of the app.
+Processing - sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
 
-M5 - stateless device to update the database when user step count is incremented, and inform user when player death occurs.
+M5 - stateless device to update the database when user step count is incremented, and informs user when player death occurs.
 
 Web - allows user to log in and provide information about their account, user information and challenges.
 
-To maintain seperation of concerns, all data is accessed through an API public class, and requests pass through a single server (so web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponser classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual compenents working correctly and expectedly during integration.
+To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
-![Architecture](/Portfolio/Images/architecture.png)
+![Architecture](/Portfolio/Images/architecture-UML.png)
 
 See relevant sections for further information about specific subsystems. 
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
-Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however it developed in to the following UML diagrams for each of the three sub-systems. 
+Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
 
 ### DESKTOP
 Key classes for desktop app include:
 
-* **data** - database API that retrieves and updates user, sponsor, challenge information.
-* **events** - recieves and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT topics or update (push type requests) the database.
+* **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
+* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database.
 * **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
-* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponser.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files. 
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
 
 ### WEB
+
 For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
 ![web-uml](/Portfolio/Images/web-uml.png)
 
-* **Mqtt Class:** This class handles all comunication with our "server" and the associated rendering. You will find a call for the Mqtt class in all the following components. The class:
+* **MQTT Class:** This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
+
   * encapsulates - it hides the detail of the server communication from the other components
   * acts abstract - with a simple interface that can be called by all components
   * inherits its basic methods from the react components
   * is polymorphic - it can handle all sorts of data: from profile to challenge data  
-* **Landing Page:** Contains all the static content and the Mqtt instance for creating a new profile
-* **Login Page:** Contains the static UI + a Mqtt instance to handle the Login
-* **Profile Page:** Contains a Mqtt instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
-* **Challenge Choice Page:** Contains a Mqtt instance which lets the user sign up for challenges
+* **Landing Page:** Contains all the static content and the MQTT instance for creating a new profile
+* **Login Page:** Contains the static UI + a MQTT instance to handle the Login
+* **Profile Page:** Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
+* **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
 
 ### M5
@@ -62,21 +64,22 @@ These key stories were developped in to further user stories, which can be seen 
 <p align="center"><b>After developing the three user stories, we translated them into the following requirements for our sub-systems:</b></p>
 
 ### DESKTOP
-Administration interface for data visualisation. Allow back-end to deal with sending and recieving requests, and front-end to track total users, sponsers and challenges currently available.
+Administration interface for data visualisation. Allows back-end to deal with sending and receiving requests, and front-end to track total users, sponsors and challenges currently available.
 
 **Data visualisation UI**
-* Front-end needs to pull flat totals from database for current users, sponsers, and available current challenges.
+* Front-end needs to pull flat totals from database for current users, sponsors, and available current challenges.
 * The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
 * We want to be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
 * We want to follow thematic colour scheme for the UI.
 
 **Data processing back-end**
-* System must be capable of processing JSON requests from the web application and inserting new users, sponsers and challenges into central database, and retaining this data in a persistant manner. 
-* System must be able to listen on the correct channel for step updates for each user, and update records accordingly.
-* System also calculates the life time remaining for each user's avatar based on step updates and time elapsed
-* System also informs user of death.
+* System must be capable of processing JSON requests from both the web application and the M5Stack, and should be able to insert new users, sponsors and challenges into central database, while retaining this data in a persistent manner. 
+* System must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
+* System also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
+* System should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### WEB
+
 Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
 
 **User**
@@ -90,7 +93,7 @@ Primary interface for the sponsor and the user to handle everything related to c
   * The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
 ### M5 
-When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements in to two further subheadings.
+When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
 
 **Back-End**
 * The M5 must have a pedometer, able to accurately count the end-user's steps, and store them locally. 
@@ -150,13 +153,20 @@ Initially our UI wireframe included a shop feature, however after adding a third
 Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
 
 ### DESKTOP
-Example request from database:
+Example of communication from database to send user profile data to M5:
 ``` 
 {
     "type": "push profile",
     "user_name": "Mario",
     "total_steps": 2200,
-    "remaining_sec": 2000,
+    "remaining_sec": 2000
+}
+```
+This is only sent when M5 sends a request to the MQTT broker:
+```
+{
+    "type": "pull profile",
+    "user_name": "Mario"
 }
 ```
 
@@ -169,7 +179,7 @@ Example request from database:
 
 Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile using the data API. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability. 
 
-M5 device is stateless therefore does not store information locally apart from created variables. These are then pulled from the database via a pull_user request type. 
+M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type. 
 
 
 ## g. Details of web technologies in use (including a rational for your choice)
