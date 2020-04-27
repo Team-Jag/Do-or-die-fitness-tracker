@@ -75,20 +75,91 @@ void messageReceived(String topic, byte[] payload) {
       println("String could not be parsed from topic " + topic);
    }
    // u_api.saveUsertoDB(db.users);
-   // refreshData();
-   //refreshDashboardData();
+   refreshData();
+   refreshDashboardData();
 }
 
-/*
+
 void controlEvent(ControlEvent theEvent) {
- // expand order if clicked via API call
- if (theEvent.getController().getValueLabel().getText().contains("O") == true) {
- // call the api and get the JSON packet
- expanded_order = api.getOrdersByStatus(theEvent.getController().getName())[(int) theEvent.getController().getValue()].getString("order_id");
- view.build_expanded_order(expanded_order);
- }
+    int positionY=950;
+    String chartType="";
+    int dropDownType;
+    
+    //placeholder for a potential stats class
+    int[] dataAllTime = {1,5,12,35,56,79,100,220,340,325};
+    int[] dataWeekly = {1,5,23,353,345,243,450};
+    int[] dataMonthly = {123,131,432,345,456,123,345};
+    int[] dataDaily = {123,234,123,477,234,123,123};
+    
+   // search bar button listener
+   if (theEvent.getController().getName() == "search" || key == ENTER) {
+     String username = "";
+     username = cp5.get(Textfield.class,"search_user").getText();
+     
+     println(theEvent.getController().getName());
+     println("from listener "+username);
+   
+       
+      view.buildProfile(username);  
+   }
+   
+   //for resolving charts
+   if (theEvent.isController()) {
+     println("DROPDOWN CONTROLLER "+theEvent.getController().getValue()); //value gives a float
+     dropDownType = int(theEvent.getController().getValue()); //is it weekly, daily, all time data etc
+     println("event: "+theEvent.getName());
+     //what specific data we want
+     if (theEvent.getName()=="challenge view") {
+       println("challenge dropdown ");
+       positionY = 70;
+       chartType = "CHALLENGE";
+       
+     } else if (theEvent.getName()=="user view") {
+       println("user dropdown ");
+       positionY = 270;
+       chartType = "USER";
+       
+     } else if (theEvent.getName()=="sponsor view") {
+       println("sponsor dropdown");
+       positionY = 470;
+       chartType = "SPONSOR";
+     } else {
+       println("invalid dropdown");
+     }
+     
+     view.resetChart(chartType);
+     
+     switch(dropDownType) {
+       case 0:
+         view.buildChart(Chart.LINE, chartType, dataDaily, 10, positionY, 35, -30, 500);
+         break;
+       case 1:
+         view.buildChart(Chart.LINE, chartType, dataWeekly, 10, positionY, 35, -30, 500);
+         break;
+       case 2:
+        view.buildChart(Chart.LINE, chartType, dataMonthly, 10, positionY, 35, -30, 500);
+         break;
+       case 3:
+         view.buildChart(Chart.LINE, chartType, dataAllTime, 10, positionY, 35, -30, 500);
+         break;
+       default:
+         break;
+     }
+   }
+   view.resetSelectionList();
+   view.build_expanded();
  }
  
+ void search(int buttonVal) {
+   
+   println("search callback");
+   if (buttonVal == 0) {
+      buttonVal = 1; 
+   }
+ }
+ 
+ 
+ /*
  // call back on button click
  public void accept(int theValue) {
  if (button_state > 2) {
