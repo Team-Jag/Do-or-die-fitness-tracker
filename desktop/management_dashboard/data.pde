@@ -48,8 +48,6 @@ private class Database {
    JSONObject users = new JSONObject();
    JSONObject sponsors = new JSONObject();
    JSONObject challenges = new JSONObject();
-   Database() {
-   }
 }
 
 Database db = new Database();

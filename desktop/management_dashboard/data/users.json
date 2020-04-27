@@ -7,7 +7,7 @@
     "user_name": "Mario",
     "daily_record": 10000,
     "total_steps": 2381,
-    "remaining_sec": 540,
+    "remaining_sec": 372,
     "weekly_current": 18032
   },
   {
@@ -21,7 +21,7 @@
     "user_name": "Luigi",
     "daily_record": 500,
     "total_steps": 0,
-    "remaining_sec": 2495,
+    "remaining_sec": 2327,
     "weekly_current": 500
   }
 ]}
