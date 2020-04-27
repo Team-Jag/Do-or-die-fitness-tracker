@@ -143,10 +143,10 @@ Our Internet of Things product was developed utilising the M5Stack platform. Due
 
 To implement the MQTT communication protocol in our IoT product, we chose to use [HiveMQ](https://www.hivemq.com). Our team established two channels, 'doordie_web' and 'doordie_steps'. 
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt, however we will expand on the key communication protocols between subsystems below. 
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), however we will expand on the key communication protocols between subsystems below. 
 
-### DESKTOP
-Example of communication from database to send user profile data to M5:
+### DESKTOP AND M5STACK 
+To send user profile data to the M5Stack from the database:
 ``` 
 {
     "type": "push profile",
@@ -163,10 +163,8 @@ This is only sent when M5 sends a request to the MQTT broker:
 }
 ```
 
-### WEB
+### DESKTOP AND WEB
 
-### M5
-* *Team M5 please write this section* *
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 
