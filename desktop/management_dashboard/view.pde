@@ -171,16 +171,43 @@ public class Dashboard_view {
     
     void buildProfile(String user) {
          JSONObject  userProfile = u_api.getUserByName(user);
-         JSONObject  challenges;
-         
+         JSONObject challenge;
+         int i;
+         int challengePosition = 190; //start of challenge lists
+         int challengeSpacing = 30; //how far apart should start
          String username = userProfile.getString("user_name");
          
          resetProfile();
         
         if (username != null) {
+          //textarea only does 1 line per string with no carriage returns, so we need many
           buildTextArea("textname","PROFILE FOR: "+username, 650, 100);
           buildTextArea("textsteps","CURRENT STEPS: "+str(userProfile.getInt("total_steps")), 650, 130);
           buildTextArea("texttime","TIME REMAINING: "+str(userProfile.getInt("remaining_sec")), 650, 160);
+          
+          //challenges part, to build dynamically
+          buildTextArea("textcomplete", "COMPLETED CHALLENGES: ", 650, 190);
+          
+          JSONArray completeChallenges = userProfile.getJSONArray("challenge_done");
+          
+          for (i = 0; i < completeChallenges.size(); i++) { //completeChallenges.getJSONObject(i);
+            String challengeID = completeChallenges.getString(i);
+            challenge = c_api.getChallengeByID(challengeID);
+            buildTextArea("textcompletechallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
+            challengePosition = challengePosition + (challengeSpacing*i+30); //to retain spacing for the next part
+          }
+          
+          buildTextArea("textenrolled", "ENROLLED CHALLENGES: ", 650, challengePosition+30);
+          challengePosition+=30;
+          
+          JSONArray enrolledChallenges = userProfile.getJSONArray("challenge_id");
+          
+          for (i = 0; i < enrolledChallenges.size(); i++) {
+            String challengeID = enrolledChallenges.getString(i);
+            challenge = c_api.getChallengeByID(challengeID);
+            buildTextArea("textenrolledchallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
+            challengePosition = challengePosition + (challengeSpacing*i+30);
+          }
           
         } else {
           
@@ -263,7 +290,7 @@ public class Dashboard_view {
         list.setColorActive(color(0));
         list_spacing = list_spacing + list_x_size + 15;
         list.clear();
-        list.open();
+        list.close();
         
         JSONObject curr_user;
         JSONArray user_challenges;
@@ -277,6 +304,8 @@ public class Dashboard_view {
               list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
               list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
          }
+         
+        
      }
 
     void build_expanded(JSONArray usersArr, JSONArray challengesArr, JSONArray sponsorsArr) {
@@ -296,7 +325,8 @@ public class Dashboard_view {
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(colorHighlights));
+            .setColorForeground(color(colorHighlights))
+            .close();
 
       ListBox users = cp5.addListBox("user view")
             .setPosition((3 * user_view_hoz), 8 * user_view_vert)
@@ -305,7 +335,8 @@ public class Dashboard_view {
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(colorHighlights));
+            .setColorForeground(color(colorHighlights))
+            .close();
             
       ListBox sponsors = cp5.addListBox("sponsor view")
             .setPosition((3 * challenge_view_hoz), 22 * challenge_view_vert)
@@ -314,7 +345,8 @@ public class Dashboard_view {
             .setBarHeight(15)
             .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(colorHighlights));
+            .setColorForeground(color(colorHighlights))
+            .close();
   
         users.addItem("daily", 0);
         users.addItem("weekly", 1); 
