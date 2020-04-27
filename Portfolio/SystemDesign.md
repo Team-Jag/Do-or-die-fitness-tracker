@@ -75,15 +75,15 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * System also informs user of death.
 
 ### WEB
-* 1. **User Profile**
-  * a. Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
-  * b. Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
-  * c. Render a profile picture depending on the user name (the profile picture will be available on the webserver)
-  * d. Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
-* 2. **User activity**
-  * a. The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
-* 3. **Sponsor activity**
-  * a. The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
+**User**
+  * Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
+  * Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
+  * Render a profile picture depending on the user name (the profile picture will be available on the webserver)
+  * Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
+  * The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
+  
+**Sponsor**
+  * The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
 ### M5 
 When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements in to two further subheadings.
