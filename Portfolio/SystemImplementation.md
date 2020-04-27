@@ -4,7 +4,7 @@
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. 
+In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](/Portfolio/Images/updated_gantt.png)
 
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the user stories implemented, and what remained as WIP. 
@@ -43,6 +43,7 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 
 ### Sprint 3 : Alpha Version Release (30.3-6.4) 
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
+* Ensuring all subsystems can receive, process, and send the intended MQTT commands
 
 **User Stories Implemented:**
 * Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life
@@ -114,6 +115,7 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * User able to see their statistics accurately reflected on statistic view
 * Admin can search for a specific user profile and see their information
 * Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
+* Sponsor redirected to the create challenge page on the web 
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
