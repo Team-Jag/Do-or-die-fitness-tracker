@@ -258,7 +258,7 @@ The database uses the same request type as it does for the M5Stack to send a use
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": 1589500800,				// epoch time for 15 may
+        "end_time": 1589500800,				
         "step_goal": 10000,
         "reward": 800
     },
