@@ -139,11 +139,11 @@ Our Internet of Things product was developed utilising the M5Stack platform. Due
 
 * MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs. 
 
-* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. 
+* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. Due to the fact that responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
 To implement the MQTT communication protocol in our IoT product, we chose to use ![HiveMQ](https://www.hivemq.com). 
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt, however we will expand on the key communication protocols between subsystems below. 
 
 ### DESKTOP
 Example of communication from database to send user profile data to M5:
