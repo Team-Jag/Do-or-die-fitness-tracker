@@ -14,7 +14,7 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
-* Defined minimum viable product(MVP) with functions/classes/variables
+* Defined minimum viable product (MVP) with functions/classes/variables
 * Defined interactions between subsystems including the function calls and their JSON syntax 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
 
@@ -29,7 +29,7 @@ The goal of this sprint was to create a very basic proof of concept.
 
 **DONE:**
 * M5 Stack able to send a notification to server (Processing) for each new step
-* Processing able to process the notification, calculate the total steps and send it back to the M5
+* Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
 
@@ -49,9 +49,10 @@ The goal of this sprint was to release the Alpha version of our product, by push
 **DONE:**
 * Improved accuracy of the step count
 * Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
+* Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
 
 **WIP:**
-* All subsystem able to receive, process and send the intended MQTT commands
+* All subsystem able to receive, process and send the intended MQTT request types
 * All subsystems provide a basic version of the agreed visualization 
 * MQTT message length issue with M5 Stack 
 
@@ -67,7 +68,7 @@ The goal of this sprint will be to get to advance our prototye, including:
 * User can see basic statistics about their step count on M5 stack (dummy data)
 
 **DONE:**
-* All subsystem able to receive, process and send the intended MQTT commands
+* All subsystems able to receive, process and send the intended MQTT commands
 * All subsystems provide a basic version of the agreed visualization 
 * M5 home view enhanced with animation 
 * Implementation of statistic and challenge view on M5 stack, had to use dummy data due to the MQTT message length issue
@@ -89,12 +90,16 @@ The goal of this sprint was to release the Beta version of our product, and push
 **DONE:**
 * MQTT message length issue resolved 
 * Replaced dummy data with appropriate server requests on M5 stack for challenges
+* Implemented life timer countdown in desktop user API
+* Database automatically updated when user reaches any goal of challenges enrolled and adds rewards
 * Improved sprite animation: fequency and height of bounces linearly scales with time left
 * M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down
 
 **WIP:**
 * Implement interaction feature on M5 stack
 * Replace statistics dummy data with data from server on M5 stack
+* Add sponsor API to desktop
+* Adding new user should initialise user data with default values
 
 ### Sprint 6 : Version 1.0 Release (20.3-27.4) 
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
@@ -104,6 +109,9 @@ The goal of this sprint was to clean up our code, and implement any final featur
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
+* Added statistics data into user.json
+* Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data
+* Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values
 
 **WIP:**
 * Implement interaction feature on M5 stack
