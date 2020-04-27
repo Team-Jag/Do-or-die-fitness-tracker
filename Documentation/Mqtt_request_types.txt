@@ -88,7 +88,7 @@ Web: doordie_web
     }]
 }
 
-// From database to web, send user info and enrolled challenges, no response from database
+// From database to web, send user info and enrolled challenges
 {
     "type": "push web profile",
     "user_name": "Mario",
@@ -151,5 +151,13 @@ Web: doordie_web
 	"daily_record": 10000,
 	"weekly_record": 39000,
 	"weekly_current": 18032
+}
+
+// Push new profile from web to database, no response
+{	
+	"type":"push new profile",
+	"user_name":"Mario",
+	"user_type":"sponsor",
+	"joined_date":"1587980814845"
 }
 
