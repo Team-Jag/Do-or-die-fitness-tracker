@@ -11,7 +11,7 @@ M5 - stateless device to update the database when user step count is incremented
 
 Web - allows user to log in and provide information about their account, user information and challenges.
 
-To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5 stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
+To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
 ![Architecture](/Portfolio/Images/architecture-UML.png)
 
@@ -47,7 +47,7 @@ React is ideal to implement object oriented design. Our website consists of func
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
 
-<p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5 stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p> 
+<p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p> 
 
 <p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
 
@@ -86,7 +86,7 @@ Administration interface for data visualisation. Allows back-end to deal with se
   * a. The website must have an input form for new challenges that the sponsor can fill in. The input of the sponsor gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
 ### M5 
-When designing the interface of the M5 Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
+When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
 
 **Back-End**
 * The M5 must have a pedometer, able to accurately count the end-user's steps, and store them locally. 
@@ -131,30 +131,236 @@ The stats screen was implemented according to the UI wireframe, however we have 
 Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](/Portfolio/ProjectEvaluation.md). 
 
 ## e. Details of the communication protocols in use (including a rational for your choice)
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter to work around the MQTT broker maximum character limit. A list of all valid request types made between devices is found in MQTT_request_types.txt.
+Our Internet of Things product was developed utilising the M5Stack platform. Due to the use of this platform, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move between web to desktop, M5Stack to desktop and desktop to both the Web and M5Stack. Further, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons: 
 
-### DESKTOP
-Example of communication from database to send user profile data to M5:
+* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time. 
+
+* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data. 
+
+* MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs. 
+
+* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. Due to the fact that responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
+
+To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below.
+
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), this document was used by our group to ensure clear communication between subsystems. We will expand on the key communication protocols and the request types below. 
+
+### DESKTOP AND M5STACK 
+To send a user's profile data to the M5Stack from the database:
 ``` 
 {
-    "type": "push profile",
-    "user_name": "Mario",
-    "total_steps": 2200,
-    "remaining_sec": 2000
+    	"type": "push profile",
+    	"user_name": "Mario",
+    	"total_steps": 2200,
+    	"remaining_sec": 2000
 }
 ```
 This is only sent when M5 sends a request to the MQTT broker:
 ```
 {
-    "type": "pull profile",
+    	"type": "pull profile",
+    	"user_name": "Mario"
+}
+```
+
+Processing sends all challenges a user is enrolled in to be updated on their M5Stack:
+```
+{
+    "type": "push user challenges",
+    "user_name": "Mario",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+This is sent when the M5Stack requests the challenges of the user: 
+```
+{
+   	"type": "pull user challenges",
+	"user_name": "Mario"
+}
+```
+
+To update the statistics of the user on the M5Stack: 
+
+```
+{
+	"type": "pull user stats",
+	"user_name": "Mario"
+}
+```
+
+The database uses the following request type to send stats to the M5Stack: 
+```
+{
+	"type": "push user stats",
+	"user_name": "Mario",
+	"daily_record": 10000,
+	"weekly_record": 39000,
+	"weekly_current": 18032
+}
+```
+
+The M5Stack uses this request type to increment one step in the database, but there will be no response from the database. It is only for this request type that the 'doordie_steps' topic is used, as we expect steps to be sent every second. This allows for scalability of our product as the number of users increases: 
+
+```
+{
+   	 "type": "push step",
+    	 "user_name": "Mario"
+}
+```
+
+### DESKTOP AND WEB
+When the web pushes a new profile to the database, there is no response from the database:
+```
+{	
+	"type":"push new profile",
+	"user_name":"Mario",
+	"user_type":"sponsor",
+	"joined_date":1587980814845
+}
+
+```
+
+The web requests a user profile from the database: 
+```
+{
+    "type": "pull web profile",
+    "user_name": "Mario"       
+}
+```
+
+The database uses the same request type as it does for the M5Stack to send a user profile:
+```
+{
+    "type": "push web profile",
+    "user_name": "Mario",
+    "total_steps": "2200",
+    "remaining_sec": "2000",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+The web requests all challenges that the user is enrolled in with:
+```
+{
+    "type": "pull user challenges",
     "user_name": "Mario"
 }
 ```
 
-### WEB
+The database responds with the same request type used for the M5Stack to send all challenges an individual user is enrolled in:
+```
+{
+    "type": "push user challenges",
+    "user_name": "Mario",
+    "challenges": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
 
-### M5
-* *Team M5 please write this section* *
+The web requests all challenges:
+```
+{
+    "type": "pull all challenges"
+}
+```
+
+The database sends all current challenges to the web: 
+```
+{
+    "type": "push all challenges",
+    "challenge": [
+    {
+        "challenge_id": "1",
+        "challenge_name": "10K Step Challenge",
+        "description": "stepstep",
+        "end_time": 1589500800,				
+        "step_goal": 10000,
+        "reward": 800
+    },
+  
+    {
+        "challenge_id": "2",
+        "challenge_name": "Challenge 2",
+        "description": "runrun",
+        "end_time": 1589500800,
+        "step_goal": 2000,
+        "reward": 200
+    }]
+}
+```
+
+When a sponsor adds new challenges, there is no response from the database:
+```
+{
+    "type": "push new challenge",
+    "challenge_id": "3",
+    "challenge_name": "Challenge 2",
+    "description": "runrun",
+    "end_time": 1589500800,
+    "step_goal": 2000,
+    "reward": 200
+}
+```
+
+When the user selects a challenge, there is no response from the database:
+```
+{
+    "type": "push select challenge",
+    "user_name": "Mario",
+    "challenge_id": "1"
+}
+```
 
 ## f. Details of the data persistence mechanisms in use (including a rational for your choice)
 
