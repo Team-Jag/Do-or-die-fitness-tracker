@@ -9,7 +9,7 @@ In order to keep it clear which user stories were implemented during each sprint
 
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the user stories implemented, and what remained as WIP. 
 
-### Sprint 1 Define Architecture & Interactions (2.3-9.3) 
+### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems.
 
 **DONE:**
@@ -21,7 +21,7 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 **WIP:**
 * Implementation of communication protocol 
 
-### Sprint 2 First Prototype (9.3-16.3) 
+### Sprint 2 : First Prototype (9.3-16.3) 
 The goal of this sprint was to create a very basic proof of concept.
 
 **User Stories Implemented:**
@@ -39,7 +39,7 @@ The goal of this sprint was to create a very basic proof of concept.
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. 
 
-### Sprint 3 Alpha Version Release (30.3-6.4) 
+### Sprint 3 : Alpha Version Release (30.3-6.4) 
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
 
 **User Stories Implemented:**
@@ -55,7 +55,7 @@ The goal of this sprint was to release the Alpha version of our product, by push
 * All subsystems provide a basic version of the agreed visualization 
 * MQTT message length issue with M5 Stack 
 
-### Sprint 4 Resolving Issues and Enhancing Features (6.4-13.4) 
+### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) 
 The goal of this sprint will be to get to advance our prototye, including:
 * Fixed interaction issues that arose in the sprint review on 6th of April
 * Improve design and visuals
@@ -78,7 +78,7 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
 
-### Sprint 5 Beta Version Release (13.4-20.4) 
+### Sprint 5 : Beta Version Release (13.4-20.4) 
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
 
 **User Stories Implemented:**
@@ -96,7 +96,7 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Implement interaction feature on M5 stack
 * Replace statistics dummy data with data from server on M5 stack
 
-### Sprint 6 Version 1.0 Release (20.3-27.4) 
+### Sprint 6 : Version 1.0 Release (20.3-27.4) 
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
 
 **User Stories Implemented:**
@@ -108,7 +108,7 @@ The goal of this sprint was to clean up our code, and implement any final featur
 **WIP:**
 * Implement interaction feature on M5 stack
 
-### Sprint 7 Version 1.1 (optional) and Write-Up (27.4-4.5) 
+### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
 The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
 
 **User Stories Implemented:**
