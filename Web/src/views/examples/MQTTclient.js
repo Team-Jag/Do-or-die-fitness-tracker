@@ -1,6 +1,5 @@
 // Create a client instance, we create a random id so the broker will allow multiple sessions
 import React from "react";
-// import jQuery from 'jquery';
 import Paho from 'paho-mqtt';
 import { Redirect } from "react-router-dom";
 import {Link} from 'react-router-dom';
@@ -19,7 +18,6 @@ class Mqtt extends React.Component {
   constructor(props) {
     super(props);
     this.moment = require('moment');
-
     this.state = {
         mqttConnected: false,
         page_name: '',
@@ -29,9 +27,9 @@ class Mqtt extends React.Component {
         challenge_id: '',
         challenge_name: '',
         challenge_description: '',
-        challenge_step_goal: '',
+        challenge_step_goal: 0,
         challenge_end_date: '20-03-31',
-        challenge_reward: '',
+        challenge_reward: 0,
         challenges_loaded: false,
         challenge_array: [],
       //login/signup page
@@ -78,7 +76,6 @@ class Mqtt extends React.Component {
   }
 
 renderProfile(){
-  console.log(this.state.user_challenges);
   if (this.state.mqttConnected === true){
     this.requestProfile();
   }
@@ -185,12 +182,10 @@ renderProfile(){
       </Link>
       <br></br>
   </div>
-
-)}
+  )}
 }
 
 createNewProfile(){
-  console.log("Creating new profile...");
   const now = Date.now();
   var newRequest = {
     type: "push new profile",
@@ -205,7 +200,6 @@ requestProfile(){
   if(this.state.total_steps !== 0){
     this.wait(1000);
   }
-  console.log("Requesting profile...");
   var newRequest = {
     type: "pull web profile",
     user_name: global.userName
@@ -246,16 +240,14 @@ rendersignup(){
         color="info"
         size="lg"
         onClick={this.handleLogin.bind(this)}
-      >
-      Sign up now
+      >Sign up now
       </Button>
       <div className="pull-middle">
         <h6>
           <a
             className="link"
             href="/login-page"
-          >
-            Login to existing Account
+          >Login to existing Account
           </a>
         </h6>
       </div>
@@ -269,38 +261,34 @@ redirectToProfile(){
   {
     if(this.state.page_name === 'login')
     {
-      console.log("we're on the login page")
         if(this.state.account_exists === true)
         {
-          console.log("redirect changed to true")
           this.setState({redirect: true})
         }
     }
     if(this.state.page_name === 'sign-up')
     {
-        console.log("we're on the sign up page")
         if(this.state.account_exists === false)
         {
-          this.createNewProfile()
+
           this.setState({redirect: true})
+          if(this.state.redirect === true){
+            this.createNewProfile()
+          }
         }
     }
   }
   if (this.state.redirect)
   {
-    if(this.state.page_name === 'sign-up' && global.profile_type==='sponsor')
+    if(this.state.page_name === 'sign-up' && this.state.is_sponsor===true)
     {
       return(
-           <Redirect to={{
-                 pathname: '/challenge-page',
-             }} />)
+           <Redirect to={{pathname: '/challenge-page',}} />)
     }
     else
     {
       return(
-           <Redirect to={{
-                 pathname: '/profile-page',
-             }} />)
+           <Redirect to={{pathname: '/profile-page',}} />)
     }
   }
 }
@@ -317,12 +305,10 @@ loginChange(type,event){
 
 handleChange(type,event) {
    this.setState({[type]: event.target.value});
-   console.log('type is: ' + type + ' and value is ' + event.target.value)
 }
 
 handleCheckBox(type,event) {
   this.setState({[type]: event.target.checked});
-  console.log('type is: ' + type + ' and value is ' + event.target.checked)
   if(event.target.checked === true)
   {
     global.profile_type='sponsor'
@@ -335,7 +321,6 @@ handleCheckBox(type,event) {
 
 handleImgChange(type,event) {
    this.setState({[type]: event.target.value + '.jpg'});
-   console.log('type is: ' + type + ' and value is ' + event.target.value)
 }
 
 renderLogin(){
@@ -377,14 +362,13 @@ renderLogin(){
       color="info"
       onClick={this.handleLogin.bind(this)}
       size="lg"
-      >    Login
+      >Login
     </Button>
     </form>
   );
 }
 
 requestChallenges(){
-  console.log("Requesting challenges...")
   var newRequest1 = {
     type: "pull all challenges"
   }
@@ -392,7 +376,6 @@ requestChallenges(){
 }
 
 renderGetChallenges(){
-  console.log(global.userName);
    if(this.state.mqttConnected === true && this.state.challenges_loaded === false){
     this.requestChallenges()
     this.setState({challenges_loaded: true})
@@ -435,7 +418,6 @@ renderGetChallenges(){
         </Button>
         </Link>
       </React.Fragment>
-
   );
 }
 }
@@ -485,27 +467,19 @@ return(
   }
 
   pushNewChallenge(event){
-    console.log(JSON.stringify(this.state.challenge_name));
     console.log("Pushing New Challenge");
   	var newChallenge = {
       type: "push new challenge",
       challenge_id: "C" + this.makeid(6),
       challenge_name: this.state.challenge_name,
-      description: this.state.challenge_description,
-      end_time: this.state.challenge_end_date,
-      step_goal: this.state.challenge_step_goal,
-      reward: this.state.challenge_reward,
+      description:  this.state.challenge_description,
+      end_time: this.moment(String(this.state.challenge_end_date), "YYYY-MM-DD").valueOf()/1000,
+      step_goal: parseInt(this.state.challenge_step_goal),
+      reward: parseInt(this.state.challenge_reward),
       creator_id: global.userName
     }
-    if(global.profile_type === 'sponsor')
-    {
-      this.requestToServer(JSON.stringify(newChallenge));
-      alert("You successfully created a new challenge");
-    }
-    else
-    {
-      alert("You don't have the authority to create a challenge");
-    }
+    this.requestToServer(JSON.stringify(newChallenge));
+    alert("You successfully created a new challenge");
   }
 
   // called when the client connects
@@ -514,10 +488,9 @@ return(
     console.log("Connected");
     this.setState({
     mqttConnected: true
-  });
-
-    // this.state.mqttConnected = true;
+    });
   }
+
   // called when the client connects
   requestToServer(payload) {
     // Once a connection has been made, make a subscription and send a message.
@@ -527,6 +500,7 @@ return(
     message.destinationName = "doordie_web";
     this.client.send(message);
   }
+
   // called to generate the IDs
   makeid(length) {
      var result           = '';
@@ -551,12 +525,10 @@ return(
     var json_message = JSON.parse(message.payloadString);
 
     if(json_message.type === 'push all challenges'){
-      console.log("attempt to get array");
       this.setState({challenge_array: json_message.challenge})
     }
 
     if(json_message.type === 'push web profile' && json_message.user_name === global.userName){
-      console.log(json_message.hasOwnProperty("total_steps"));
       this.setState({
         total_steps: json_message.total_steps,
         remaining_sec: json_message.remaining_sec,
@@ -568,15 +540,15 @@ return(
       })
       global.profile_type=json_message.user_type
     }
-}
+  }
 
   //wait function called after sever request, to avoid spaming the server
   wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
      end = new Date().getTime();
-  }
+    }
   }
 
 }
