@@ -33,7 +33,7 @@ For more detail on web technologies see section **1g.** bellow.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
 * **Mqtt Class:** This class handles all comunication with our "server" and the associated rendering. You will find a call for the Mqtt class in all the following components. The class:
   * encapsulates - it hides the detail of the server communication from the other components
-  * is abstract - with a simple interface that can be called by all components
+  * acts abstract - with a simple interface that can be called by all components
   * inherits its basic methods from the react components
   * is polymorphic - it can handle all sorts of data: from profile to challenge data  
 * **Landing Page:** Contains all the static content and the Mqtt instance for creating a new profile
@@ -75,6 +75,8 @@ Administration interface for data visualisation. Allow back-end to deal with sen
 * System also informs user of death.
 
 ### WEB
+Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
+
 **User**
   * Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server 
   * Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
