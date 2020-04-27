@@ -248,7 +248,7 @@ public class Dashboard_view {
               list.addItem("name: "+curr_user.getString("user_name"), i);
               list.addItem("  challenges: "+str(user_challenges.size()), i);
               list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
-              list.addItem("  time: "+curr_user.getString("remaining_sec"), i);
+              list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
          }
      }
 
