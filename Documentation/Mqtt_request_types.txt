@@ -4,7 +4,7 @@ Web: doordie_web
 
 
 
-// From database sending user profile
+// From DATABASE sending user profile to M5Stack
 {
     "type": "push profile",
     "user_name": "Mario",
@@ -12,7 +12,7 @@ Web: doordie_web
     "remaining_sec": 2000,
 }
   
-// From M5Stack requesting user profile from database
+// From M5Stack requesting user profile from DATABASE
 {
     "type": "pull profile",
     "user_name": "Mario"       
@@ -24,19 +24,13 @@ Web: doordie_web
     "user_name": "Mario"       
 }
  
-// From web requesting database to send all challenges that user are enrolled in
+// From M5Stack to database requesting database to send all challenges that user are enrolled in
 {
     "type": "pull user challenges",
     "user_name": "Mario"
 }
-
-//From M5 request all challenges of user
-{
-	"type":"M5 pull challenges",
-	"user_name":"Mario"
-}
   
-// From database sending all challenges that user is enrolled in
+// From database sending all challenges that user is enrolled in to M5Stack
 {
     "type": "push user challenges",
     "user_name": "Mario",
@@ -45,7 +39,7 @@ Web: doordie_web
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": 1589500800,				// epoch time for 15 may
+        "end_time": 1589500800,				
         "step_goal": 10000,
         "reward": 800
     },
@@ -73,7 +67,7 @@ Web: doordie_web
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": 1589500800,				// epoch time for 15 may
+        "end_time": 1589500800,				
         "step_goal": 10000,
         "reward": 800
     },
@@ -99,7 +93,7 @@ Web: doordie_web
         "challenge_id": "1",
         "challenge_name": "10K Step Challenge",
         "description": "stepstep",
-        "end_time": 1589500800,				// epoch time for 15 may
+        "end_time": 1589500800,				
         "step_goal": 10000,
         "reward": 800
     },
@@ -123,6 +117,7 @@ Web: doordie_web
 // From web, when sponsor adds new challenge, no response from database
 {
     "type": "push new challenge",
+    "creator_id": "Grace5",
     "challenge_id": "3",
     "challenge_name": "Challenge 2",
     "description": "runrun",
@@ -131,7 +126,7 @@ Web: doordie_web
     "reward": 200
 }
 
-// From web, when user selects challenge, no response from database - additional functionality
+// From web, when user selects challenge, no response from database
 {
     "type": "push select challenge",
     "user_name": "Mario",
