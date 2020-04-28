@@ -46,11 +46,11 @@ void updateDashboardData() {
     JSONArray users = db.users.getJSONArray("user");
     JSONArray challenge = db.challenges.getJSONArray("challenge"); 
     JSONArray sponsor = db.sponsors.getJSONArray("sponsor"); 
-    
+    int deadPlayers = users.size() - view.countLivePlayers(users);
     
     view.buildSearch(10, 0); //search for specific player
     int[] usersOverTime = {1,5,12,35,56,79,100,220,340,325}; //dummy data to simulate growing playerbase
-    int[] usersAlive = {users.size() - view.countLivePlayers(users), users.size()}; //need to figure out proportions
+    int[] usersAlive = {deadPlayers, view.countLivePlayers(users)}; //need to figure out proportions?
     int[] metrics = {sponsor.size(), challenge.size(), users.size()}; //dynamic data creation into array each time dashboard is refreshed
     
     //main charts
@@ -124,6 +124,7 @@ public class Dashboard_view {
        for (i = 0; i < users.size(); i++) {
             curr_user = users.getJSONObject(i);
             if (curr_user.getInt("remaining_sec") > 0) {
+                println(live);
                 live++;
             }
        }
@@ -305,9 +306,9 @@ public class Dashboard_view {
               user_challenges = curr_user.getJSONArray("challenge_id");
               
               list.addItem("name: "+curr_user.getString("user_name"), i);
-              list.addItem("  challenges: "+str(user_challenges.size()), i);
-              list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
-              list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
+              //list.addItem("  challenges: "+str(user_challenges.size()), i);
+              //list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
+              //list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
          }
          
         
