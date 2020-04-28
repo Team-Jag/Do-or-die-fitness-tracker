@@ -23,5 +23,19 @@
     "total_steps": 0,
     "remaining_sec": 2266,
     "weekly_current": 500
+  },
+  {
+    "weekly_record": 0,
+    "challenge_done": [],
+    "joined_date": 1588003216099,
+    "challenge_id": [
+      "1",
+      "2"
+    ],
+    "user_name": "Grace5",
+    "daily_record": 0,
+    "remaining_sec": 211,
+    "total_steps": 0,
+    "weekly_current": 0
   }
 ]}

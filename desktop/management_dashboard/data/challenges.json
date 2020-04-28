@@ -1,18 +1,20 @@
 {"challenge": [
   {
-    "reward": 800,
-    "step_goal": 10000,
-    "challenge_id": "1",
-    "challenge_name": "10K Step Challenge",
-    "end_time": 1589500800,
-    "description": "stepstep"
+      "challenge_id": "1",
+      "challenge_name": "10K Step Challenge",
+      "description": "10K a day keeps the doctor away",
+      "end_time": 1588032000,
+      "step_goal": 10000,
+      "reward": 800
   },
   {
-    "reward": 200,
-    "step_goal": 2000,
-    "challenge_id": "2",
-    "challenge_name": "Challenge 2",
-    "end_time": 1589500800,
-    "description": "runrun"
+
+      "challenge_id": "2",
+      "challenge_name": "100K Step Challenge",
+      "description": "Only the strong can survive 100K steps",
+      "end_time": 1589500800,
+      "step_goal": 100000,
+      "reward": 200
+
   }
 ]}
