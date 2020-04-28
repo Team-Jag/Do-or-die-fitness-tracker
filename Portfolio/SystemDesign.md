@@ -3,15 +3,19 @@
 # 1. System Design [40 pts] :
 ## a. Architecture of the entire system
 
-Architecture of the system uses a central controller database API that handles receiving and sending requests, using MQTT protocol, to communicate between devices. Three key devices of system:
+Our Do or Die fitness tracker is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
 
-Processing - sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
+* **Internet of Things Device** : Our IoT device was an M5Stack, an Arduino we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user.
 
-M5 - stateless device to update the database when user step count is incremented, and informs user when player death occurs.
+* **Desktop Application** : We implemented a Managment Dashboard to be used by the Admin. On our desktop application you are able to view things such as total users, an individual user's statistics, and how many users have 'died'. This device sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
 
-Web - allows user to log in and provide information about their account, user information and challenges.
+* **Web Application** : We also implemented a web application, which will be used by the end-users of our product. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges. 
 
-To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
+* **Data Communication** : Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E. 
+
+* **Data Repository** : To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server.  
+	
+To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
 ![Architecture](/Portfolio/Images/architecture-UML.png)
 
@@ -25,8 +29,8 @@ Key classes for desktop app include:
 
 * **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
 * **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class additionally contained event listeners for buttons and lists in the UI.
-* **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
-* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
+* **tests** - the test class contains unit tests to ensure edge cases are handled gracefully.
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs.
 
 ![Processing-uml](/Portfolio/Images/Processing-UML.png)
 
