@@ -3,7 +3,7 @@
 # 1. System Design [40 pts] :
 ## a. Architecture of the entire system
 
-Our Do or Die fitness tracker is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
+Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
 
 * **Internet of Things Device** : Our IoT device was an M5Stack, an Arduino we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user.
 
@@ -18,8 +18,6 @@ Our Do or Die fitness tracker is an Internet of Things (IoT) product that we des
 To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
 ![Architecture](/Portfolio/Images/architecture-UML.png)
-
-See relevant sections for further information about specific subsystems. 
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
 Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
@@ -38,7 +36,6 @@ Key classes for desktop app include:
 
 For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
-![web-uml](/Portfolio/Images/web-uml.png)
 
 * **MQTT Class:** This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
 
@@ -51,6 +48,8 @@ React is ideal to implement object oriented design. Our website consists of func
 * **Profile Page:** Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
 * **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
+
+![web-uml](/Portfolio/Images/web-uml.png)
 
 ### M5
 
