@@ -41,7 +41,7 @@ The goal of this sprint was to create a very basic proof of concept.
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. 
 
-### Sprint 3 : Alpha Version Release (30.3-6.4) 
+### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) 
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
 * Ensuring all subsystems can receive, process, and send the intended MQTT commands
 
@@ -88,7 +88,7 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
 
-### Sprint 5 : Beta Version Release (13.4-20.4) 
+### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) 
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
 
 **User Stories Implemented:**
@@ -111,7 +111,7 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Add sponsor API to desktop
 * Adding new user should initialise user data with default values
 
-### Sprint 6 : Version 1.0 Release (20.3-27.4) 
+### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) 
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
 
 **User Stories Implemented:**
