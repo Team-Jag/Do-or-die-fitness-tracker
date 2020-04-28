@@ -8,14 +8,33 @@ In general, due to our time constrains, in our project we rushed through big chu
 I will now discuss more in depth some additional features that would make our product more viable, I will discuss how we came up with the feature, how it would fit in our current design, how we would develop it, implement it and what methods we would use to evaluate it.
 
 ### Currency, Shop and Customization
-This improvement consists of two features which would need to be added more or less concurrently, since it doesn't make sense to have one without the other.
+This improvement consists of multiple features which would need to be added more or less concurrently, since it doesn't make sense to have one without the other.
+It's worth noting that we first thought of this feature when designing our first UI wireframe, it came up when discussing possible avenues of monetization for our product.
+
+![Shop Wireframe](Portfolio/Images/M5Images/M5Shop.jpg) 
 
 We would add some type of virtual coin to our product, Sponsors would be able to set coin rewards for their challenges, users would be able to obtain a small amount of currency each day by completing the challenges, or they could purchase it using real currency through our website.
 Currency can then be used to unlock Accessories for the Bean in the new "Shop" screen directly on the M5Stack. Accessories will simply be graphical enhancements for the Bean at first, things like hats or scarves, however an important property of this improvement is how flexible it is: once a shop is created we can decide whether to make any feature accessible to the user by default, or unlockable with currency using the shop (i.e. if we added a leveling system to our Bean, we could have "experience boosts" in the shop).
 The final piece necessary for this improvement is to add the possibility to customize the Bean sprite. 
-At the moment the Bean's appereance and animation is hardcoded in the M5Stack, we would have to make this dynamic and store the bean's appereance data in the Desktop Server, then we'd make it possible to change the Bean's appereance data from the Desktop, and even add modular sections to the sprite to add "clothing" on top of a sprite. 
 
+Implementing this change would require large changes for each of our subsystems:
+In the desktop, we'd need to store some new data for each user: their Bean's custom features, their unlocked accessories and their currency. In our shared contract we'd have to add these new data-types to our requests.
+At the moment the Bean's appereance and animation is hardcoded in the M5Stack, we would have to make this dynamic and store the bean's appereance data in the Desktop Server. We'd also have to add a new "ShopView" class similar to our other View classes.
+In the  web app we'd need to implement a new "Shop" page, but most improtantly we would have to develop a secure payment system using something like PayPal.
 
+Ideally we would implement this before we start taking on large number of users, since when a free to use product adds a monetization feature user tend to react negatively.
+However this means we wouldn't be able to get user feedback to help us evaluate this new feature, which means we'd probably have to base our evaluation on a simple SWOT analysis.
+
+### Connect an M5Stack to a User Account
+For our prototype, use user_name of the M5Stack's owner is hardcoded in the Arduino code, an enhancement necessary for public release would be to create a mechanism to link an M5Stack to a user.
+
+We believe the best way to do this is to hardcode an M5Stack_id inside the M5Stack, and when a new DoOrDie device is purchased and first turned on, the screen will simply show the hardcoded ID along with a quick guide on how to create an account on the Web and connect the device to the user by assigning the ID to the web account.
+
+Implementation would require adding this M5Stack_ID field to our data schema and shared contract, and then including this first starting screen on the M5Stack using a new "StartView" class. On the web we would have to add a simple new "Change Stack ID" option.
+
+Since this feature would need to come online before release, we couldn't evaluate it with user feedback. However a good metric for this type of "login features" is how many clicks/actions it takes the user to go from start-up to a system ready for use, so that would probably be what we'd try to optimize this feature for. 
+
+### 
 
 ## c. Group Working Practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
