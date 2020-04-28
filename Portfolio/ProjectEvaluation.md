@@ -3,6 +3,20 @@
 # 3. Project Evaluation [20pts]:
 ## a. Reflective discussion of the success of the project
 ## b. Discussion of future work (in terms of design, development and evaluation)
+In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example, so the first step for any kind of future work would be to first do some type of extensive market research to better understand where our Do or Die Fitness Tracker fits in the Product Space, what our Target market is and whether other companies exist that could be our competitors.
+
+I will now discuss more in depth some additional features that would make our product more viable, I will discuss how we came up with the feature, how it would fit in our current design, how we would develop it, implement it and what methods we would use to evaluate it.
+
+### Currency, Shop and Customization
+This improvement consists of two features which would need to be added more or less concurrently, since it doesn't make sense to have one without the other.
+
+We would add some type of virtual coin to our product, Sponsors would be able to set coin rewards for their challenges, users would be able to obtain a small amount of currency each day by completing the challenges, or they could purchase it using real currency through our website.
+Currency can then be used to unlock Accessories for the Bean in the new "Shop" screen directly on the M5Stack. Accessories will simply be graphical enhancements for the Bean at first, things like hats or scarves, however an important property of this improvement is how flexible it is: once a shop is created we can decide whether to make any feature accessible to the user by default, or unlockable with currency using the shop (i.e. if we added a leveling system to our Bean, we could have "experience boosts" in the shop).
+The final piece necessary for this improvement is to add the possibility to customize the Bean sprite. 
+At the moment the Bean's appereance and animation is hardcoded in the M5Stack, we would have to make this dynamic and store the bean's appereance data in the Desktop Server, then we'd make it possible to change the Bean's appereance data from the Desktop, and even add modular sections to the sprite to add "clothing" on top of a sprite. 
+
+
+
 ## c. Group Working Practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
 
