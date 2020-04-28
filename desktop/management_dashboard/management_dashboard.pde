@@ -5,14 +5,15 @@ import controlP5.*;
 
 String MQTT_steps_topic = "doordie_steps";
 String MQTT_web_topic = "doordie_web";
-String MQTT_m5_topic = "doordie_m5";
 
 ControlP5 cp5;
 MQTTClient client;
 Dashboard_view view = new Dashboard_view();
 UserData u_api = new UserData();
 ChallengeData c_api = new ChallengeData();
+SponsorData s_api = new SponsorData();
 Database db = new Database();
+int time;
 
 void setup() {
    cp5 = new ControlP5(this);

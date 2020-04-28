@@ -1,19 +1,41 @@
 {"user": [
   {
+    "weekly_record": 39000,
     "challenge_done": ["2"],
+    "joined_date": 1587980814845,
     "challenge_id": ["1"],
     "user_name": "Mario",
-    "total_steps": 2289,
-    "remaining_sec": 3332
+    "daily_record": 10000,
+    "total_steps": 2381,
+    "remaining_sec": 311,
+    "weekly_current": 18032
   },
   {
+    "weekly_record": 500,
     "challenge_done": [],
+    "joined_date": 1587980811000,
     "challenge_id": [
       "1",
       "2"
     ],
     "user_name": "Luigi",
+    "daily_record": 500,
     "total_steps": 0,
-    "remaining_sec": 1602
+    "remaining_sec": 2266,
+    "weekly_current": 500
+  },
+  {
+    "weekly_record": 0,
+    "challenge_done": [],
+    "joined_date": 1588003216099,
+    "challenge_id": [
+      "1",
+      "2"
+    ],
+    "user_name": "Grace5",
+    "daily_record": 0,
+    "remaining_sec": 211,
+    "total_steps": 0,
+    "weekly_current": 0
   }
 ]}

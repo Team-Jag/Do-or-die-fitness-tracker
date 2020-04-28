@@ -65,19 +65,16 @@ function ExamplesNavbar() {
               <span className="button-bar"></span>
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
-              <DropdownItem header tag="a">
-                Your options
-              </DropdownItem>
-              <DropdownItem href="/landing-page">
+              <DropdownItem to="/landing-page" tag={Link}>
                 Home
               </DropdownItem>
-              <DropdownItem href="/profile-page">
+              <DropdownItem to="/profile-page" tag={Link}>
                 Your Profile
               </DropdownItem>
-              <DropdownItem href="/challenge-page">
+              <DropdownItem to="/challenge-page" tag={Link} >
                 Create A Challenge
               </DropdownItem>
-	      <DropdownItem href="/challenge-choice-page">
+	      <DropdownItem to="/challenge-choice-page" tag={Link}>
                 Available Challenges
               </DropdownItem>
             </DropdownMenu>
@@ -113,7 +110,7 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink href="/landing-page#id1" >
+                <NavLink to="/landing-page#id1" tag={Link}>
                   Create a Profile
                 </NavLink>
               </NavItem>
@@ -129,5 +126,4 @@ function ExamplesNavbar() {
     </>
   );
 }
-
 export default ExamplesNavbar;

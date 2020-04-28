@@ -7,6 +7,20 @@ DropdownList current_users;
 DropdownList upcoming, current, completed;
 int is_expanded = 0;
 
+//color scheme to keep everything consistent
+static abstract class ColorScheme {
+   static final int[] LIST = {
+      ColorScheme.MAIN, 
+      ColorScheme.HIGHLIGHTS,
+      ColorScheme.BACKGROUND,
+      ColorScheme.CHARTS1
+   };
+   static final int MAIN = #2CA8FF;
+   static final int HIGHLIGHTS = #fa7a50;
+   static final int BACKGROUND = #22247f;
+   static final int CHARTS1 = #57dcd9;
+}
+
 // called eachtime
 void refreshDashboardData() {
     // We just rebuild the view rather than updating existing
@@ -16,69 +30,76 @@ void refreshDashboardData() {
         cp5.remove(status);
         cp5.remove(status + " chart ");
     } */
+    
     view.resetSpacing();
     updateDashboardData();
 }
 
-// basic idea is we'll have a user and challenge view, for the manager (possibly sponsor? see the slack for 
-// the drawings of how we want it to look but totally up to you)
 void updateDashboardData() {
+    //build basic static elements
     ControlFont cf2 = new ControlFont(createFont("Helvetica",10));
     refreshData();
     surface.setTitle("Do or Die Admin Dashboard");
-    view.build_title("Do or Die", 250, 0);
+    view.buildTitle("Do or Die", 250, 0);
     
+    //retrieve files through db API
     JSONArray users = db.users.getJSONArray("user");
     JSONArray challenge = db.challenges.getJSONArray("challenge"); 
-    //JSONArray sponser = db.challenges.getJSONArray("sponser"); //need data api functions
-    JSONObject user = users.getJSONObject(0);
-    int total_users = users.size();
-    int total_sponsers = 1;
-    int total_challenges = challenge.size();
-    int steps = user.getInt("total_steps"); 
+    JSONArray sponsor = db.sponsors.getJSONArray("sponsor"); 
+    int deadPlayers = users.size() - view.countLivePlayers(users);
     
-    // don't think we need the metrics - creates those weird charts at side
-    //view.build_metric(users + " total ", user.getInt("total_steps"));
+    view.buildSearch(10, 0); //search for specific player
+    int[] usersOverTime = {1,5,12,35,56,79,100,220,340,325}; //dummy data to simulate growing playerbase
+    int[] usersAlive = {deadPlayers, view.countLivePlayers(users)}; //need to figure out proportions?
+    int[] metrics = {sponsor.size(), challenge.size(), users.size()}; //dynamic data creation into array each time dashboard is refreshed
     
+    //main charts
+    view.buildChart(Chart.LINE, "USERS OVER ALL TIME", usersOverTime, 250, 140,200, 100, 500);
+    view.buildChart(Chart.PIE, "Users Alive", usersAlive, 250, 470, 0, 0, 500);
+    view.buildChartLabel("USERS ALIVE", 250, 670);
+    view.buildChart(Chart.BAR, "METRICS", metrics, 450, 470, 0, 0, 10);
+    view.buildChartLabel("SPONSORS         CHALLENGES       USERS", 450, 670);
     
-    view.buildSearch(10, 0); //possibly search for a specific player?
+    //basic metrics
+    view.createButton("current users", str(users.size()), 250, 100);
+    view.createButton("active challenges", str(challenge.size()), 380, 100);
+    view.createButton("total sponsers", str(sponsor.size()), 510, 100);
     
-    view.build_LineChart("users daily", 0, 4, 7, 250, 140);
-    view.build_LineChart("users weekly", 0, 150, 700, 250, 400);
+    //over time charts;
+    view.buildChart(Chart.LINE, "CHALLENGE", usersOverTime, 10, 70, 35, -30, 500);
     
-    view.build_chartLabel("users                    challenges          sponsers", 680, 640);
-    view.build_BarChart("totals", total_challenges, total_users+1, total_sponsers, 680, 470);
+    view.buildChart(Chart.LINE, "USER", usersOverTime, 10, 270, 35, -30, 500);
     
-    view.build_chartLabel("users alive", 680, 440);
-    view.build_PieChart("live_users", users.size(), view.countLivePlayers(users), 680, 250); //players alive out of total players
-    
-    view.createButton("current users", str(total_users), 250, 100);
-    view.createButton("active challenges", str(total_challenges), 380, 100);
-    view.createButton("total sponsers", str(total_sponsers), 510, 100);
+    view.buildChart(Chart.LINE, "SPONSOR", usersOverTime, 10, 470, 35, -30, 500);
     
     view.build_list("USERS", users); //builds list with all the other stuff
-    // when you drop down
-    view.build_expanded(user.getString("user_ID"), user); //this is for user list
+    view.build_expanded(); 
+    
 }
  
 
 // The main class which contains the dynamic build of the dashboard. Advantage being more metrics can be added with ease.
 public class Dashboard_view {
-    int is_expanded = 0;
+    int colorMain = ColorScheme.MAIN; //colours
+    int colorHighlights = ColorScheme.HIGHLIGHTS;
+    int colorBackground = ColorScheme.BACKGROUND;
+    int colorCharts = ColorScheme.CHARTS1;
+    
+    int textCompletedChallNum = 0; //we need this as a state because when removing dynamic profile we don't know who's was before
+    int textEnrolledChallNum = 0;
+  
+    int is_expanded = 0; //What to do with this?
     
     int vert_margin_spacing = 10;
     int horiz_margin_spacing = 10;
     
-    int metric_x_size = 100;
-    int metric_spacing = 0;
-    int metric_y_size = 20;
-    
+   //this can probably be trimmed
     int list_spacing = 0;
     int list_x_size = 250;
     int list_y_size = 350;
     
     int chart_spacing = 100;
-    int chart_size = 180;
+    int chart_size = 180; //default size value, smallest charts can be
     
     int chart_vertical = 500;
     int chart_horizontal = 100;
@@ -94,11 +115,8 @@ public class Dashboard_view {
     
     int main_list_hoz = 305;
     int main_list_vert = 0;
-    
-    int R = 96;
-    int G = 224;
-    int B = 252;
 
+    //LIVE PLAYER COUNT
     int countLivePlayers(JSONArray users) {
        int live = 0, i;
        JSONObject curr_user;
@@ -106,120 +124,165 @@ public class Dashboard_view {
        for (i = 0; i < users.size(); i++) {
             curr_user = users.getJSONObject(i);
             if (curr_user.getInt("remaining_sec") > 0) {
+                println(live);
                 live++;
-                println(live); //for debug
             }
        }
        return live;
     }
-
-    void buildSearch(int x, int y) {
-      cp5.addTextfield("")
-     .setPosition(x,y)
-     .setSize(100,20)
-     .setFocus(true)
-     .setColor(color(R,G,B))
-     ;
-     
-      cp5.addButton("search")
-        .setValue(0)
-        .setPosition(x+110, y)
-        .setColorBackground(color(0,135,166))
-        .setColorActive(color(0))
-        .setColorForeground(color(R,G,B))
-        .setSize(50, 20);
-    }
-
-    void build_PieChart(String chart_name, int val, int val1, int x, int y) {
-        
+    
+    //CHART FUNCTIONS 
+    
+    //generic chart build function for an array of integer data
+    void buildChart(int chartType, String chartName, int[] chartData, int chartX, int chartY, int sizeX, int sizeY, int scaling) {      
+      Chart chart = cp5.addChart(chartName)
+          .setPosition(chartX, chartY)
+          .setSize(chart_size+sizeX, chart_size+sizeY)
+          .setRange(0, scaling) //chart max value to show, used for scaling
+          .setColorCaptionLabel(color(255))
+          .setView(chartType);
       
-        Chart chart = cp5.addChart(chart_name)
-            .setPosition(x, y)
-            .setSize(chart_size, chart_size)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255)) //for some reason this doesn't work for anything that is not a line graph
-            .setView(Chart.PIE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            // the website has all the diff types of charts so you can play around, he had it as random before
-            
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
+        chart.getColor().setBackground(color(colorBackground)); //colour scheme, need to enum
+        
+        chart.addDataSet(chartName);
+        chart.setColors(chartName, color(255),color(colorMain),color(colorCharts)); 
+        addChartData(chart, chartName, chartData); //adds data from data array
         
         
     }
     
-    //this is a hack
-    void build_chartLabel(String text, int x, int y) {
-        Textlabel caption; //workaround for chart label problem
+    void addChartData(Chart chart, String chartName, int[] data) {
+      int i;
+      
+      for (i = 0; i < data.length; i++) {
+        chart.addData(chartName, data[i]);
+      }
+      
+    }
+
+    //workaround for chart label problem
+    void buildChartLabel(String text, int labelX, int labelY) {
+        Textlabel caption;
       
        caption = cp5.addTextlabel(text)
            .setText(text)
-           .setPosition(x, y)
+           .setPosition(labelX, labelY)
            .setColorValue(255);
     
     }
+
+    //BUILD ELEMENT FUNCTIONS
     
-     void build_LineChart(String chart_name, int val, int val1, int val3, int x, int y) {
-        Chart chart = cp5.addChart(chart_name)
-            .setPosition(x, y)
-            .setSize(chart_size+200, chart_size+50)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255))
-            .setView(Chart.LINE); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1, 5, 2, 5, 1, val3, val3);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
-    }
-    
-     void build_BarChart(String chart_name, int val, int val1, int val3, int x, int y) {
-        Chart chart = cp5.addChart(chart_name)
-            .setColorLabel(255)
-            .setPosition(x, y)
-            .setSize(chart_size, chart_size-20)
-            .setRange(0, 10)
-            .setColorCaptionLabel(color(255))
-            .setView(Chart.BAR); // see http://www.sojamo.com/libraries/controlP5/reference/controlP5/Chart.html
-            
-        chart.getColor().setBackground(color(12,23,45));
-        chart.addDataSet(chart_name);
-        chart.setColors(chart_name, color(255),color(0, 124, 158));
-        chart.updateData(chart_name, val, val1, val3);
-        chart_spacing = chart_spacing + chart_size + (chart_size / 5);
-    }
-    
-    void build_title(String text, int x, int y) { //this is a hack to get around text troubles
-        //ControlFont cf1 = new ControlFont(createFont("Arial",50));
+    void buildProfile(String user) {
+         JSONObject  userProfile = u_api.getUserByName(user); //returns JSON object of a specific user
+         JSONObject challenge;
+         int i;
+         int challengePosition = 190; //start of challenge lists
+         int challengeSpacing = 30; //how far apart should start
+         String username = userProfile.getString("user_name");
+         
+         resetProfile(textCompletedChallNum, textEnrolledChallNum); //amount of list items previous state created
         
-        PFont pfont = createFont("Impact",20); // use true/false for smooth/no-smooth
+        if (username != null) {
+          //textarea only does 1 line per string with no carriage returns, so we need many
+          buildTextArea("textname","PROFILE FOR: "+username, 650, 100);
+          buildTextArea("textsteps","CURRENT STEPS: "+str(userProfile.getInt("total_steps")), 650, 130); //fetch things from object
+          buildTextArea("texttime","TIME REMAINING: "+str(userProfile.getInt("remaining_sec")), 650, 160);
+          
+          //challenges part, to build dynamically
+          buildTextArea("textcomplete", "COMPLETED CHALLENGES: ", 650, 190);
+          
+          JSONArray completeChallenges = userProfile.getJSONArray("challenge_done");
+          textCompletedChallNum = completeChallenges.size();
+          
+          for (i = 0; i < completeChallenges.size(); i++) { 
+            String challengeID = completeChallenges.getString(i);
+            challenge = c_api.getChallengeByID(challengeID);
+            buildTextArea("textcompletechallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
+            challengePosition = challengePosition + (challengeSpacing*i+30); //to retain spacing for the next part
+          }
+          
+          buildTextArea("textenrolled", "ENROLLED CHALLENGES: ", 650, challengePosition+30);
+          challengePosition+=30;
+          
+          JSONArray enrolledChallenges = userProfile.getJSONArray("challenge_id");
+          textEnrolledChallNum = enrolledChallenges.size();
+          
+          for (i = 0; i < enrolledChallenges.size(); i++) {
+            String challengeID = enrolledChallenges.getString(i);
+            challenge = c_api.getChallengeByID(challengeID);
+            buildTextArea("textenrolledchallenge"+i, "  -> "+challenge.getString("challenge_name"), 650, challengePosition+(challengeSpacing*i+30));
+            
+          }
+          
+        } else {
+          
+          buildTextArea("textno_user","USER DOES NOT EXIST", 650, 100);
+        }
+    }
+    
+    void buildTextArea(String id, String text, int textX, int textY) {
+      Textarea textArea = cp5.addTextarea(id)
+                  .setPosition(textX,textY)
+                  .setSize(235,25)
+                  .setLineHeight(14)
+                  .setColor(color(128))
+                  .setColorBackground(color(255,100))
+                  .setColorForeground(color(255,100));
+                  ;
+                  
+      textArea.setText(text);
+      
+      if (text == "USER DOES NOT EXIST") {
+        textArea.setColor(#ff0000);
+      }
+    }
+    
+    void buildTitle(String text, int titleX, int titleY) { //build big main title
+        PFont pfont = createFont("Impact",20); 
         ControlFont font = new ControlFont(pfont,85);
         
         Button title = cp5.addButton(text)
             .setValue(0)
-            .setPosition(x, y)
-            .setColorBackground(color(0,135,166))
+            .setPosition(titleX, titleY)
+            .setColorBackground(color(colorMain))
             .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
+            .setColorForeground(colorHighlights)
             .setSize(380, 90);
             
         title.getCaptionLabel().setFont(font);
     }
+    
+    //for search button, events has listener
+     void buildSearch(int searchX, int searchY) {
+      cp5.addTextfield("search_user")
+     .setPosition(searchX,searchY)
+     .setSize(100,20)
+     .setFocus(true)
+     .setColor(color(colorMain))
+     ;
+     
+      cp5.addButton("search")
+        .setValue(1)
+        .setPosition(searchX+110, searchY)
+        .setColorBackground(color(colorMain))
+        .setColorActive(color(0))
+        .setColorForeground(color(colorHighlights))
+        .setSize(50, 20);
+    }
+    
+    //generic button with text
+    void createButton(String name, String value, int x, int y) {
+        cp5.addButton(name+": "+value)  
+            .setValue(0)
+            .setPosition(x, y)
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights))
+            .setSize(120, 25);
+    }
 
-// curr users - build_metric
-/*
-    void build_metric(String name, int value) {
-        cp5.addNumberbox(name)
-            .setValue(value)
-            .setPosition(horiz_margin_spacing, vert_margin_spacing + metric_spacing)
-            .setSize(metric_x_size, metric_y_size);
-        metric_spacing = metric_spacing + (2 * metric_y_size);
-    } */
-
+    //main list for scrolling for users
     void build_list(String list_name, JSONArray users) { //this creates the main list, takes from the json user object
         ScrollableList list = cp5.addScrollableList(list_name)
             .setPosition((2 * main_list_hoz) + list_spacing+30, main_list_vert)
@@ -228,62 +291,68 @@ public class Dashboard_view {
         list.setBackgroundColor(color(0));
         list.setItemHeight(30);
         list.setBarHeight(40);
-        list.setColorBackground(color(0,135,166));
-        list.setColorForeground(color(R,G,B));
-        list.setColorActive(color(R, G, B));
+        list.setColorBackground(color(colorMain));
+        list.setColorForeground(color(colorHighlights));
+        list.setColorActive(color(0));
         list_spacing = list_spacing + list_x_size + 15;
         list.clear();
-        list.open();
-        
-        //test for one user
+        list.close();
         
         JSONObject curr_user;
         JSONArray user_challenges;
         
-        // keep adding the remaining_sec, mainly just a test for now so update as you want 
-          for(int i = 0; i < users.size(); i ++){ //confused about this
+         for(int i = 0; i < users.size(); i ++){ //confused about this
               curr_user = users.getJSONObject(i);
               user_challenges = curr_user.getJSONArray("challenge_id");
               
               list.addItem("name: "+curr_user.getString("user_name"), i);
-              list.addItem("  challenges: "+str(user_challenges.size()), i);
-              list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
-              list.addItem("  time: "+curr_user.getString("remaining_sec"), i);
+              //list.addItem("  challenges: "+str(user_challenges.size()), i);
+              //list.addItem("  steps: "+str(curr_user.getInt("total_steps")), i);
+              //list.addItem("  time: "+curr_user.getInt("remaining_sec"), i);
          }
+         
+        
      }
 
-// i had to keep messing with the horizontal and vertical spacing below to get it to work 
-    void build_expanded(String userid, JSONObject user) {
+    void build_expanded() {
         
       
         if (is_expanded == 1) {
-        // basically switch it round
             cp5.get("users").remove();
             cp5.get("challenges").remove();
+            cp5.get("sponsors").remove();
             is_expanded = 1;
-            // haven't used below yet 
-          //  button_state = 0; // this ensures that the creation of buttons aren't reported for call backs
         }
 
       ListBox challenges = cp5.addListBox("challenge view")
-            .setPosition((3 * challenge_view_hoz), 6 * challenge_view_vert)
-            .setSize(200, 75)
+            .setPosition((3 * challenge_view_hoz), 2 * challenge_view_vert)
+            .setSize(235, 75)
             .setItemHeight(15)
             .setBarHeight(15)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(R,G,B))
-            .setColorForeground(color(R, G, B));
-            
-             
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights))
+            .close();
 
       ListBox users = cp5.addListBox("user view")
-            .setPosition((2 * user_view_hoz), 1 * user_view_vert)
-            .setSize(200, 75)
+            .setPosition((3 * user_view_hoz), 8 * user_view_vert)
+            .setSize(235, 75)
             .setItemHeight(15)
             .setBarHeight(15)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(R,G,B))
-            .setColorForeground(color(R, G, B));
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights))
+            .close();
+            
+      ListBox sponsors = cp5.addListBox("sponsor view")
+            .setPosition((3 * challenge_view_hoz), 22 * challenge_view_vert)
+            .setSize(235, 75)
+            .setItemHeight(15)
+            .setBarHeight(15)
+            .setColorBackground(color(colorMain))
+            .setColorActive(color(0))
+            .setColorForeground(color(colorHighlights))
+            .close();
   
         users.addItem("daily", 0);
         users.addItem("weekly", 1); 
@@ -294,23 +363,48 @@ public class Dashboard_view {
         challenges.addItem("weekly", 1); 
         challenges.addItem("monthly", 0);
         challenges.addItem("all time", 1); 
+        
+        sponsors.addItem("daily", 0);
+        sponsors.addItem("weekly", 1); 
+        sponsors.addItem("monthly", 0);
+        sponsors.addItem("all time", 1); 
       
         is_expanded = 0;
     }
     
-    void createButton(String name, String value, int x, int y) {
-        cp5.addButton(name+": "+value) //+total_sponsers 
-            .setValue(0)
-            .setPosition(x, y)
-            .setColorBackground(color(0,135,166))
-            .setColorActive(color(0))
-            .setColorForeground(color(R,G,B))
-            .setSize(120, 25);
+    void resetSelectionList() {
+      cp5.remove("challenge view");
+      cp5.remove("user view");
+      cp5.remove("sponsor view");
+    }
+    
+    void resetChart(String chartName) {
+      cp5.remove(chartName);
+    }
+    
+    void resetProfile(int completedChallenges, int enrolledChallenges) { //we need to know how many to remove
+      int i;
+      
+      cp5.remove("textname");
+      cp5.remove("textnouser");
+      cp5.remove("textsteps");
+      cp5.remove("texttime");
+      cp5.remove("textno_user");
+      cp5.remove("textenrolled");
+      cp5.remove("textcomplete");
+      
+      for (i = 0; i < completedChallenges; i++) {
+        cp5.remove("textcompletechallenge"+i);
+      }
+      
+      for (i = 0; i < enrolledChallenges; i++) {
+        cp5.remove("textenrolledchallenge"+i);
+      }
+      
     }
 
     void resetSpacing() {
         chart_spacing = 0;
         list_spacing = 0;
-        metric_spacing = 0;
     }
 }

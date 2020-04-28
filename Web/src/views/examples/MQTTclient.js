@@ -1,8 +1,8 @@
 // Create a client instance, we create a random id so the broker will allow multiple sessions
 import React from "react";
-// import jQuery from 'jquery';
 import Paho from 'paho-mqtt';
 import { Redirect } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 import {
   Button,
@@ -17,7 +17,7 @@ class Mqtt extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.moment = require('moment');
     this.state = {
         mqttConnected: false,
         page_name: '',
@@ -27,9 +27,9 @@ class Mqtt extends React.Component {
         challenge_id: '',
         challenge_name: '',
         challenge_description: '',
-        challenge_step_goal: '',
+        challenge_step_goal: 0,
         challenge_end_date: '20-03-31',
-        challenge_reward: '',
+        challenge_reward: 0,
         challenges_loaded: false,
         challenge_array: [],
       //login/signup page
@@ -155,28 +155,43 @@ renderProfile(){
       <h3 className="title">My Challenges</h3>
       <React.Fragment>
          <div align="middle" className="tg-wrap"><table className="ccp">
+         <tr>
+           <th>Name</th>
+           <th>Description</th>
+           <th>Step Goal</th>
+           <th>End Date</th>
+           <th>Reward</th>
+           <th></th>
+         </tr>
          {this.state.user_challenges.map(listitem => (
            <tr>
              <td>{listitem.challenge_name}</td>
              <td>{listitem.description}</td>
              <td>{listitem.step_goal}</td>
-             <td>{listitem.end_time}</td>
+             <td>{this.moment(listitem.end_time*1000).format('YYYY-MM-DD HH:mm').replace('Invalid date','')}</td>
              <td>{listitem.reward}</td>
            </tr>
          ))}
          </table></div>
       </React.Fragment><br/><br/>
+      <Link to='/challenge-choice-page'>
+      <Button
+        className="btn-round back-btn">
+        See all available Challenges
+      </Button>
+      </Link>
+      <br></br>
   </div>
-
-)}
+  )}
 }
 
 createNewProfile(){
-  console.log("Creating new profile...");
+  const now = Date.now();
   var newRequest = {
     type: "push new profile",
     user_name: global.userName,
-    user_type: global.profile_type
+    user_type: global.profile_type,
+    joined_date: now
   }
   this.requestToServer(JSON.stringify(newRequest));
 }
@@ -185,7 +200,6 @@ requestProfile(){
   if(this.state.total_steps !== 0){
     this.wait(1000);
   }
-  console.log("Requesting profile...");
   var newRequest = {
     type: "pull web profile",
     user_name: global.userName
@@ -226,16 +240,14 @@ rendersignup(){
         color="info"
         size="lg"
         onClick={this.handleLogin.bind(this)}
-      >
-      Sign up now
+      >Sign up now
       </Button>
       <div className="pull-middle">
         <h6>
           <a
             className="link"
             href="/login-page"
-          >
-            Login to existing Account
+          >Login to existing Account
           </a>
         </h6>
       </div>
@@ -249,28 +261,35 @@ redirectToProfile(){
   {
     if(this.state.page_name === 'login')
     {
-      console.log("we're on the login page")
         if(this.state.account_exists === true)
         {
-          console.log("redirect changed to true")
           this.setState({redirect: true})
         }
     }
     if(this.state.page_name === 'sign-up')
     {
-        console.log("we're on the sign up page")
         if(this.state.account_exists === false)
         {
-          this.createNewProfile()
+
           this.setState({redirect: true})
+          if(this.state.redirect === true){
+            this.createNewProfile()
+          }
         }
     }
   }
-  if (this.state.redirect) {
-    return(
-         <Redirect to={{
-               pathname: '/profile-page',
-           }} />)
+  if (this.state.redirect)
+  {
+    if(this.state.page_name === 'sign-up' && this.state.is_sponsor===true)
+    {
+      return(
+           <Redirect to={{pathname: '/challenge-page',}} />)
+    }
+    else
+    {
+      return(
+           <Redirect to={{pathname: '/profile-page',}} />)
+    }
   }
 }
 
@@ -286,12 +305,10 @@ loginChange(type,event){
 
 handleChange(type,event) {
    this.setState({[type]: event.target.value});
-   console.log('type is: ' + type + ' and value is ' + event.target.value)
 }
 
 handleCheckBox(type,event) {
   this.setState({[type]: event.target.checked});
-  console.log('type is: ' + type + ' and value is ' + event.target.checked)
   if(event.target.checked === true)
   {
     global.profile_type='sponsor'
@@ -304,7 +321,6 @@ handleCheckBox(type,event) {
 
 handleImgChange(type,event) {
    this.setState({[type]: event.target.value + '.jpg'});
-   console.log('type is: ' + type + ' and value is ' + event.target.value)
 }
 
 renderLogin(){
@@ -346,14 +362,13 @@ renderLogin(){
       color="info"
       onClick={this.handleLogin.bind(this)}
       size="lg"
-      >    Login
+      >Login
     </Button>
     </form>
   );
 }
 
 requestChallenges(){
-  console.log("Requesting challenges...")
   var newRequest1 = {
     type: "pull all challenges"
   }
@@ -390,12 +405,18 @@ renderGetChallenges(){
               <td>{listitem.challenge_name}</td>
               <td>{listitem.description}</td>
               <td>{listitem.step_goal}</td>
-              <td>{listitem.end_time}</td>
+              <td>{this.moment(listitem.end_time*1000).format('YYYY-MM-DD HH:mm').replace('Invalid date','')}</td>
               <td>{listitem.reward}</td>
               <td><Button className="submit-button" onClick={(event) => this.pushSelectedChallenge(event,listitem.challenge_id)} variant="outlined" size="large" color="primary">Accept Challenge</Button></td>
             </tr>
           ))}
         </table></div>
+        <Link to='/profile-page'>
+        <Button
+          className="btn-round back-btn">
+          Back to Profile
+        </Button>
+        </Link>
       </React.Fragment>
   );
 }
@@ -446,22 +467,18 @@ return(
   }
 
   pushNewChallenge(event){
-    console.log(JSON.stringify(this.state.challenge_name));
     console.log("Pushing New Challenge");
-    var today = new Date(),
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()+'T'+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds()+'.'+today.getMilliseconds()+'Z';
   	var newChallenge = {
       type: "push new challenge",
       challenge_id: "C" + this.makeid(6),
       challenge_name: this.state.challenge_name,
-      description: this.state.challenge_description,
-      end_time: this.state.challenge_end_date,
-      step_goal: this.state.challenge_step_goal,
-      reward: this.state.challenge_reward,
-      current_time: date
+      description:  this.state.challenge_description,
+      end_time: this.moment(String(this.state.challenge_end_date), "YYYY-MM-DD").valueOf()/1000,
+      step_goal: parseInt(this.state.challenge_step_goal),
+      reward: parseInt(this.state.challenge_reward),
+      creator_id: global.userName
     }
-
-  	this.requestToServer(JSON.stringify(newChallenge));
+    this.requestToServer(JSON.stringify(newChallenge));
     alert("You successfully created a new challenge");
   }
 
@@ -471,10 +488,9 @@ return(
     console.log("Connected");
     this.setState({
     mqttConnected: true
-  });
-
-    // this.state.mqttConnected = true;
+    });
   }
+
   // called when the client connects
   requestToServer(payload) {
     // Once a connection has been made, make a subscription and send a message.
@@ -484,6 +500,7 @@ return(
     message.destinationName = "doordie_web";
     this.client.send(message);
   }
+
   // called to generate the IDs
   makeid(length) {
      var result           = '';
@@ -508,13 +525,10 @@ return(
     var json_message = JSON.parse(message.payloadString);
 
     if(json_message.type === 'push all challenges'){
-      console.log("attempt to get array");
       this.setState({challenge_array: json_message.challenge})
     }
 
     if(json_message.type === 'push web profile' && json_message.user_name === global.userName){
-      console.log("HELLLO");
-      console.log(json_message.hasOwnProperty("total_steps"));
       this.setState({
         total_steps: json_message.total_steps,
         remaining_sec: json_message.remaining_sec,
@@ -526,15 +540,15 @@ return(
       })
       global.profile_type=json_message.user_type
     }
-}
+  }
 
   //wait function called after sever request, to avoid spaming the server
   wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
      end = new Date().getTime();
-  }
+    }
   }
 
 }

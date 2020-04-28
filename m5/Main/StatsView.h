@@ -2,8 +2,8 @@ class StatsView {
 
   private:
     TextBox b2;
-    TimeBar weekBar = TimeBar(0, 40, 310, 30);
-    TimeBar dayBar = TimeBar(0, 110, 160, 10);
+    Bar weekBar = Bar(0, 40, 310, 30);
+    Bar dayBar = Bar(0, 110, 160, 10);
     boolean ready = false;
     int weeklySteps = 0;
     int recordWeeklySteps = 1;
@@ -35,7 +35,7 @@ class StatsView {
           return;
         }
       } else {
-        M5.Lcd.setCursor(0, 10); M5.Lcd.println("Loading Stats . . .");
+        M5.Lcd.setCursor(10, 100); M5.Lcd.setTextSize(2); M5.Lcd.print("Loading Stats . . ."); M5.Lcd.setTextSize(1);
       }
 
     }
