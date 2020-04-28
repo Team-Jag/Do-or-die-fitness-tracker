@@ -11,7 +11,7 @@ I will now discuss more in depth some additional features that would make our pr
 This improvement consists of multiple features which would need to be added more or less concurrently, since it doesn't make sense to have one without the other.
 It's worth noting that we first thought of this feature when designing our first UI wireframe, it came up when discussing possible avenues of monetization for our product.
 
-![Shop Wireframe](Portfolio/Images/M5Images/M5Shop.jpg) 
+![Shop Wireframe](/Portfolio/Images/M5Images/M5Shop.jpg)
 
 We would add some type of virtual coin to our product, Sponsors would be able to set coin rewards for their challenges, users would be able to obtain a small amount of currency each day by completing the challenges, or they could purchase it using real currency through our website.
 Currency can then be used to unlock Accessories for the Bean in the new "Shop" screen directly on the M5Stack. Accessories will simply be graphical enhancements for the Bean at first, things like hats or scarves, however an important property of this improvement is how flexible it is: once a shop is created we can decide whether to make any feature accessible to the user by default, or unlockable with currency using the shop (i.e. if we added a leveling system to our Bean, we could have "experience boosts" in the shop).
