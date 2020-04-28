@@ -19,8 +19,6 @@ To maintain separation of concerns, all data is accessed through an API public c
 
 ![Architecture](/Portfolio/Images/architecture-UML.png)
 
-See relevant sections for further information about specific subsystems. 
-
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
 Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
 
@@ -38,7 +36,6 @@ Key classes for desktop app include:
 
 For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
-![web-uml](/Portfolio/Images/web-uml.png)
 
 * **MQTT Class:** This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
 
@@ -51,6 +48,8 @@ React is ideal to implement object oriented design. Our website consists of func
 * **Profile Page:** Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
 * **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
+
+![web-uml](/Portfolio/Images/web-uml.png)
 
 ### M5
 
