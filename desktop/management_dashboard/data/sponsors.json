@@ -1,14 +1,12 @@
 {"sponsor": [
   {
     "joined_date": 1587980814845,
-    "challenge_id": [
-      "1",
-      "2"
-    ],
+    "challenge_id": [],
     "user_name": "Mario's dad"
   },
   {
     "joined_date": 1587980812000,
+    "challenge_id":[],
     "user_name": "Peach"
   },
   {

@@ -4,7 +4,7 @@
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was useful to keep our work user focused, while ensuring cohesion between each subsystem. 
+In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](/Portfolio/Images/updated_gantt.png)
 
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the user stories implemented, and what remained as WIP. 
@@ -43,6 +43,7 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 
 ### Sprint 3 : Alpha Version Release (30.3-6.4) 
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
+* Ensuring all subsystems can receive, process, and send the intended MQTT commands
 
 **User Stories Implemented:**
 * Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life
@@ -53,6 +54,7 @@ The goal of this sprint was to release the Alpha version of our product, by push
 * Improved accuracy of the step count
 * Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
+* Web able to send and receive dummy data from the broker
 
 **WIP:**
 * All subsystem able to receive, process and send the intended MQTT request types
@@ -69,6 +71,8 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Basic animation for Bean sprite implemented
 * User can see the challenges that they are enrolled in on M5 stack (dummy data)
 * User can see basic statistics about their step count on M5 stack (dummy data)
+* Web can see their full user information and challenges if they are logged in (dummy data)
+* Web can create new customised challenges for all users
 * Admin can see charts of total users, challenges, sponsors
 * Admin dashboard pulls data from backend database API
 
@@ -88,7 +92,7 @@ The goal of this sprint will be to get to advance our prototye, including:
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
 
 **User Stories Implemented:**
-* User now able to see real-time challenge data on M5 stack
+* User now able to see real-time challenge data on M5 stack and on the Web
 * Animation for Bean now based on life left on M5 stack
 * Death screen if the time left is zero on M5 stack
 * Admin can see a list of all users and proportion of players currently alive
@@ -114,6 +118,9 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * User able to see their statistics accurately reflected on statistic view
 * Admin can search for a specific user profile and see their information
 * Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
+* Sponsor redirected to the create challenge page on the web 
+* On creating an account on Web, user can decide if they are a user or a sponsor, to determine if they can create challenges
+
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics

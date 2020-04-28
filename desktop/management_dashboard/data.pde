@@ -50,8 +50,6 @@ private class Database {
    JSONObject challenges = new JSONObject();
 }
 
-Database db = new Database();
-
 // copy any JSON objects on disk into working memory and update timestamps
 void refreshData() {
    File dir;
@@ -118,7 +116,7 @@ public class UserData {
    // API CALL 3
    void updateUserStep(String name) {
       JSONObject user = getUserByName(name);
-      if(user.get("user_name") != null) {   
+      if(user.getString("user_name") != null) {   
          int incrementstep = user.getInt("total_steps") + 1;
          user.setInt("total_steps", incrementstep);
          int time = user.getInt("remaining_sec");
@@ -133,7 +131,7 @@ public class UserData {
       JSONObject ret = new JSONObject();
       ret.setString("type", RequestType.PUSH + DataType.PROFILE);
       ret.setString("user_name", name);
-      if(user.get("user_name") != null) {       
+      if(user.getString("user_name") != null) {       
          if (user.get("user_name") != null) {      
             ret.setInt("total_steps", user.getInt("total_steps"));
             ret.setInt("remaining_sec", user.getInt("remaining_sec"));
@@ -147,7 +145,7 @@ public class UserData {
       JSONObject ret = new JSONObject();
       ret.setString("user_name", name);
       ret.setString("type", RequestType.PUSH + DataType.USERCHALLENGES);
-      if(user.get("user_name") != null) {
+      if(user.getString("user_name") != null) {
          JSONArray challengeid = user.getJSONArray("challenge_id");
          JSONArray challenges = new JSONArray();
          ret.setJSONArray("challenges", challenges);
@@ -162,10 +160,10 @@ public class UserData {
    // API CALL 6
    void addChallengeToUser(String name, String challengeid) {
       JSONObject user = u_api.getUserByName(name);
-      if (user.get("user_name") != null) {
+      if (user.getString("user_name") != null) {
          if (c_api.getChallengeByID(challengeid) != null) {
             JSONArray challenges = user.getJSONArray("challenge_id");
-            challenges.setString(challenges.size()+1, challengeid);
+            challenges.setString(challenges.size(), challengeid);
             u_api.saveUsertoDB(db.users);
          }
       }
@@ -179,7 +177,7 @@ public class UserData {
       ret.setString("type", RequestType.PUSH + DataType.WEBPROFILE);
       ret.setString("user_name", name);
       
-      if(user.get("user_name") != null) {    
+      if(user.getString("user_name") != null) {    
          JSONArray challengeid = user.getJSONArray("challenge_id");
          ret.setString("user_type", "user");
          ret.setInt("total_steps", user.getInt("total_steps"));
@@ -190,7 +188,7 @@ public class UserData {
                challenges.setJSONObject(i, c_api.getChallengeByID(challengeid.get(i).toString()));
             }
          }
-      } else if(sponsor.get("user_name") != null) {
+      } else if(sponsor.getString("user_name") != null) {
          ret.setString("user_type", "sponsor");
          ret.setJSONArray("challenges", challenges);
          JSONArray challengeid = sponsor.getJSONArray("challenge_id");
@@ -248,7 +246,7 @@ public class UserData {
    // API CALL 10
    void addRewardIfChallengeMet(JSONObject user) {
       JSONArray challengeid = user.getJSONArray("challenge_id");
-      if(user != null) {
+      if(user.getString("user_name") != null) {
          for (int i = 0; i < challengeid.size(); i++) {
             JSONObject challenge = c_api.getChallengeByID(challengeid.get(i).toString());
             if(challenge.getInt("end_time") >= getUnixTime()) {
@@ -316,8 +314,8 @@ public class ChallengeData {
       JSONArray challenges = db.challenges.getJSONArray("challenge");
       challenge.remove("type");
       // adds new challenge id to sponsor
-      s_api.addChallengeIDToSponsor(challenge.getString("user_name"), challenge.getString("challenge_id"));
-      challenges.setJSONObject(db.challenges.size()+1, challenge);
+      s_api.addChallengeIDToSponsor(challenge.getString("creator_id"), challenge.getString("challenge_id"));
+      challenges.setJSONObject(challenges.size(), challenge);
       c_api.saveChallengetoDB(db.challenges);
    }
 }
@@ -350,17 +348,17 @@ public class SponsorData {
       sponsor.remove("type");
       sponsor.remove("user_type");
       sponsor.setJSONArray("challenge_id", new JSONArray());
-      sponsors.setJSONObject(db.sponsors.size()+1, sponsor);
+      sponsors.setJSONObject(sponsors.size(), sponsor);
       s_api.saveSponsortoDB(db.sponsors);
    }
    // API CALL 4
    void addChallengeIDToSponsor(String name, String challengeid) {
       JSONObject sponsor = s_api.getSponsorByName(name);
       JSONArray challenges = new JSONArray();
-      if (sponsor != null) {
+      if (sponsor.getString("user_name") != null) {
          if (c_api.getChallengeByID(challengeid) != null) {
             challenges = sponsor.getJSONArray("challenge_id");
-            challenges.setString(challenges.size()+1, challengeid);
+            challenges.setString(challenges.size(), challengeid);
             s_api.saveSponsortoDB(db.sponsors);
          } else {
             sponsor.setJSONArray("challenge_id", challenges);
