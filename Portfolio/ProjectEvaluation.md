@@ -1,7 +1,29 @@
 ![Do or Die Project Evaluation](/Portfolio/Images/projectEvalLogo.png)
 
-# 3. Project Evaluation [20pts]:
+# 3. Project Evaluation:
 ## a. Reflective discussion of the success of the project
+
+Our reflection covers the processes and ways of working together, which was the main point of this unit. At the same time we strived to deliver a high quality prototype and therefore also discuss out sucess in the product dimension.
+
+### Process ###
+
+#### Agile ####
+
+#### Remote Working ####
+
+#### Dynamics of working in pairs & as a larger group ####
+
+
+
+
+### Product ###
+
+#### M5 ####
+
+#### Web ####
+
+#### Desktop ####
+
 ## b. Discussion of future work (in terms of design, development and evaluation)
 ## c. Group Working Practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
@@ -77,3 +99,4 @@ While Agile was a new concept to most members of our group, and some of us were 
 
 ## d. This is a chance to reflect on how coronavirus has affected your project (remote
 working practices etc)
+How effective were the tools - reference back to part a)
