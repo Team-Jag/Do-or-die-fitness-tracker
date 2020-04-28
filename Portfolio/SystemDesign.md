@@ -50,6 +50,40 @@ React is ideal to implement object oriented design. Our website consists of func
 
 ### M5
 
+#### **Back-End**
+Since our M5Stack is effectively a stateless machine with well-developed animations, our back-end Classes are straight-forward: 
+
+* **Pedometer.h**
+  * Count the steps taken by the user using the Gyroscope inside the M5Stack. (This code is taken from MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016).
+
+* **Main.h**
+  * Publish and Read messages on the MQTT Topics.
+  * Serialize and Deserialize JSON messages.
+  * Direct the information received in the JSON messages to the correct Classes.
+  * Select which of our Front-End classes to draw().
+
+#### **Front-End** 
+Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polimorphism were too hard to implement effectively in Arduino so the 'View' abstract class does not actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
+
+* **View.h (ChallengesView.h, StatsView.h)**
+  * Draw the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h)
+
+* **TextBox.h**
+  * Draw a simple box with given text at the bottom of the screen, used to explain what each M5Stack button does in each View
+
+* **Timer.h**
+  * Used to schedule the next call of draw() for any or each object in the current View
+
+* **Bar.h**
+  * Draw a simple horizontal progress bar, used to visualize the "Health" left in the Home view, the progress of a challenge in the Challenges view, and how close a user is to their personal record in the Statistics View
+
+* **Bean.h**
+  * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite
+
+![m5-uml](/Portfolio/Images/M5_UML.png)
+
+
+
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
 
