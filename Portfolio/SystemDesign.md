@@ -50,7 +50,15 @@ React is ideal to implement object oriented design. Our website consists of func
 
 ### M5
 
+**Back-End**
+
+
+**Front-End** 
+Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. Sadly though we quickly discovered that things like abstract classes, inheritance and polimorphism are too hard to implement effectively in Arduino so the 'View' abstract class doesn't actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
+
 ![m5-uml](/Portfolio/Images/M5_UML.png)
+
+
 
 ## c. Requirements of key sub-systems (in the form of selected user stories)
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
