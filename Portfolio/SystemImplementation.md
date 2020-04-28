@@ -132,7 +132,7 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * Implement interaction feature on M5 stack
 
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
-The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
+The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software.
 
 **User Stories Implemented:**
 * 
