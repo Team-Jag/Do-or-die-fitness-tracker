@@ -11,16 +11,15 @@ Our Do or Die fitness tracker is an Internet of Things (IoT) product that we des
 * **Data Communication** : Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E. 
 * **Data Repository** : To keep our data persistent, we store the data in JSON files. 
 	
+The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
 
-Architecture of the system uses a central controller database API that handles receiving and sending requests, using MQTT protocol, to communicate between devices. Three key devices of system:
+**Processing** - sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
 
-Processing - sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app.
+**M5** - stateless device which uses the gyroscope to determine when user step count is incremented, sends step count updates to database using MQTT protocol, and informs user when player death occurs.
 
-M5 - stateless device to update the database when user step count is incremented, and informs user when player death occurs.
+**Web** - allows user to log in and provide information about their account, user information and challenges, allows a new user to create an account, and the creation of sponsors.
 
-Web - allows user to log in and provide information about their account, user information and challenges.
-
-To maintain separation of concerns, all data is accessed through an API public class, and requests pass through a single server (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
+To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
 ![Architecture](/Portfolio/Images/architecture-UML.png)
 
@@ -34,8 +33,8 @@ Key classes for desktop app include:
 
 * **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
 * **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class additionally contained event listeners for buttons and lists in the UI.
-* **tests** - the test class contains unit tests to ensure edge cases are handles gracefully.
-* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local json files obtained by requesting data from the respective APIs.
+* **tests** - the test class contains unit tests to ensure edge cases are handled gracefully.
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs.
 
 ![Processing-uml](/Portfolio/Images/Processing-UML.png)
 
