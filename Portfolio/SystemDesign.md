@@ -54,36 +54,40 @@ React is ideal to implement object oriented design. Our website consists of func
 ### M5
 
 #### **Back-End**
-Since our M5Stack is effectively a stateless machine with well-developed animations, our back-end Classes are straight-forward: 
+Since our M5Stack is effectively a stateless machine with well-developed animations, our back-end Classes are straight-forward.
+We need to read in the data from the Gyroscope and use it to detect when the user takes a step. By counting steps we get an idea of how active a user is at any given time. 
+We need to send and receive the JSON messages that we agreed on in our shared contract. This allows the M5Stack to be a memoryless machine by pulling and pushing all the necessary data from and to the Desktop server.
 
 * **Pedometer.h**
   * Count the steps taken by the user using the Gyroscope inside the M5Stack. (This code is taken from MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016).
 
 * **Main.h**
-  * Publish and Read messages on the MQTT Topics.
-  * Serialize and Deserialize JSON messages.
-  * Direct the information received in the JSON messages to the correct Classes.
-  * Select which of our Front-End classes to draw().
+  * This is the main class whose loop() is running at all times in the M5Stack. It publishes and reads messages on the appropriate MQTT Topics, it does so by serializing and deserializing JSON messages using the ArduinoJson.h library.
+  Once a JSON message is deserialized it is placed in the correct Class, so for example Challenges data will be stored in the ChallengesView object, whereas Statistics data will be stored in the StatsView object.
+  Once all data is correctly handled, Main.h selects which of the Front-End View objects to draw(), according to the screen requested by the user, through the use of the M5Stack buttons. 
 
 #### **Front-End** 
 Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polimorphism were too hard to implement effectively in Arduino so the 'View' abstract class does not actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
 
+![M5_HomeScreenView](Images/M5_ViewExplained.png)
+
 * **View.h (ChallengesView.h, StatsView.h)**
-  * Draw the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h)
+  * Draw the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h). These are effectively aggreate classes which combine the move() and draw() functions of our component classes below
 
 * **TextBox.h**
   * Draw a simple box with given text at the bottom of the screen, used to explain what each M5Stack button does in each View
 
 * **Timer.h**
-  * Used to schedule the next call of draw() for any or each object in the current View
+  * Small class implementing a simple timer, we use this in each View class to control the refresh rate of our front-end frames. We also use it in Main.h to set how often we update the user information by sending a user_profile type request to the Desktop Server.
 
 * **Bar.h**
-  * Draw a simple horizontal progress bar, used to visualize the "Health" left in the Home view, the progress of a challenge in the Challenges view, and how close a user is to their personal record in the Statistics View
+  * Draw a simple horizontal progress bar, used to visualize the "Health" left in the Home view, the progress of a challenge in the Challenges view, and how close a user is to their personal record in the Statistics View. We ended up using a lot of progress bar in our View objects because the M5Stack graphics library provides a simple way to create such progress bars and this kind of bars communicates really well to the user how well or poorly they are performing
 
 * **Bean.h**
-  * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite
+  * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite. We spent a lot of time optimizing this class' animations because they are what's meant to keep the user attached to their bean and therefore motivated to live a healthy lifestile.
 
 ![m5-uml](Images/M5_Design.png)
+On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design...
 
 
 
