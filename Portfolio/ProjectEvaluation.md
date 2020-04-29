@@ -1,4 +1,4 @@
-![Do or Die Project EvaluationImages/projectEvalLogo.png)
+![Do or Die Project Evaluation](Images/projectEvalLogo.png)
 
 # 3. Project Evaluation [20pts]:
 ## a. Reflective discussion of the success of the project
