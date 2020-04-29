@@ -41,11 +41,17 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 
 #### M5Stack Libraries & Referenced Code
 [M5Stack Default Library](https://github.com/m5stack/M5Stack)
+
 [WiFi Library](https://github.com/m5stack/M5Stack)
+
 [Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
+
 [MQTT Communcation Library](https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h)
+
 [Time Library](https://github.com/PaulStoffregen/Time)
+
 [MPU9250 Pedometer Class](https://github.com/m5stack/M5Stack/blob/master/examples/Fire/M5StackFire_MPU9250/M5StackFire_MPU9250.ino)
+
 
 
 
