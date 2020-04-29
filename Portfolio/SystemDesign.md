@@ -1,20 +1,21 @@
 ![Do Or Die System Design](Images/systemDesignLogo.png)
-
-## Table of Contents
-* ### [System Architecture](#architecture)
-* ### [Object-Oriented Design](#oop)
-  * ### [Desktop](#oop-desktop)
-  * ### [Web](#oop-web)
-  * ### [M5](#oop-m5)
-* ### [Requirements of Key Subsystems](#reqsubsystem)
-* ### [Evolution of UI Wireframes](#uiwireframe)
-* ### [Details of communication protocols in use](#commprotocol)
-  * ### [Desktop and M5 Stack](#comm-desktop-m5)
-  * ### [Desktop and Web](#comm-desktop=web)
-* ### [Data Persistence](#data)
-* ### [Web Technologies](#webtech)
-
 # System Design [40 pts] :
+## Table of Contents
+* [Architecture of entire system](#architecture)
+* [Object-oriented design of key sub-systems](#oop)
+  * [Desktop](#oop-desktop)
+  * [Web](#oop-web)
+  * [M5](#oop-m5)
+* [Requirements of key subsystems](#reqsubsystem)
+* [Evolution of UI wireframes](#uiwireframe)
+  * [Desktop](#uiwireframe-desktop)
+  * [Web](#uiwireframe-web)
+  * [M5Stack](#uiwireframe-m5)
+* [Details of communication protocols in use](#commprotocol)
+  * [Desktop and M5Stack](#comm-desktop-m5)
+  * [Desktop and Web](#comm-desktop=web)
+* [Details of data persistence mechanisms in use](#data)
+* [Details of web technologies in use](#webtech)
 
 ## <a name="architecture"></a>a. Architecture of the entire system
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
@@ -170,7 +171,7 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 ## <a name="uiwireframe"></a>d. The evolution of UI wireframes for key sub-systems
 Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section. 
 
-### DESKTOP
+### <a name="uiwireframe-desktop"></a>DESKTOP
 Original multi-tab wireframe design for desktop UI:
 ![Wireframe-desktop](Images/desktop-wireframe.jpg)
 
@@ -189,7 +190,7 @@ Selecting a specific statistic from UI:
 Different selected charts showing data for each parameter, such as users, sponsors, challenges.
 ![UI-selected-charts](Images/selected-charts.png)
 
-### WEB
+### <a name="uiwireframe-web"></a>WEB
 
 Original web wireframe design for desktop profile:
 ![Wireframe-web](/Portfoio/Images/web-wireframe.jpg)
@@ -203,7 +204,7 @@ Sign-up screen draft
 Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
 ![Web-signupfinal](Images/signup-final.PNG)
 
-### M5
+### <a name="uiwireframe-m5"></a>M5
 ![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
 
 The starting screen was replaced with a more professional logo, following user feedback.
@@ -462,9 +463,9 @@ M5 device is stateless therefore does not store information locally apart from c
 ## <a name="webtech"></a>g. Details of web technologies in use (including a rational for your choice)
 Our website is react based and built on top of a simple react/bootstrap template.
 The choice for these technologies was driven by some key needs of our website/team that ultimately led us to choose this set up:
-1. **Ability for integration of MQTT commuication protocol:** When looking into the different framework we realized that the script Tom provided us for the MQTT communication could be easily reused and integrated into all major Javascript based frameworks (e.g. Angular, React, Vue).
-2. **Ability to dynamicially refresh content on a regular basis in an easy way:** React turned out to be the obvious candidate to satisfy this need: Its logic is centered around an app state, with components getting rerendered every time the state changes. That way we could display a dynamic step / lifetime counter which would change in real time without refreshing the page.
-3. **Availability of UI templates for rapid but beautiful prototyping:** React is currently [the most widely used](https://hotframeworks.com/) web framework, so there were plenty of templates available. We chose a [free template by Creative Tim](https://demos.creative-tim.com/now-ui-kit/index.html), which included some basic UI components such as a navigation and a profile page and would allow us to build rapid prototypes without bothering about the details of styling and navigation.
-4. **Support for Object Oriented Design:** To support our object oriented design we were looking for a framework that supports the use of a strong object oriented design. React components are ideal to build class based software (see chapter 1.b).
-5. **The MQTTclient Class:** Every page needs to be able to send or receive json messages, usually both, to and from the MQTT broker, so we have implemented an MQTT class which handles all data to prevent repetition in the design of each page. As the incoming json messages over the broker for the web profile are the most flexible in nature out of all pages, the MQTT class has conditional rendering dependent on the internal state of the class. The MQTT class running on a given system listens to incoming messages based on the username so if another user is accessing the site from elsewhere, there is no mismatch of data between the sessions and each user won't interrupt the others navigating the website. This was designed in order to be scalable, and to ensure the client continues to listen to the broker until the correct packet of information has been received, which is parsed and interpreted.
+* **Ability for integration of MQTT commuication protocol:** When looking into the different framework we realized that the script Tom provided us for the MQTT communication could be easily reused and integrated into all major Javascript based frameworks (e.g. Angular, React, Vue).
+* **Ability to dynamicially refresh content on a regular basis in an easy way:** React turned out to be the obvious candidate to satisfy this need: Its logic is centered around an app state, with components getting rerendered every time the state changes. That way we could display a dynamic step / lifetime counter which would change in real time without refreshing the page.
+* **Availability of UI templates for rapid but beautiful prototyping:** React is currently [the most widely used](https://hotframeworks.com/) web framework, so there were plenty of templates available. We chose a [free template by Creative Tim](https://demos.creative-tim.com/now-ui-kit/index.html), which included some basic UI components such as a navigation and a profile page and would allow us to build rapid prototypes without bothering about the details of styling and navigation.
+* **Support for Object Oriented Design:** To support our object oriented design we were looking for a framework that supports the use of a strong object oriented design. React components are ideal to build class based software (see chapter 1.b).
+* **The MQTTclient Class:** Every page needs to be able to send or receive json messages, usually both, to and from the MQTT broker, so we have implemented an MQTT class which handles all data to prevent repetition in the design of each page. As the incoming json messages over the broker for the web profile are the most flexible in nature out of all pages, the MQTT class has conditional rendering dependent on the internal state of the class. The MQTT class running on a given system listens to incoming messages based on the username so if another user is accessing the site from elsewhere, there is no mismatch of data between the sessions and each user won't interrupt the others navigating the website. This was designed in order to be scalable, and to ensure the client continues to listen to the broker until the correct packet of information has been received, which is parsed and interpreted.
 
