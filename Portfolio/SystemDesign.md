@@ -1,4 +1,4 @@
-![Do Or Die System Design](/Portfolio/Images/systemDesignLogo.png)
+![Do Or Die System Design](Images/systemDesignLogo.png)
 
 # 1. System Design [40 pts] :
 ## a. Architecture of the entire system
@@ -17,10 +17,10 @@ Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tr
 	
 To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
-![Architecture](/Portfolio/Images/architecture-UML.png)
+![Architecture](Images/architecture-UML.png)
 
 ## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
-Our [initial UML diagram](/Portfolio/Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
+Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
 
 ### DESKTOP
 Key classes for desktop app include:
@@ -30,7 +30,7 @@ Key classes for desktop app include:
 * **tests** - the test class contains unit tests to ensure edge cases are handled gracefully.
 * **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs.
 
-![Processing-uml](/Portfolio/Images/Processing-UML.png)
+![Processing-uml](Images/Processing-UML.png)
 
 ### WEB
 
@@ -49,7 +49,7 @@ React is ideal to implement object oriented design. Our website consists of func
 * **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
 
-![web-uml](/Portfolio/Images/web-uml.png)
+![web-uml](Images/web-uml.png)
 
 ### M5
 
@@ -83,7 +83,7 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 * **Bean.h**
   * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite
 
-![m5-uml](/Portfolio/Images/M5_UML.png)
+![m5-uml](Images/M5_UML.png)
 
 
 
@@ -98,7 +98,7 @@ We ensured that our product had a user-focused framework by developing three key
 
 These key stories were developped in to further user stories, which can be seen in our [Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7). However, the main ones can be seen in this use case diagram:
 
-![Use case](/Portfolio/Images/dotuml.png)
+![Use case](Images/dotuml.png)
 
 <p align="center"><b>After developing the three user stories, we translated them into the following requirements for our sub-systems:</b></p>
 
@@ -149,57 +149,57 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 
 
 ## d. The evolution of UI wireframes for key sub-systems
-Our [User Story video](../Portfolio/Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section. 
+Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section. 
 
 ### DESKTOP
 Original multi-tab wireframe design for desktop UI:
-![Wireframe-desktop](/Portfolio/Images/desktop-wireframe.jpg)
+![Wireframe-desktop](Images/desktop-wireframe.jpg)
 
 Updated wireframe design for UI in a single window:
-![Wireframe-final](/Portfolio/Images/final_wirefram.jpg)
+![Wireframe-final](Images/final_wirefram.jpg)
 
 Final decided layout for admin UI:
-![UI-layout](/Portfolio/Images/dashboard-main.png)
+![UI-layout](Images/dashboard-main.png)
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
-![UI-search](/Portfolio/Images/search-user.png) ![UI-search](/Portfolio/Images/null-user.png)
+![UI-search](Images/search-user.png) ![UI-search](Images/null-user.png)
 
 Selecting a specific statistic from UI:
-![UI-select-chart](/Portfolio/Images/select-chart.png)
+![UI-select-chart](Images/select-chart.png)
 
 Different selected charts showing data for each parameter, such as users, sponsors, challenges.
-![UI-selected-charts](/Portfolio/Images/selected-charts.png)
+![UI-selected-charts](Images/selected-charts.png)
 
 ### WEB
 
 Original web wireframe design for desktop profile:
-![Wireframe-web](/Portfolio/Images/web-wireframe.jpg)
+![Wireframe-web](/Portfoio/Images/web-wireframe.jpg)
 
 Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
-![Web-screenshot](/Portfolio/Images/web-screenshot.PNG)
+![Web-screenshot](Images/web-screenshot.PNG)
 
 Sign-up screen draft
-![Web-signupdraft](/Portfolio/Images/signup-draft.png)
+![Web-signupdraft](Images/signup-draft.png)
 
 Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
-![Web-signupfinal](/Portfolio/Images/signup-final.PNG)
+![Web-signupfinal](Images/signup-final.PNG)
 
 ### M5
-![Do Or Die System Design](/Portfolio/Images/M5Images/loadingScreenCollage.jpg)
+![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
 
 The starting screen was replaced with a more professional logo, following user feedback.
 
-![Do Or Die System Design](/Portfolio/Images/M5Images/animation.gif)
+![Do Or Die System Design](Images/M5Images/animation.gif)
 
 From the initial UI wireframe, we designed and animated a simple but responsive sprite. The screen was decluttered to allow the focus on the sprite, based upon feedback we received during the user testing session. 
 
-![Do Or Die System Design](/Portfolio/Images/M5Images/statsCollage.jpg)
+![Do Or Die System Design](Images/M5Images/statsCollage.jpg)
 
 The stats screen was implemented according to the UI wireframe, however we have not implemented the sleep detection feature due to its dificulty to develop. Therefore, different statistics have been displayed. 
 
-![Do Or Die System Design](/Portfolio/Images/M5Images/campaignShopCollage.jpg)
+![Do Or Die System Design](Images/M5Images/campaignShopCollage.jpg)
 
-Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](/Portfolio/ProjectEvaluation.md). 
+Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md). 
 
 ## e. Details of the communication protocols in use (including a rational for your choice)
 Our Internet of Things product was developed utilising the M5Stack platform. Due to the use of this platform, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move between web to desktop, M5Stack to desktop and desktop to both the Web and M5Stack. Further, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons: 
