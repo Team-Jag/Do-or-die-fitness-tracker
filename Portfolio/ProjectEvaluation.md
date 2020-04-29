@@ -34,7 +34,53 @@ Implementation would require adding this M5Stack_ID field to our data schema and
 
 Since this feature would need to come online before release, we couldn't evaluate it with user feedback. However a good metric for this type of "login features" is how many clicks/actions it takes the user to go from start-up to a system ready for use, so that would probably be what we'd try to optimize this feature for. 
 
-### 
+### Module specific improvements 
+The features above are things that to be implemented would need non-trivial work done on each of our subsystems, below we'll go through some more individual changes for each of our modules.
+
+#### M5Stack
+The M5Stack revolves around two main tasks: tracking the user's fitness level and motivating the user to increase their fitness level through an animated sprite.
+
+In order to improve the M5Stack's fitness tracking capabilities, we'd work on refining our Pedometer to let it detect whether the user is running, walking up the stairs and even swim or cycle. We could even add an external module to monitor useful biometrics such as hearth rate.
+
+These would obviously have to be stored in the Desktop Database, but it would be really easy to just add those fields to a user's profile, but aside from that all of the development would happen exclusively within the M5Stack. We have not been able to look much into this due to time constraints however we suspect we would be able to find libraries or sample code online that would make it easy for us to add the above mentioned new metrics to our fitness tracking.
+
+The success of our product heavily relies on how much the user is emotionally attached to their bean, therefore making the animations more realistic and life-like would be one of the most important improvement we could undertake to make our product more viable.
+Firstly, we would add more complex behaviour for the bean, ideally relating it to the user's ativity: 
+If the user is just sitting down/not walking, the Bean would look more bored, if the user is walking or even running the bean would look excited.When the user completes a campaign, the bean would do some type of "Well done buddy!" animation. Our imagination is the only limit for this one, with the goal of making the bean feel more and more like a real pet that the user can take care of.
+
+Implementing this would be quite difficult though, as we have experienced while developing our prototype, the M5Stack's graphics library is somewhat slow and basic, even drawing basic shapes makes it slow enough that we can notice a flicker. So adding complex 3d-like animations sounds like an impossible task. However while writing our animations for the prototype, we came across the "TFT Arduino Library" which is supposed to be a faster graphics library for arduino products, so we'd try to integrate that library into our existing code and go from there.
+
+Both of these are little more than quality of life improvements, so we could add these incrementally even after release, which would allow us to gather user feedback to make the evaluation of each change straightforward. We would probably implement a by-weekly or monthly patch system where we push the next set of improvements and gather user feedback before pushing the next set.
+Down the road we might even have a public beta version of our product up at all times, so that our "bravest" users can preview and test our planned changes while at the same time helping us by reporting any bugs they find.
+
+#### Web
+Our website is used to connect our sponsors to our users, and to allow the user to utilize any of the features which are too complex to sit inside the M5Stack. 
+
+However the fact that a user needs to go on a website to access all our feature is not ideal given our target customer. 
+The hope of this product is that anyone using it would not be sitting at home on their computer, so they would have to access our website on their phone. But a much better option would be to have the user access our product's feature through a bespoke Mobile App!
+
+Having an app for our product would reinforce our connection with the User by allowing us to send them notification related to their Bean's health level and even to their performance in Challenges they're enrolled in. 
+We would also keep our Desktop app in particular for Sponsors but also for user who don't feel like using our app.
+
+Developing an app would be quite a long process, however thanks to our separation on concerns we would be able to do this without affecting the M5Stack or the Desktop. 
+
+Apps for products such as ours can be a big swing and a miss, so we would do extensive evaluation work to ensure we deliver a good and polished product. We would probably design a closed beta version first, and we'd give out codes to some of our most active users to get their feedback while at the same time generating widespread interest for it. 
+
+
+#### Desktop
+Our desktop app is effectively our back-end, with also a little bit of front-end data visualization which allows our admins to gauge how well the product performs at any given time.
+
+The most obvious improvement we would want to implement for our Desktop server would be to transform our text-based JSON database into a fully fleshed out relational database.
+This means we would most likely move all back-end functionalities away from Processing, and put them into a real Server running something like SQLite at all times. 
+And the great thing about our Object Oriented Design is that even if we changed our Database architecture this drastically, our M5Stacks and Website wouldn't need to change at all! Since as long as our shared contract remains the same, our other modules don't need to know anything about how their requests are being handled.
+
+Evalutating our backend system would be somewhat easy: how much load can it handle at any given time? At the moment our simple Processing app running on a Personal Computer would probably be unable to handle requests from more than a handful of M5Stacks or Website interactions. Any improvement we make to our Database would be evaluated on how much does it increase our load capacity.
+
+We wouldn't get rid of our Processing interface though, in fact we would also try to expand it: at the moment our admins can monitor our product but can't really interact with it in any meaningful way. We would add a ticketing system on the Website which would allow Sponsors and Users to contact Admins about issues, this way admins are also able to promptly tackle any issues that arise.
+
+Since this feature effectively allows us to receive feedback from user, we would use the feature itself to evaulate it!
+
+Obviosuly, before any of these real improvements can happen, we would first want to get rid of all our dummy data sitting in the server that we used for our demonstration.
 
 ## c. Group Working Practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
