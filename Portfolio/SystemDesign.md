@@ -83,7 +83,7 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 * **Bean.h**
   * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite
 
-![m5-uml](Images/M5_UML.png)
+![m5-uml](Images/M5_Design.png)
 
 
 
