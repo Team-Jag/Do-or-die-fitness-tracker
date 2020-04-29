@@ -1,11 +1,11 @@
-![Do or Die System Implementation](/Portfolio/Images/SystemImpLogo.png)
+![Do or Die System Implementation](Images/SystemImpLogo.png)
 # 2. System Implementation [40pts]:
 ## a. Breakdown of project into sprints (showing the users stories implemented in each).
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
 In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
-![Updated Gantt Chart](/Portfolio/Images/updated_gantt.png)
+![Updated Gantt Chart](Images/updated_gantt.png)
 
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the user stories implemented, and what remained as WIP. 
 

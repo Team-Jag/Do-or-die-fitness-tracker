@@ -1,4 +1,4 @@
-![DoOrDieLogo](/Portfolio/Images/logo.png)
+![DoOrDieLogo](Portfolio/Images/logo.png)
 
 ## Product Description
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
@@ -15,8 +15,8 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
-## 1. [System Design](../develop/Portfolio/SystemDesign.md)
-View our [system design document](../develop/Portfolio/SystemDesign.md) to see:
+## 1. [System Design](Portfolio/SystemDesign.md)
+View our [system design document](Portfolio/SystemDesign.md) to see:
 * System architecture
 * Object-oriented design of key sub-systems
 * Requirements of key sub-systems
@@ -25,14 +25,14 @@ View our [system design document](../develop/Portfolio/SystemDesign.md) to see:
 * Details of the data persistence mechanisms in use
 * Details of web technologies in use
 
-## 2. [System Implementation](../develop/Portfolio/SystemImplementation.md)
-View our [system implementation document](../develop/Portfolio/SystemImplementation.md) to see:
+## 2. [System Implementation](Portfolio/SystemImplementation.md)
+View our [system implementation document](Portfolio/SystemImplementation.md) to see:
 * Breakdown of our project into sprints
 * Design evaluation
 * Social and ethical implications of our work
 
-## 3. [Project Evaluation](../develop/Portfolio/ProjectEvaluation.md)
-View our [project evaluation](../develop/Portfolio/ProjectEvaluation.md) to see:
+## 3. [Project Evaluation](Portfolio/ProjectEvaluation.md)
+View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
