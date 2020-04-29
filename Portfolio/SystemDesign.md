@@ -1,8 +1,13 @@
 ![Do Or Die System Design](Images/systemDesignLogo.png)
 
-# 1. System Design [40 pts] :
-## a. Architecture of the entire system
+# Table of Contents
+* ## [System Architecture](#architecture)
+* ## [Object-Oriented Design](#oop)
+  * ## [Desktop](#oop-desktop)
 
+# System Design [40 pts] :
+
+## <a name="architecture"></a>a. Architecture of the entire system
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. Three key devices of system:
 
 * **Internet of Things Device** : Our IoT device was an M5Stack, an Arduino we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user.
@@ -19,10 +24,10 @@ To maintain separation of concerns, all data is accessed through an API public c
 
 ![Architecture](Images/architecture-UML.png)
 
-## b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
+## <a name="oop"></a>b. Object-Oriented design of key sub-systems (e.g. Desktop Application, Web Application etc.)
 Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems. 
 
-### DESKTOP
+### <a name="oop-dekstop"></a>DESKTOP
 Key classes for desktop app include:
 
 * **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
