@@ -10,7 +10,7 @@ Below we will consider some additional features that would make our product more
 ### Currency, Shop and Customization
 The first improvement consists of multiple features which would need to be added more or less concurrently, since it does not make sense to have one without the other. It's worth noting that we first thought of this feature when designing our first UI wireframe, it came up when discussing possible avenues of monetization for our product. However, this has been pushed to our backlog for future sprints.
 
-![Shop Wireframe](/Portfolio/Images/M5Images/M5Shop.jpg)
+![Shop Wireframe](Images/M5Images/M5Shop.jpg)
 
 This feature would include the addition of a Shop for our users.We would add some type of virtual coin to our product, Sponsors would be able to set coin rewards for their challenges, users would be able to obtain a small amount of currency each day by completing the challenges, or they could purchase it using real currency through our website.
 
@@ -145,7 +145,7 @@ When our work moved remotely, we made the pair programming partners permanent to
 
 During our weekly video call meetings, we were also able to test each of the subsystems to ensure that they still worked together over MQTT. Moreover, we used these meetings to bring up any potential issues, update any of the backlog on our Kanban board, and prioritise what needed to be done during our next sprint to have a working product for the following week. We also took this time to show the other team members what we had implemented, which you can see in the screenshot below. However, this did have some draw backs as sharing our screen to sort issues typically took longer than if we had been dealing with them in person. This meant that most of our meetings lasted longer than expected. It was difficult to fully communicate some issues over video calls, but we used these opportunities to break off in to smaller groups to work through them and practice using the subsystems together to ensure we were confident in our minimum viable product. 
 
-![Group MeetingImages/groupMeetings.JPG) 
+![Group Meeting](Images/groupMeetings.JPG) 
 
 ### OVERALL REFLECTION ON GROUP WORKING PRACTICES
 
