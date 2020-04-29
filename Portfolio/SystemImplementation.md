@@ -4,13 +4,13 @@
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-In order to keep it clear which user stories were implemented during each sprint, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
+As one of the key foundations of Agile software development is to have self-organising teams, we knew that it was important to collectively focus on the most important user stories to be implemented during each sprint. We were confident in our capabilities to successfully maintain a minimum viable product during each week's sprint. In order to keep this clear, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](Images/updated_gantt.png)
 
-In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the user stories implemented, and what remained as WIP. 
+In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. 
 
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
-The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems.
+The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. 
 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
@@ -23,13 +23,13 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 * Implementation of communication protocol 
 
 ### Sprint 2 : First Prototype (9.3-16.3) 
-The goal of this sprint was to create a very basic proof of concept.
+The goal of this sprint was to create a very basic proof of concept. Our team agreed that this was mainly focused on turning the M5Stack in to a pedometer, and that Processing is able to receive step data from the M5Stack and process it accordingly. 
 
 **User Stories Implemented:**
 * End-user able to use pedometer accurately, steps counts persists between sessions
 
 **DONE:**
-* M5 Stack able to send a notification to server (Processing) for each new step
+* M5Stack able to send a notification to server (Processing) for each new step
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
@@ -39,11 +39,10 @@ The goal of this sprint was to create a very basic proof of concept.
 * Improve the accuracy of the step count
 
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
-Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. 
+Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project, and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
 
-### Sprint 3 : Alpha Version Release (30.3-6.4) 
-The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved:
-* Ensuring all subsystems can receive, process, and send the intended MQTT commands
+### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) 
+The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
 
 **User Stories Implemented:**
 * Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life
@@ -62,10 +61,7 @@ The goal of this sprint was to release the Alpha version of our product, by push
 * MQTT message length issue with M5 Stack 
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) 
-The goal of this sprint will be to get to advance our prototye, including:
-* Fixed interaction issues that arose in the sprint review on 6th of April
-* Improve design and visuals
-* Extend functionalities 
+The goal of this sprint was be to get to advance our prototye, which fixed interaction issues that arose during the sprint review on 6th of April. During this sprint, mainly with the End-User in mind, we decided to focus on improving design and visuals as well as extending basic functionalities. This included viewing their statistics on the M5Stack, and the creation of custom challenges for Sponsors on the Web.
 
 **User Stories Implemented:**
 * Basic animation for Bean sprite implemented
@@ -88,8 +84,8 @@ The goal of this sprint will be to get to advance our prototye, including:
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
 
-### Sprint 5 : Beta Version Release (13.4-20.4) 
-The goal of this sprint was to release the Beta version of our product, and push it to the master branch. 
+### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) 
+The goal of this sprint was to release the Beta version of our product, and push it to the master branch. During this sprint we were able to replace the dummy data for challenges that we had on the M5Stack. Also, the database was now able to automatically update when the user reached a goal of the challenge that they had enrolled in and appropriately add the time reward to the user's account. 
 
 **User Stories Implemented:**
 * User now able to see real-time challenge data on M5 stack and on the Web
@@ -111,8 +107,8 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Add sponsor API to desktop
 * Adding new user should initialise user data with default values
 
-### Sprint 6 : Version 1.0 Release (20.3-27.4) 
-The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. 
+### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) 
+The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. In the lead up to the end of our sprint, we realized that there was an issue between the database and the web. 
 
 **User Stories Implemented:**
 * User able to see their statistics accurately reflected on statistic view
@@ -120,7 +116,6 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
 * Sponsor redirected to the create challenge page on the web 
 * On creating an account on Web, user can decide if they are a user or a sponsor, to determine if they can create challenges
-
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
@@ -132,10 +127,10 @@ The goal of this sprint was to clean up our code, and implement any final featur
 * Implement interaction feature on M5 stack
 
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
-The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. 
+The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software.
 
 **User Stories Implemented:**
-* 
+* The End-User is able to interact personally with their Bean. 
 
 **DONE:**
 * Implemented interaction feature on M5 stack

@@ -36,3 +36,5 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
+
+### References
