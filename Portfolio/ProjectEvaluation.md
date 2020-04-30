@@ -1,28 +1,24 @@
 ![Do or Die Project Evaluation](/Portfolio/Images/projectEvalLogo.png)
 
 # 3. Project Evaluation:
+
 ## a. Reflective discussion of the success of the project
 
-Our reflection covers the processes and ways of working together, which was the main point of this unit. At the same time we strived to deliver a high quality prototype and therefore also discuss out sucess in the product dimension.
+Overall wee are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
 
-### Process ###
+#### Overall Design ####
 
-#### Agile ####
+In our first sprint we did a good job at defining the MVP, agreeing on the over design and the interactions between the subsystems. This set us to work idependetly and made the success of of project resistant to the initial Corona disruption: it did not matter where each of us was, we all knew exactly what we had to do. As a result our alpha version was complete realtively fast and satisfied most of the MVP requirements. We then agreed as a group which additional features we would implement for the beta version. Unfortunately in this second iteration we did not follow the same rigor when designing the the system, we all were confident that we know "our systems" and adding some new features would be "easy". We paid the price for that complacency a couple of weeks later, before the release of our beta version: during the final end-to-end test some of the subsystems would crash and each of us had to spend a couple of hours to identify the bugs in their systems. Amazingly they all turned out the be easy to fix: they all originated from misunderstanding between our sub-groups (e.g. different spelling in the request types or different understanding of the  exact purpose of the request). This remined us of how important a system design with clear requirements and test cases is when working in a group. Had we invested an hour more into the design in that second iteration, it would have saved us countless hours of finding and fixing bugs.
 
-#### Remote Working ####
-
-#### Dynamics of working in pairs & as a larger group ####
-
-
-
-
-### Product ###
 
 #### M5 ####
 
 #### Web ####
 
+In the web sub-team our appraoch was "very agile" in the sense that we haf very short cycles with little considerations for the implacation of design choinces on other planned features. The advantage was that we had a first working version of the website within a day and the first integration with the other systems after a week. However, with every new cycle the need to refactor code increased, as the limitations of the intial design choices became clear. This method worked great beacuse it allowd us to deliver a woking prototype in weeks, at the same time it showed us that systems intended for long term use need flexibility in their design and fundamental design choices must take into account the requirements of the system as a whole.
+
 #### Desktop ####
+
 
 ## b. Discussion of future work (in terms of design, development and evaluation)
 ## c. Group Working Practices
