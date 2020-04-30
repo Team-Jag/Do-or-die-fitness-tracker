@@ -1,8 +1,28 @@
 ![Do or Die Project Evaluation](Images/projectEvalLogo.png)
 
-# 3. Project Evaluation [20pts]:
-## a. Reflective discussion of the success of the project
-## b. Discussion of future work (in terms of design, development and evaluation)
+# Project Evaluation [20pts]:
+
+## Table of Contents
+- [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
+- [**Discussion of future work (in terms of design, development and evaluation)**](#discussion-of-future-work-in-terms-of-design-development-and-evaluation)
+  - [Currency, shop and customization](#currency-shop-and-customization)
+  - [Connect M5Stack to a user account](#connect-an-m5stack-to-a-user-account)
+  - [Module specific improvements](#module-specific-improvements)
+    - [M5Stack](#m5stack)
+    - [Web](#web)
+    - [Desktop](#desktop)
+  - [Summary](#summary)
+- [**Discussion of group working practices**](#group-working-practices)
+  - [Agile communication](#agile-communication)
+  - [Github process](#github-proccess)
+  - [Communication tools](#communication-tools)
+  - [Management of issues](#management-of-issues)
+  - [Overall reflection](#overall-reflection-on-group-working-practices)
+- [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid19-on-the-project)
+
+## Reflective discussion on the success of the project
+
+## Discussion of future work (in terms of design, development and evaluation)
 In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example. So, the first step for any kind of future work would be to first do extensive market research to better understand where the Do or Die Fitness Tracker fits in the Product Space, what our Target market is, and whether there are existing companies that could be classified as our competitors.
 
 Below we will consider some additional features that would make our product more viable, how we came up with the feature, and how it would fit in our current design. We will also consider how we would develop it, implement it, and what methods we would use to evaluate it.
@@ -20,7 +40,7 @@ Implementing this change would require large changes for each of our subsystems.
 
 Ideally we would implement this before we start taking on large number of users, since when a free to use product adds a monetization feature user tend to react negatively. However this means we wouldn't be able to get user feedback to help us evaluate this new feature, which means we'd probably have to base our evaluation on a simple SWOT analysis.
 
-### Connect an M5Stack to a User Account
+### Connect M5Stack to a User Account
 For our prototype, the user_name of the M5Stack's owner is hardcoded in the Arduino code, an enhancement necessary for public release would be to create a mechanism to link an M5Stack to a user. We believe the best way to do this is to hardcode an M5Stack_id inside the M5Stack, and when a new DoOrDie device is purchased and first turned on, the screen will simply show the hardcoded ID along with a quick guide on how to create an account on the Web and connect the device to the user by assigning the ID to the web account.
 
 Implementation would require adding this M5Stack_ID field to our data schema and shared contract, and then including this first starting screen on the M5Stack using a new "StartView" class. On the web we would have to add a simple new "Change Stack ID" option.
@@ -62,10 +82,10 @@ Evalutating our backend system would be somewhat easy: how much load can it hand
 
 We would not remove our Processing interface though, we would also try to expand it: at the moment our Admins can monitor our product but can not really interact with it in any meaningful way. We would like to add a ticketing system on the Website which would allow Sponsors and Users to contact Admins about issues, this way admins are also able to promptly tackle any issues that arise. Since this feature effectively allows us to receive feedback from two user groups, we would use this feature itself to evaulate it. Prior to beginning any of these real improvements, we would get rid of all our dummy data sitting in the server that we used for our demonstration.
 
-#### Summary
+### Summary
 We are confident in the success of the current product that we have developed, however with additional funding and more time we believe that the above features would improve customer retention and ensure the long-term success of Do or Die. While we currently have a solid proof of concept, we would like to expand our code base and further test additional features with a large user-base. The wonderful thing about Do or Die is that it is incredibly versatile, and thus we would be able to respond to the needs of the market. Whether this means the addition of something such as a Period Tracker for personal health, or even the addition of a drink tracker for the user's trips to the pub; we know that Do or Die can do it all. By developing our product with the main goal of improving user's health, we have not limited ourselves to a simple step tracker. Depending on the needs of our user, we would be ready and able to expand our functionalities. 
 
-## c. Group Working Practices
+## Group working practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
 
 ### AGILE COMMUNICATION 
@@ -113,7 +133,7 @@ By the end of this process, our team utilised Github in a number of ways. In ord
 
 By branching for each change, we were able to ensure that we always had our minimum viable product in the master branch. 
 
-![Github branches](/Portfolio/Images/groupGithub.png)
+![Github branches](Images/groupGithub.png)
 
 Linking our [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1) with our issues helped to greater clarify who was responsible for what issues, and whether they were still in the 'To Do' category or 'In Progress'. Similarly, by then linking it with the pull requests each team member was able to see the work that was being completed and the attached code. This ensured that every team member was on the same page as to the work that was being done, who needed to complete it, and when it had been done. This was [method](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) was also useful when writing our portfolio remotely. 
 
@@ -151,5 +171,5 @@ During our weekly video call meetings, we were also able to test each of the sub
 
 While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
 
-## d. This is a chance to reflect on how coronavirus has affected your project (remote
-working practices etc)
+## Reflection on the effect of COVID-19 on the project
+Detail on how working practices affected

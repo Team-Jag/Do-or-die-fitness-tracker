@@ -1,6 +1,25 @@
 ![Do or Die System Implementation](Images/SystemImpLogo.png)
-# 2. System Implementation [40pts]:
-## a. Breakdown of project into sprints (showing the users stories implemented in each).
+# System Implementation [40pts]:
+
+## Table of Contents
+
+- [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints-showing-the-user-stories-implemented-in-each)
+  - [Sprint 1 : Define architecture & interactions (2.3-9.3)](#sprint-1--define-architecture--interactions-23-93)
+  - [Sprint 2 : First prototype (9.3-16.3)](#sprint-2--first-prototype-93-163)
+  - [NO SPRINT : Fight COVID-19 (16.3-30.3)](#no-sprint--fight-covid-19-163-303)
+  - [Sprint 3 : Alpha version release (30.3-6.4)](#sprint-3--alpha-version-release-303-64)
+  - [Sprint 4 : Resolving issues and enhancing features (6.4-13.4)](#sprint-4--resolving-issues-and-enhancing-features-64-134)
+  - [Sprint 5 : Beta version release (13.4-20.4)](#sprint-5--beta-version-release-134-204)
+  - [Sprint 6 : Version 1.0 release (20.3-27.4)](#sprint-6--version-10-release-203-274)
+  - [Sprint 7 : Version 1.1 (optional) and write-up (27.4-4.5)](#sprint-7--version-11-optional-and-write-up-274-45)
+- [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation-techniques-used--limitations)
+- [**Social and ethical implications**](#social-and-ethical-implications-of-do-or-die-fitness-tracker)
+  - [Social benefits](#social-benefits)
+  - [Data privacy](#data-privacy)
+  - [Data usage](#data-usage)
+  - [Social implications](#social-implications)
+
+## Breakdown of project into sprints (showing the user stories implemented in each)
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
@@ -138,7 +157,7 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 **WIP:**
 * 
 
-## b. Details of how you evaluated your designs (techniques used & awareness of their limitations)
+## Details of design evaluation (techniques used & limitations)
 
 Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
 
@@ -146,15 +165,15 @@ Potential limitations of using the evaluation matrix are the chance of concentra
 
 As we were following the Agile method for development of our product, at the end of each sprint we performed exhaustive tests on each sub-system where the results were discussed in our scrum meetings performed over Google Hangout. Once these tested features were tested and working, we decided on each successive feature to implement in the design based on an informal SWOT analysis first as individual pairs from each team, then agreeding as an overall team on pre-approved ideas from the pairs dependent on timeline and other subteam requirements. We believed the SWOT evaluation method to be more useful in our design approach over each sprint than the evaluation matrix.
 
-## c. Social and Ethical Implications of Do or Die Fitness Tracker
-### Social Benefits
+## Social and ethical implications
+### Social benefits
 We designed our fitness tracker in hopes of providing incentives to individuals to maintain a healthy lifestyle and keep active. Our choice in the gamification of a fitness tracker was aimed to associate exercise with positive feelings of motivation and fun, while also providing a challenge (the Bean's life timer countdown). These were attempted to be achieved by implementing challenges that can significantly boost the lifetime of the user's Bean as well as small lifetime rewards when the user walks/runs around. There is also a ranking system implemented on the website as a way to further motivate the user to achieve higher ranks by effectively exercising more. We also hope to provide the user companionship with the Bean, a character which behaves like a pet/tamagotchi.
 
-### Data Privacy
+### Data privacy
 For our prototype, we currently only require a username to be able to create an account on the website and use our fitness tracker. It is also possible to provide other types of information on the web account, such as a profile photo and biography. Our device only collects data on steps taken and only physically stores the username and Wi-Fi password, but no geolocation data is stored. When the device syncs with the database, data on the number of steps taken is transferred. For each user, the management database stores the username, steps taken, challenges enrolled or finished, and the lifetime of the Bean. Although data provided by users are limited and only few identifiers are stored (username, which can be a fake or real name, and profile picture), this data can potentially be exploited by hackers. Another issue also arises in data withdrawal, as presently our software has no implementations yet to be able to remove all user data provided and collected.
 
-### Data Usage
+### Data usage
 There are possible concerns on how personal fitness data can be used in the future. Such recent concerns include the John Hancock program, in which an insurance company required a fitness tracker to sell their interactive policies based on the user's activity level recorded. As fitness trackers are essentially pedometers, they may not be able to track accurate fitness data in other forms of exercises, such as cycling or swimming. Moreover, our fitness tracker has not been tested or adapted to the less well-able bodied, such as the handicapped. Hence, a possible issue was raised in which the disadvantaged could be forced to buy more expensive insurance policies due to the inaccurate fitness data gathered.
 
-### Social Implications
+### Social implications
 As our platform relies on both rewards and punishments, in the forms of increasing the life timer and the Bean dying respectively, there may be implications on the user's state of mental health. Attachment to the Bean and its impending doom and subsequent death might lead to a sense of significant loss. Additional potential stressors include the leaderboard ranking system implemented based on the number of steps taken by the user that can be viewed on the website. The user then might relate their fitness levels with their rankings, which might discourage them further to attempt exercising if they are constantly stuck with low rankings.
