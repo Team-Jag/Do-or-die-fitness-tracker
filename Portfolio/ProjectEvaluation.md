@@ -22,6 +22,22 @@
 
 ## Reflective discussion on the success of the project
 
+Overall wee are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
+
+#### Overall Design ####
+
+In our first sprint we did a good job at defining the MVP, agreeing on the over design and the interactions between the subsystems. This set us to work idependetly and made the success of of project resistant to the initial Corona disruption: it did not matter where each of us was, we all knew exactly what we had to do. As a result our alpha version was complete realtively fast and satisfied most of the MVP requirements. We then agreed as a group which additional features we would implement for the beta version. Unfortunately in this second iteration we did not follow the same rigor when designing the the system, we all were confident that we know "our systems" and adding some new features would be "easy". We paid the price for that complacency a couple of weeks later, before the release of our beta version: during the final end-to-end test some of the subsystems would crash and each of us had to spend a couple of hours to identify the bugs in their systems. Amazingly they all turned out the be easy to fix: they all originated from misunderstanding between our sub-groups (e.g. different spelling in the request types or different understanding of the  exact purpose of the request). This remined us of how important a system design with clear requirements and test cases is when working in a group. Had we invested an hour more into the design in that second iteration, it would have saved us countless hours of finding and fixing bugs.
+
+
+#### M5 ####
+
+#### Web ####
+
+In the web sub-team our appraoch was "very agile" in the sense that we haf very short cycles with little considerations for the implacation of design choinces on other planned features. The advantage was that we had a first working version of the website within a day and the first integration with the other systems after a week. However, with every new cycle the need to refactor code increased, as the limitations of the intial design choices became clear. This method worked great beacuse it allowd us to deliver a woking prototype in weeks, at the same time it showed us that systems intended for long term use need flexibility in their design and fundamental design choices must take into account the requirements of the system as a whole.
+
+#### Desktop ####
+
+
 ## Discussion of future work (in terms of design, development and evaluation)
 In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example. So, the first step for any kind of future work would be to first do extensive market research to better understand where the Do or Die Fitness Tracker fits in the Product Space, what our Target market is, and whether there are existing companies that could be classified as our competitors.
 
@@ -171,5 +187,5 @@ During our weekly video call meetings, we were also able to test each of the sub
 
 While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
 
-## Reflection on the effect of COVID-19 on the project
-Detail on how working practices affected
+## d. This is a chance to reflect on how coronavirus has affected your project (remote working practices etc)
+How effective were the tools - reference back to part a)
