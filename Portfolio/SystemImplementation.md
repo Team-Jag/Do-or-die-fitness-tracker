@@ -57,6 +57,30 @@ The goal of this sprint was to create a very basic proof of concept. Our team ag
 **WIP:**
 * Improve the accuracy of the step count
 
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project, and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
 
@@ -78,6 +102,30 @@ The goal of this sprint was to release the Alpha version of our product, by push
 * All subsystem able to receive, process and send the intended MQTT request types
 * All subsystems provide a basic version of the agreed visualization 
 * MQTT message length issue with M5 Stack 
+
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) 
 The goal of this sprint was be to get to advance our prototye, which fixed interaction issues that arose during the sprint review on 6th of April. During this sprint, mainly with the End-User in mind, we decided to focus on improving design and visuals as well as extending basic functionalities. This included viewing their statistics on the M5Stack, and the creation of custom challenges for Sponsors on the Web.
@@ -103,6 +151,30 @@ The goal of this sprint was be to get to advance our prototye, which fixed inter
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
 
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+
 ### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) 
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. During this sprint we were able to replace the dummy data for challenges that we had on the M5Stack. Also, the database was now able to automatically update when the user reached a goal of the challenge that they had enrolled in and appropriately add the time reward to the user's account. 
 
@@ -126,6 +198,30 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Add sponsor API to desktop
 * Adding new user should initialise user data with default values
 
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+
 ### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) 
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. In the lead up to the end of our sprint, we realized that there was an issue between the database and the web. 
 
@@ -145,6 +241,30 @@ The goal of this sprint was to clean up our code, and implement any final featur
 **WIP:**
 * Implement interaction feature on M5 stack
 
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
 The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software.
 
@@ -156,6 +276,30 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 
 **WIP:**
 * 
+
+<table>
+<tr>
+  <th>Technology</th>
+  <th>User Stories Implemented</th>
+  <th>Issues Encountered</th>
+</tr>
+<tr>
+  <td>Desktop</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Web</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>M5Stack</td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
 
 ## Details of design evaluation (techniques used & limitations)
 

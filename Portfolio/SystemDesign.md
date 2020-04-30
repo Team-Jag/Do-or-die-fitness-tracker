@@ -121,13 +121,36 @@ On the left we show what our plan was for our M5Stack design, on the right we sh
 
 We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort.
 
+<table>
+<tr>
+  <th><b>End-User</b></th>
+  <th><b>Admin</b></th>
+  <th><b>Sponsor</b></th>
+</tr>
+<tr>
+  <td>The user walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left</td>
+  <td>The admin can utilise the management dashboard to track statistics of users, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product</td>
+  <td>The sponsor uses the website to create a profile, and set challenges for the average user to enrol them.</td>
+</tr>
+<tr>
+  <td>The user can use the web to enrol in challenges set by sponsors, and view their total steps and health</td>
+  <td>The admin can use the management dashboard to view issues set by users on the website</td>
+  <td>The sponsor is able to use these challenges as a way to promote their business and brand.</td>
+</tr>
+<tr>
+  <td>The user can increase the Bean's health by either completing challenges or walking</td>
+  <td>The admin can use the web to track web traffic over time</td>
+  <td>N/A</td>
+</tr>
+</table>
+
 <p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p>
 
 <p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
 
-<p align="center"><b> SPONSOR:</b>Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p>
+<p align="center"><b> SPONSOR:</b> Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p>
 
-These key stories were developped in to further user stories, which can be seen in our [Gantt chart](https://uob-my.sharepoint.com/:x:/g/personal/ac16888_bristol_ac_uk/EXltfbLEnNFLrGLOGOxgZcIB2oqj_ft_TP9LevpsozfhVg?e=TUTMn7). However, the main ones can be seen in this use case diagram:
+These key stories were developped in to further user stories, which can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones can be seen in this use case diagram:
 
 ![Use case](Images/dotuml.png)
 
@@ -192,13 +215,11 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 
 ### DESKTOP UI WIREFRAME
 
-Original multi-tab wireframe design for desktop UI:
-![Wireframe-desktop](Images/desktop-wireframe.jpg)
+**Original** multi-tab wireframe design for desktop UI *(left)*, and **updated** single-tab wireframe design *(right)*:<br>
 
-Updated wireframe design for UI in a single window:
-![Wireframe-final](Images/final_wirefram.jpg)
+<img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
-Final decided layout for admin UI:
+We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time.
 ![UI-layout](Images/dashboard-main.png)
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
@@ -213,7 +234,7 @@ Different selected charts showing data for each parameter, such as users, sponso
 ### WEB UI WIREFRAME
 
 Original web wireframe design for desktop profile:
-![Wireframe-web](/Portfoio/Images/web-wireframe.jpg)
+![Wireframe-web](Images/web-wireframe.jpg)
 
 Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
 ![Web-screenshot](Images/web-screenshot.PNG)
