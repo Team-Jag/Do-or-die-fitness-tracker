@@ -2,6 +2,8 @@
 
 # System Design [40pts]
 
+In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). This includes how we designed the key elements of our system including the architecture, the various components and subsystems we have included. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
+
 ## Table of Contents
 
 - [**Architecture of the entire system**](#architecture-of-the-entire-system)
