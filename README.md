@@ -15,6 +15,9 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
+## PORTFOLIO 
+In our portfolio we will analyse all aspects of the development of our product, from our we designed the system to how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are defined below. 
+
 ## 1. [System Design](Portfolio/SystemDesign.md)
 View our [system design document](Portfolio/SystemDesign.md) to see:
 * System architecture
@@ -37,7 +40,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Discussion of future work
 * Reflection on working practices of our group
 
-### References
+### REFERENCES
 
 #### M5Stack Libraries & Referenced Code
 [M5Stack Default Library](https://github.com/m5stack/M5Stack)
