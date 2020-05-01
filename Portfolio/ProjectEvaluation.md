@@ -24,7 +24,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Reflective discussion on the success of the project
 
-Overall wee are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
+Overall we are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
 
 #### Overall Design ####
 
