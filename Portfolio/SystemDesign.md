@@ -29,18 +29,17 @@ In the following section we will reflect on the design of our product. By the en
 - [**Details of the data persistence mechanisms in use**](#details-of-the-data-persistence-mechanisms-in-use)
 - [**Details of web technologies in use**](#details-of-web-technologies-in-use)
 
-Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
-
 ## Product Requirements
+Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
 ### Ideation and Concept Development
 
 <img src="Images/designSpace.JPG" width=40%>
 
 While initially explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to improve user health. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness. We felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
-After decided what we wanted Do or Die to look like as a product, we began deciding how to design our system. This was largely based on the three key user groups that we developed: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user centred focus, and ultimately defined our test cases and requirements that were the basis of the development of our system. 
-
 ### User Types
+
+After decided what we wanted Do or Die to look like as a product, we began deciding how to design our system. This was largely based on the three key user groups that we developed: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user centred focus, and ultimately defined our test cases and requirements that were the basis of the development of our system. 
 
 The most obvious user type that comes to mind is of the end-user - the person using our product to get fit, invest time and energy into gaining health for the Bean thereby increasing their own health. However, a key requirement for the success of this project is motivation for the end-user that goes beyond just walking a lot, which would eventially become repetitive and boring. Additionally, this would quickly lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our project. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio.
 
