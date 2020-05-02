@@ -7,7 +7,7 @@ In the following section we will reflect on the design of our product. By the en
 ## Table of Contents
 - [**Product Requirements**](#product-requirements) 
   - [User Types](#user-types)
-- [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
+- [**User Requirements for Key Subsystems**](#user-requirements-for-key-subsystems)
   - [Desktop system requirements](#desktop-system-requirements)
   - [Web system requirements](#web-system-requirements)
   - [M5Stack system requirements](#m5stack-system-requirements)
