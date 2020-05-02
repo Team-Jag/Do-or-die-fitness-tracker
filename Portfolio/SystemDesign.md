@@ -142,14 +142,15 @@ The web application acted as the primary interface for the sponsor to interact w
 * To allow for the sponsor to generate new challenges, the website must have an input form for new challenges. The input of the sponser gets validated (e.g. did he complete all fields) and upon submission the new challenge will be sent to the server. 
 
 ## ARCHITECTURE OF THE ENTIRE SYSTEM
-Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. In order to deliver our user stories we needed our architecture to send and store data: 
+As has been outlined above, it is clear who our user groups are as well as how they will interact with each of our key subsystems and what each of the key subsystems must be able to do. However, to be able to deliver our user stories, and final product, we needed our architecture to send and store data: 
 
 * **Data Communication** :
-Due to several devices as per our user requirements, we needed to devise a way for devices to communicate via a shared contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
+To ensure that each subsystem communicated in the same way, we developed a shared communication contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained further in the [communication protocols section](#details-of-the-communication-protocols-in-use). 
 
 * **Data Repository** : 
-To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server. Refer to further details and justification in the Data Persistance section.  
+To ensure that our data is persistent, we store the data in JSON files. These JSON files are stored locally where the Processing app is running, similar to a server. This process is explained and evaluated further in the [data persistence subsection](#details-of-the-data-persistence-mechanisms-in-use). 
  
+Our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices.
 To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker (this ensures web and M5Stack components do not ever interact directly).
 
 Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
