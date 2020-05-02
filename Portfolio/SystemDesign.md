@@ -96,8 +96,7 @@ Before explaining in more depth [how our subsystems work together](#architecture
 To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
 ### M5Stack System Requirements
-
-When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
+The M5Stack is the primary device that the end-user interacts with, and for that reason we were mainly focused on the End-User group. In order to ensure that we implemented the end-user's stories, we split our requirements into the back-end and front-end to focus on both the accuracy of our product, and the appeal to the end-user. 
 
 **Back-End**
 
@@ -118,7 +117,7 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 
 As explained above, the Desktop Application acted as the administration interface for data visualisation. It was developed to create a back-end to deal with sending and receiving requests. We also created front-end to track and visualize total users, sponsors and challenges currently available.
 
-**Data visualisation UI (front-end) **
+**Data visualisation UI (front-end)**
 
 * In order for the admin to track user data, the front-end needs to pull flat totals from the database for current users, sponsors, and available challenges to draw accurate statistics.
 * To allow for the admin to see relevant changes in the userbase in an intuitive way, the interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
