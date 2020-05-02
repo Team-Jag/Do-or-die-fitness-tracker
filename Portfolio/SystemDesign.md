@@ -132,20 +132,14 @@ As explained above, the Desktop Application acted as the administration interfac
 * To ensure that the sponsor's see success from their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### Web System Requirements
+The web application acted as the primary interface for the sponsor to interact with our product. The end-user would also use this application to handle everything related to challenges and their profile. 
 
-Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
-
-**User**
-
-* Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server
-* Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
-* Render a profile picture depending on the user name (the profile picture will be available on the webserver)
-* Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
-* The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
-  
-**Sponsor**
-
-* The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
+* Both the end-user and the sponsor must be able to log in to the website, thus the web application must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server.
+* To ensure that the end-user is able to access their profile and individual data, the website must send a request to the server for the user profile and and all his challenge and render that information. 
+* In order for the end-user to personalize their account, the web must render a profile picture depending on the user name (the profile picture will be available on the webserver). 
+* The end-user must be able to enroll in challenges. Therefore, the website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge. 
+* In order to ensure consistency across our system and for the user between their M5Stack and the web, the information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen). 
+* To allow for the sponsor to generate new challenges, the website must have an input form for new challenges. The input of the sponser gets validated (e.g. did he complete all fields) and upon submission the new challenge will be sent to the server. 
 
 ## ARCHITECTURE OF THE ENTIRE SYSTEM
 Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. In order to deliver our user stories we needed our architecture to send and store data: 
