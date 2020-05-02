@@ -75,7 +75,7 @@ Finally, in order to ensure the success of the product, we knew that we needed t
 
 A further break down of the user stories can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones are outlined in this use case diagram:
 
-![Use case](Images/dotuml.png)
+<img src="Images/dotuml.png" width=60%>
 
 ### Key Subsystems
 
