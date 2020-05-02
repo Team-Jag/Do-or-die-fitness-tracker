@@ -95,23 +95,42 @@ Before explaining in more depth [how our subsystems work together](#architecture
 ## USER REQUIREMENTS FOR EACH SUBSYSTEM 
 To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
+### M5Stack System Requirements
+
+When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
+
+**Back-End**
+
+* The end-user's main goal when using this product is to be able to track their steps, and for that reason the M5Stack must have a pedometer, be able to accurately count the end-user's steps, and should be able to store them locally.
+* In order for the end-user's steps to remain accurate when the M5Stack is not connected the internet, and between usages, the M5 must be able to communicate with the server using the shared communication contract.
+
+**Front-End**
+
+* To ensure customer retention, the M5Stack must implement an enganging and appealing interface.
+* As the end-user is interested in getting healthy and this relies on the user knowing how active they have been, the M5Stack should display a live step count.
+* The M5Stack should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement.
+* As the product has been gamified, the M5Stack must have a health bar which accurately reflects how much time Bean has left.
+* To reflect the user's success and ensure they continue to meet their goals, Bean's animations and general liveliness should reflect its remaining life (i.e. it should bounce less when it is closer to death).
+* To allow for the user to know what goals they have, the M5Stack should display the challenges that the user is enrolled in.
+* In order for the end-user to track their progress, the M5Stack should display the user's statistics.
+
 ### Desktop System Requirements
 
-Administration interface for data visualisation. Allows back-end to deal with sending and receiving requests, and front-end to track total users, sponsors and challenges currently available.
+As explained above, the Desktop Application acted as the administration interface for data visualisation. It was developed to create a back-end to deal with sending and receiving requests. We also created front-end to track and visualize total users, sponsors and challenges currently available.
 
-**Data visualisation UI**
+**Data visualisation UI (front-end) **
 
-* Front-end needs to pull flat totals from database for current users, sponsors, and available challenges in order to draw accurate statistics for the admin so they can track this data for further use.
-* The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods to allow admin to see relevant changes in playerbase in an intuitive way. 
-* The front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken, in order for admin to track down account specific issues such as innacurate step counts, and be able to recommend a fix.
-* The interface must follow colour scheme for the UI, to maintain thematic consistency across and make the product come across as more professional.
+* In order for the admin to track user data, the front-end needs to pull flat totals from the database for current users, sponsors, and available challenges to draw accurate statistics.
+* To allow for the admin to see relevant changes in the userbase in an intuitive way, the interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
+* If there are specific issues, the admin must be able to track them down. Therefore, the front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
 
 **Data processing back-end**
 
-* System must be capable of processing JSON requests from both the web application and the M5Stack, and should be able to insert new users, sponsors and challenges into central database, while retaining this data in a persistent manner, in order to provide accurate stats for front end.
-* System must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
-* System also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
-* System should automatically add rewards if user has met required goals in any challenges enrolled.
+* To provide accurate statistics for the admin (front-end), the system must be capable of processing JSON requests from both the web application and the M5Stack. 
+* To ensure the admin retains control of the userbase and product, the back-end must also be able to insert new users, sponsors and challenges into the central database, while retaining this data in a persistent manner. 
+* In order for the end-user to have an accurate step count, the system must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
+* To allow for the end-user to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
+* To ensure that the sponsor's see success from their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### Web System Requirements
 
@@ -128,25 +147,6 @@ Primary interface for the sponsor and the user to handle everything related to c
 **Sponsor**
 
 * The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
-  
-### M5Stack System Requirements
-
-When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
-
-**Back-End**
-
-* The M5 must have a pedometer, able to accurately count the end-user's steps, and store them locally.
-* The M5 must be able to communicate with the server using the shared communication contract.
-
-**Front-End**
-
-* To ensure customer retention, we have to implement an enganging and appealing interface.
-* The M5 should display a live step count.
-* The M5 should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement.
-* The M5 must have a health bar which accurately reflects how much time Bean has left.
-* Bean's animations and general liveliness should reflect its remaining life (i.e. it should bounce less when it is closer to death).
-* The M5 should display the challenges that the user is enrolled in.
-* The M5 should display the user's statistics.
 
 ## ARCHITECTURE OF THE ENTIRE SYSTEM
 Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. In order to deliver our user stories we needed our architecture to send and store data: 
