@@ -5,7 +5,6 @@
 In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). This includes how we designed the key elements of our system including the architecture, the various components and subsystems we have included. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
 
 ## Table of Contents
-//will change table to reflect changes
 [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
   - [Desktop system requirements](#desktop-system-requirements)
   - [Web system requirements](#web-system-requirements)
@@ -31,7 +30,7 @@ Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tr
 
 ## Product Requirements
 
-The original idea that inspired our project was a gamified fitness app to improve user health. After several ideation cycles, we settled on the idea of measuring user step-count.
+The original idea that inspired our project was a gamified fitness app to improve user health. After several ideation cycles based on this principle, we settled on the idea of measuring user step-count as a proxy for user fitness. From this we developed the features and systems of our product.
 
 The most obvious user story that comes to mind is of the end-user - the person using our product to get fit, invest time and energy into gaining health for the Bean thereby increasing their own health. However, a key requirement for the success of this project is motivation for the end-user that goes beyond just walking a lot, which would eventially become repetitive and boring. Additionally, this would quickly lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our project. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio.
 
