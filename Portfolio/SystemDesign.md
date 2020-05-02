@@ -151,7 +151,7 @@ We ensured that our product had a user-focused framework by developing three key
 
 <p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p>
 
-<p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
+<p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. This can essential for making business decisions, and to see if attracting customers and sponsers is successful, or if many customers have left and for what reason (not enough challenges or sponsors present). If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
 
 <p align="center"><b> SPONSOR:</b> Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p>
 
@@ -167,14 +167,14 @@ Administration interface for data visualisation. Allows back-end to deal with se
 
 **Data visualisation UI**
 
-* Front-end needs to pull flat totals from database for current users, sponsors, and available current challenges.
-* The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
-* We want to be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
-* We want to follow thematic colour scheme for the UI.
+* Front-end needs to pull flat totals from database for current users, sponsors, and available challenges in order to draw accurate statistics for the admin so they can track this data for further use.
+* The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods to allow admin to see relevant changes in playerbase in an intuitive way. 
+* The front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken, in order for admin to track down account specific issues such as innacurate step counts, and be able to recommend a fix.
+* The interface must follow colour scheme for the UI, to maintain thematic consistency across and make the product come across as more professional.
 
 **Data processing back-end**
 
-* System must be capable of processing JSON requests from both the web application and the M5Stack, and should be able to insert new users, sponsors and challenges into central database, while retaining this data in a persistent manner.
+* System must be capable of processing JSON requests from both the web application and the M5Stack, and should be able to insert new users, sponsors and challenges into central database, while retaining this data in a persistent manner, in order to provide accurate stats for front end.
 * System must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
 * System also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
 * System should automatically add rewards if user has met required goals in any challenges enrolled.
@@ -224,16 +224,16 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
-We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time.
+We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsers, and challenges currently active.
 ![UI-layout](Images/dashboard-main.png)
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
 ![UI-search](Images/search-user.png) ![UI-search](Images/null-user.png)
 
-Selecting a specific statistic from UI:
+Selecting a specific statistic from UI to allow data to be viewed on different time frames:
 ![UI-select-chart](Images/select-chart.png)
 
-Different selected charts showing data for each parameter, such as users, sponsors, challenges.
+Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.
 ![UI-selected-charts](Images/selected-charts.png)
 
 ### WEB UI WIREFRAME
@@ -520,9 +520,9 @@ When the user selects a challenge, there is no response from the database:
 
 ## Details of the data persistence mechanisms in use
 
-Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile using the data API. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability.
+Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile using the data API. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability, as mentioned in project evaluation.
 
-M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type.
+M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type. Keeping the M5 stack stateless allowed for more modularity and reliability of the system, as even if the device breaks (which is a significant risk considering it is used for fitness and will be physically moved a lot) it can be replaced without loss of user data. If the device is stolen or lost, the user data is still stored on the central server and not the device, which means it can be removed and not leak information on the M5 stack. 
 
 ## Details of web technologies in use
 
