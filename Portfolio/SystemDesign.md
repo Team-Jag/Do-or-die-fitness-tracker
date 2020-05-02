@@ -90,10 +90,10 @@ To fulfil the admin user story requirements to analyse playerbase and have acces
 * **Web Application** : 
 To fulfil the end-user story requirement of creating an account, and the sponsor user story of setting challenges, we implemented a web application. The application will be used by the end-users of our product, as well as the sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
-## User requirements for key subsystems
+## USER REQUIREMENTS FOR EACH SUBSYSTEM 
 To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
-### DESKTOP SYSTEM REQUIREMENTS
+### Desktop System Requirements
 
 Administration interface for data visualisation. Allows back-end to deal with sending and receiving requests, and front-end to track total users, sponsors and challenges currently available.
 
@@ -111,7 +111,7 @@ Administration interface for data visualisation. Allows back-end to deal with se
 * System also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
 * System should automatically add rewards if user has met required goals in any challenges enrolled.
 
-### WEB SYSTEM REQUIREMENTS
+### Web System Requirements
 
 Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
 
@@ -127,7 +127,7 @@ Primary interface for the sponsor and the user to handle everything related to c
 
 * The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
   
-### M5STACK SYSTEM REQUIREMENTS
+### M5Stack System Requirements
 
 When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
 
@@ -146,7 +146,7 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 * The M5 should display the challenges that the user is enrolled in.
 * The M5 should display the user's statistics.
 
-## Architecture of the entire system
+## ARCHITECTURE OF THE ENTIRE SYSTEM
 Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. In order to deliver our user stories we needed our architecture to send and store data: 
 
 * **Data Communication** :
@@ -162,7 +162,7 @@ Communication between devices was devised to be as simple as possible to avoid u
 ![Architecture](Images/architecture-UML.png)
 The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistant storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data. 
 
-## Object-oriented design of key subsystems
+## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
 
 Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited. During each sprint, the object oriented design of our product were changed depending on the tests that we had passed. In this section, we will explain the object oriented design of each of our key subsystems, while considering where there could be room for improvement during future sprints.
 
@@ -238,7 +238,7 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 ![m5-uml](Images/M5_Design.png)
 On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design...
 
-## The evolution of UI wireframes for key sub-systems
+## EVOLUTION OF UI WIREFRAMES FOR KEY SUBSYSTEMS
 
 Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section.
 
@@ -292,7 +292,7 @@ The stats screen was implemented according to the UI wireframe, however we have 
 
 Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
-## Details of the communication protocols in use
+## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
 
 Our Internet of Things product was developed utilising the M5Stack platform. Due to the use of this platform, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move between web to desktop, M5Stack to desktop and desktop to both the Web and M5Stack. Further, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
 
@@ -542,7 +542,7 @@ When the user selects a challenge, there is no response from the database:
 }
 ```
 
-## Details of the data persistence mechanisms in use
+## DETAILS OF THE DATA PERSISTENCE MECHANISMS IN USE
 
 Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices. 
 
@@ -550,7 +550,7 @@ Each user, challenge and sponsor is stored as a JSON object to allow for easy pa
 
 M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type. Keeping the M5 stack stateless allowed for more modularity and reliability of the system, as even if the device breaks (which is a significant risk considering it is used for fitness and will be physically moved a lot) it can be replaced without loss of user data. If the device is stolen or lost, the user data is still stored on the central server and not the device, which means it can be removed and not leak information on the M5 stack. 
 
-## Details of web technologies in use
+## DETAILS OF WEB TECHNOLOGIES IN USE
 
 Our website is react based and built on top of a simple react/bootstrap template.
 The choice for these technologies was driven by some key needs of our website/team that ultimately led us to choose this set up:
