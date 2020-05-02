@@ -245,16 +245,16 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
 We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsers, and challenges currently active.
-![UI-layout](Images/dashboard-main.png)
+<img src="Images/dashboard-main.png" width=75%>
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
-![UI-search](Images/search-user.png) ![UI-search](Images/null-user.png)
+<img src="Images/search-user.png" width=50%><img src="Images/null-user.png" width=50%>
 
 Selecting a specific statistic from UI to allow data to be viewed on different time frames:
-![UI-select-chart](Images/select-chart.png)
+<img src="Images/select-chart.png" width=75%>
 
 Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.
-![UI-selected-charts](Images/selected-charts.png)
+<img src="Images/select-charts.png" width=75%>
 
 ### WEB UI WIREFRAME
 
