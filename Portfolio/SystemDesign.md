@@ -5,6 +5,8 @@
 In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). Before explaining the architecture of our system in detail, including the object oriented design of each of our key subsystems, we will first explain how we came to design our product based on the gap in the market that we were trying to fill. This includes our three key user groups, and their individual user stories. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
 
 ## Table of Contents
+- [**Product Requirements**](#product-requirements) 
+  - [User Types](#user-types)
 - [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
   - [Desktop system requirements](#desktop-system-requirements)
   - [Web system requirements](#web-system-requirements)
