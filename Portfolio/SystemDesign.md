@@ -32,7 +32,7 @@ Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tr
 
 ## Product Requirements
 
-The original idea that inspired our project was a gamified fitness app to improve user health. We took particular interest in the success of different games such as Pokemon Go, and the revival of the Tamagotchi. We felt that if we could our goals of having a fitness tracker combined with a keeping a virtual pet on our Internet of Things product, we would address a gap in the market. In recent years there has been a large shift towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles based on this principle, we settled on the idea of measuring user step-count as a proxy for user fitness. From this we developed the features and systems of our product, which were largely based on the three key user groups that we developed: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user centred focus, and ultimately defined our test cases and requirements that were the basis of the development of our system. 
+In order to design our product, we first came to the conclusion that we wanted to create a gamified fitness tracker to improve user health. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness. From this we developed the requirements of our product, which were largely based on the three key user groups that we developed: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user centred focus, and ultimately defined our test cases and requirements that were the basis of the development of our system. 
 
 ### User Types
 
@@ -65,17 +65,11 @@ Any product with multiple moving parts such as this needs some way of tracking t
 </tr>
 </table>
 
-<p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p>
-
-<p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. This can essential for making business decisions, and to see if attracting customers and sponsers is successful, or if many customers have left and for what reason (not enough challenges or sponsors present). If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
-
-<p align="center"><b> SPONSOR:</b> Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p>
-
-These key stories were developped in to further user stories, which can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones can be seen in this use case diagram:
+These key user types were developped in to further user stories, which can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones can be seen in this use case diagram:
 
 ![Use case](Images/dotuml.png)
 
-Based on these user stories, we utilised three key subsystems that were the basis of our architecture, and became necessary to the success of Do or Die as a product: 
+Now that it is clear who are target users are, and how we saw them using our system, it is necessary to define the key subsystems that make up our product. Each of these subsystems became necessary to ensuring the success of Do or Die as a product: 
 
 * **Internet of Things Device** : 
 In order to ensure we track our user's fitness level, we used an M5Stack as our IoT device. This was an Arduino compatible device we used to create a pedometer. This will be worn on the user's wrist, and can accurately send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and relies on the Desktop application to pull the user's data. This device worked well for our desired goals because it contains a gyroscope which can be used as a pedometer, and Wi-Fi capabilities to pull information from the central database.
@@ -87,7 +81,7 @@ To fulfil the admin user story requirements to analyse playerbase and have acces
 To fulfil the end-user story requirement of creating an account, and the sponsor user story of setting challenges, we implemented a web application. The application will be used by the end-users of our product, as well as the sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
 ## User requirements for key subsystems
-To break each of the three key subsystems down further, and before and substantive work began, we outlined the key requirements for each in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP) and to ensure each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components.
+To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
 ### DESKTOP SYSTEM REQUIREMENTS
 
