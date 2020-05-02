@@ -8,6 +8,7 @@ In the following section we will reflect on the design of our product. By the en
 - [**Product Requirements**](#product-requirements) 
   - [Ideation and Concept Development](#ideation-and-concept-development)
   - [User Types](#user-types)
+  - [Key Subsystems](#key-subsystems)
 - [**User Requirements for Key Subsystems**](#user-requirements-for-key-subsystems)
   - [Desktop system requirements](#desktop-system-requirements)
   - [Web system requirements](#web-system-requirements)
