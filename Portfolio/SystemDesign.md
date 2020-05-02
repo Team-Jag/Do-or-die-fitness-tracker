@@ -6,6 +6,10 @@ In the following section we will reflect on the design of our product. By the en
 
 ## Table of Contents
 //will change table to reflect changes
+[**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
+  - [Desktop system requirements](#desktop-system-requirements)
+  - [Web system requirements](#web-system-requirements)
+  - [M5Stack system requirements](#m5stack-system-requirements)
 - [**Architecture of the entire system**](#architecture-of-the-entire-system)
 - [**Object-oriented design of key subsystems**](#object-oriented-design-of-key-subsystems)
   - [Desktop design](#desktop-design)
@@ -13,10 +17,6 @@ In the following section we will reflect on the design of our product. By the en
   - [M5Stack design](#m5stack-design)
     - [Back-end](#back-end)
     - [Front-end](#front-end)
-- [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
-  - [Desktop system requirements](#desktop-system-requirements)
-  - [Web system requirements](#web-system-requirements)
-  - [M5Stack system requirements](#m5stack-system-requirements)
 - [**The evolution of UI wireframes for key sub-systems**](#the-evolution-of-ui-wireframes-for-key-sub-systems)
   - [Desktop UI wireframe](#desktop-ui-wireframe)
   - [Web UI wireframe](#web-ui-wireframe)
@@ -169,7 +169,7 @@ Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings
 
 Key classes for desktop app include:
 
-* **database** - this is a private class which deals with writing and reading persistant data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database.
+* **database** - this is a private class which deals with writing and reading persistant data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types).
 * **data classes** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure encapsulation of database class). Having seperate classes for each type of data allowed for modularity when modifying request types was necessary during the project.
 * **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the view class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
 * **tests** - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
