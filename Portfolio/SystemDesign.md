@@ -160,7 +160,7 @@ The above diagram demonstrates dependancies and communication between all device
 
 ## Object-oriented design of key subsystems
 
-Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems.
+Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited. During each sprint, the object oriented design of our product were changed depending on the tests that we had passed. In this section, we will explain the object oriented design of each of our key subsystems, while considering where there could be room for improvement during future sprints.
 
 ### DESKTOP DESIGN
 
