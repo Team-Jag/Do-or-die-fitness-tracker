@@ -55,6 +55,11 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 
 [MPU9250 Pedometer Class](https://github.com/m5stack/M5Stack/blob/master/examples/Fire/M5StackFire_MPU9250/M5StackFire_MPU9250.ino)
 
+#### Processing Libraries
+[ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
+
+[MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
+
 
 
 
