@@ -41,9 +41,10 @@ Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tr
 
 * **Data Repository** : To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server.  
  
-To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexit, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
+To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class, and requests pass through a multiple channels on the MQTT broker (this ensures web and M5Stack components do not ever interact directly). Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
 
 ![Architecture](Images/architecture-UML.png)
+The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistant storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data. 
 
 ## Object-oriented design of key subsystems
 
@@ -53,12 +54,14 @@ Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings
 
 Key classes for desktop app include:
 
-* **data** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure further encapsulation).
-* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class additionally contained event listeners for buttons and lists in the UI.
-* **tests** - the test class contains unit tests to ensure edge cases are handled gracefully.
-* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs.
+* **database** - this is a private class which deals with writing and reading persistant data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database.
+* **data classes** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure encapsulation of database class). Having seperate classes for each type of data allowed for modularity when modifying request types was necessary during the project.
+* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the view class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
+* **tests** - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
+* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates view in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
 
 ![Processing-uml](Images/Processing-UML.png)
+The above diagram shows dependancies and relationships between classes in the Processing app. 
 
 ### WEB DESIGN
 
