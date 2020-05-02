@@ -191,4 +191,15 @@ While Agile was a new concept to most members of our group, and some of us were 
 ## d. This is a chance to reflect on how coronavirus has affected your project (remote working practices etc)
 How effective were the tools - reference back to part a)
 
-The coronavirus crisis over the past few months had multiple effects on the working practices of this project. 
+The coronavirus crisis lasting over the past few months has had multiple effects on the working practices of this project. In general worked effectively using remote working tools such as Slack and Github mentioned in the agile working practices section. The primary issue was communication problems and a lack of clarity for project direction, which we aimed to mitigate as much as possible using remote working tools to facilitate regular meetings.
+
+Technology is not perfect, and despite best efforts to maintain a constant level of communication throughout the project the team was also affected by connectivity issues such as local internet becoming slow or unusable, and hardware issues of local machines. Due to our effective use of Github, local data loss was not a problem, however without access to lab machines if a team member's local machine broke this would constitue a significant issue with completing the project. Luckily this situation never occured, but with lockdown this was still a risk which would never have occured in absence of the coronavirus crisis.
+
+Due to the physical nature of the product (using an IOT device to measure a user's movement), the coronavirus crisis has made it difficult for all team members to participate in development of the M5 stack, and it remained with the team member that possessed it at time of lockdown. This meant any and all issues on the hardware and software side of the device rested solely on this team member, with the rest of the team unable to provide assistance if needed.
+
+During the initial product planning stage, we had originally agreed to switch teams between subsystem pairs in order for all members to gain an understanding of each system and be able to learn all aspects of web, Processing, and M5 development. Due to lockdown, in the case of M5 stack this became impossible, and for Processing and Web impractical. It was much more pragmatic to stick with the original assigned teams, which meant team members missed out on vital learning experiences.
+
+In addition to this, direct coronavirus crisis effects such as the risk of contracting illness, worries about family members or getting home, and the general state of emergency in the country contributed to stress levels experienced by the entire team.
+
+
+ 
