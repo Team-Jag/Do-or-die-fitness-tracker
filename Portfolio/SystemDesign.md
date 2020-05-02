@@ -6,6 +6,7 @@ In the following section we will reflect on the design of our product. By the en
 
 ## Table of Contents
 - [**Product Requirements**](#product-requirements) 
+  - [Ideation and Concept Development](#ideation-and-concept-development)
   - [User Types](#user-types)
 - [**User Requirements for Key Subsystems**](#user-requirements-for-key-subsystems)
   - [Desktop system requirements](#desktop-system-requirements)
