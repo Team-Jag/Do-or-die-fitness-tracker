@@ -71,9 +71,19 @@ These key stories were developped in to further user stories, which can be seen 
 
 ![Use case](Images/dotuml.png)
 
-Based on these user stories, we developed three key subsystems to visualise the user requirements required for our architecture.
+Based on these user stories, we utilised three key subsystems that were the basis of our architecture, and became necessary to the success of Do or Die as a product: 
+
+* **Internet of Things Device** : 
+In order to ensure we track our user's fitness level, we used an M5Stack as our IoT device. This was an Arduino compatible device we used to create a pedometer. This will be worn on the user's wrist, and can accurately send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and relies on the Desktop application to pull the user's data. This device worked well for our desired goals because it contains a gyroscope which can be used as a pedometer, and Wi-Fi capabilities to pull information from the central database.
+
+* **Desktop Application** : 
+To fulfil the admin user story requirements to analyse playerbase and have access to the backend, we created a Processing application which functions as a back-end. We implemented a Managment Dashboard to be used by the Admin. On our desktop application you are able to view things such as total users, an individual user's statistics, and how many users have 'died'. The back end of this subsystem sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
+
+* **Web Application** : 
+To fulfil the end-user story requirement of creating an account, and the sponsor user story of setting challenges, we implemented a web application. The application will be used by the end-users of our product, as well as the sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
 ## User requirements for key subsystems
+To break each of the three key subsystems down further, and before and substantive work began, we outlined the key requirements for each in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP) and to ensure each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components.
 
 ### DESKTOP SYSTEM REQUIREMENTS
 
@@ -129,27 +139,13 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 * The M5 should display the user's statistics.
 
 ## Architecture of the entire system
+Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. In order to deliver our user stories we needed our architecture to send and store data: 
 
-Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. As a result of the above user requirements, we have established three key devices of the system:
+* **Data Communication** :
+Due to several devices as per our user requirements, we needed to devise a way for devices to communicate via a shared contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
 
-* **Internet of Things Device** : 
-To fulfil our end-user key requirement to measure fitness, we used an M5Stack.
-
-Our IoT device was an M5Stack, an Arduino compatible device we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user. This device was chosen because it contains a gyroscope which can be used as a pedometer, and Wi-Fi in order to connect to the internet and pull information from the central database.
-
-* **Desktop Application** : 
-To fulfil the admin user story requirements to analyse playerbase and have access to the backend, we created a Processing app which additionally functions as a back-end.
-
-We implemented a Managment Dashboard to be used by the Admin. On our desktop application you are able to view things such as total users, an individual user's statistics, and how many users have 'died'. The back end of this subsystem sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
-
-* **Web Application** : 
-To fulfil the end-user story requirement of creating an account, and the sponsor user story of setting challenges, we implemented a web application.
-
-The application will be used by the end-users of our product and sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
-
-* **Data Communication** : Due to several devices as per user requirements, we needed to device a way for devices to communicate via a shared contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
-
-* **Data Repository** : To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server. Refer to further details and justification in the Data Persistance section.  
+* **Data Repository** : 
+To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server. Refer to further details and justification in the Data Persistance section.  
  
 To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker (this ensures web and M5Stack components do not ever interact directly).
 
