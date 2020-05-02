@@ -72,7 +72,7 @@ Finally, in order to ensure the success of the product, we knew that we needed t
 </tr>
 </table>
 
-These key user types were developped in to further user stories, which can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones can be seen in this use case diagram:
+A further break down of the user stories can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones are outlined in this use case diagram:
 
 ![Use case](Images/dotuml.png)
 
