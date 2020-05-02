@@ -76,6 +76,8 @@ A further break down of the user stories can be seen in our [Gantt chart](Images
 
 ![Use case](Images/dotuml.png)
 
+### Key Subsystems
+
 Now that it is clear who are target users are, and how we saw them using our system, it is necessary to define the key subsystems that make up our product. Each of these subsystems became necessary to ensuring the success of Do or Die as a product: 
 
 * **Internet of Things Device** : 
