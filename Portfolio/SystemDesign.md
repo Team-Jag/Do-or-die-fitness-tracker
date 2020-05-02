@@ -2,7 +2,7 @@
 
 # System Design [40pts]
 
-In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). This includes how we designed the key elements of our system including the architecture, the various components and subsystems we have included. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
+In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). This includes how we initially came about the idea of an interactive fitness app, how we designed the key elements of our system including the architecture, and the technical details of various components and subsystems involved. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
 
 ## Table of Contents
 [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
@@ -26,7 +26,7 @@ In the following section we will reflect on the design of our product. By the en
 - [**Details of the data persistence mechanisms in use**](#details-of-the-data-persistence-mechanisms-in-use)
 - [**Details of web technologies in use**](#details-of-web-technologies-in-use)
 
-Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. The system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between devices. 
+Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
 
 ## Product Requirements
 
@@ -132,12 +132,12 @@ When designing the interface of the M5Stack, we were mainly focused on the End-U
 
 ## Architecture of the entire system
 
-As a result of the above user requirements, we have established three key devices of the system:
+Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. As a result of the above user requirements, we have established three key devices of the system:
 
 * **Internet of Things Device** : 
 To fulfil our end-user key requirement to measure fitness, we used an M5Stack.
 
-Our IoT device was an M5Stack, an Arduino we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user. This device was chosen because it contains a gyroscope which can be used as a pedometer, and Wi-Fi in order to connect to the internet and pull information from the central database.
+Our IoT device was an M5Stack, an Arduino compatible device we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user. This device was chosen because it contains a gyroscope which can be used as a pedometer, and Wi-Fi in order to connect to the internet and pull information from the central database.
 
 * **Desktop Application** : 
 To fulfil the admin user story requirements to analyse playerbase and have access to the backend, we created a Processing app which additionally functions as a back-end.
@@ -149,7 +149,7 @@ To fulfil the end-user story requirement of creating an account, and the sponsor
 
 The application will be used by the end-users of our product and sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
-* **Data Communication** : Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
+* **Data Communication** : Due to several devices as per user requirements, we needed to device a way for devices to communicate via a shared contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
 
 * **Data Repository** : To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server. Refer to further details and justification in the Data Persistance section.  
  
