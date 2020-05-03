@@ -258,17 +258,11 @@ Different selected charts showing data over time for each parameter, such as use
 
 ### WEB UI WIREFRAME
 
-Original web wireframe design for desktop profile:
-![Wireframe-web](Images/web-wireframe.jpg)
+Original web wireframe design for desktop profile in comparison to the new, simplified but dynamic profile page. The end-user can choose from several profile pictures, steps, time and ranking get updated once per second.
+<img src="Images/web-wireframe.jpg" width=50%><img src="Images/web-screenshot.PNG" width=50%>
 
-Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
-![Web-screenshot](Images/web-screenshot.PNG)
-
-Sign-up screen draft
-![Web-signupdraft](Images/signup-draft.png)
-
-Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
-![Web-signupfinal](Images/signup-final.PNG)
+An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
+<img src="Images/signup-draft.png" width=50%><img src="Images/signup-final.PNG" width=50%>
 
 ### M5STACK UI WIREFRAME
 
