@@ -249,26 +249,30 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
 We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsors, and challenges currently active.
+<p align="center">
 <img src="Images/dashboard-main.png" width=75%>
+</p>
 
-Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
+Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:<br>
 <img src="Images/search-user.png" width=50%><img src="Images/null-user.png" width=50%>
 
-Selecting a specific statistic from UI to allow data to be viewed on different time frames:
+Selecting a specific statistic from UI to allow data to be viewed on different time frames:<br>
+<p align="center">
 <img src="Images/select-chart.png" width=75%>
+</p>
 
-Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.
+Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.<br>
+<p align="center">
 <img src="Images/selected-charts.png" width=75%>
+</p>
 
 ### WEB UI WIREFRAME
 
-Original web wireframe design for desktop profile in comparison to the new, simplified but dynamic profile page. The end-user can choose from several profile pictures, steps, time and ranking get updated once per second.
+Original web wireframe design for desktop profile in comparison to the new, simplified but dynamic profile page. The end-user can choose from several profile pictures, steps, time and ranking get updated once per second. <br>
 <img src="Images/web-wireframe.jpg" width=50%><img src="Images/web-screenshot.PNG" width=50%>
 
-An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
-
-<img src="Images/signup-draft.png" width=50%>
-<img src="Images/signup-final.PNG" width=50%>
+An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.<br>
+<img src="Images/signup-draft.png" width=50%><img src="Images/signup-final.PNG" width=50%>
 
 ### M5STACK UI WIREFRAME
 
