@@ -215,7 +215,9 @@ Since our M5Stack is a stateless machine with well-developed animations, our bac
 
 Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polymorphism were too hard to implement effectively in Arduino so the 'View' abstract class does not actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
 
-![M5_HomeScreenView](Images/M5_ViewExplained.png)
+<p align="center">
+<img src="Images/M5_ViewExplained.png" width=85%>
+</p>
 
 * **View.h (ChallengesView.h, StatsView.h):** This class drawa the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h). These are effectively aggreate classes which combine the move() and draw() functions of our component classes below. 
 
