@@ -5,8 +5,8 @@ Now that we have highlighted how we settled on the [design of our system](System
 
 ## Table of Contents
 
-- [**Software Development Cycle**](
-- [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints-showing-the-user-stories-implemented-in-each)
+- [**Software Development Cycle**](#software-development-cycle)
+- [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints)
   - [Sprint 1 : Define architecture & interactions (2.3-9.3)](#sprint-1--define-architecture--interactions-23-93)
   - [Sprint 2 : First prototype (9.3-16.3)](#sprint-2--first-prototype-93-163)
   - [NO SPRINT : Fight COVID-19 (16.3-30.3)](#no-sprint--fight-covid-19-163-303)
@@ -26,7 +26,7 @@ Now that we have highlighted how we settled on the [design of our system](System
 ## Software Development Cycle
 Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an Agile model for development, that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](../ProjectEvaluation.md). 
 
-## Breakdown of project into sprints (showing the user stories implemented in each)
+## Breakdown of project into sprints
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
