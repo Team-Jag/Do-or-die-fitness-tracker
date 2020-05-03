@@ -3,6 +3,8 @@
 
 Now that we have highlighted how we settled on the [design of our system](SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
 
+
+
 ## Table of Contents
 
 - [**Software Development Cycle**](#software-development-cycle)
@@ -24,7 +26,9 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Social implications](#social-implications)
   
 ## Software Development Cycle
-Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an Agile model for development, that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](../ProjectEvaluation.md). 
+Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an Agile model for development, that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](ProjectEvaluation.md). 
+
+
 
 ## Breakdown of project into sprints
 
