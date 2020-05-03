@@ -6,7 +6,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Table of Contents
 - [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
-- [**Discussion of future work (in terms of design, development and evaluation)**](#discussion-of-future-work-in-terms-of-design-development-and-evaluation)
+- [**Discussion of future work**](#discussion-of-future-work)
   - [Currency, shop and customization](#currency-shop-and-customization)
   - [Connect M5Stack to a user account](#connect-m5stack-to-a-user-account)
   - [Module specific improvements](#module-specific-improvements)
@@ -24,7 +24,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Reflective discussion on the success of the project
 
-Overall we are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
+Overall we are proud what we have achieved as a group since [beginning this project](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#ideation-and-concept-development). We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following section we will reflect on the the success of our project. 
 
 #### Overall Design ####
 
@@ -38,8 +38,10 @@ In the web sub-team our approach was "very agile" in the sense that we had very 
 
 #### Desktop ####
 The desktop team also followed agile processes in line with user story implementation defined within sprints each week. Due to the seperate nature of back and front ends of this subsystem (each of which can be considered subsystems in its own right) this meant a mostly large modularity in implementation as each section could be developed seperately. However as mentioned earlier, the primary dependancy between modules was request type which caused bugs when request spellings had minor differences ("pull sponsor" vs "pull sponsors"). This caused significant challenge in hunting down these specific bugs for the desktop team, but additionally caused issues during integration tests for the other teams as all communication must pass through the desktop app to access persistant data. 
+
+In the next section, while we do feel that overall our project has been successful, we will discuss future areas of work; including items that were pushed to the backlog. 
  
-## Discussion of future work (in terms of design, development and evaluation)
+## Discussion of future work 
 In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example. So, the first step for any kind of future work would be to first do extensive market research to better understand where the Do or Die Fitness Tracker fits in the Product Space, what our Target market is, and whether there are existing companies that could be classified as our competitors.
 
 Below we will consider some additional features that would make our product more viable, how we came up with the feature, and how it would fit in our current design. We will also consider how we would develop it, implement it, and what methods we would use to evaluate it.
