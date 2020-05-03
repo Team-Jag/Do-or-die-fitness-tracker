@@ -159,8 +159,7 @@ Communication between devices was devised to be as simple as possible to avoid u
 The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistant storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data. 
 
 ## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
-
-Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited. During each sprint, the object oriented design of our product were changed depending on the tests that we had passed. In this section, we will explain the object oriented design of each of our key subsystems, while considering where there could be room for improvement during future sprints.
+In the following section, we will reflect on the final design of each of our key subsystems at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests that we had passed as well as failed. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
 
 ### DESKTOP DESIGN
 
@@ -244,7 +243,7 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
-We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsers, and challenges currently active.
+We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsors, and challenges currently active.
 <img src="Images/dashboard-main.png" width=75%>
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
