@@ -8,7 +8,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 - [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
 - [**Discussion of future work (in terms of design, development and evaluation)**](#discussion-of-future-work-in-terms-of-design-development-and-evaluation)
   - [Currency, shop and customization](#currency-shop-and-customization)
-  - [Connect M5Stack to a user account](#connect-an-m5stack-to-a-user-account)
+  - [Connect M5Stack to a user account](#connect-m5stack-to-a-user-account)
   - [Module specific improvements](#module-specific-improvements)
     - [M5Stack](#m5stack)
     - [Web](#web)
@@ -20,7 +20,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
   - [Communication tools](#communication-tools)
   - [Management of issues](#management-of-issues)
   - [Overall reflection](#overall-reflection-on-group-working-practices)
-- [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid19-on-the-project)
+- [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid-19-on-the-project)
 
 ## Reflective discussion on the success of the project
 
