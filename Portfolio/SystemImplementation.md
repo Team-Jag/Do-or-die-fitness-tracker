@@ -32,7 +32,7 @@ As one of the key foundations of Agile software development is to have self-orga
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. 
 
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
-The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. 
+The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues.
 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
@@ -63,13 +63,13 @@ The goal of this sprint was to create a very basic proof of concept. Our team ag
 <table>
 <tr>
   <th>Technology</th>
-  <th>User Stories Implemented</th>
+  <th>Key User Stories Implemented</th>
   <th>Issues Encountered</th>
 </tr>
 <tr>
   <td>Desktop</td>
-  <td></td>
-  <td></td>
+  <td>End-user is able to use the M5Stack as a pedometer and view total step count. This is implemented by parsing the push step request sent from the M5Stack and incrementing the step count in the database.</td>
+  <td>No issues were discovered in this sprint.</td>
 </tr>
 <tr>
   <td>Web</td>
@@ -109,13 +109,15 @@ The goal of this sprint was to release the Alpha version of our product, by push
 <table>
 <tr>
   <th>Technology</th>
-  <th>User Stories Implemented</th>
-  <th>Issues Encountered</th>
+  <th>Key User Stories Implemented</th>
+  <th>Issues Encountered/Addressed</th>
+  <th>Issue Handling</th>
 </tr>
 <tr>
   <td>Desktop</td>
-  <td></td>
-  <td></td>
+  <td>User is able view and select challenges, sponsor can add new challenges, user is also able to create new profile.</td>
+  <td>As data sent from the web to create new profile did not add default values for other required data (e.g. remaining_sec), the system will crash if a request for this faulty data was fetched and attempted to be sent.</td>
+  <td>As the issue encountered was due to the lack of testing on how the API handles null JSON objects, future implementations should include relevant testing. However, due to limited time for the project, this was not carried out and the extent of the implementation of a working system was only for the sake of the demo.</td>
 </tr>
 <tr>
   <td>Web</td>
@@ -157,8 +159,8 @@ The goal of this sprint was be to get to advance our prototye, which fixed inter
 <table>
 <tr>
   <th>Technology</th>
-  <th>User Stories Implemented</th>
-  <th>Issues Encountered</th>
+  <th>Key User Stories Implemented</th>
+  <th>Issues Encountered/Addressed</th>
 </tr>
 <tr>
   <td>Desktop</td>
@@ -205,12 +207,12 @@ The goal of this sprint was to release the Beta version of our product, and push
 <tr>
   <th>Technology</th>
   <th>User Stories Implemented</th>
-  <th>Issues Encountered</th>
+  <th>Issues Encountered/Addressed</th>
 </tr>
 <tr>
   <td>Desktop</td>
-  <td></td>
-  <td></td>
+  <td>User is able to see life timer countdown and finishing challenges will add rewards to health.</td>
+  <td>As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
 </tr>
 <tr>
   <td>Web</td>
@@ -247,18 +249,18 @@ The goal of this sprint was to clean up our code, and implement any final featur
 <table>
 <tr>
   <th>Technology</th>
-  <th>User Stories Implemented</th>
-  <th>Issues Encountered</th>
+  <th>Key User Stories Implemented</th>
+  <th>Issues Encountered/Addressed</th>
 </tr>
 <tr>
   <td>Desktop</td>
-  <td></td>
-  <td></td>
+  <td>New end-user will be automatically enrolled to a maximum of 10 available challenges.</td>
+  <td>As there was a limit of in what the M5Stack is able to parse from JSON Arrays, a limit of 10 challenges for each user was determined. However, no extensive testing (including attempts in integration to select more than 10 challenges from the web) has been done to ensure correct implementation.</td>
 </tr>
 <tr>
-  <td>Web</td>
   <td></td>
-  <td></td>
+  <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices.</td>
+  <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web. We tried to investigate the problem, it seemed that the issue lies in how we implemented the refreshDashboard for the admin.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
