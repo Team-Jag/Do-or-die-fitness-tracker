@@ -2,43 +2,53 @@
 
 # System Design [40pts]
 
-In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). This includes how we initially came about the idea of an interactive fitness app, how we designed the key elements of our system including the architecture, and the technical details of various components and subsystems involved. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
+In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). Before explaining the architecture of our system in detail, including the object oriented design of each of our key subsystems, we will first explain how we came to design our product based on the gap in the market that we were trying to fill. This includes our three key user groups, and their individual user stories. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
 
 ## Table of Contents
-- [**Requirements of key sub-systems (in the form of selected user stories)**](#requirements-of-key-sub-systems-in-the-form-of-selected-user-stories)
+- [**Product Requirements**](#product-requirements) 
+  - [Ideation and Concept Development](#ideation-and-concept-development)
+  - [User Types](#user-types)
+  - [Key Subsystems](#key-subsystems)
+- [**User Requirements for Key Subsystems**](#user-requirements-for-each-subsystem)
   - [Desktop system requirements](#desktop-system-requirements)
   - [Web system requirements](#web-system-requirements)
   - [M5Stack system requirements](#m5stack-system-requirements)
-- [**Architecture of the entire system**](#architecture-of-the-entire-system)
-- [**Object-oriented design of key subsystems**](#object-oriented-design-of-key-subsystems)
+- [**Architecture of The Entire System**](#architecture-of-the-entire-system)
+- [**Object-Oriented Design of Key Subsystems**](#object-oriented-design-of-key-subsystems)
   - [Desktop design](#desktop-design)
   - [Web design](#web-design)
   - [M5Stack design](#m5stack-design)
     - [Back-end](#back-end)
     - [Front-end](#front-end)
-- [**The evolution of UI wireframes for key sub-systems**](#the-evolution-of-ui-wireframes-for-key-sub-systems)
+- [**The Evolution of UI Wireframes for Key Sub-Systems**](#evolution-of-ui-wireframes-for-key-subsystems)
   - [Desktop UI wireframe](#desktop-ui-wireframe)
   - [Web UI wireframe](#web-ui-wireframe)
   - [M5Stack UI wireframe](#m5stack-ui-wireframe)
-- [**Details of the communication protocols in use**](#details-of-the-communication-protocols-in-use)
+- [**Details of the Communication Protocols in Use**](#details-of-the-communication-protocols-in-use)
   - [Desktop and M5Stack](#desktop-and-m5stack)
   - [Desktop and web](#desktop-and-web)
-- [**Details of the data persistence mechanisms in use**](#details-of-the-data-persistence-mechanisms-in-use)
-- [**Details of web technologies in use**](#details-of-web-technologies-in-use)
-
-Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
+- [**Details of the Data Persistence Mechanisms in Use**](#details-of-the-data-persistence-mechanisms-in-use)
+- [**Details of Web Technologies in Use**](#details-of-web-technologies-in-use)
 
 ## Product Requirements
+Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
+### Ideation and Concept Development
 
-The original idea that inspired our project was a gamified fitness app to improve user health. After several ideation cycles based on this principle, we settled on the idea of measuring user step-count as a proxy for user fitness. From this we developed the features and systems of our product.
+<img src="Images/designSpace.JPG" width=40%>
 
-The most obvious user story that comes to mind is of the end-user - the person using our product to get fit, invest time and energy into gaining health for the Bean thereby increasing their own health. However, a key requirement for the success of this project is motivation for the end-user that goes beyond just walking a lot, which would eventially become repetitive and boring. Additionally, this would quickly lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our project. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio.
+While initially explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to improve user health. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness. 
 
-To overcome this, we created a second user story; the sponsor. In our initial designs of the challenge feature, challenges would be local to a geographic radius to the end-user, and created by a sponsor to enable them to promote their brand and business. This would be of tremendous value to local businesses, by creating a significant amount of exposure. Since a business has an invested stake in getting as much exposure and positive association to the user as possible, challenges would be suitably long and rewards more balanced, hence solving the effort/reward problem. Additionally, since it is expected there would generally be less sponsors than users, this makes the job of potentially validating challenge descriptions/names for profanity easier.
+A key requirement for the success of this project is motivation for the end-user that goes beyond just meeting a daily step goal, as this would eventially become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our product.To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
-Any product with multiple moving parts such as this needs some way of tracking the playerbase, to see if the product is gaining success (and to repeat those actions in the future) or if it is losing users (may need to modify product). Additionally, users themselves may have issues with their account such as the pedometer not working correctly, inability to sign up to challenges due to an issue on the backend, or a need to change/delete their details. Due to the need for an intermediate between the product itself and its customers, we decided to introduce the admin user story. Admins can track playerbase changes and collect analytics over time, which are crucial for making good business decisions. Additionally, user needs such as editing and removing accounts, and fixing account specific issues can be facilitated.
+### User Types
 
-We ensured that our product had a user-focused framework by developing three key user stories: **End-User, Admin, and Sponsor**. These three user stories defined our test cases and requirements and were the basis for our development effort. 
+After decided what we wanted Do or Die to look like as a product, we began exploring who who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and requirements that were the basis of the development of our system. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. 
+
+Our first user group, and the centre of our product, is the end-user. This is the person that is using our product to get fit, invest time and energy into gaining health for the Bean thereby increasing their own health. This person will likely either be someone who is interested in getting active, but lacks the motivation. Or someone who is already active, and would like an extra challenge or an additional motivator to push themselves even further. Regardless of why they were using our fitness tracker, we knew that each user had to be able to do a number of things to see a benefit. This includes the ability to track their steps, know the current health of their Bean, enroll in challenges, and track their overall progress. The key theme of our end-user user type is that they are experiencing some type of challenge. Whether they are setting their own daily goals, or enrolling in challenges, they should be able to track their progress and see the adition of 'life' to the health bar of their Bean. This was the core concept underpinning our product, and what would ensure our success. 
+
+Our second user type was a sponsor. This person was likely a local gym owner, or business owner, who was looking for exposure for their business. We imagined it more likely to be a fitness business, as that would work well with our product and the type of customer base that we were likely to attract. Sponsors should be able to create challenges for our users to enroll in, which would likely advertise their business in some way (i.e. 'The Bristol Gym Challenge'). This would generate a significant amount of exposure for local business. In return for completing a challenge, a sponsor would reward extra 'life' to the user's Bean. A sponsor must be able to create a profile on the web in order to create challenges, and they should be able to track the users enrolled in the challenges. 
+
+Finally, in order to ensure the success of the product, we knew that we needed to have an admin user type. This person would be responsible for tracking the playerbase, the success of the product, or if we are loosing users. The admin would be the person responsible for deciding whether the product needs to be modified, or adapted based on these statistics. Moreover, the admin would be in charge of fixing any issues that may arise from the users and the sponsors. This may include the pedometer not working correctly, a user's inability to sign up to challenges due to an issue on the backend, or a need to change/delete a user's details. In order to ensure the success of the product, the admin must be able to view a number of statistics relating to the userbase. This includes total numbers of currently 'dead' users, weekly statistics, and monthly statistics. The admin must also be able to pull up an individual user's profile to be able to adequately address any issues. 
 
 <table>
 <tr>
@@ -63,106 +73,93 @@ We ensured that our product had a user-focused framework by developing three key
 </tr>
 </table>
 
-<p align="center"><b> END-USER:</b> Our first user story is the end-user, who walks around with the M5Stack on his arm, which counts his steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left, in order to view the specific time remaining they have to use the web. The user can also use the web to enroll in challenges set by sponsors, and view their total steps. As a reward for successfully completing challenges, they end-user will receive extra time added to their account. </p>
+A further break down of the user stories can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones are outlined in this use case diagram:
 
-<p align="center"><b> ADMIN:</b> Our second user story is the admin, who can utilise the management dashboard to to track the userbase. They are able to track statistics of the user, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product. This can essential for making business decisions, and to see if attracting customers and sponsers is successful, or if many customers have left and for what reason (not enough challenges or sponsors present). If an individual user has an issue, they are able to use the management dashboard to view their profile. Using the management dashboard, they are able to monitor and visualize the data in a user friendly way. </p>
+<img src="Images/dotuml.png" width=60%>
 
-<p align="center"><b> SPONSOR:</b> Finally, our third user story is the sponsor. The sponsor uses the website to create a profile, and then set challenges for the average user to enrol them. They are able to use these challenges as a way to promote their business and brand.</p>
+### Key Subsystems
 
-These key stories were developped in to further user stories, which can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones can be seen in this use case diagram:
+Now that it is clear who are target users are, and how we saw them using our system, it is necessary to define the key subsystems that make up our product. Each of these subsystems became necessary to ensuring the success of Do or Die as a product: 
 
-![Use case](Images/dotuml.png)
+* **Internet of Things Device** : 
+The key aspect of our product design was the IoT device, which was an M5Stack. This was an Arduino compatible device that we used to create a pedometer. The M5Stack will be worn on the user's wrist as a fitness tracker, and is capable of sending steps to the database. As it has a screen, it is possible to display the Bean and other statistics. This device worked well for our desired goals because it contains a gyroscope which can be used as a pedometer, and Wi-Fi capabilities to pull information from the central database.
 
-Based on these user stories, we developed three key subsystems to visualise the user requirements required for our architecture.
+* **Desktop Application** : 
+In order to analyse the userbase, as well as store and have access to user data, we created a Processing application which functions as a back-end. We implemented a Managment Dashboard to be used by the Admin on the desktop application. The back end of this subsystem sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
 
-## User requirements for key subsystems
+* **Web Application** : 
+Finally, to complement the M5Stack and allow the users and sponsors to enroll in challenges, as well as view their statistics more in depth, it was necessary to have a web application. On the website they can view things like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
-### DESKTOP SYSTEM REQUIREMENTS
+Before explaining in more depth [how our subsystems work together](#architecture-of-the-entire-system), we will first explain how we used our user stories to develop the key requirements for each susbsytem. 
 
-Administration interface for data visualisation. Allows back-end to deal with sending and receiving requests, and front-end to track total users, sponsors and challenges currently available.
+## USER REQUIREMENTS FOR EACH SUBSYSTEM 
+To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
-**Data visualisation UI**
-
-* Front-end needs to pull flat totals from database for current users, sponsors, and available challenges in order to draw accurate statistics for the admin so they can track this data for further use.
-* The interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods to allow admin to see relevant changes in playerbase in an intuitive way. 
-* The front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken, in order for admin to track down account specific issues such as innacurate step counts, and be able to recommend a fix.
-* The interface must follow colour scheme for the UI, to maintain thematic consistency across and make the product come across as more professional.
-
-**Data processing back-end**
-
-* System must be capable of processing JSON requests from both the web application and the M5Stack, and should be able to insert new users, sponsors and challenges into central database, while retaining this data in a persistent manner, in order to provide accurate stats for front end.
-* System must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
-* System also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
-* System should automatically add rewards if user has met required goals in any challenges enrolled.
-
-### WEB SYSTEM REQUIREMENTS
-
-Primary interface for the sponsor and the user to handle everything related to challenges and their profile.
-
-**User**
-
-* Login: The website must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server
-* Profile: The website must send a request to the server for the user profile and and all his challenge and render that information
-* Render a profile picture depending on the user name (the profile picture will be available on the webserver)
-* Enroll in Challenges: The website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge
-* The information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen)
-  
-**Sponsor**
-
-* The website must have an input form for new challenges that the sponser can fill in. The input of the sponser gets validated (e.g. did he complete all fields). Upon submission the new challenge will be sent to the server
-  
-### M5STACK SYSTEM REQUIREMENTS
-
-When designing the interface of the M5Stack, we were mainly focused on the End-User story. Thus, the requirements for the End-User were our main focus. In order to ensure that we satisfied these, we split our requirements into two further subheadings.
+### M5Stack System Requirements
+The M5Stack is the primary device that the end-user interacts with, and for that reason we were mainly focused on the End-User group. In order to ensure that we implemented the end-user's stories, we split our requirements into the back-end and front-end to focus on both the accuracy of our product, and the appeal to the end-user. 
 
 **Back-End**
 
-* The M5 must have a pedometer, able to accurately count the end-user's steps, and store them locally.
-* The M5 must be able to communicate with the server using the shared communication contract.
+* The end-user's main goal when using this product is to be able to track their steps, and for that reason the M5Stack must have a pedometer, be able to accurately count the end-user's steps, and should be able to store them locally.
+* In order for the end-user's steps to remain accurate when the M5Stack is not connected the internet, and between usages, the M5 must be able to communicate with the server using the shared communication contract.
 
 **Front-End**
 
-* To ensure customer retention, we have to implement an enganging and appealing interface.
-* The M5 should display a live step count.
-* The M5 should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement.
-* The M5 must have a health bar which accurately reflects how much time Bean has left.
-* Bean's animations and general liveliness should reflect its remaining life (i.e. it should bounce less when it is closer to death).
-* The M5 should display the challenges that the user is enrolled in.
-* The M5 should display the user's statistics.
+* To ensure customer retention, the M5Stack must implement an enganging and appealing interface.
+* As the end-user is interested in getting healthy and this relies on the user knowing how active they have been, the M5Stack should display a live step count.
+* The M5Stack should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement.
+* As the product has been gamified, the M5Stack must have a health bar which accurately reflects how much time Bean has left.
+* To reflect the user's success and ensure they continue to meet their goals, Bean's animations and general liveliness should reflect its remaining life (i.e. it should bounce less when it is closer to death).
+* To allow for the user to know what goals they have, the M5Stack should display the challenges that the user is enrolled in.
+* In order for the end-user to track their progress, the M5Stack should display the user's statistics.
 
-## Architecture of the entire system
+### Desktop System Requirements
 
-Due to several devices needed by the user requirements, our system architecture uses a central controller API which communicates with the database, and handles receiving and sending requests using MQTT protocol to communicate between different devices. As a result of the above user requirements, we have established three key devices of the system:
+As explained above, the Desktop Application acted as the administration interface for data visualisation. It was developed to create a back-end to deal with sending and receiving requests. We also created front-end to track and visualize total users, sponsors and challenges currently available.
 
-* **Internet of Things Device** : 
-To fulfil our end-user key requirement to measure fitness, we used an M5Stack.
+**Data visualisation UI (front-end)**
 
-Our IoT device was an M5Stack, an Arduino compatible device we used to create a pedometer which uses the gyroscope to determine when user step count is incremented. This will be worn on the users wrist, and can accurately act and send steps to the Desktop application. On our IoT device the user can view a live step count, challenges they are enrolled in, and indivdiual statistics. The device was made to be stateless, and rely on the Desktop part of the system to pull information about the user. This device was chosen because it contains a gyroscope which can be used as a pedometer, and Wi-Fi in order to connect to the internet and pull information from the central database.
+* In order for the admin to track user data, the front-end needs to pull flat totals from the database for current users, sponsors, and available challenges to draw accurate statistics.
+* To allow for the admin to see relevant changes in the userbase in an intuitive way, the interface must be able to split this quantative data based on a time frame, showing changes over daily, weekly and monthly periods.
+* If there are specific issues, the admin must be able to track them down. Therefore, the front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
 
-* **Desktop Application** : 
-To fulfil the admin user story requirements to analyse playerbase and have access to the backend, we created a Processing app which additionally functions as a back-end.
+**Data processing back-end**
 
-We implemented a Managment Dashboard to be used by the Admin. On our desktop application you are able to view things such as total users, an individual user's statistics, and how many users have 'died'. The back end of this subsystem sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
+* To provide accurate statistics for the admin (front-end), the system must be capable of processing JSON requests from both the web application and the M5Stack. 
+* To ensure the admin retains control of the userbase and product, the back-end must also be able to insert new users, sponsors and challenges into the central database, while retaining this data in a persistent manner. 
+* In order for the end-user to have an accurate step count, the system must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
+* To allow for the end-user to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
+* To ensure that the sponsor's see success from their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
 
-* **Web Application** : 
-To fulfil the end-user story requirement of creating an account, and the sponsor user story of setting challenges, we implemented a web application.
+### Web System Requirements
+The web application acted as the primary interface for the sponsor to interact with our product. The end-user would also use this application to handle everything related to challenges and their profile. 
 
-The application will be used by the end-users of our product and sponsors. Here they can view things like their ranking, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
+* Both the end-user and the sponsor must be able to log in to the website, thus the web application must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server.
+* To ensure that the end-user is able to access their profile and individual data, the website must send a request to the server for the user profile and and all his challenge and render that information. 
+* In order for the end-user to personalize their account, the web must render a profile picture depending on the user name (the profile picture will be available on the webserver). 
+* The end-user must be able to enroll in challenges. Therefore, the website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge. 
+* In order to ensure consistency across our system and for the user between their M5Stack and the web, the information requested and rendered under point i.a) must be updated regurarely (i.e. send a new request to the server every second and render the updated data on the screen). 
+* To allow for the sponsor to generate new challenges, the website must have an input form for new challenges. The input of the sponser gets validated (e.g. did he complete all fields) and upon submission the new challenge will be sent to the server. 
 
-* **Data Communication** : Due to several devices as per user requirements, we needed to device a way for devices to communicate via a shared contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained in further detail in section E.
+## ARCHITECTURE OF THE ENTIRE SYSTEM
+As has been outlined above, it is clear who our user groups are as well as how they will interact with each of our key subsystems and what each of the key subsystems must be able to do. However, to be able to deliver our user stories, and final product, we needed our architecture to send and store data: 
 
-* **Data Repository** : To keep our data persistent, we store the data in JSON files stored locally to where the Processing app is running, similar to a server. Refer to further details and justification in the Data Persistance section.  
- 
-To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker (this ensures web and M5Stack components do not ever interact directly).
+* **Data Communication** :
+To ensure that each subsystem communicated in the same way, we developed a shared communication contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained further in the [communication protocols section](#details-of-the-communication-protocols-in-use). 
 
-Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Unit testing each subsystem allowed for confidence of individual components working correctly and as expected during integration.
+* **Data Repository** : 
+To ensure that our data is persistent, we store the data in JSON files. These JSON files are stored locally where the Processing app is running, similar to a server. This process is explained and evaluated further in the [data persistence subsection](#details-of-the-data-persistence-mechanisms-in-use). 
+
+However, before exploring each of these mechanisms in further detail, it is important to outline the overarching archiecture of our system. Our system architecture uses a central controller API which communicates with the database, and receives and sends requests using MQTT protocol to communicate between different devices. To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker. By doing this, we ensure that the Web and M5Stack components never directly interact. 
+
+Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Our shared contract will be explored in further detail [below](#details-of-the-communication-protocols-in-use). Unit testing each subsystem allowed us to be confident that individual components were working correctly, which allowed for ease of integration during each sprint. 
 
 ![Architecture](Images/architecture-UML.png)
+
 The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistant storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data. 
 
-## Object-oriented design of key subsystems
-
-Our [initial UML diagram](Images/first_uml.png) from one of our initial meetings was limited, however over time, additional key features were added into the following UML diagrams for each of the three sub-systems.
+## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
+In the following section, we will reflect on the final design of each of our key subsystems at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests that we had passed as well as failed. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
 
 ### DESKTOP DESIGN
 
@@ -236,7 +233,7 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 ![m5-uml](Images/M5_Design.png)
 On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design...
 
-## The evolution of UI wireframes for key sub-systems
+## EVOLUTION OF UI WIREFRAMES FOR KEY SUBSYSTEMS
 
 Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section.
 
@@ -246,31 +243,27 @@ Our [User Story video](Images/paper_prototype_video.mp4), developed during the p
 
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
 
-We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsers, and challenges currently active.
-![UI-layout](Images/dashboard-main.png)
+We decided on the single-tab design to simplify the dashboard UI and not have to create new graphs in different tabs, as originally shown by the first design. We picked line graphs to visualise total count of users, sponsors, and challenges respectively to best show traffic over time. A pie chart was used to easily see the proportion of current users that are alive, and bar graphs were used to quickly compare the amounts of users, sponsors, and challenges currently active.
+<img src="Images/dashboard-main.png" width=75%>
 
 Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:
-![UI-search](Images/search-user.png) ![UI-search](Images/null-user.png)
+<img src="Images/search-user.png" width=50%><img src="Images/null-user.png" width=50%>
 
 Selecting a specific statistic from UI to allow data to be viewed on different time frames:
-![UI-select-chart](Images/select-chart.png)
+<img src="Images/select-chart.png" width=75%>
 
 Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.
-![UI-selected-charts](Images/selected-charts.png)
+<img src="Images/selected-charts.png" width=75%>
 
 ### WEB UI WIREFRAME
 
-Original web wireframe design for desktop profile:
-![Wireframe-web](Images/web-wireframe.jpg)
+Original web wireframe design for desktop profile in comparison to the new, simplified but dynamic profile page. The end-user can choose from several profile pictures, steps, time and ranking get updated once per second.
+<img src="Images/web-wireframe.jpg" width=50%><img src="Images/web-screenshot.PNG" width=50%>
 
-Simplified but dynamic profile page, user can choose from several profile pictures, steps, time and ranking get updated once per second.
-![Web-screenshot](Images/web-screenshot.PNG)
+An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
 
-Sign-up screen draft
-![Web-signupdraft](Images/signup-draft.png)
-
-Final sign-up screen, with the sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
-![Web-signupfinal](Images/signup-final.PNG)
+<img src="Images/signup-draft.png" width=50%>
+<img src="Images/signup-final.PNG" width=50%>
 
 ### M5STACK UI WIREFRAME
 
@@ -290,23 +283,26 @@ The stats screen was implemented according to the UI wireframe, however we have 
 
 Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
-## Details of the communication protocols in use
+As we have now outlined the key features and design of each of our subsystems, we will detail and reflect on the other key features of our system's architecture. 
 
-Our Internet of Things product was developed utilising the M5Stack platform. Due to the use of this platform, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move between web to desktop, M5Stack to desktop and desktop to both the Web and M5Stack. Further, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
+## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
+Our IoT product was developed utilising the M5Stack platform, as a result of this, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move from the web to desktop, M5Stack to desktop, and desktop to both the Web and M5Stack. In order to allow for this, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
 
-* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time.
+* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time, which is important to separate the web and M5Stack clients. 
 
-* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data.
+* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data from the server to the client, including the updated health data. 
 
-* MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs.
+* MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs. As a key aspect of the design of our system is the maintaibility of our product, we felt that this was an important decision. 
 
-* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. Due to the fact that responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies").
+* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. As responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
 To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below.
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), this document was used by our group to ensure clear communication between subsystems. We will expand on the key communication protocols and the request types below.
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
 
 ### DESKTOP AND M5STACK
+
+The 'push profile' request type was the main message pushed to the M5Stack. As a stateless device, the M5 doesn't store any data and instead receives it from the server in real time by sending a 'pull profile' request and receiving this request every 5 seconds. As a result of this, we had to keep the size of this request small so that it could be sent frequently without flooding the MQTT topic (which would become more of an issue with multiple users). Therefore, instead of sending all the user's data in one large JSON package, this request only sends two key fields: 'total steps' and 'remaining seconds' of the Bean. The remainder of the user data is sent to the M5Stack using the other request types 'push user challenges' and 'push user stats'. These are called only when the user requests to see such data by going to the respective screen on the M5Stack. Structuring our request types in this way reduces the load on our architecture to a level low enough that it can be handled by a small server on a personal computer. Therefore allowing us to deliver a minimum viable product without having to use larger servers.
 
 To send a user's profile data to the M5Stack from the database:
 
@@ -360,7 +356,7 @@ This is sent when the M5Stack requests the challenges of the user:
 ```
 {
     "type": "pull user challenges",
- "user_name": "Mario"
+    "user_name": "Mario"
 }
 ```
 
@@ -368,8 +364,8 @@ To update the statistics of the user on the M5Stack:
 
 ```
 {
- "type": "pull user stats",
- "user_name": "Mario"
+     "type": "pull user stats",
+     "user_name": "Mario"
 }
 ```
 
@@ -377,11 +373,11 @@ The database uses the following request type to send stats to the M5Stack:
 
 ```
 {
- "type": "push user stats",
- "user_name": "Mario",
- "daily_record": 10000,
- "weekly_record": 39000,
- "weekly_current": 18032
+    "type": "push user stats",
+    "user_name": "Mario",
+    "daily_record": 10000,
+    "weekly_record": 39000,
+    "weekly_current": 18032
 }
 ```
 
@@ -407,7 +403,6 @@ When the web pushes a new profile to the database, there is no response from the
 }
 
 ```
-
 The web requests a user profile from the database:
 
 ```
@@ -540,7 +535,7 @@ When the user selects a challenge, there is no response from the database:
 }
 ```
 
-## Details of the data persistence mechanisms in use
+## DETAILS OF THE DATA PERSISTENCE MECHANISMS IN USE
 
 Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices. 
 
@@ -548,7 +543,7 @@ Each user, challenge and sponsor is stored as a JSON object to allow for easy pa
 
 M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type. Keeping the M5 stack stateless allowed for more modularity and reliability of the system, as even if the device breaks (which is a significant risk considering it is used for fitness and will be physically moved a lot) it can be replaced without loss of user data. If the device is stolen or lost, the user data is still stored on the central server and not the device, which means it can be removed and not leak information on the M5 stack. 
 
-## Details of web technologies in use
+## DETAILS OF WEB TECHNOLOGIES IN USE
 
 Our website is react based and built on top of a simple react/bootstrap template.
 The choice for these technologies was driven by some key needs of our website/team that ultimately led us to choose this set up:
