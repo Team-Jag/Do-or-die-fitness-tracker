@@ -353,9 +353,12 @@ Potential limitations of using the evaluation matrix are the chance of concentra
 We knew when designing our system initially that we wanted to focus largely on the non-functional requirements. These included the security of our system, the maintainability, the ease of use, and the reliability of our system as a whole. This relied in large part on testing our system in an integrated manner, which will be explored further below. However, we will first consider each of these "non-functional" requirements and how evaluating them during our sprints changed the design of our system. 
 
 #### Security
+From the design stage (link) to the implementation stage, security was considered an intergral part of the system as a whole. Implementing the database class as abstract and private allowed for request validation before the persistent files were accessed, which seperates the  
 
 #### Maintability
 While our team was a relatively small team, and could easily maintain our product if necessary, we wanted to develop it in a way that allowed it to be maintained by a larger team. This meant developing each part of our system to conform with our shared contract, to allow us to meet new requirements. Moreover, make the code in each part of our system as clear as possible to allow for quick changes. 
+
+Code was implemented with modularity in mind, which allowed each device team to update their subsystem without breaking the entire codebase. 
 
 #### Ease of Use
 
@@ -369,7 +372,7 @@ This method for evaluating our design was incredibly effective, we were able to 
 Moreover, it ensured that we prioritised what needed to change. One example of this was the decision to change the log in feature on the web. While designing our product we decided that you would need to log in with a username as well as an email, however we quickly realized that this was cumbersome for the user and it would make more sense for them to just log in with their username. This was due to user evaluation of our design. 
 
 ### Unit Testing
-
+At every stage of the implementation process we aimed to have a set of tests for each component in order to verify they worked correctly. In particular, the Processing backend up utilized a testing class which compared dummy JSON payloads against existing files in the database to ensure the correct information was pulled. Additionally, tests were added to show the app could handle edge cases. This included purposefully malformed requests (to make sure the app did not crash), and insertion/deletion of null objects, in order to be certain the database API could handle any type of input. The front-end of the desktop app relied on visual user testing due to its dependancy on the draw() function, but crafted JSON objects were manually added to the database storage and this was compared against the totals drawn to make sure they were accurate. 
 
 ### System Integration 
 As the success of our product relied on our three key subsystems working together, it was necessary to perform extensive integration testing at the end of each sprint. This would take place during our weekly scrum. During this aspect of evaluating our design, we would go through our shared contract to ensure that all systems preformed as expected when using the shared contract. During earlier sprints, it was clear that there was unnecessary information included in certain request types and that these would have to be adjusted. The success of this method of evaluation, however, relied on ensuring that each unit was thoroughly tested individually. Once we were certain of this, we tested them together. 
