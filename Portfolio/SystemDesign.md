@@ -156,6 +156,10 @@ To ensure that each subsystem communicated in the same way, we developed a share
 * **Data Repository** : 
 To ensure that our data is persistent, we store the data in JSON files. These JSON files are stored locally where the Processing app is running, similar to a server. This process is explained and evaluated further in the [data persistence subsection](#details-of-the-data-persistence-mechanisms-in-use). 
 
+* **System Validation** :
+
+* **System Verification** :
+
 However, before exploring each of these mechanisms in further detail, it is important to outline the overarching archiecture of our system. Our system architecture uses a central controller API which communicates with the database, and receives and sends requests using MQTT protocol to communicate between different devices. To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker. By doing this, we ensure that the Web and M5Stack components never directly interact. 
 
 Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Our shared contract will be explored in further detail [below](#details-of-the-communication-protocols-in-use). Unit testing each subsystem allowed us to be confident that individual components were working correctly, which allowed for ease of integration during each sprint. 
