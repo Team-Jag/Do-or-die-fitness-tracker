@@ -283,9 +283,10 @@ The stats screen was implemented according to the UI wireframe, however we have 
 
 Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
-## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
+As we have now outlined the key features and design of each of our subsystems, we will detail and reflect on the other key features of our system's architecture. 
 
-Our Internet of Things product was developed utilising the M5Stack platform. Due to the use of this platform, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move between web to desktop, M5Stack to desktop and desktop to both the Web and M5Stack. Further, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
+## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
+Our IoT product was developed utilising the M5Stack platform, as a result of this, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move from the web to desktop, M5Stack to desktop, and desktop to both the Web and M5Stack. In order to allow for this, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
 
 * As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time.
 
