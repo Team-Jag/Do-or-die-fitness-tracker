@@ -21,7 +21,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
   - [Management of issues](#management-of-issues)
   - [Overall reflection](#overall-reflection-on-group-working-practices)
 - [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid-19-on-the-project)
-- [**Conclusion**]
+- [**Conclusion**](#conclusion)
 
 ## Reflective discussion on the success of the project
 
