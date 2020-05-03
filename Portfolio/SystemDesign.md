@@ -180,7 +180,7 @@ The above diagram shows dependencies and relationships between classes in the Pr
 
 Key classes for desktop app include:
 
-* [**database**](../desktop/management_dashboard/data.pde) - this is a private class which deals with writing and reading persistent data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types).
+* [**database**](../desktop/management_dashboard/data.pde) - this is a private class which deals with writing and reading persistent data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the Liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types) and abstractly performs operations on the persistent data files.
 * [**data classes**](../desktop/management_dashboard/data.pde) - acts as the database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure encapsulation of database class). Having separate classes for each type of data allowed for modularity when modifying request types was necessary during the project. Request types and the data types requested are stored as constants (static final Strings) to ensure the communication contract is followed precisely.
 * [**events.pde**](../desktop/management_dashboard/events.pde) - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the view class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
 * [**tests.pde**](../desktop/management_dashboard/tests.pde) - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
@@ -301,6 +301,8 @@ Initially our UI wireframe included a shop feature, however after adding a third
 
 ### DESKTOP UI WIREFRAME
 
+To make the 
+
 **Original** multi-tab wireframe design for desktop UI *(left)*, and **updated** single-tab wireframe design *(right)*:<br>
 
 <img src="../Portfolio/Images/desktop-wireframe.jpg" width=50%><img src="../Portfolio/Images/final_wirefram.jpg" width=50%><br>
@@ -310,7 +312,7 @@ We decided on the single-tab design to simplify the dashboard UI and not have to
 <img src="Images/dashboard-main.png" width=75%>
 </p>
 
-Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist:<br>
+Pulling up a user profile by either using the search bar or dropdown list, an error message to show if a user does not exist. The search bar is important, as when the playerbase grows it may become unreasably difficult to find a specific user using just the dropdown list.<br>
 <img src="Images/search-user.png" width=50%><img src="Images/null-user.png" width=50%>
 
 Selecting a specific statistic from UI to allow data to be viewed on different time frames:<br>
@@ -548,7 +550,7 @@ When the logged-in user selects a challenge, there is no response from the datab
 
 ## DETAILS OF THE DATA PERSISTENCE MECHANISMS IN USE
 
-Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices.
+Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices, which allowed more time for development of the product logic as opposed to needing to parse JSON. 
 
 In order to allow persistence we used [users.json](/desktop/management_dashboard/data/users.json), [sponsors.json](/desktop/management_dashboard/data/sponsors.json) and [challenges.json](/desktop/management_dashboard/data/challenges.json) files to permanently store respective data. This permanent data storage allows to separate the API from having to worry about how the data is stored or if data will be lost when the software crashes. This format allows the central server to send an entire user profile when receiving a request from the M5 or web device to pull a profile using the data API. To emulate a relational database, each user and sponsor object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). Additionally, data will only be accessed when required (processing requests or updating user remaining health). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability, as mentioned in project evaluation.
 
