@@ -248,8 +248,8 @@ Before beginning to do any of the implementation on the M5Stack, we decided to i
 <p align="center">
 <img src="Images/prototype.gif" width=50%>
 </p>
-After undertaking user-centred evaluation with some of our peers using the prototype implemented on processing, we realized that it was better to revert to our initial design of having a bar chart to demonstrate health. This made it easier to visualize, and we knew that it would be more difficult to see the time ticking down on the M5Stack. Importantly, we decided that the M5Stack would only request the user profile every five seconds. As the time remaining, which influences the time until the Bean dies and the health bar, is calculated by the database this could lead to potential gaps. Moreover, we received feedback that it was better to use textboxes to say what the buttons did rather than images, which we implemented in future design cycles. Finally, in future design cycles as we shifted to focusing on the steps for our initial version 1.0 release, we knew that it was important for the user to see a live step count on the screen. This took the place of the currency, and ensured that we kept the pedometer at the centre of our design process. 
 
+After undertaking user-centred evaluation with some of our peers using the prototype implemented on processing, we realized that it was better to revert to our initial design of having a bar chart to demonstrate health. This made it easier to visualize, and we knew that it would be more difficult to see the time ticking down on the M5Stack. Importantly, we decided that the M5Stack would only request the user profile every five seconds. As the time remaining, which influences the time until the Bean dies and the health bar, is calculated by the database this could lead to potential gaps. Moreover, we received feedback that it was better to use textboxes to say what the buttons did rather than images, which we implemented in future design cycles. Finally, in future design cycles as we shifted to focusing on the steps for our initial version 1.0 release, we knew that it was important for the user to see a live step count on the screen. This took the place of the currency, and ensured that we kept the pedometer at the centre of our design process. 
 
 Ultimately, this influenced the design of our other subsystems. We shifted things such as the user's ranking, and the exact number of seconds left, to the web. Due to the fact that the web has a bigger interface, this allowed us to include more specific feedback there. From user testing and watching users interact with our system, we knew that this was a better design decision. Mainly due to the fact that we prioritized keeping the M5Stack's interface as simple and clutter free as possible. 
 
@@ -257,19 +257,27 @@ Below we will compare the initial UI wireframes for each of our key subsystems, 
 
 ### M5STACK UI WIREFRAME
 
-![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
+<p align="center">
+<img src="Images/M5Images/loadingScreenCollage.jpg" width=80%>
+</p>
 
 The starting screen was replaced with a more professional logo, following user feedback.
 
-![Do Or Die System Design](Images/M5Images/animation.gif)
+<p align="center">
+<img src="Images/M5Images/animation.gif" width=75%>
+</p>
 
 From the initial UI wireframe, we designed and animated a simple but responsive sprite. The screen was decluttered to allow the focus on the sprite, based upon feedback we received during the user testing session.
 
-![Do Or Die System Design](Images/M5Images/statsCollage.jpg)
+<p align="center">
+<img src="Images/M5Images/statsCollage.jpg" width=80%>
+</p>
 
 The stats screen was implemented according to the UI wireframe, however we have not implemented the sleep detection feature due to its dificulty to develop. Therefore, different statistics have been displayed.
 
-![Do Or Die System Design](Images/M5Images/campaignShopCollage.jpg)
+<p align="center">
+<img src="Images/M5Images/campaignShopCollage.jpg" width=80%>
+</p>
 
 Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
