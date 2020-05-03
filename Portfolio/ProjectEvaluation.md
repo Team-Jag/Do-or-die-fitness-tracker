@@ -47,7 +47,9 @@ Below we will consider some additional features that would make our product more
 ### Currency, Shop and Customization
 The first improvement consists of multiple features which would need to be added more or less concurrently, since it does not make sense to have one without the other. It's worth noting that we first thought of this feature when designing our first UI wireframe, it came up when discussing possible avenues of monetization for our product. However, this has been pushed to our backlog for future sprints.
 
-![Shop Wireframe](Images/M5Images/M5Shop.jpg)
+<p align="center">
+<img src="Images/M5Images/M5Shop.jpg" width=50%>
+</p>
 
 This feature would include the addition of a Shop for our users.We would add some type of virtual coin to our product, Sponsors would be able to set coin rewards for their challenges, users would be able to obtain a small amount of currency each day by completing the challenges, or they could purchase it using real currency through our website.
 
