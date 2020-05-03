@@ -29,6 +29,7 @@ In the following section we will reflect on the design of our product. By the en
   - [Desktop and web](#desktop-and-web)
 - [**Details of the Data Persistence Mechanisms in Use**](#details-of-the-data-persistence-mechanisms-in-use)
 - [**Details of Web Technologies in Use**](#details-of-web-technologies-in-use)
+- [**Conclusion**](#conclusion)
 
 ## Product Requirements
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
