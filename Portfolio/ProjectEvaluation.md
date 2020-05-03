@@ -21,6 +21,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
   - [Management of issues](#management-of-issues)
   - [Overall reflection](#overall-reflection-on-group-working-practices)
 - [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid-19-on-the-project)
+- [**Conclusion**]
 
 ## Reflective discussion on the success of the project
 
@@ -203,5 +204,9 @@ During the initial product planning stage, we had originally agreed to switch te
 
 In addition to this, direct coronavirus crisis effects such as the risk of contracting illness, worries about family members or getting home, and the general state of emergency in the country contributed to stress levels experienced by the entire team.
 
+### Conclusion 
+Our team has come a long way, and upon reflecting on the [design of our system](SystemDesign.md) and the [way that we implemented it](SystemImplementation.md), and finally having the opportunity to reflect on the [success of our product](#reflective-discussion-on-the-success-of-the-project), we are incredibly proud of how far we have come. Each member of our team has grown and learnt an incredibly amount. While we acknowledge that there are areas that we could have improved, and different methods in evaluation that we could have employed to improve the success of our product, we are still confident in the product that we have created. 
+
+We are incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
  
