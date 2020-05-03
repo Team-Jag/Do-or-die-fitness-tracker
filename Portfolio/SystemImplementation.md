@@ -340,6 +340,9 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 
 A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. 
 
+### Design Evaluation Cycle
+Going hand in hand with our software design cycle and during each sprint, we also found that we had - in some ways - a design evaluation cycle. At the beginning of each sprint, we would have a preliminary design that we expected we would develop during that sprint. This included the user stories that we wanted to implement, and how we would do this. During the sprint we would implement these, as highlighted above, however within our design cycle we would then have a number of forms of evaluation at the end of our sprint. This stage of our design cycle allowed us to shape and form our requirements for the next sprint, as well as reprioritize the user stories where necessary. 
+
 ### User Testing and Evaluation
 
 ### Unit Testing
