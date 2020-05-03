@@ -17,7 +17,7 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Sprint 5 : Beta version release (13.4-20.4)](#sprint-5--beta-version-release-134-204)
   - [Sprint 6 : Version 1.0 release (20.3-27.4)](#sprint-6--version-10-release-203-274)
   - [Sprint 7 : Version 1.1 (optional) and write-up (27.4-4.5)](#sprint-7--version-11-optional-and-write-up-274-45)
-- [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation-techniques-used--limitations)
+- [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation)
 - [**Social and ethical implications**](#social-and-ethical-implications-of-do-or-die-fitness-tracker)
   - [Code of ethics](#code-of-ethics)
   - [Social benefits](#social-benefits)
@@ -336,7 +336,11 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 </table>
 
 
-## Details of design evaluation (techniques used & limitations)
+## Details of design evaluation
+
+A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our designs will be considered in turn in the following section, as well as their limitations. 
+
+
 
 Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
 
