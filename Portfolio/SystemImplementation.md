@@ -32,7 +32,7 @@ Using the Agile model allowed for faster software development. At the beginning 
 
 ![Agile](Images/agile.png)
 
-The above diagram, copied from this [website](https://hackernoon.com/a-case-study-type-insight-into-agile-methodologies-for-software-development-cd5932c6) demonstrates the development cycle that our team followed during the creation of our product. 
+The above diagram, copied from this [website](https://hackernoon.com/a-case-study-type-insight-into-agile-methodologies-for-software-development-cd5932c6), demonstrates the development cycle that our team followed during the creation of our product. 
 
 ## Breakdown of project into sprints
 
