@@ -95,7 +95,7 @@ In order to analyse the userbase, as well as store and have access to user data,
 * **Web Application** : 
 Finally, to complement the M5Stack and allow the users and sponsors to enroll in challenges, as well as view their statistics more in depth, it was necessary to have a web application. On the website they can view things like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
-Before explaining in more depth [how our subsystems work together](#architecture-of-the-entire-system), we will first explain how we used our user stories to develop the key requirements for each susbsytem. 
+Before explaining in more depth [how our subsystems work together](#architecture-of-the-entire-system), we will first explain how we used our user stories to develop the key requirements for each subsystem. 
 
 ## USER REQUIREMENTS FOR EACH SUBSYSTEM 
 To break each of the three key subsystems down further, and before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
