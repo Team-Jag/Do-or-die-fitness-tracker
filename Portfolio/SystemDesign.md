@@ -34,11 +34,13 @@ In the following section we will reflect on the design of our product. By the en
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
 ### Ideation and Concept Development
 
+<p align="center">
 <img src="Images/designSpace.JPG" width=40%>
+</p>
 
-While initially explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to improve user health. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness. 
+While initially explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to promote a healthier lifestyle. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness.
 
-A key requirement for the success of this project is motivation for the end-user that goes beyond just meeting a daily step goal, as this would eventially become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our product.To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
+A key requirement for the success of this project is maintaining the end-user's motivation that goes beyond just meeting a daily step goal, as this would eventually become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our product. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
 ### User Types
 
@@ -75,7 +77,9 @@ Finally, in order to ensure the success of the product, we knew that we needed t
 
 A further break down of the user stories can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones are outlined in this use case diagram:
 
+<p align="center">
 <img src="Images/dotuml.png" width=60%>
+</p>
 
 ### Key Subsystems
 
@@ -125,10 +129,11 @@ As explained above, the Desktop Application acted as the administration interfac
 
 **Data processing back-end**
 
-* To provide accurate statistics for the admin (front-end), the system must be capable of processing JSON requests from both the web application and the M5Stack. 
+* To provide accurate statistics for the admin (front-end), the system must be capable of processing JSON requests efficiently from both the web application and the M5Stack.
 * To ensure the admin retains control of the userbase and product, the back-end must also be able to insert new users, sponsors and challenges into the central database, while retaining this data in a persistent manner. 
 * In order for the end-user to have an accurate step count, the system must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
-* To allow for the end-user to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed.
+* To allow for the end-user to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed and sends the required data back to any device that requests.
+* To ensure that there is no discordant data between applications, data is only stored in this system and any data required by other applications will be sent by this system.
 * To ensure that the sponsor's see success from their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### Web System Requirements
@@ -156,7 +161,7 @@ Communication between devices was devised to be as simple as possible to avoid u
 
 ![Architecture](Images/architecture-UML.png)
 
-The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistant storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data. 
+The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistent storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data.
 
 ## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
 In the following section, we will reflect on the final design of each of our key subsystems at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests that we had passed as well as failed. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
@@ -165,14 +170,14 @@ In the following section, we will reflect on the final design of each of our key
 
 Key classes for desktop app include:
 
-* **database** - this is a private class which deals with writing and reading persistant data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types).
-* **data classes** - database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure encapsulation of database class). Having seperate classes for each type of data allowed for modularity when modifying request types was necessary during the project.
-* **events** - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the view class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
-* **tests** - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
-* **view** - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates view in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
+* [**database**](../desktop/management_dashboard/data.pde) - this is a private class which deals with writing and reading persistent data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types).
+* [**data classes**](../desktop/management_dashboard/data.pde) - acts as the database API that retrieves and updates user, sponsor, challenge information (with each data type having their separate APIs respectively to ensure encapsulation of database class). Having separate classes for each type of data allowed for modularity when modifying request types was necessary during the project. Request types and the data types requested are stored as constants (static final Strings) to ensure the communication contract is followed precisely.
+* [**events.pde**](../desktop/management_dashboard/events.pde) - receives and processes MQTT payloads, passes on information into view to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the view class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
+* [**tests.pde**](../desktop/management_dashboard/tests.pde) - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
+* [**view.pde**](../desktop/management_dashboard/view.pde) - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates view in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
 
 ![Processing-uml](Images/Processing-UML.png)
-The above diagram shows dependancies and relationships between classes in the Processing app. 
+The above diagram shows dependencies and relationships between classes in the Processing app. 
 
 ### WEB DESIGN
 
@@ -211,7 +216,7 @@ We need to send and receive the JSON messages that we agreed on in our shared co
 
 #### Front-End
 
-Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polimorphism were too hard to implement effectively in Arduino so the 'View' abstract class does not actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
+Initally our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polymorphism were too hard to implement effectively in Arduino so the 'View' abstract class does not actually exist in our code. However it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
 
 ![M5_HomeScreenView](Images/M5_ViewExplained.png)
 
