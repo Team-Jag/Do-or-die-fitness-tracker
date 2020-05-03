@@ -20,10 +20,11 @@ In our portfolio we will analyse all aspects of the development of our product, 
 
 ## 1. [System Design](Portfolio/SystemDesign.md)
 View our [system design document](Portfolio/SystemDesign.md) to see:
-* System architecture
-* Object-oriented design of key sub-systems
-* Requirements of key sub-systems
-* The evolution of UI wireframes for key sub-systems
+* Product requirements
+* User requirements for key subsystems
+* Architecture of the entire systems
+* Object-oriented design of key subsystems
+* The evolution of UI wireframes for key subsystems
 * Details of the communication protocols in use
 * Details of the data persistence mechanisms in use
 * Details of web technologies in use
