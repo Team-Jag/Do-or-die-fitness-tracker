@@ -190,9 +190,7 @@ During our weekly video call meetings, we were also able to test each of the sub
 
 While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
 
-## d. This is a chance to reflect on how coronavirus has affected your project (remote working practices etc)
-How effective were the tools - reference back to part a)
-
+## Reflection on the effect of COVID-19 on the project
 The coronavirus crisis lasting over the past few months has had multiple effects on the working practices of this project. In general worked effectively using remote working tools such as Slack and Github mentioned in the agile working practices section. The primary issue was communication problems and a lack of clarity for project direction, which we aimed to mitigate as much as possible using remote working tools to facilitate regular meetings.
 
 Technology is not perfect, and despite best efforts to maintain a constant level of communication throughout the project the team was also affected by connectivity issues such as local internet becoming slow or unusable, and hardware issues of local machines. Due to our effective use of Github, local data loss was not a problem, however without access to lab machines if a team member's local machine broke this would constitue a significant issue with completing the project. Luckily this situation never occured, but with lockdown this was still a risk which would never have occured in absence of the coronavirus crisis.
