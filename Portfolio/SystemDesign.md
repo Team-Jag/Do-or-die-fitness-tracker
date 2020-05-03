@@ -232,8 +232,31 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 
 
 ## EVOLUTION OF UI WIREFRAMES FOR KEY SUBSYSTEMS
+After our initial [ideation process](#ideation-and-concept-development), we created our first paper prototype for how we saw users interacting with Do or Die on the M5Stack. Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates how we imagined the end-user interacting with the M5Stack and Do or Die. We undertook the design of our UI wireframes in an iterative fashion. We initially planned how we saw the M5Stack working using a paper prototype, then we received feedback on the design, before reacting to this feedback. Once we began implementing our code, we added in the 'do' phase to our work cycle, that is after planning how we wanted our UI to look, we implemented it in code before seeking feedback and then responding to it. 
 
-Our [User Story video](Images/paper_prototype_video.mp4), developed during the prototype phase, demonstrates our initial design for our product. How this changed for each subsystem will be considered in this section.
+The key aspect of the evolution of our UI wireframes, and the design of our system, came from user evaluation. Before beginning any work on the implementation of our system, we used a few techniques to evaluate our paper prototype. One technique, and the most useful, was the use of ["Wizard of Oz" prototyping](https://searchcio.techtarget.com/definition/Wizard-of-Oz-prototyping).  Using this method, we had a script that we followed to provide directions to the user, a fellow student who acted as the end user, and a member of our team that acted as the "wizard" and simulated how we expected our final product would preform by using our paper prototype. 
+
+From our Wizard of Oz prototyping session, we decided that our first plan for the UI wireframe would need to be simplified further. As we had drawn the M5Stack on a large piece of paper, it was easy to include a number of details that likely would not be visible on our final screen. Moreover, we received feedback that our plan for how to display statistics was not clear enough and we decided that we would have to alter the way that we chose to display this information on the M5Stack. This was process was useful in allowing us to realize how a user would likely interact with our product, including which buttons they would press and what they would expect to happen. Additionally, this allowed us to learn more about our potential audience and what they would expect to get from this product. This included more animation for the Bean, and that they were least likely to use the shop. With this information, we were able to accurately prioritise certain user stories in terms of when they were implemented during the sprint, as well as analyse the UI of our M5Stack. 
+
+After this initial paper prototyping session and Wizard of Oz evaluation, we began to design the UI of our two other key subsystems (the management dashboard and web application), as well as respond to the feedback we received on the M5Stack. This included prioritising the implementation of the health bar, ensuring that the bar graph was clear, and then implementing animation for the Bean. Moreover, after one of our first 'Check' cycles of developing the UI interface across all three subsystems, we received feedback from our peers that we should have a consistent colour scheme to ensure that it felt like one cohesive product. This colour scheme is represented by each subsystem, and can be found in the [Documentation](Documentation/Colour_Scheme.txt) section of our Github. 
+
+### M5STACK UI WIREFRAME
+
+![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
+
+The starting screen was replaced with a more professional logo, following user feedback.
+
+![Do Or Die System Design](Images/M5Images/animation.gif)
+
+From the initial UI wireframe, we designed and animated a simple but responsive sprite. The screen was decluttered to allow the focus on the sprite, based upon feedback we received during the user testing session.
+
+![Do Or Die System Design](Images/M5Images/statsCollage.jpg)
+
+The stats screen was implemented according to the UI wireframe, however we have not implemented the sleep detection feature due to its dificulty to develop. Therefore, different statistics have been displayed.
+
+![Do Or Die System Design](Images/M5Images/campaignShopCollage.jpg)
+
+Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
 ### DESKTOP UI WIREFRAME
 
@@ -266,24 +289,6 @@ Original web wireframe design for desktop profile in comparison to the new, simp
 
 An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.<br>
 <img src="Images/signup-draft.png" width=50%><img src="Images/signup-final.PNG" width=50%>
-
-### M5STACK UI WIREFRAME
-
-![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
-
-The starting screen was replaced with a more professional logo, following user feedback.
-
-![Do Or Die System Design](Images/M5Images/animation.gif)
-
-From the initial UI wireframe, we designed and animated a simple but responsive sprite. The screen was decluttered to allow the focus on the sprite, based upon feedback we received during the user testing session.
-
-![Do Or Die System Design](Images/M5Images/statsCollage.jpg)
-
-The stats screen was implemented according to the UI wireframe, however we have not implemented the sleep detection feature due to its dificulty to develop. Therefore, different statistics have been displayed.
-
-![Do Or Die System Design](Images/M5Images/campaignShopCollage.jpg)
-
-Initially our UI wireframe included a shop feature, however after adding a third user type (the Sponsor) we shifted our focus to implementing the challenges feature instead. The shop feature remains a valid possible future feature as dicussed in [Project Evaluation](ProjectEvaluation.md).
 
 As we have now outlined the key features and design of each of our subsystems, we will detail and reflect on the other key features of our system's architecture. 
 
