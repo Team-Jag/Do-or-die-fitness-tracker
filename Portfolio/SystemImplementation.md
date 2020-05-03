@@ -3,8 +3,6 @@
 
 Now that we have highlighted how we settled on the [design of our system](SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
 
-
-
 ## Table of Contents
 
 - [**Software Development Cycle**](#software-development-cycle)
@@ -346,10 +344,23 @@ Initially for the design idea of the base product we wanted to produce, the mini
 Potential limitations of using the evaluation matrix are the chance of concentrating on features of too little significance, instead of concentrating on user centric features we instead focused on what was achievable in a given sprint timeframe. The scores assigned to each metric are also entirely subjective, so a more complex analysis would have been more appropriate to critically determine the value of a feature. However, our team found as we moved further in to evaluating our design during each sprint, that this evaluation method was not as useful as we had first thought. 
 
 ### Evaluating the Quality Requirements
-Finally, we knew when developing our system that we wanted to focus largely on the non-functional requirements. These included the security of our system, the maintainability, the ease of use, and the reliability of our system as a whole. This relied in large part on testing our system in an integrated manner, which will be explored further below. 
+We knew when designing our system initially that we wanted to focus largely on the non-functional requirements. These included the security of our system, the maintainability, the ease of use, and the reliability of our system as a whole. This relied in large part on testing our system in an integrated manner, which will be explored further below. However, we will first consider each of these "non-functional" requirements and how evaluating them during our sprints changed the design of our system. 
+
+#### Security
+
+#### Maintability
+While our team was a relatively small team, and could easily maintain our product if necessary, we wanted to develop it in a way that allowed it to be maintained by a larger team. This meant developing each part of our system to conform with our shared contract, to allow us to meet new requirements. Moreover, make the code in each part of our system as clear as possible to allow for quick changes. 
+
+#### Ease of Use
+
+#### Reliability
 
 ### User Testing and Evaluation
-The one key concept that our team kept coming back to was that our product was made for someone, and thus our main focus was on the end-user when designing and implementing our product. If the end-user was not happy, or not able to use our product, then there would be no need for the admin or the sponsor. 
+The one key concept that our team kept coming back to was that our product was made for someone, and thus our main focus was on the end-user when designing and implementing our product. If the end-user was not happy, or not able to use our product, then there would be no need for the admin or the sponsor. While our user testing was affected by our move to remote working, prior to this we used this method to evaluate our design extensively during each sprint. We had our peers and friends use different aspects of our product, and comment on what they liked and did not like. Moreover, we watched how they interacted with the different parts of our system in order to see what needed to potentially be changed, and what could be made easier so that the user did not feel like accessing different parts of our system were a chore. 
+
+This method for evaluating our design was incredibly effective, we were able to simplify certain parts of our architecture such as what we expected from the M5Stack. Once we realized that most users would be content to first have a simple step tracker with their Bean animated, we put our focus on this user story rather than trying to implement too much at once. This evaluation technique allowed us to step back and help us to realize what was most important from our design. 
+
+Moreover, it ensured that we prioritised what needed to change. One example of this was the decision to change the log in feature on the web. While designing our product we decided that you would need to log in with a username as well as an email, however we quickly realized that this was cumbersome for the user and it would make more sense for them to just log in with their username. This was due to user evaluation of our design. 
 
 ### Unit Testing
 
@@ -371,7 +382,6 @@ We do recognize that there are certain limitations to this method, mainly that w
 ### Final Reflection on Evaluation
 
 Our team was happy in the effectiveness of this approach, as rather than waiting until the end of developing our software, we knew that we always had a minimum viable product in our master branch.
-
 
 ## Social and ethical implications
 ### Code of ethics
