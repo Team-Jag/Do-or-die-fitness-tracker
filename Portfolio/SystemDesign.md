@@ -295,19 +295,19 @@ Initially our UI wireframe included a shop feature, however after adding a third
 As we have now outlined the key features and design of each of our subsystems, we will detail and reflect on the other key features of our system's architecture. 
 
 ## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
-Our IoT product was developed utilising the M5Stack platform, as a result of this, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move from the web to desktop, M5Stack to desktop, and desktop to both the Web and M5Stack. In order to allow for this, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
+Our IoT product was developed utilising the M5Stack platform, as a result of this, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move from the web to desktop, M5Stack to desktop, and desktop to both the Web and M5Stack. In order to allow for this, we used MQTT (Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
 
-* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time, which is important to separate the web and M5Stack clients. 
+* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time, which is important to separate the web and M5Stack clients.
 
-* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data from the server to the client, including the updated health data. 
+* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messages from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data from the server to the client, including the updated health data. 
 
 * MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs. As a key aspect of the design of our system is the maintaibility of our product, we felt that this was an important decision. 
 
 * MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. As responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
-To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below.
+To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below in the communication protocol section.
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match of both parameters. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
 
 ### DESKTOP AND M5STACK
 
@@ -400,8 +400,7 @@ The M5Stack uses this request type to increment one step in the database, but th
 ```
 
 ### DESKTOP AND WEB
-
-When the web pushes a new profile to the database, there is no response from the database:
+To ensure that data is only stored in the database, the web has to fetch and parse JSON objects from the MQTT topic (doordie_web) and build dynamic pages accordingly when viewing user profile, challenges enrolled, or total challenges. The first two pages is built by requiring logins so that the user will have to type in the required field "user_name" to fetch their respective data. For adding user/sponsor profiles, all data is entered by the user (user_name, and user_type sponsor is determined if the user checks the box "I am a sponsor") and joined_date (in linux epoch time) is automatically generated by the web, and sent to the database. This ensures that data does not need to be stored in the web.
 
 ```
 { 
@@ -421,14 +420,14 @@ The web requests a user profile from the database:
 }
 ```
 
-The database uses the same request type as it does for the M5Stack to send a user profile:
+The database sends the complete user data (challenges, total_steps and remaining_sec) back to the web:
 
 ```
 {
     "type": "push web profile",
     "user_name": "Mario",
-    "total_steps": "2200",
-    "remaining_sec": "2000",
+    "total_steps": 2200,
+    "remaining_sec": 2000,
     "challenges": [
     {
         "challenge_id": "1",
@@ -450,43 +449,7 @@ The database uses the same request type as it does for the M5Stack to send a use
 }
 ```
 
-The web requests all challenges that the user is enrolled in with:
-
-```
-{
-    "type": "pull user challenges",
-    "user_name": "Mario"
-}
-```
-
-The database responds with the same request type used for the M5Stack to send all challenges an individual user is enrolled in:
-
-```
-{
-    "type": "push user challenges",
-    "user_name": "Mario",
-    "challenges": [
-    {
-        "challenge_id": "1",
-        "challenge_name": "10K Step Challenge",
-        "description": "stepstep",
-        "end_time": 1589500800,    
-        "step_goal": 10000,
-        "reward": 800
-    },
-  
-    {
-        "challenge_id": "2",
-        "challenge_name": "Challenge 2",
-        "description": "runrun",
-        "end_time": 1589500800,
-        "step_goal": 2000,
-        "reward": 200
-    }]
-}
-```
-
-The web requests all challenges:
+To view the total challenges currently available, the web sends a simple request for all challenges:
 
 ```
 {
@@ -494,7 +457,7 @@ The web requests all challenges:
 }
 ```
 
-The database sends all current challenges to the web:
+The database sends all current challenges available to the web:
 
 ```
 {
@@ -520,7 +483,7 @@ The database sends all current challenges to the web:
 }
 ```
 
-When a sponsor adds new challenges, there is no response from the database:
+When the logged-in sponsor adds new challenges, all fields, which are required, are entered by the sponsor and will be sent to the database with the following request type:
 
 ```
 {
@@ -534,7 +497,7 @@ When a sponsor adds new challenges, there is no response from the database:
 }
 ```
 
-When the user selects a challenge, there is no response from the database:
+When the logged-in user selects a challenge, there is no response from the database:
 
 ```
 {
@@ -546,9 +509,9 @@ When the user selects a challenge, there is no response from the database:
 
 ## DETAILS OF THE DATA PERSISTENCE MECHANISMS IN USE
 
-Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices. 
+Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices.
 
-  In order to allow persistence we used users.json, sponsors.json and challenges.json files to store respective data. This format allows the central server to send an entire user profile when recieving a request from the M5 or web device to pull a profile using the data API. Each user object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability, as mentioned in project evaluation.
+In order to allow persistence we used [users.json](/desktop/management_dashboard/data/users.json), [sponsors.json](/desktop/management_dashboard/data/sponsors.json) and [challenges.json](/desktop/management_dashboard/data/challenges.json) files to permanently store respective data. This permanent data storage allows to separate the API from having to worry about how the data is stored or if data will be lost when the software crashes. This format allows the central server to send an entire user profile when receiving a request from the M5 or web device to pull a profile using the data API. To emulate a relational database, each user and sponsor object contains a challenges_id array which contains all the ids of currently enrolled challenges. Challenge_id array parameter is used to refer to enrolled challenges from challenges.json in order to keep payload lengths below the MQTT maximum. Similarly, each sponsor object also contains a challenge_id array (foreign key that refers to challenges data). Additionally, data will only be accessed when required (processing requests or updating user remaining health). This structure would ideally be implemented in a SQL relational database to increase speed and maintanability, as mentioned in project evaluation.
 
 M5 device is stateless therefore does not store information locally apart from created variables such as the username, which is required to pull data from the database when the M5 first starts up. These are then pulled from the database via a pull user profile request type. Keeping the M5 stack stateless allowed for more modularity and reliability of the system, as even if the device breaks (which is a significant risk considering it is used for fitness and will be physically moved a lot) it can be replaced without loss of user data. If the device is stolen or lost, the user data is still stored on the central server and not the device, which means it can be removed and not leak information on the M5 stack. 
 
