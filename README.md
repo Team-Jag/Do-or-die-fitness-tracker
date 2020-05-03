@@ -44,7 +44,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Discussion of future work
 * Reflection on working practices of our group
 
-## REFERENCES
+## References
 
 #### M5Stack Libraries & Referenced Code
 [M5Stack Default Library](https://github.com/m5stack/M5Stack)
