@@ -37,21 +37,25 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
 * Defined minimum viable product (MVP) with functions/classes/variables
-* Defined interactions between subsystems including the function calls and their JSON syntax 
+* Defined interactions between subsystems including a first iteration of the request types and their JSON syntax 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
-* Design up a basic UI interface mockup for admin user story
+* Design a basic UI interface mockup for admin user story
 
 **WIP:**
 * Implementation of communication protocol 
+
+**User Stories To Prioritize in next sprint**
+The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter.
+In order to allow the user to keep track of their steps between sessions, we need to make thestep data persistent, so we also need to develop a basic first version of our desktop server.
 
 ### Sprint 2 : First Prototype (9.3-16.3) 
 The goal of this sprint was to create a very basic proof of concept. Our team agreed that this was mainly focused on turning the M5Stack in to a pedometer, and that Processing is able to receive step data from the M5Stack and process it accordingly. 
 
 **User Stories Implemented:**
-* End-user able to use pedometer accurately, steps counts persists between sessions
+* The End-user is able to use the M5Stack to track their steps. The step count persists between sessions.
 
 **DONE:**
-* M5Stack able to send a notification to server (Processing) for each new step
+* M5Stack able to send a notification to Desktop server for each new step
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
@@ -59,6 +63,10 @@ The goal of this sprint was to create a very basic proof of concept. Our team ag
 
 **WIP:**
 * Improve the accuracy of the step count
+
+**User Stories to Prioritize in next sprint**
+The next key user-story is that of the sponsor, so in the next sprint we should focus on delivering a web interface where a sponsor can sign-up and create challenges for the end-user. 
+We must keep a secondary focus on beginning to design an interface for our Desktop server from where the Admin can monitor the performance of the product.
 
 <table>
 <tr>
@@ -78,7 +86,7 @@ The goal of this sprint was to create a very basic proof of concept. Our team ag
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td></td>
+  <td>Developed step counter on M5Stack using external library to interpret gyroscope data. Implemented basic communication mechanism </td>
   <td></td>
 </tr>
 </table>
@@ -91,20 +99,22 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
 
 **User Stories Implemented:**
-* Implemented a health bar on the M5 stack, so that the user can visualize the Bean's remaining life
-* Added a Bean sprite for the user's M5 stack, without animation
-* Added dummy charts in admin view for visualisation of data
+* The sponsor is now able to create an account and create new challenges through our web interface.
+* The end-user is now able to create an account and enrol in challenges on our web interface.
+* We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
+* The Admin can now visualize product performance (dummy) data in the Desktop app
 
 **DONE:**
-* Improved accuracy of the step count
-* Improve the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
+* Improved the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
 * Web able to send and receive dummy data from the broker
 
 **WIP:**
-* All subsystem able to receive, process and send the intended MQTT request types
-* All subsystems provide a basic version of the agreed visualization 
-* MQTT message length issue with M5 Stack 
+* All subsystems provide a basic version of the agreed visualization
+
+**User stories to Prioritize in next sprint**
+At this point each of our user stories has been at least partially delivered, so our work will now focus on improve each of the user stories.
+The next task is to work on our user interfaces in order to improve user experience across all user-stories.
 
 <table>
 <tr>
@@ -156,6 +166,10 @@ The goal of this sprint was be to get to advance our prototye, which fixed inter
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
 
+**User stories to prioritize for next sprint**
+Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
+It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
+
 <table>
 <tr>
   <th>Technology</th>
@@ -175,7 +189,7 @@ The goal of this sprint was be to get to advance our prototye, which fixed inter
 <tr>
   <td>M5Stack</td>
   <td></td>
-  <td></td>
+  <td>When attempting to replace Challenges and Statistics dummy data on the M5Stack with appropriate requests on the MQTT Topics, we found that the M5Stack ignored all messages on the MQTT Topic that were above a certain length.</td>
 </tr>
 </table>
 
@@ -202,6 +216,10 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Replace statistics dummy data with data from server on M5 stack
 * Add sponsor API to desktop
 * Adding new user should initialise user data with default values
+
+**User stories to prioritize for next sprint**
+Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
+It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
 
 <table>
 <tr>
