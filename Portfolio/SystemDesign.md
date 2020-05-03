@@ -150,23 +150,25 @@ The web application acted as the primary interface for the sponsor to interact w
 ## ARCHITECTURE OF THE ENTIRE SYSTEM
 As has been outlined above, it is clear who our user groups are as well as how they will interact with each of our key subsystems and what each of the key subsystems must be able to do. However, to be able to deliver our user stories, and final product, we needed our architecture to send and store data: 
 
-* **Data Communication** :
+**Data Communication**
 To ensure that each subsystem communicated in the same way, we developed a shared communication contract. Data such as step data moves between the M5Stack to the Desktop, and then the Desktop to the Web. We implemented this by using a MQTT broker, which is explained further in the [communication protocols section](#details-of-the-communication-protocols-in-use). 
 
-* **Data Repository** : 
+**Data Repository**
 To ensure that our data is persistent, we store the data in JSON files. These JSON files are stored locally where the Processing app is running, similar to a server. This process is explained and evaluated further in the [data persistence subsection](#details-of-the-data-persistence-mechanisms-in-use). 
 
-* **System Validation** :
-
-* **System Verification** :
-
-However, before exploring each of these mechanisms in further detail, it is important to outline the overarching archiecture of our system. Our system architecture uses a central controller API which communicates with the database, and receives and sends requests using MQTT protocol to communicate between different devices. To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker. By doing this, we ensure that the Web and M5Stack components never directly interact. 
+However, before exploring each of these mechanisms in further detail, it is important to outline the overarching architecture of our system. Our system architecture uses a central controller API which communicates with the database, and receives and sends requests using MQTT protocol to communicate between different devices. To maintain separation of concerns, all data is accessed through an API public class which allows access to a private Database class for storage of persistant data, and requests pass through a multiple channels on the MQTT broker. By doing this, we ensure that the Web and M5Stack components never directly interact. 
 
 Communication between devices was devised to be as simple as possible to avoid unecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Our shared contract will be explored in further detail [below](#details-of-the-communication-protocols-in-use). Unit testing each subsystem allowed us to be confident that individual components were working correctly, which allowed for ease of integration during each sprint. 
 
 ![Architecture](Images/architecture-UML.png)
 
 The above diagram demonstrates dependancies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed recieves a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistent storage, and it is a modularity concern as there is a strict contract devices must adhere by to add or request data.
+
+**System Validation** (building the right product)
+It was important to be sure that every aspect of our system had the correct purpose in regards to the specifications defined by our user stories. Our subsystem specifications for each device (web, desktop and M5) were built to solve each use case defined in user stories. By going from the original ideation stage and taking a user-centric approach to designing our product, we have ensured that we designed the product right for each use case. We established use case goals for each user story. Our product was therefore internally validated, as the use case goals were clearly defined and expressed in the form of requirements, which we then proceeded to implement. 
+
+**System Verification** (building product right)
+This refers to correctly implementing features based on subsystem specifications as defined by our user stories. This is a form of spe
 
 ## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
 In the following section, we will reflect on the final design of each of our key subsystems at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests that we had passed as well as failed. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
