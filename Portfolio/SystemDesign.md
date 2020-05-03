@@ -254,7 +254,7 @@ Selecting a specific statistic from UI to allow data to be viewed on different t
 <img src="Images/select-chart.png" width=75%>
 
 Different selected charts showing data over time for each parameter, such as users, sponsors, challenges in an intuitive way.
-<img src="Images/select-charts.png" width=75%>
+<img src="Images/selected-charts.png" width=75%>
 
 ### WEB UI WIREFRAME
 
@@ -262,7 +262,9 @@ Original web wireframe design for desktop profile in comparison to the new, simp
 <img src="Images/web-wireframe.jpg" width=50%><img src="Images/web-screenshot.PNG" width=50%>
 
 An initial sign-up screen draft next to the final sign-up screen, with sponsor checkbox. Sponsors will be forwarded to the create challanges page, users to their profile page.
-<img src="Images/signup-draft.png" width=50%><img src="Images/signup-final.PNG" width=50%>
+
+<img src="Images/signup-draft.png" width=50%>
+<img src="Images/signup-final.PNG" width=50%>
 
 ### M5STACK UI WIREFRAME
 
