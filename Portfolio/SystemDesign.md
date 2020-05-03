@@ -168,6 +168,9 @@ In the following section, we will reflect on the final design of each of our key
 
 ### DESKTOP DESIGN
 
+![Processing-uml](Images/Processing-UML.png)
+The above diagram shows dependencies and relationships between classes in the Processing app. 
+
 Key classes for desktop app include:
 
 * [**database**](../desktop/management_dashboard/data.pde) - this is a private class which deals with writing and reading persistent data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change database. The database class follows the liskov substitution princple, as it does not care what type of data request comes in (between sponsor, user and challenge types).
@@ -176,10 +179,9 @@ Key classes for desktop app include:
 * [**tests.pde**](../desktop/management_dashboard/tests.pde) - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly.
 * [**view.pde**](../desktop/management_dashboard/view.pde) - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helped functions for building the UI, for building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates view in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
 
-![Processing-uml](Images/Processing-UML.png)
-The above diagram shows dependencies and relationships between classes in the Processing app. 
-
 ### WEB DESIGN
+
+![web-uml](Images/web-uml.png)
 
 For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
@@ -196,23 +198,18 @@ React is ideal to implement object oriented design. Our website consists of func
 * **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
 * **Common static components such as headers, navbars or footers** which can be integrated in all of the views
 
-![web-uml](Images/web-uml.png)
-
 ### M5STACK DESIGN
+
+![m5-uml](Images/M5_Design.png)
+On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design, however we will explore both the classes implemented in the front and back-end of the M5Stack. 
 
 #### Back-End
 
-Since our M5Stack is effectively a stateless machine with well-developed animations, our back-end Classes are straight-forward.
-We need to read in the data from the Gyroscope and use it to detect when the user takes a step. By counting steps we get an idea of how active a user is at any given time.
-We need to send and receive the JSON messages that we agreed on in our shared contract. This allows the M5Stack to be a memoryless machine by pulling and pushing all the necessary data from and to the Desktop server.
+Since our M5Stack is a stateless machine with well-developed animations, our back-end Classes are straight-forward. In the back-end, we need to read in the data from the Gyroscope and use it to detect when the user takes a step. By counting steps we are able to accurately reflect the Bean's health bar (calculated based on time) which is the very essence of our product. To do this, we need to send and receive the JSON messages in the form that was agreed upon in our shared contract. This allows the M5Stack to be a memoryless machine by pulling and pushing all the necessary data from and to the Desktop server.
 
-* **Pedometer.h**
-  * Count the steps taken by the user using the Gyroscope inside the M5Stack. (This code is taken from MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016).
+* **Pedometer.h:** This class acurrately counts the steps taken by the user using the Gyroscope inside the M5Stack. (This code is taken from MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016). 
 
-* **Main.h**
-  * This is the main class whose loop() is running at all times in the M5Stack. It publishes and reads messages on the appropriate MQTT Topics, it does so by serializing and deserializing JSON messages using the ArduinoJson.h library.
-  Once a JSON message is deserialized it is placed in the correct Class, so for example Challenges data will be stored in the ChallengesView object, whereas Statistics data will be stored in the StatsView object.
-  Once all data is correctly handled, Main.h selects which of the Front-End View objects to draw(), according to the screen requested by the user, through the use of the M5Stack buttons.
+* **Main.h:** This is the main class, the loop() is running at all times in the M5Stack. It publishes and reads messages on the appropriate MQTT Topics, and does so by serializing and deserializing JSON messages using the ArduinoJson.h library. Once a JSON message is deserialized it is placed in the correct Class. For example, data relating to the challenges will be stored in the ChallengesView object, whereas Statistics data will be stored in the StatsView object. Once all data is correctly handled, Main.h selects which of the Front-End View objects to draw(), according to the screen requested by the user, through the use of the M5Stack buttons.
 
 #### Front-End
 
@@ -220,23 +217,17 @@ Initally our idea for the M5Stack Front-End Classes was to have a central abstra
 
 ![M5_HomeScreenView](Images/M5_ViewExplained.png)
 
-* **View.h (ChallengesView.h, StatsView.h)**
-  * Draw the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h). These are effectively aggreate classes which combine the move() and draw() functions of our component classes below
+* **View.h (ChallengesView.h, StatsView.h):** This class drawa the Home screen, Challenges screen or Statistics screen using a composition of their child module Classes (TextBox.h,  Timer.h, Bar.h, Bean.h). These are effectively aggreate classes which combine the move() and draw() functions of our component classes below. 
 
-* **TextBox.h**
-  * Draw a simple box with given text at the bottom of the screen, used to explain what each M5Stack button does in each View
+* **TextBox.h:** This class draws a simple box with given text at the bottom of the screen, used to explain what each M5Stack button does in each View. 
 
-* **Timer.h**
-  * Small class implementing a simple timer, we use this in each View class to control the refresh rate of our front-end frames. We also use it in Main.h to set how often we update the user information by sending a user_profile type request to the Desktop Server.
+* **Timer.h:** This class implements a simple timer. We use this in each View class to control the refresh rate of our front-end frames. It is also used in Main.h to set how often we update the user information by sending a 'user_profile' type request to the Desktop Server.
 
-* **Bar.h**
-  * Draw a simple horizontal progress bar, used to visualize the "Health" left in the Home view, the progress of a challenge in the Challenges view, and how close a user is to their personal record in the Statistics View. We ended up using a lot of progress bar in our View objects because the M5Stack graphics library provides a simple way to create such progress bars and this kind of bars communicates really well to the user how well or poorly they are performing
+* **Bar.h:** In this class, we draw a simple horizontal progress bar, used to visualize the "Health" left in the Home view, the progress of a challenge in the Challenges view, and how close a user is to their personal record in the Statistics View. We ended up using a lot of progress bars in our View objects because the M5Stack graphics library provides a simple way to create such progress bars. These bar charts provide an effective way to communicate to the user how well they are preforming regardless of the context in each view on their M5Stack. 
 
-* **Bean.h**
-  * Used in Home view to draw our main animation: a cute-looking sprite which jumps around the screen and changes it's facial expressions. The movement speed, jumping height and jumping frequency are all dynamically calculated based on the "Health" of the sprite. We spent a lot of time optimizing this class' animations because they are what's meant to keep the user attached to their bean and therefore motivated to live a healthy lifestile.
+* **Bean.h:** This is used in Home view to draw our main animation: a cute-looking sprite named Bean which jumps around the screen and changes it's facial expressions. The movement speed, jumping height, and jumping frequency are all dynamically calculated based on the "Health" of the sprite. The health, which is the remaining time the sprite has left, is calculated by the Desktop server. We spent a lot of time optimizing this class' animations, as they help the user grow attached to their Bean, and therefore motivate them to live a health lifestyle. 
 
-![m5-uml](Images/M5_Design.png)
-On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design...
+
 
 ## EVOLUTION OF UI WIREFRAMES FOR KEY SUBSYSTEMS
 
