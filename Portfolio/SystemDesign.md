@@ -244,6 +244,13 @@ From our Wizard of Oz prototyping session, we decided that our first plan for th
 
 After this initial paper prototyping session and Wizard of Oz evaluation, we began to design the UI of our two other key subsystems (the management dashboard and web application), as well as respond to the feedback we received on the M5Stack. This included prioritising the implementation of the health bar, ensuring that the bar graph was clear, and then implementing animation for the Bean. Moreover, after one of our first 'Check' cycles of developing the UI interface across all three subsystems, we received feedback from our peers that we should have a consistent colour scheme to ensure that it felt like one cohesive product. This colour scheme is represented by each subsystem, and can be found in the [Documentation](../Documentation/Colour_Scheme.txt) section of our Github. 
 
+Before beginning to do any of the implementation on the M5Stack, we decided to implement an updated version of our [paper prototype on Processing](https://github.com/Team-Jag/Do-or-die-fitness-tracker/tree/ui-wireframesIntroduction/Portfolio/M5StackPrototype). 
+<p align="center">
+<img src="Images/prototype.gif" width=50%>
+</p>
+After undertaking user testing with some of our peers using the prototype implemented on processing, we realized that it was better to revert to our initial design of having a bar chart to demonstrate health. This made it easier to visualize, and we knew that it would be more difficult to see the time ticking down on the M5Stack. Importantly, we decided that the M5Stack would only request the user profile every five seconds. As the time remaining, which influences the time until the Bean dies and the health bar, is calculated by the database this could lead to potential gaps. Moreover, we received feedback that it was better to use textboxes to say what the buttons did rather than images, which we implemented in future design cycles. 
+
+
 ### M5STACK UI WIREFRAME
 
 ![Do Or Die System Design](Images/M5Images/loadingScreenCollage.jpg)
