@@ -338,8 +338,14 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 
 ## Details of design evaluation
 
-A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our designs will be considered in turn in the following section, as well as their limitations. 
+A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. 
 
+### User Testing and Evaluation
+
+### Unit Testing
+
+### System Integration 
+As the success of our product relied on our three key subsystems working together, it was necessary to 
 
 
 Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
