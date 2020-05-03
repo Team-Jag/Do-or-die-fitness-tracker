@@ -30,6 +30,10 @@ Prior to exploring how our team broke our project in to sprints, and how we eval
 
 Using the Agile model allowed for faster software development. At the beginning of each sprint we decided the features that we would implement during that sprint, the tests that we expected each subsystem to pass, and the user stories that we expected to be satisfied by the implementation of those features. During each iteration we defined the requirements based on the backlog from previous sprints, and test user feedback. We then designed the software based on the requirements that we had established as a group, before coming back together during our weekly sprint review to undertake quality assurance testing and intergration testing. We then integrated our product by merging all changes to the master branch of our Github. Finally, we evaluated our previous version before defining the requirements for the next sprint. 
 
+![Agile](Images/agile.png)
+
+The above diagram, copied from this [website](https://hackernoon.com/a-case-study-type-insight-into-agile-methodologies-for-software-development-cd5932c6) demonstrates the development cycle that our team followed during the creation of our product. 
+
 ## Breakdown of project into sprints
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
