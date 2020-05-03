@@ -338,24 +338,40 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 
 ## Details of design evaluation
 
-A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. 
-
-### Design Evaluation Cycle
-Going hand in hand with our software design cycle and during each sprint, we also found that we had - in some ways - a design evaluation cycle. At the beginning of each sprint, we would have a preliminary design that we expected we would develop during that sprint. This included the user stories that we wanted to implement, and how we would do this. During the sprint we would implement these, as highlighted above, however within our design cycle we would then have a number of forms of evaluation at the end of our sprint. This stage of our design cycle allowed us to shape and form our requirements for the next sprint, as well as reprioritize the user stories where necessary. 
+A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. Going hand in hand with our software design cycle and during each sprint, we also found that we had - in some ways - a design evaluation cycle. At the beginning of each sprint, we would have a preliminary design that we expected we would develop during that sprint. This included the user stories that we wanted to implement, and how we would do this. During the sprint we would implement these, as highlighted above, however within our design cycle we would then have a number of forms of evaluation at the end of our sprint. This stage of our design cycle allowed us to shape and form our requirements for the next sprint, as well as reprioritize the user stories where necessary. During the design evaluation phase, we would utilise a number of methods and techniques for evaluation. The main methods for our design evaluation involved some form of testing to ensure that our design was working as expected. 
 
 ### User Testing and Evaluation
 
+
 ### Unit Testing
 
+
 ### System Integration 
-As the success of our product relied on our three key subsystems working together, it was necessary to 
+As the success of our product relied on our three key subsystems working together, it was necessary to perform extensive integration testing at the end of each sprint. This would take place during our weekly scrum. During this aspect of evaluating our design, we would go through our shared contract to ensure that all systems preformed as expected when using the shared contract. During earlier sprints, it was clear that there was unnecessary information included in certain request types and that these would have to be adjusted. The success of this method of evaluation, however, relied on ensuring that each unit was thoroughly tested individually. Once we were certain of this, we tested them together. 
+
+Due to the fact that we implemented a shared contract between all subsystems, it was easy to test them together. We chose to take an incremental approach to integrating our subsystems during each sprint. By doing it in this manner, we were able to first test that the web and desktop, for example, integrated as expected and both responded correctly to the same request types. Once we certain of this, we were able to test the M5Stack with the desktop before then testing all subsystems as a single unit. As the web and M5Stack did not directly interact, this allowed for ease of testing. 
+
+#### Test Scenarios
+After integrating our system for the first time, we realized that we needed a more effective way of ensuring that our systems had integrated correctly. Thus, we decided to focus on testing the user stories that we had outlined at the beginning of the sprint during each scrum. Doing this allowed us to ensure that we had not only successfully implemented that user story, but that our subsystems were also working as expected. While undertaking the testing scenarios, we would make note of any bugs that arose and ensure that they were prioritised to be fixed during the next sprint. 
+
+By ensuring that we executed each user story on our integrated system, we knew that we were successfully implementing those user stories. For example, when implementing the user story of having the end-user log on to the web to view their live step count we were able to test all three subsytems. We knew that the M5Stack was accurately sending the step information to the database. From there, the database correctly sent the updated step count for that user to the web as well as calculated how much time they had left, and the web was then able to display that information. 
+
+Our team felt that this was one of the most effective ways of evaluating our system, and often highlighted certain issues that we had to address. This included, for example, the fact that we noticed during one sprint that the web and M5Stack were displaying different step data. Thus, prior to integrating our systems in the master branch, we had to address that issue. This was easily fixed when we realized that one team was using an outdated version of our shared contract. 
+
+We do recognize that there are certain limitations to this method, mainly that we were limited in the amount of test data that we could use. We would have to adjust the process when scaling the project for a larger userbase, and be prepared with a large amount of mock data. Moreover, it was possible that we could have had more test cases to ensure that all aspects of our system were working as expected. During each iteration, we attempted to implement as many test cases as possible to reflect this. 
+
+### Final Reflection on Evaluation
+
+Our team was happy in the effectiveness of this approach, as rather than waiting until the end of developing our software, we knew that we always had a minimum viable product in our master branch.
+
+
 
 
 Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
 
 Potential limitations of using the evaluation matrix are the chance of concentrating on features of too little significance, instead of concentrating on user centric features we instead focused on what was achievable in a given sprint timeframe. The scores assigned to each metric are also entirely subjective, so a more complex analysis would have been more appropriate to critically determine the value of a feature.
 
-As we were following the Agile method for development of our product, at the end of each sprint we performed exhaustive tests on each sub-system where the results were discussed in our scrum meetings performed over Google Hangout. Once these tested features were tested and working, we decided on each successive feature to implement in the design based on an informal SWOT analysis first as individual pairs from each team, then agreeding as an overall team on pre-approved ideas from the pairs dependent on timeline and other subteam requirements. We believed the SWOT evaluation method to be more useful in our design approach over each sprint than the evaluation matrix.
+As we were following the Agile method for development of our product, at the end of each sprint we performed exhaustive tests on each sub-system where the results were discussed in our scrum meetings performed over Google Hangout. Once these tested features were tested and working, we decided on each successive feature to implement in the design based on an informal SWOT analysis first as individual pairs from each team, then agreeing as an overall team on pre-approved ideas from the pairs dependent on timeline and other subteam requirements. We believed the SWOT evaluation method to be more useful in our design approach over each sprint than the evaluation matrix.
 
 ## Social and ethical implications
 ### Code of ethics
