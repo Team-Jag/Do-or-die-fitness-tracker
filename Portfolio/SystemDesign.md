@@ -288,19 +288,21 @@ As we have now outlined the key features and design of each of our subsystems, w
 ## DETAILS OF THE COMMUNICATION PROTOCOLS IN USE
 Our IoT product was developed utilising the M5Stack platform, as a result of this, we utilised WiFi connectivity to allow for communication between our subsystems. This allowed for data to move from the web to desktop, M5Stack to desktop, and desktop to both the Web and M5Stack. In order to allow for this, we used MQTT(Message Queue Telemetry Tansport) as our communication protocol rather than something like HTTP web services. We made this decision for a few reasons:
 
-* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time.
+* As HTTP is a synchronous protocol, the client is required to wait for the server to respond. On the other hand, with MQTT the client connects to the broker and subscribes to the message "topic" in the broker. The MQTT is able to receive all messages from the clients and route the messages to the relevant clients. This allows for us to communication across subsystems at the same time, which is important to separate the web and M5Stack clients. 
 
-* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data.
+* HTTP is a one-way connection, this means that the client (ie. our M5Stack) is not able to passively receive messags from the server. By utilising the MQTT protocol, the client can subscribe to the topic and receive all messages. This allows for real-time updated data from the server to the client, including the updated health data. 
 
-* MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs.
+* MQTT allows for scalability of our product, when there are a number of devices connected across the platform. This is due to the fact that it utilises reduced network bandwith to move the data between subsystems, which would then lower operation costs. As a key aspect of the design of our system is the maintaibility of our product, we felt that this was an important decision. 
 
-* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. Due to the fact that responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies").
+* MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. As responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
 To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below.
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. A list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt), this document was used by our group to ensure clear communication between subsystems. We will expand on the key communication protocols and the request types below.
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
 
 ### DESKTOP AND M5STACK
+
+The 'push profile' request type was the main message pushed to the M5Stack. As a stateless device, the M5 doesn't store any data and instead receives it from the server in real time by sending a 'pull profile' request and receiving this request every 5 seconds. As a result of this, we had to keep the size of this request small so that it could be sent frequently without flooding the MQTT topic (which would become more of an issue with multiple users). Therefore, instead of sending all the user's data in one large JSON package, this request only sends two key fields: 'total steps' and 'remaining seconds' of the Bean. The remainder of the user data is sent to the M5Stack using the other request types 'push user challenges' and 'push user stats'. These are called only when the user requests to see such data by going to the respective screen on the M5Stack. Structuring our request types in this way reduces the load on our architecture to a level low enough that it can be handled by a small server on a personal computer. Therefore allowing us to deliver a minimum viable product without having to use larger servers.
 
 To send a user's profile data to the M5Stack from the database:
 
@@ -354,7 +356,7 @@ This is sent when the M5Stack requests the challenges of the user:
 ```
 {
     "type": "pull user challenges",
- "user_name": "Mario"
+    "user_name": "Mario"
 }
 ```
 
@@ -362,8 +364,8 @@ To update the statistics of the user on the M5Stack:
 
 ```
 {
- "type": "pull user stats",
- "user_name": "Mario"
+     "type": "pull user stats",
+     "user_name": "Mario"
 }
 ```
 
@@ -371,11 +373,11 @@ The database uses the following request type to send stats to the M5Stack:
 
 ```
 {
- "type": "push user stats",
- "user_name": "Mario",
- "daily_record": 10000,
- "weekly_record": 39000,
- "weekly_current": 18032
+    "type": "push user stats",
+    "user_name": "Mario",
+    "daily_record": 10000,
+    "weekly_record": 39000,
+    "weekly_current": 18032
 }
 ```
 
@@ -401,7 +403,6 @@ When the web pushes a new profile to the database, there is no response from the
 }
 
 ```
-
 The web requests a user profile from the database:
 
 ```
