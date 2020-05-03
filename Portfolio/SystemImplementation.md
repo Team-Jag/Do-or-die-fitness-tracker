@@ -5,6 +5,7 @@ Now that we have highlighted how we settled on the [design of our system](System
 
 ## Table of Contents
 
+- [**Software Development Cycle**](
 - [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints-showing-the-user-stories-implemented-in-each)
   - [Sprint 1 : Define architecture & interactions (2.3-9.3)](#sprint-1--define-architecture--interactions-23-93)
   - [Sprint 2 : First prototype (9.3-16.3)](#sprint-2--first-prototype-93-163)
@@ -21,6 +22,9 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Data privacy and security](#data-privacy)
   - [Data usage](#data-usage)
   - [Social implications](#social-implications)
+  
+## Software Development Cycle
+Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an Agile model for development, that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](../ProjectEvaluation.md). 
 
 ## Breakdown of project into sprints (showing the user stories implemented in each)
 
