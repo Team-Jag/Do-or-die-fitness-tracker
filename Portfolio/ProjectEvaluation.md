@@ -204,7 +204,7 @@ During the initial product planning stage, we had originally agreed to switch te
 
 In addition to this, direct coronavirus crisis effects such as the risk of contracting illness, worries about family members or getting home, and the general state of emergency in the country contributed to stress levels experienced by the entire team.
 
-### Conclusion 
+## CONCLUSION
 Our team has come a long way, and upon reflecting on the [design of our system](SystemDesign.md) and the [way that we implemented it](SystemImplementation.md), and finally having the opportunity to reflect on the [success of our product](#reflective-discussion-on-the-success-of-the-project), we are incredibly proud of how far we have come. Each member of our team has grown and learnt an incredibly amount. While we acknowledge that there are areas that we could have improved, and different methods in evaluation that we could have employed to improve the success of our product, we are still confident in the product that we have created. We are excited to carry forward the skills that we learnt to our future careers. 
 
 
