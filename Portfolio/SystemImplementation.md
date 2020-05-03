@@ -5,7 +5,8 @@ Now that we have highlighted how we settled on the [design of our system](System
 
 ## Table of Contents
 
-- [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints-showing-the-user-stories-implemented-in-each)
+- [**Software Development Cycle**](#software-development-cycle)
+- [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints)
   - [Sprint 1 : Define architecture & interactions (2.3-9.3)](#sprint-1--define-architecture--interactions-23-93)
   - [Sprint 2 : First prototype (9.3-16.3)](#sprint-2--first-prototype-93-163)
   - [NO SPRINT : Fight COVID-19 (16.3-30.3)](#no-sprint--fight-covid-19-163-303)
@@ -14,19 +15,28 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Sprint 5 : Beta version release (13.4-20.4)](#sprint-5--beta-version-release-134-204)
   - [Sprint 6 : Version 1.0 release (20.3-27.4)](#sprint-6--version-10-release-203-274)
   - [Sprint 7 : Version 1.1 (optional) and write-up (27.4-4.5)](#sprint-7--version-11-optional-and-write-up-274-45)
-- [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation-techniques-used--limitations)
+- [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation)
 - [**Social and ethical implications**](#social-and-ethical-implications-of-do-or-die-fitness-tracker)
   - [Code of ethics](#code-of-ethics)
   - [Social benefits](#social-benefits)
   - [Data privacy and security](#data-privacy)
   - [Data usage](#data-usage)
   - [Social implications](#social-implications)
+  
+## Software Development Cycle
+Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an Agile model for development, that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](ProjectEvaluation.md). 
 
-## Breakdown of project into sprints (showing the user stories implemented in each)
+Using the Agile model allowed for faster software development. At the beginning of each sprint we decided the features that we would implement during that sprint, the tests that we expected each subsystem to pass, and the user stories that we expected to be satisfied by the implementation of those features. During each iteration we defined the requirements based on the backlog from previous sprints, and test user feedback. We then designed the software based on the requirements that we had established as a group, before coming back together during our weekly sprint review to undertake quality assurance testing and intergration testing. We then integrated our product by merging all changes to the master branch of our Github. Finally, we evaluated our previous version before defining the requirements for the next sprint. 
+
+![Agile](Images/agile.png)
+
+The above diagram, copied from this [website](https://hackernoon.com/a-case-study-type-insight-into-agile-methodologies-for-software-development-cd5932c6), demonstrates the development cycle that our team followed during the creation of our product. 
+
+## Breakdown of project into sprints
 
 We organised our work as a series of one-week sprints from early March to mid-May. We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
-As one of the key foundations of Agile software development is to have self-organising teams, we knew that it was important to collectively focus on the most important user stories to be implemented during each sprint. We were confident in our capabilities to successfully maintain a minimum viable product during each week's sprint. In order to keep this clear, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
+As one of the key foundations of Agile software development is to have self-organising teams, we knew that it was important to collectively focus on the most important user stories to be implemented during each sprint. We were confident in our capabilities to successfully maintain a minimum viable product during each week's sprint. In order to keep this clear, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). We used the Kanban board to keep it clear which requirements needed to be done, what people were currently working on, and what was completed. We also added a backlog column for features that we pushed for later iterations. Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](Images/updated_gantt.png)
 
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. 
@@ -324,13 +334,54 @@ The goal of this sprint will be to do the write-up, as well as address any issue
 </table>
 
 
-## Details of design evaluation (techniques used & limitations)
+## Details of design evaluation
 
+A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. Going hand in hand with our software design cycle and during each sprint, we also found that we had - in some ways - a design evaluation cycle. At the beginning of each sprint, we would have a preliminary design that we expected we would develop during that sprint. This included the user stories that we wanted to implement, and how we would do this. During the sprint we would implement these, as highlighted above, however within our design cycle we would then have a number of forms of evaluation at the end of our sprint. This stage of our design cycle allowed us to shape and form our requirements for the next sprint, as well as reprioritize the user stories where necessary. During the design evaluation phase, we would utilise a number of methods and techniques for evaluation. The main methods for our design evaluation involved some form of testing to ensure that our design was working as expected. 
+
+### Initial Evaluation
 Initially for the design idea of the base product we wanted to produce, the minimum viable product, we used a design evaluation matrix with scoring from 0 to 5 for each small feature in order to determine its value based on the strategic outcomes. The metrics used to determine the scores were: the idea's potential impact, the timeline to implement said idea, and difficulty to learn the technologies required to implement. The features shown in the first sprint above were these initial features decided by the evaluation matrix.
 
-Potential limitations of using the evaluation matrix are the chance of concentrating on features of too little significance, instead of concentrating on user centric features we instead focused on what was achievable in a given sprint timeframe. The scores assigned to each metric are also entirely subjective, so a more complex analysis would have been more appropriate to critically determine the value of a feature.
+Potential limitations of using the evaluation matrix are the chance of concentrating on features of too little significance, instead of concentrating on user centric features we instead focused on what was achievable in a given sprint timeframe. The scores assigned to each metric are also entirely subjective, so a more complex analysis would have been more appropriate to critically determine the value of a feature. However, our team found as we moved further in to evaluating our design during each sprint, that this evaluation method was not as useful as we had first thought. 
 
-As we were following the Agile method for development of our product, at the end of each sprint we performed exhaustive tests on each sub-system where the results were discussed in our scrum meetings performed over Google Hangout. Once these tested features were tested and working, we decided on each successive feature to implement in the design based on an informal SWOT analysis first as individual pairs from each team, then agreeding as an overall team on pre-approved ideas from the pairs dependent on timeline and other subteam requirements. We believed the SWOT evaluation method to be more useful in our design approach over each sprint than the evaluation matrix.
+### Evaluating the Quality Requirements
+We knew when designing our system initially that we wanted to focus largely on the non-functional requirements. These included the security of our system, the maintainability, the ease of use, and the reliability of our system as a whole. This relied in large part on testing our system in an integrated manner, which will be explored further below. However, we will first consider each of these "non-functional" requirements and how evaluating them during our sprints changed the design of our system. 
+
+#### Security
+
+#### Maintability
+While our team was a relatively small team, and could easily maintain our product if necessary, we wanted to develop it in a way that allowed it to be maintained by a larger team. This meant developing each part of our system to conform with our shared contract, to allow us to meet new requirements. Moreover, make the code in each part of our system as clear as possible to allow for quick changes. 
+
+#### Ease of Use
+
+#### Reliability
+
+### User Testing and Evaluation
+The one key concept that our team kept coming back to was that our product was made for someone, and thus our main focus was on the end-user when designing and implementing our product. If the end-user was not happy, or not able to use our product, then there would be no need for the admin or the sponsor. While our user testing was affected by our move to remote working, prior to this we used this method to evaluate our design extensively during each sprint. We had our peers and friends use different aspects of our product, and comment on what they liked and did not like. Moreover, we watched how they interacted with the different parts of our system in order to see what needed to potentially be changed, and what could be made easier so that the user did not feel like accessing different parts of our system were a chore. 
+
+This method for evaluating our design was incredibly effective, we were able to simplify certain parts of our architecture such as what we expected from the M5Stack. Once we realized that most users would be content to first have a simple step tracker with their Bean animated, we put our focus on this user story rather than trying to implement too much at once. This evaluation technique allowed us to step back and help us to realize what was most important from our design. 
+
+Moreover, it ensured that we prioritised what needed to change. One example of this was the decision to change the log in feature on the web. While designing our product we decided that you would need to log in with a username as well as an email, however we quickly realized that this was cumbersome for the user and it would make more sense for them to just log in with their username. This was due to user evaluation of our design. 
+
+### Unit Testing
+
+
+### System Integration 
+As the success of our product relied on our three key subsystems working together, it was necessary to perform extensive integration testing at the end of each sprint. This would take place during our weekly scrum. During this aspect of evaluating our design, we would go through our shared contract to ensure that all systems preformed as expected when using the shared contract. During earlier sprints, it was clear that there was unnecessary information included in certain request types and that these would have to be adjusted. The success of this method of evaluation, however, relied on ensuring that each unit was thoroughly tested individually. Once we were certain of this, we tested them together. 
+
+Due to the fact that we implemented a shared contract between all subsystems, it was easy to test them together. We chose to take an incremental approach to integrating our subsystems during each sprint. By doing it in this manner, we were able to first test that the web and desktop, for example, integrated as expected and both responded correctly to the same request types. Once we certain of this, we were able to test the M5Stack with the desktop before then testing all subsystems as a single unit. As the web and M5Stack did not directly interact, this allowed for ease of testing. 
+
+#### Test Scenarios
+After integrating our system for the first time, we realized that we needed a more effective way of ensuring that our systems had integrated correctly. Thus, we decided to focus on testing the user stories that we had outlined at the beginning of the sprint during each scrum. Doing this allowed us to ensure that we had not only successfully implemented that user story, but that our subsystems were also working as expected. While undertaking the testing scenarios, we would make note of any bugs that arose and ensure that they were prioritised to be fixed during the next sprint. 
+
+By ensuring that we executed each user story on our integrated system, we knew that we were successfully implementing those user stories. For example, when implementing the user story of having the end-user log on to the web to view their live step count we were able to test all three subsytems. We knew that the M5Stack was accurately sending the step information to the database. From there, the database correctly sent the updated step count for that user to the web as well as calculated how much time they had left, and the web was then able to display that information. 
+
+Our team felt that this was one of the most effective ways of evaluating our system, and often highlighted certain issues that we had to address. This included, for example, the fact that we noticed during one sprint that the web and M5Stack were displaying different step data. Thus, prior to integrating our systems in the master branch, we had to address that issue. This was easily fixed when we realized that one team was using an outdated version of our shared contract. 
+
+We do recognize that there are certain limitations to this method, mainly that we were limited in the amount of test data that we could use. We would have to adjust the process when scaling the project for a larger userbase, and be prepared with a large amount of mock data. Moreover, it was possible that we could have had more test cases to ensure that all aspects of our system were working as expected. During each iteration, we attempted to implement as many test cases as possible to reflect this. 
+
+### Final Reflection on Evaluation
+
+Our team was happy in the effectiveness of this approach, as rather than waiting until the end of developing our software, we knew that we always had a minimum viable product in our master branch.
 
 ## Social and ethical implications
 ### Code of ethics
