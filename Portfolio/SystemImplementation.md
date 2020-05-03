@@ -1,7 +1,7 @@
 ![Do or Die System Implementation](Images/SystemImpLogo.png)
 # System Implementation [40pts]:
 
-Now that we have highlighted how we settled on the [design of our system](Portfolio/SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
+Now that we have highlighted how we settled on the [design of our system](SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
 
 ## Table of Contents
 
