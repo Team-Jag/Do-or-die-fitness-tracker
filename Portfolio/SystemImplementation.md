@@ -201,8 +201,9 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Web</td>
-  <td>Handling real data.</td>
-  <td>The react app would crash if it received null values (e.g. for new user). The parsing and redirecting had to be refined (trough the use of flags e.g. account exists), the exact server response was to be agreed on with the processing team.</td>
+  <td>End-User</td>
+  <td>The react app would crash if it received null values (e.g. for new user). </td>
+  <td>The parsing and redirecting had to be redefined (through the use of flags e.g. account exists), the exact server response was to be agreed on with the processing team.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -239,9 +240,9 @@ Previously, an issue was found while implementing the communication protocols on
 </tr>
 <tr>
   <td>Web</td>
-  <td>Sponsor should be redirected to challenge creation page and user should be able to select his own profile picture.</td>
-  <td>If we wanted the users to have complete control over the choice of profile picture, that would mean users uploading links to the images from elsewhere on the internet, but we have no database to physically store images uploaded from their local systems. However the problem with this is that viruses can be embedded into images online and so a malicious person could choose to harm the website/system using this method. As a result, we decided to have the users pick from a small selection of images stored already in the source files.</td>
-  <td></td>
+  <td>End-User</td>
+  <td>User should be able to select his own profile picture. If we wanted the users to have complete control over the choice of profile picture, that would mean users uploading links to the images from elsewhere on the internet, but we have no database to physically store images uploaded from their local systems. However the problem with this is that viruses can be embedded into images online and so a malicious person could choose to harm the website/system using this method.</td>
+  <td>As a result, we decided to have the users pick from a small selection of images stored already in the source files.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -286,8 +287,7 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 </tr>
   <tr>
   <td>Web</td>
-
-  <td>Sponsors should go to challenge creation page upon account creation</td>
+  <td>Sponsors</td>
   <td>Redirect logic for user and sponsor needed to be changed and refactored as multiple of same request being pushed to the MQTT broker by the scripts</td>
   <td>Changed pull request type to "pull web profile" to determine user existence based on entries in the JSON, and refactored code inside redirect handler to only call push query once to broker</td>
 
@@ -300,8 +300,7 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 </tr>
 </table>
 
-**Reflections**
-
+#### Reflections ####
 As seen in the table above, all systems faced issues in implementation of key user stories. By utilizing pair programming as outlined in agile development, we were able to resolve these issues far quicker than by leaving any given individual alone on the issue, furthermore the agile method allowed the frequent release of test driven builds centred around quality over anything else, which for this sprint was the most important aspect.
 
 The release of the 1.0 version signified the end of creating features to instead focus on polishing existing features while ironing out the final bugs and warnings remaining in certain edge use cases. To deliver an end-user ready product not only with the basics created during alpha and beta phase, but also the embellishments and add-ons to each system (Desktop, M5, Web) since beta for the final delivery.
