@@ -95,6 +95,11 @@ In order to analyse the userbase, as well as store and have access to user data,
 * **Web Application** : 
 Finally, to complement the M5Stack and allow the users and sponsors to enroll in challenges, as well as view their statistics more in depth, it was necessary to have a web application. On the website they can view things like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
+How we planned for each user to interact with our system is broken down in this sequence diagram: 
+<p align="center">
+<img src="Images/userSequence.png" width=60%>
+</p>
+
 Before explaining in more depth [how our subsystems work together](#architecture-of-the-entire-system), we will first explain how we used our user stories to develop the key requirements for each subsystem. 
 
 ## USER REQUIREMENTS FOR EACH SUBSYSTEM 
@@ -351,7 +356,7 @@ Our IoT product was developed utilising the M5Stack platform, as a result of thi
 
 * MQTT has become the standard for IoT communication, due to its flexibility and efficiency which made it an easy choice. As responses are received virtually instantaneously, it is the ideal choice to send data such as the user's live health bar (this is particularly useful in accurately showing when the user's Bean "dies"). 
 
-To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below in the communication protocol section.
+To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below in the communication protocol section. 
 
 Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match of both parameters. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
 
