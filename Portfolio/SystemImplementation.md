@@ -252,7 +252,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 <tr>
   <td>Web</td>
   <td>Sponsor should be redirected to challenge creation page and user should be able to select his own profile picture.</td>
-  <td></td>
+  <td>If we wanted the users to have complete control over the choice of profile picture, that would mean users uploading links to the images from elsewhere on the internet, but we have no database to physically store images uploaded from their local systems. However the problem with this is that viruses can be embedded into images online and so a malicious person could choose to harm the website/system using this method. As a result, we decided to have the users pick from a small selection of images stored already in the source files.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
