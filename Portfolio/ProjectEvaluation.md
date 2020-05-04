@@ -6,7 +6,8 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Table of Contents
 - [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
-- [**Discussion of future work (in terms of design, development and evaluation)**](#discussion-of-future-work-in-terms-of-design-development-and-evaluation)
+  - [General reflection of success](#general-reflection-of-success)
+- [**Discussion of future work**](#discussion-of-future-work)
   - [Currency, shop and customization](#currency-shop-and-customization)
   - [Connect M5Stack to a user account](#connect-m5stack-to-a-user-account)
   - [Module specific improvements](#module-specific-improvements)
@@ -21,16 +22,26 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
   - [Management of issues](#management-of-issues)
   - [Overall reflection](#overall-reflection-on-group-working-practices)
 - [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid-19-on-the-project)
+- [**Conclusion**](#conclusion)
 
 ## Reflective discussion on the success of the project
 
-Overall we are proud what we have achieved as a group over the last months: We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following we are going back trough the different process steps and relfect on what has worked well and what could have been done better. Note this part of the reflection evaluates the otcomes, while part c) discusses the proceses and ways we were working together.
+### General reflection of success
 
-#### Overall Design ####
+Overall we are proud what we have achieved as a group since [beginning this project](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#ideation-and-concept-development). We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following section we will reflect on the the success of our project. 
 
-In our first sprint we did a good job at defining the MVP, agreeing on the over design and the interactions between the subsystems. This set us to work idependetly and made the success of of project resistant to the initial Corona disruption: it did not matter where each of us was, we all knew exactly what we had to do. As a result our alpha version was complete relatively fast and satisfied most of the MVP requirements. We then agreed as a group which additional features we would implement for the beta version. Unfortunately in this second iteration we did not follow the same rigor when designing the the system, we all were confident that we know "our systems" and adding some new features would be "easy". We paid the price for that complacency a couple of weeks later, before the release of our beta version: during the final end-to-end test some of the subsystems would crash and each of us had to spend a couple of hours to identify the bugs in their systems. Amazingly they all turned out the be easy to fix: they all originated from misunderstanding between our sub-groups (e.g. different spelling in the request types or different understanding of the  exact purpose of the request). This remined us of how important a system design with clear requirements and test cases is when working in a group. Had we invested an hour more into the design in that second iteration, it would have saved us countless hours of finding and fixing bugs.
+It was difficult as a group to come to a definition of what success meant in regards to our product. If you had asked us when we first began our ideation process, we may have had an exagerated idea of the product that we were excited to build, along with an overly complicated architecture that we had drawn up - thinking the more complicated, the better. However, if you asked us after we undertook our first user evaluation, we likely would have defined success as creating a product that a user can see no flaws with. It is possible that after learning more about the design process and all the possible diagrams out there, we would have defined success as even being able to create every diagram that we had been introduced to. Perhaps after learning more about version control and Github, we would have told you that success is being able to create a pull request and see that there are no merge requests. It is clear then, that there is no one definition of success, but rather a number of small instances that lead to our team feeling that our project was successful. We will consider these in this section, before moving on to consider how we could further our project in the further work section, and finally evaluating how we worked as a group. 
+
+When we began defining the architecture of our Do or Die Fitness Tracker, and outlining the Minimum Viable Product (MVP), we knew that the first step that we wanted to achieve was each of our key subsystems communicating with each other. When this happened, and we knew that the live step count was being updated in the Processing application, this was the first time that our team felt truly successful. We knew that we would be able to work together, and between each subsystem, to create a product that effectively and accurately used all three key subsystems. 
+
+Upon reflecting on our final system architecture, we feel that we have implemented a system that is maintainable, secure, and able to scale. As this is a prototype that must be able to scale for a larger userbase, we feel confident in the design choices that we made and that we were not only considering the current issues at hand but also the future of our product. We have also created a system archiecture that is adaptable, and able to respond to new requirements. This was incredibly important when following an Agile development cycle, as we had to ensure that we did not design our architecture once at the beginning and never change it. 
+
+Indeed, our team was able to successfully follow the Agile development cycle. We put the user before our initial system design, and small parts of our architecture and system changed during each sprint in response to changing user requirements. A large part of our success comes from how well our group worked, which will be explored in further detail below. However, by following the Agile development cycle we were able to adapt to the COVID-19 pandemic and adapt our requirements with the changed assignment brief with little issue. Moreover, we tested our system well as one unit during each sprint which ensured our success. We integrated it at the end of each sprint, rather than leaving it to the end of our project, which ensured that we always had a working product. 
+
+Finally, which is perhaps is the greatest measure of our success, is how well our team worked together and how much we learnt. Our working practices will be explored further, but each of our team is now confident in many aspects of software engineering as well as the ability to work well in a group. We will now consider the success of each of our key subsystems. 
 
 #### M5 ####
+In order to ensure the success of perhaps the most important subsytem, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. In order to do this, we ensured that we first had a pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature indiviiually, and during each sprint, rather than all at once, the M5 team was able to quickly adapt to changes in requirements. 
 
 #### Web ####
 
@@ -38,8 +49,15 @@ In the web sub-team our approach was "very agile" in the sense that we had very 
 
 #### Desktop ####
 The desktop team also followed agile processes in line with user story implementation defined within sprints each week. Due to the seperate nature of back and front ends of this subsystem (each of which can be considered subsystems in its own right) this meant a mostly large modularity in implementation as each section could be developed seperately. However as mentioned earlier, the primary dependancy between modules was request type which caused bugs when request spellings had minor differences ("pull sponsor" vs "pull sponsors"). This caused significant challenge in hunting down these specific bugs for the desktop team, but additionally caused issues during integration tests for the other teams as all communication must pass through the desktop app to access persistant data. 
+
+In the next section we will discuss future areas of work; including items that were pushed to the backlog. 
+
+#### Overall Design ####
+
+In our first sprint we did a good job at defining the MVP, agreeing on the over design and the interactions between the subsystems. This set us to work independently and made the success of of project resistant to the initial Corona disruption: it did not matter where each of us was, we all knew exactly what we had to do. As a result our alpha version was complete relatively fast and satisfied most of the MVP requirements. We then agreed as a group which additional features we would implement for the beta version. Unfortunately in this second iteration we did not follow the same rigor when designing the the system, we all were confident that we know "our systems" and adding some new features would be "easy". We paid the price for that complacency a couple of weeks later, before the release of our beta version: during the final end-to-end test some of the subsystems would crash and each of us had to spend a couple of hours to identify the bugs in their systems. Amazingly they all turned out the be easy to fix: they all originated from misunderstanding between our sub-groups (e.g. different spelling in the request types or different understanding of the  exact purpose of the request). This remined us of how important a system design with clear requirements and test cases is when working in a group. Had we invested an hour more into the design in that second iteration, it would have saved us countless hours of finding and fixing bugs.
+
  
-## Discussion of future work (in terms of design, development and evaluation)
+## Discussion of future work 
 In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example. So, the first step for any kind of future work would be to first do extensive market research to better understand where the Do or Die Fitness Tracker fits in the Product Space, what our Target market is, and whether there are existing companies that could be classified as our competitors.
 
 Below we will consider some additional features that would make our product more viable, how we came up with the feature, and how it would fit in our current design. We will also consider how we would develop it, implement it, and what methods we would use to evaluate it.
@@ -200,6 +218,9 @@ Due to the physical nature of the product (using an IOT device to measure a user
 During the initial product planning stage, we had originally agreed to switch teams between subsystem pairs in order for all members to gain an understanding of each system and be able to learn all aspects of web, Processing, and M5 development. Due to lockdown, in the case of M5 stack this became impossible, and for Processing and Web impractical. It was much more pragmatic to stick with the original assigned teams, which meant team members missed out on vital learning experiences.
 
 In addition to this, direct coronavirus crisis effects such as the risk of contracting illness, worries about family members or getting home, and the general state of emergency in the country contributed to stress levels experienced by the entire team.
+
+## CONCLUSION
+Our team has come a long way, and upon reflecting on the [design of our system](SystemDesign.md) and the [way that we implemented it](SystemImplementation.md), and finally having the opportunity to reflect on the [success of our product](#reflective-discussion-on-the-success-of-the-project), we are incredibly proud of how far we have come. Each member of our team has grown and learnt an incredibly amount. While we acknowledge that there are areas that we could have improved, and different methods in evaluation that we could have employed to improve the success of our product, we are still confident in the product that we have created. We are excited to carry forward the skills that we learnt to our future careers. 
 
 
  
