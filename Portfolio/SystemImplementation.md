@@ -218,16 +218,10 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 
 
 ### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) (Grace)
-The goal of this sprint was to release the Beta version of our product, and push it to the master branch. During this sprint we were able to replace the dummy data for challenges that we had on the M5Stack. Also, the database was now able to automatically update when the user reached a goal of the challenge that they had enrolled in and appropriately add the time reward to the user's account. 
-
-**User Stories Implemented:**
-* User now able to see real-time challenge data on M5 stack and on the Web
-* Animation for Bean now based on life left on M5 stack
-* Death screen if the time left is zero on M5 stack
-* Admin can see a list of all users and proportion of players currently alive
+As we have implemented most of the key features of our system, we determined as a group that we were nearly ready to release the Beta version of our product (which would be pushed to the master branch). The following user stories tha still needed improvements before official release were mainly focused on user experience such as: **(1)** animation of the Bean sprite reflecting health levels (in which only the desktop back-end will perform calculations of time left for each user) and displaying its death on the M5Stack, **(2)** being able to view interactive and real-time challenge data on the Web, and lastly, **(3)** the admin being able to track total users enrolled and proportion of players currently alive.
 
 **DONE:**
-* MQTT message length issue resolved 
+* M5Stack issue on MQTT message length resolved
 * Replaced dummy data with appropriate server requests on M5 stack for challenges
 * Implemented life timer countdown in desktop user API
 * Database automatically updated when user reaches any goal of challenges enrolled and adds rewards
@@ -240,10 +234,7 @@ The goal of this sprint was to release the Beta version of our product, and push
 * Add sponsor API to desktop
 * Adding new user should initialise user data with default values
 
-**User stories to prioritize for next sprint**
-Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
-It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
-
+**ISSUES**
 <table>
 <tr>
   <th>Technology</th>
@@ -253,13 +244,15 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>User is able to see life timer countdown and finishing challenges will add rewards to health. Admin can see statistics updating in real time as the proportion of currently "alive" users changes.</td>
-  <td>As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
+  <td>User is able to see life timer countdown and finishing challenges will add rewards to health.</td>
+  <td>The timer counts down each user 'remaining_sec' every second only when the system is running. As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
+  <td>For future implementations, the design of user data would need to be reassessed as a timestamp for when data was accessed/updated is required. This would allow the system to calculate the time left based on that stamp, instead of requiring the system to update the time remaining for each user every second.</td>
 </tr>
 <tr>
   <td>Web</td>
   <td>Sponsor should be redirected to challenge creation page and user should be able to select his own profile picture.</td>
   <td>If we wanted the users to have complete control over the choice of profile picture, that would mean users uploading links to the images from elsewhere on the internet, but we have no database to physically store images uploaded from their local systems. However the problem with this is that viruses can be embedded into images online and so a malicious person could choose to harm the website/system using this method. As a result, we decided to have the users pick from a small selection of images stored already in the source files.</td>
+  <td></td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -268,6 +261,12 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 </table>
 
+**Reflections**
+
+
+**User stories to prioritize for next sprint**
+Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
+It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
 
 ### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) (Oli)
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. In the lead up to the end of our sprint, we realized that there was an issue between the database and the web. 
