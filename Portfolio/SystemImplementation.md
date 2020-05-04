@@ -201,7 +201,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 <tr>
   <td>Web</td>
   <td>Handling real data.</td>
-  <td>The react app would crash if it received null values (e.g. for new user). The parising and redirecting had to be refined (trough the use of flags e.g. account exists), the exact server response to be agreed on with the processing team.</td>
+  <td>The react app would crash if it received null values (e.g. for new user). The parsing and redirecting had to be refined (trough the use of flags e.g. account exists), the exact server response was to be agreed on with the processing team.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
