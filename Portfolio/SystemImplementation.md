@@ -367,6 +367,10 @@ At each stage of the implementation process, we aimed to conform to user specifi
 
 The end-user first follows easily laid out instructions on the Web page to create an account. The end-user turns on the M5 stack, connects it to the internet, then has no further setup steps required. The device is ready to be used and begin counting steps and accepting challenges.
 
+For the sponsor use case, this is very similar except the only device they interact with is the Web. The sponsor creates an account, logs in, and publishes challenges. 
+
+Implementing the admin use case, we aimed to maximise the amount of useful information on the screen, without letting the admin become overwhelmed. Charts are clearly labelled according to what metric they belong to, and search bar is clear and easy to find. 
+
 #### Reliability
 
 ### User Testing and Evaluation
