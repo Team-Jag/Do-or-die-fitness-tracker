@@ -6,6 +6,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Table of Contents
 - [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
+  - [General reflection of success](
 - [**Discussion of future work**](#discussion-of-future-work)
   - [Currency, shop and customization](#currency-shop-and-customization)
   - [Connect M5Stack to a user account](#connect-m5stack-to-a-user-account)
@@ -25,13 +26,19 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Reflective discussion on the success of the project
 
+### General reflection of success
+
 Overall we are proud what we have achieved as a group since [beginning this project](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#ideation-and-concept-development). We have delivered a working prototype of an idea we crafted in the early phase of this unit. In the following section we will reflect on the the success of our project. 
 
 It was difficult as a group to come to a definition of what success meant in regards to our product. If you had asked us when we first began our ideation process, we may have had an exagerated idea of the product that we were excited to build, along with an overly complicated architecture that we had drawn up - thinking the more complicated, the better. However, if you asked us after we undertook our first user evaluation, we likely would have defined success as creating a product that a user can see no flaws with. It is possible that after learning more about the design process and all the possible diagrams out there, we would have defined success as even being able to create every diagram that we had been introduced to. Perhaps after learning more about version control and Github, we would have told you that success is being able to create a pull request and see that there are no merge requests. It is clear then, that there is no one definition of success, but rather a number of small instances that lead to our team feeling that our project was successful. We will consider these in this section, before moving on to consider how we could further our project in the further work section, and finally evaluating how we worked as a group. 
 
 When we began defining the architecture of our Do or Die Fitness Tracker, and outlining the Minimum Viable Product (MVP), we knew that the first step that we wanted to achieve was each of our key subsystems communicating with each other. When this happened, and we knew that the live step count was being updated in the Processing application, this was the first time that our team felt truly successful. We knew that we would be able to work together, and between each subsystem, to create a product that effectively and accurately used all three key subsystems. 
 
-Upon reflecting on our final system architecture, we feel that we have implemented a system that is maintainable, secure, and able to scale. As this is a prototype that must be able to scale for a larger userbase, we feel confident in the design choices that we made and that we were not only considering the current issues at hand but also the future of our product. 
+Upon reflecting on our final system architecture, we feel that we have implemented a system that is maintainable, secure, and able to scale. As this is a prototype that must be able to scale for a larger userbase, we feel confident in the design choices that we made and that we were not only considering the current issues at hand but also the future of our product. We have also created a system archiecture that is adaptable, and able to respond to new requirements. This was incredibly important when following an Agile development cycle, as we had to ensure that we did not design our architecture once at the beginning and never change it. 
+
+Indeed, our team was able to successfully follow the Agile development cycle. We put the user before our initial system design, and small parts of our architecture and system changed during each sprint in response to changing user requirements. A large part of our success comes from how well our group worked, which will be explored in further detail below. However, by following the Agile development cycle we were able to adapt to the COVID-19 pandemic and adapt our requirements with the changed assignment brief with little issue. Moreover, we tested our system well as one unit during each sprint which ensured our success. We integrated it at the end of each sprint, rather than leaving it to the end of our project, which ensured that we always had a working product. 
+
+Finally, which is perhaps is the greatest measure of our success, is how well our team worked together and how much we learnt. Our working practices will be explored further, but each of our team is now confident in many aspects of software engineering as well as the ability to work well in a group. 
 
 
 #### Overall Design ####
