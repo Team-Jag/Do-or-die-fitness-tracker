@@ -302,8 +302,9 @@ The goal of this sprint was to clean up our code, and implement any final featur
 </tr>
   <tr>
   <td>Web</td>
-  <td>Fixed issues with redirects for users and sponsors</td>
-  <td>Refactored conditional redirect logic for user and sponsor</td>
+  <td>Sponsor</td>
+  <td>The conditional redirects for users and sponsors did not work properly in life testing.</td>
+  <td>Refactored conditional redirect logic for user and sponsor and tested the code with the processing team. It turned out our initial solution was working for the standard test case but could not handle all real world situations becuase of an inccorect assumption on the user path.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
