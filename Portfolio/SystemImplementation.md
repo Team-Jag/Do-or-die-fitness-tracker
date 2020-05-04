@@ -48,7 +48,7 @@ As one of the key foundations of Agile software development is to have self-orga
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. 
 
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
-The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues.
+The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously.
 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
@@ -65,7 +65,7 @@ The most important of our user stories is that of the end-user, so our first spr
 In order to allow the user to keep track of their steps between sessions, we need to make thestep data persistent, so we also need to develop a basic first version of our desktop server.
 
 ### Sprint 2 : First Prototype (9.3-16.3) 
-The goal of this sprint was to create a very basic proof of concept. Our team agreed that this was mainly focused on turning the M5Stack in to a pedometer, and that Processing is able to receive step data from the M5Stack and process it accordingly. 
+The goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. Our team agreed that this was mainly focused on turning the M5Stack in to a pedometer, and that Processing is able to receive step data from the M5Stack and process it accordingly. 
 
 **User Stories Implemented:**
 * The End-user is able to use the M5Stack to track their steps. The step count persists between sessions.
@@ -92,7 +92,7 @@ We must keep a secondary focus on beginning to design an interface for our Deskt
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>End-user is able to use the M5Stack as a pedometer and view total step count. This is implemented by parsing the push step request sent from the M5Stack and incrementing the step count in the database.</td>
+  <td>End-user is able to use the M5Stack as a pedometer and view total step count. This is implemented by parsing the push step request sent from the M5Stack and incrementing the step count in the database. The admin has a basic screen and can see dummy elements creating a basic mockup of the final view.</td>
   <td>No issues were discovered in this sprint.</td>
 </tr>
 <tr>
@@ -141,7 +141,7 @@ The next task is to work on our user interfaces in order to improve user experie
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>User is able view and select challenges, sponsor can add new challenges, user is also able to create new profile.</td>
+  <td>User is able view and select challenges, sponsor can add new challenges, user is also able to create new profile. Admin can see basic charts showing analytics of dummy data.</td>
   <td>As data sent from the web to create new profile did not add default values for other required data (e.g. remaining_sec), the system will crash if a request for this faulty data was fetched and attempted to be sent.</td>
   <td>As the issue encountered was due to the lack of testing on how the API handles null JSON objects, future implementations should include relevant testing. However, due to limited time for the project, this was not carried out and the extent of the implementation of a working system was only for the sake of the demo.</td>
 </tr>
@@ -194,7 +194,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Desktop</td>
-  <td></td>
+  <td>Admin now has access to real data analytics pulled from the database, and can track flat totals of sponsors, users and challenges.</td>
   <td></td>
 </tr>
 <tr>
@@ -245,7 +245,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>User is able to see life timer countdown and finishing challenges will add rewards to health.</td>
+  <td>User is able to see life timer countdown and finishing challenges will add rewards to health. Admin can see statistics updating in real time as the proportion of currently "alive" users changes.</td>
   <td>As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
 </tr>
 <tr>
@@ -293,7 +293,7 @@ The goal of this sprint was to clean up our code, and implement any final featur
 </tr>
 <tr>
   <td></td>
-  <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices.</td>
+  <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices. The admin can now access profile information for a specific user and see challenges they have completed and are currently enrolled in.</td>
   <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web. We tried to investigate the problem, it seemed that the issue lies in how we implemented the refreshDashboard for the admin.</td>
 </tr>
 <tr>
