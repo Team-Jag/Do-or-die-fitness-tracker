@@ -57,38 +57,31 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
 * Design a basic UI interface mockup for admin user story
 
+**Reflections**We agreed that our MVP consisits of the following things....
+(ANA)
+
 **WIP:**
 * Implementation of communication protocol 
 
-**User Stories To Prioritize in next sprint**
-The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter.
-In order to allow the user to keep track of their steps between sessions, we need to make thestep data persistent, so we also need to develop a basic first version of our desktop server.
-
-### Sprint 2 : First Prototype (9.3-16.3) 
-The goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. Our team agreed that this was mainly focused on turning the M5Stack in to a pedometer, and that Processing is able to receive step data from the M5Stack and process it accordingly. 
-
-**User Stories Implemented:**
-* The End-user is able to use the M5Stack to track their steps. The step count persists between sessions.
+### Sprint 2 : First Prototype (9.3-16.3) (Chris)
+The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
+In order to allow the user to count and keep track of their steps between sessions, we need to make thestep data persistent, so we also need to develop a basic first version of our desktop server. Furthermore we wanted to create a first view for out end-users and sponsors. Therefore the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. 
 
 **DONE:**
+* M5 Stack able to count steps
 * M5Stack able to send a notification to Desktop server for each new step
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mockup pages
 * Decided on a UI interface for admin user story, and made a mockup Processing interface using dummy cp5 elements
 
-**WIP:**
-* Improve the accuracy of the step count
-
-**User Stories to Prioritize in next sprint**
-The next key user-story is that of the sponsor, so in the next sprint we should focus on delivering a web interface where a sponsor can sign-up and create challenges for the end-user. 
-We must keep a secondary focus on beginning to design an interface for our Desktop server from where the Admin can monitor the performance of the product.
-
+**Issues**
 <table>
 <tr>
   <th>Technology</th>
-  <th>Key User Stories Implemented</th>
+  <th>User Story</th>
   <th>Issues Encountered</th>
+  <th>Issue Handling</th>
 </tr>
 <tr>
   <td>Desktop</td>
@@ -107,11 +100,23 @@ We must keep a secondary focus on beginning to design an interface for our Deskt
 </tr>
 </table>
 
+**Reflections**
+making this, gave us a first idea how to build this...
+we realized how important a nice UI is druing inital user testing, also during testing we realized that a user will not find the UI as iniuitive as the designer/coder might have thought
+also we realized that it is important to prioritize and stick to the tests defined by the MVP and not get sidetracked by additiional features
+
+**WIP:**
+* Improve the accuracy of the step count
+
 
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project, and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
 
-### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) 
+### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) (Chris)
+
+The next key user-story is that of the sponsor, so in the next sprint we should focus on delivering a web interface where a sponsor can sign-up and create challenges for the end-user. 
+We must keep a secondary focus on beginning to design an interface for our Desktop server from where the Admin can monitor the performance of the product.
+
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
 
 **User Stories Implemented:**
@@ -135,8 +140,8 @@ The next task is to work on our user interfaces in order to improve user experie
 <table>
 <tr>
   <th>Technology</th>
-  <th>Key User Stories Implemented</th>
-  <th>Issues Encountered/Addressed</th>
+  <th>User Story</th>
+  <th>Issues Encountered</th>
   <th>Issue Handling</th>
 </tr>
 <tr>
@@ -159,7 +164,7 @@ The next task is to work on our user interfaces in order to improve user experie
 </table>
 
 
-### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) 
+### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) (Davide)
 The goal of this sprint was be to get to advance our prototye, which fixed interaction issues that arose during the sprint review on 6th of April. During this sprint, mainly with the End-User in mind, we decided to focus on improving design and visuals as well as extending basic functionalities. This included viewing their statistics on the M5Stack, and the creation of custom challenges for Sponsors on the Web.
 
 **User Stories Implemented:**
@@ -190,8 +195,9 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 <table>
 <tr>
   <th>Technology</th>
-  <th>Key User Stories Implemented</th>
-  <th>Issues Encountered/Addressed</th>
+  <th>User Story</th>
+  <th>Issues Encountered</th>
+  <th>Issue Handling</th>
 </tr>
 <tr>
   <td>Desktop</td>
@@ -211,7 +217,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </table>
 
 
-### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) 
+### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) (Grace)
 The goal of this sprint was to release the Beta version of our product, and push it to the master branch. During this sprint we were able to replace the dummy data for challenges that we had on the M5Stack. Also, the database was now able to automatically update when the user reached a goal of the challenge that they had enrolled in and appropriately add the time reward to the user's account. 
 
 **User Stories Implemented:**
@@ -241,8 +247,9 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 <table>
 <tr>
   <th>Technology</th>
-  <th>User Stories Implemented</th>
-  <th>Issues Encountered/Addressed</th>
+  <th>User Story</th>
+  <th>Issues Encountered</th>
+  <th>Issue Handling</th>
 </tr>
 <tr>
   <td>Desktop</td>
@@ -262,7 +269,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </table>
 
 
-### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) 
+### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) (Oli)
 The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. In the lead up to the end of our sprint, we realized that there was an issue between the database and the web. 
 
 **User Stories Implemented:**
@@ -284,8 +291,9 @@ The goal of this sprint was to clean up our code, and implement any final featur
 <table>
 <tr>
   <th>Technology</th>
-  <th>Key User Stories Implemented</th>
-  <th>Issues Encountered/Addressed</th>
+  <th>User Story</th>
+  <th>Issues Encountered</th>
+  <th>Issue Handling</th>
 </tr>
 <tr>
   <td>Desktop</td>
@@ -311,40 +319,15 @@ The goal of this sprint was to clean up our code, and implement any final featur
 
 
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
-The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software.
-
-**User Stories Implemented:**
-* The End-User is able to interact personally with their Bean. 
+The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software. Furthermore we shot a short demo video of our product.
 
 **DONE:**
 * Implemented interaction feature on M5 stack
+* Completed wirite up
+* Copleted demo video
 
-**WIP:**
-* 
-
-<table>
-<tr>
-  <th>Technology</th>
-  <th>User Stories Implemented</th>
-  <th>Issues Encountered</th>
-</tr>
-<tr>
-  <td>Desktop</td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td>Web</td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td>M5Stack</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
-
+**Reflections**
+See [detailed project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success)
 
 ## Details of design evaluation
 
