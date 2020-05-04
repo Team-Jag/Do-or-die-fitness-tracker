@@ -269,24 +269,16 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </table>
 
 
-### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4) (Oli)
-The goal of this sprint was to clean up our code, and implement any final features before releasing Version 1.0 of our product. In the lead up to the end of our sprint, we realized that there was an issue between the database and the web. 
+### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4)
+Since the majority of user features had already been implemented we decided to focus on the sponsor and admin views, as well as synchronisity between all three systems, for this sprint. To allow the admins to see the user statistics reflected on the statistic view so that they can better monitor user activity, a search bar feature was implemented to find the user data from the local files. In order the admins to track the popularity of the app, additional charts were created over differing time periods (daily, weekly, monthly) in the desktop application. The purpose of a sponsor account is to create challenges for players and as such, the sponsors on the web upon account creation (where the end-user can now decide if they are a user or a sponsor) get redirected to the challenge creation page instead of the profile page.
 
-**User Stories Implemented:**
-* User able to see their statistics accurately reflected on statistic view
-* Admin can search for a specific user profile and see their information
-* Admin can see charts that track playerbase over time on a daily, weekly and monthly timescale
-* Sponsor redirected to the create challenge page on the web 
-* On creating an account on Web, user can decide if they are a user or a sponsor, to determine if they can create challenges
+The goal of this sprint was to clean up and refactor our code, and implement any final features before releasing Version 1.0 of our product.
 
 **DONE:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
 * Added statistics data into user.json
 * Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data
 * Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values
-
-**WIP:**
-* Implement interaction feature on M5 stack
 
 <table>
 <tr>
@@ -299,24 +291,33 @@ The goal of this sprint was to clean up our code, and implement any final featur
   <td>Desktop</td>
   <td>New end-user will be automatically enrolled to a maximum of 10 available challenges.</td>
   <td>As there was a limit of in what the M5Stack is able to parse from JSON Arrays, a limit of 10 challenges for each user was determined. However, no extensive testing (including attempts in integration to select more than 10 challenges from the web) has been done to ensure correct implementation.</td>
+  <td>How was issue handled</td>
 </tr>
 <tr>
   <td></td>
   <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices. The admin can now access profile information for a specific user and see challenges they have completed and are currently enrolled in.</td>
   <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web. We tried to investigate the problem, it seemed that the issue lies in how we implemented the refreshDashboard for the admin.</td>
+  <td>How was issue handled</td>
 </tr>
   <tr>
   <td>Web</td>
-  <td>Fixed issues with redirects for users and sponsors</td>
-  <td>Refactored conditional redirect logic for user and sponsor</td>
+  <td>Sponsors should go to challenge creation page upon account creation</td>
+  <td>Redirect logic for user and sponsor needed to be changed and refactored as multiple of same request being pushed to the MQTT broker by the scripts</td>
+  <td>Changed pull request type to "pull web profile" to determine user existence based on entries in the JSON, and refactored code inside redirect handler to only call push query once to broker</td>
 </tr>
 <tr>
   <td>M5Stack</td>
+  <td>Implement interaction feature on M5 stack</td>
   <td></td>
   <td></td>
 </tr>
 </table>
 
+**Reflections**
+
+As seen in the table above, all systems faced issues in implementation of key user stories. By utilizing pair programming as outlined in agile development, we were able to resolve these issues far quicker than by leaving any given individual alone on the issue, furthermore the agile method allowed the frequent release of test driven builds centred around quality over anything else, which for this sprint was the most important aspect.
+
+The release of the 1.0 version signified the end of creating features to instead focus on polishing existing features while ironing out the final bugs and warnings remaining in certain edge use cases. To deliver an end-user ready product not only with the basics created during alpha and beta phase, but also the embellishments and add-ons to each system (Desktop, M5, Web) since beta for the final delivery.
 
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
 The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software. Furthermore we shot a short demo video of our product.
