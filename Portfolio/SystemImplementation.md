@@ -112,7 +112,7 @@ also we realized that it is important to prioritize and stick to the tests defin
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project, and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
 
-### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) (Chris)
+### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) (Chrs)
 
 The next key user-story is that of the sponsor, so in the next sprint we should focus on delivering a web interface where a sponsor can sign-up and create challenges for the end-user. 
 We must keep a secondary focus on beginning to design an interface for our Desktop server from where the Admin can monitor the performance of the product.
