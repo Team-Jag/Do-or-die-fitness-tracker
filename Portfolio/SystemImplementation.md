@@ -1,5 +1,5 @@
 ![Do or Die System Implementation](Images/SystemImpLogo.png)
-# System Implementation [40pts]:
+# System Implementation:
 
 Now that we have highlighted how we settled on the [design of our system](SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
 
@@ -97,8 +97,8 @@ We must keep a secondary focus on beginning to design an interface for our Deskt
 </tr>
 <tr>
   <td>Web</td>
-  <td></td>
-  <td></td>
+  <td>End user and Sponsor mock ups implemented</td>
+  <td>No issues were discovered in this sprint.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -147,8 +147,9 @@ The next task is to work on our user interfaces in order to improve user experie
 </tr>
 <tr>
   <td>Web</td>
-  <td></td>
-  <td></td>
+  <td>Built functioning protoype that allows for navigation between pages and send & receive dummy data.</td>
+  <td>Data retention turned out to be very challenging as the react state and all JS variables are reset when loading a now page. Also, passing arguments between react components, is tricky as the exact path the user takes is unknown, and the variables passed might not have been initalized yet. </td>
+  <td> As a solution redirects instead of URL links were used for navigation (this way the react app does not reload from scratch) and the user_name variable was made global so that it was accessible for all classes and did not needed to passed through all the componets.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -199,8 +200,8 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Web</td>
-  <td></td>
-  <td></td>
+  <td>Handling real data.</td>
+  <td>The react app would crash if it received null values (e.g. for new user). The parising and redirecting had to be refined (trough the use of flags e.g. account exists), the exact server response to be agreed on with the processing team.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -250,7 +251,7 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Web</td>
-  <td></td>
+  <td>Sponsor should be redirected to challenge creation page and user should be able to select his own profile picture.</td>
   <td></td>
 </tr>
 <tr>
@@ -292,9 +293,14 @@ The goal of this sprint was to clean up our code, and implement any final featur
   <td>As there was a limit of in what the M5Stack is able to parse from JSON Arrays, a limit of 10 challenges for each user was determined. However, no extensive testing (including attempts in integration to select more than 10 challenges from the web) has been done to ensure correct implementation.</td>
 </tr>
 <tr>
-  <td></td>
+  <td>Desktop</td>
   <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices.</td>
   <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web. We tried to investigate the problem, it seemed that the issue lies in how we implemented the refreshDashboard for the admin.</td>
+</tr>
+  <tr>
+  <td>Web</td>
+  <td>Fixed issues with redirects for users and sponsors</td>
+  <td>Refactored conditional redirect logic for user and sponsor</td>
 </tr>
 <tr>
   <td>M5Stack</td>
