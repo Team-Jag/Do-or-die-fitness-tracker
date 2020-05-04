@@ -120,7 +120,7 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 * We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
 * The Admin can now visualize product performance (dummy) data in the Desktop app
 
-**Issues*
+**Issues**
 <table>
 <tr>
   <th>Technology</th>
