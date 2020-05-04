@@ -1,6 +1,6 @@
 ![Do Or Die System Design](Images/systemDesignLogo.png)
 
-# System Design [40pts]
+# System Design
 
 In the following section we will reflect on the design of our product. By the end of our System Design section, you will understand how we moved from our initial paper prototype to our [existing product](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description). Before explaining the architecture of our system in detail, including the object oriented design of each of our key subsystems, we will first explain how we came to design our product based on the gap in the market that we were trying to fill. This includes our three key user groups, and their individual user stories. We will also explain and evaluate the design interface of our subsytems, and introduce potential areas for improvement. 
 
@@ -39,7 +39,7 @@ Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tr
 <img src="Images/designSpace.JPG" width=40%>
 </p>
 
-While initially explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to promote a healthier lifestyle. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness.
+While initially our team explored a number of fun and potentially successful products, we came to the conclusion that each team member was keen to develop a product that focused on the improvement of user health. We kept health at the centre of our minds while exploring our design space, and deciding what had the most chance of success. We ultimately came to the conclusion that we wanted to create a gamified fitness tracker to promote a healthier lifestyle. When deciding what type of product to create, we took particular interest in the success of different games such as Pokemon Go, and the recent revival of the Tamagotchi. We felt that if we could combine our goal of having a fitness tracker, with the concept of a keeping a virtual pet on an Internet of Things (IoT) product, we would be addressing a gap in the market - likely very successfully. In recent years there has been a large push towards getting individuals active, which is something that we kept in mind during the ideation process. After several ideation cycles focused on the concept of health, we settled on the idea of measuring user step-count as a proxy for user fitness.
 
 A key requirement for the success of this project is maintaining the end-user's motivation that goes beyond just meeting a daily step goal, as this would eventually become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our product. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
@@ -198,17 +198,22 @@ Key classes for desktop app include:
 For more detail on web technologies see section **1g.** below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
 
-* **MQTT Class:** This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
+* [**MQTT Class**](../Web/src/views/examples/MQTTclient.js) - This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
 
   * encapsulates - it hides the detail of the server communication from the other components
   * acts abstract - with a simple interface that can be called by all components
   * inherits its basic methods from the react components
   * is polymorphic - it can handle all sorts of data: from profile to challenge data  
-* **Landing Page:** Contains all the static content and the MQTT instance for creating a new profile
-* **Login Page:** Contains the static UI + a MQTT instance to handle the Login
-* **Profile Page:** Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for
-* **Challenge Choice Page:** Contains a MQTT instance which lets the user sign up for challenges
-* **Common static components such as headers, navbars or footers** which can be integrated in all of the views
+* [**Landing Page**](../Web/src/views/examples/LandingPage.js) - Contains all the static content and the MQTT instance for creating a new profile.
+* [**Login Page**](../Web/src/views/examples/LoginPage.js) - Contains the static UI + a MQTT instance to handle the Login.
+* [**Profile Page**](../Web/src/views/examples/ProfilePage.js) - Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for.
+* [**Challenge Choice Page**](../Web/src/views/examples/ChallengeChoicePage.js) - Contains a MQTT instance which lets the user sign up for challenges.
+* [**Challenge Creation Page**](../Web/src/views/examples/ChallengePage.js) - Contains a MQTT instance which lets the sponsor create new challenges for users.
+* [**Common static components such as headers, navbars or footers**](../Web/src/components/Navbars/ExamplesNavbar.js) which can be integrated in all of the views
+
+During our development process more and more of the functionality and code moved from the page specific classes to the MQTT class. While our initial "ideal" design would have the page specific content inside the respective page class, we faced the issue that all the variables/states are lost when navigating to the next page. Moving functionality to the MQTT class alowed us to retain the critical data. Furthermore, the introduction of a global variable 'user_name' allowed us to retain the user name without the use of cookies.
+
+As a downside, our MQTT class is therefore rather complex and long, which is why we intended to refactor this. For example, we discussed having an abstract MQTT class with the basic communication functions in it and then have page specific MQTT classes (e.g. a "MQTT Profile Page" class, a "MQTT Challenge Selection Page" etc.). Unfortunately, ![React does not support inheritance](https://reactjs.org/docs/composition-vs-inheritance.html), but only supports the composition approach that we followed in our design. While this design is not ideal/pure for as a long term solutions, it allows to rapidly build a functiong prototype. However, in future versions the designed should be reevaluated and breaking up the MQTT class should be considered. This could potentially be done through the use of cookies and advanced React libaries (e.g. React Redux).
 
 ### M5STACK DESIGN
 
@@ -446,7 +451,7 @@ The M5Stack uses this request type to increment one step in the database, but th
 ```
 
 ### DESKTOP AND WEB
-To ensure that data is only stored in the database, the web has to fetch and parse JSON objects from the MQTT topic (doordie_web) and build dynamic pages accordingly when viewing user profile, challenges enrolled, or total challenges. The first two pages is built by requiring logins so that the user will have to type in the required field "user_name" to fetch their respective data. For adding user/sponsor profiles, all data is entered by the user (user_name, and user_type sponsor is determined if the user checks the box "I am a sponsor") and joined_date (in linux epoch time) is automatically generated by the web, and sent to the database. This ensures that data does not need to be stored in the web.
+To ensure that data is only stored in the database, the web has to fetch and parse JSON objects from the MQTT topic (doordie_web) and build dynamic pages accordingly when viewing user profile, challenges enrolled, or all challenges. The profile page and the challenge selction page require logins to fetch user respective data (based on "user_name"). For adding user/sponsor profiles, all data is entered by the user (user_name, and user_type sponsor is determined if the user checks the box "I am a sponsor") and joined_date (in linux epoch time) is automatically generated by the website, and sent to the database. This ensures that data does not need to be stored in the web.
 
 ```
 { 
@@ -457,7 +462,7 @@ To ensure that data is only stored in the database, the web has to fetch and par
 }
 
 ```
-The web requests a user profile from the database:
+The web requests a user profile from the database. Note that we do not validate the password in our prototye, so user data and pofile information is not secured.
 
 ```
 {
@@ -466,7 +471,7 @@ The web requests a user profile from the database:
 }
 ```
 
-The database sends the complete user data (challenges, total_steps and remaining_sec) back to the web:
+The database sends the complete user data (challenges, total_steps and remaining_sec) back to the web. This is used both to update the profile page every second with the newest step count and time remaining. But used on sign-up to check if a profile already exiists (if a user name is not used yet, the total_steps, remaining sec and challenges fields will contain null values.
 
 ```
 {
@@ -553,6 +558,8 @@ When the logged-in user selects a challenge, there is no response from the datab
 }
 ```
 
+This set up allows for a working prototye, however user data is not secured. In future work password protection should be implemented to protect user data. Also, this set up is dependent on the website retaining the user_name variable state after login/sign-up to rednder all other pages. If the user uses the browser-native back or refreshes buttons the page will relaoad (instead of being redirected) and the user-name variable information is lost in the current set-up. In a next step the web application should make use of cookies to retain a session ID, which would be used as a reference in communicating with the "server". This cookie would persist in case of a refresh, thereby retaining the previous available data and allowing the "server" to only send user data if the user has been authenticated earlier in a session.
+
 ## DETAILS OF THE DATA PERSISTENCE MECHANISMS IN USE
 
 Each user, challenge and sponsor is stored as a JSON object to allow for easy parsing and sending of payloads. The JSON format was used because parsing libraries exist for all devices, which allowed more time for development of the product logic as opposed to needing to parse JSON. 
@@ -571,6 +578,8 @@ The choice for these technologies was driven by some key needs of our website/te
 * **Availability of UI templates for rapid but beautiful prototyping:** React is currently [the most widely used](https://hotframeworks.com/) web framework, so there were plenty of templates available. We chose a [free template by Creative Tim](https://demos.creative-tim.com/now-ui-kit/index.html), which included some basic UI components such as a navigation and a profile page and would allow us to build rapid prototypes without bothering about the details of styling and navigation.
 * **Support for Object Oriented Design:** To support our object oriented design we were looking for a framework that supports the use of a strong object oriented design. React components are ideal to build class based software (see chapter 1.b).
 * **The MQTTclient Class:** Every page needs to be able to send or receive json messages, usually both, to and from the MQTT broker, so we have implemented an MQTT class which handles all data to prevent repetition in the design of each page. As the incoming json messages over the broker for the web profile are the most flexible in nature out of all pages, the MQTT class has conditional rendering dependent on the internal state of the class. The MQTT class running on a given system listens to incoming messages based on the username so if another user is accessing the site from elsewhere, there is no mismatch of data between the sessions and each user won't interrupt the others navigating the website. This was designed in order to be scalable, and to ensure the client continues to listen to the broker until the correct packet of information has been received, which is parsed and interpreted.
+
+We are still convinced that React was the right choice to build the Website for our prototype. Furture development cycles should consider the use of cookies and other React libaries (React Redux) to allow the retention of user data (Session ID stored in cookie). Moreover, further refactoring to break-down the MQTT class will be needed in future sprints. See more details on these consideration in our [Object Oriented Design: Web design Section](#web-design) and in the [Communication protocols: Desktop and web Section](#desktop-and-web).
 
 ## CONCLUSION 
 At the beginning of the project, we believed that we knew exactly how we wanted our system to be designed. Within one week, it came to be clear that each member of our team was on a different page. Designing our system from the ground up to conform to user specifications allowed for effective verification of each feature at every design stage, and allowed for effective integration of our subsystems during each sprint. During our Agile development process, many aspects of our design changed depending on user feedback and unexpected challenges between each sprint. Prior to undertaking this module, it was common-place for many of our team members to be attached to their initial design and hesitant to change. However, we found that small bits of initial concept were changing each week, and in the spirit of the agile philosophy we gradually became accusted to low level design changes which still conformed to the primary system architecture agreed upon at the start. This allowed our product design to be flexible, in terms of modularity (changing features did not break the entire system), and extensible (adding new features did not break previous ones) 

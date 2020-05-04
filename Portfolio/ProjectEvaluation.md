@@ -1,6 +1,6 @@
 ![Do or Die Project Evaluation](Images/projectEvalLogo.png)
 
-# Project Evaluation [20pts]:
+# Project Evaluation:
 
 In the following section, we will evaluate both the [design](Portfolio/SystemDesign.md) and [implementation](Portfolio/SystemImplementation.md) of our product. We will critically analyse the success of our project, including issues that still remain in the implementation of our product. We will also discuss areas for future work and evaluate how our group worked, especially in light of the move to remote working. 
 
