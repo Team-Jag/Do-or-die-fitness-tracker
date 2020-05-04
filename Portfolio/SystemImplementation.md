@@ -63,17 +63,17 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 **WIP:**
 * Implementation of communication protocol 
 
-### Sprint 2 : First Prototype (9.3-16.3) (Chris)
+### Sprint 2 : First Prototype (9.3-16.3)
 The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
-In order to allow the user to count and keep track of their steps between sessions, we need to make thestep data persistent, so we also need to develop a basic first version of our desktop server. Furthermore we wanted to create a first view for out end-users and sponsors. Therefore the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. 
+To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. 
 
 **DONE:**
 * M5 Stack able to count steps
 * M5Stack able to send a notification to Desktop server for each new step
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
-* Created web design and mockup pages
-* Decided on a UI interface for admin user story, and made a mockup Processing interface using dummy cp5 elements
+* Created web design and mock-up pages
+* Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy cp5 elements
 
 **Issues**
 <table>
@@ -85,58 +85,42 @@ In order to allow the user to count and keep track of their steps between sessio
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>End-user is able to use the M5Stack as a pedometer and view total step count. This is implemented by parsing the push step request sent from the M5Stack and incrementing the step count in the database. The admin has a basic screen and can see dummy elements creating a basic mockup of the final view.</td>
-  <td>No issues were discovered in this sprint.</td>
-</tr>
-<tr>
-  <td>Web</td>
-  <td>End user and Sponsor mock ups implemented</td>
-  <td>No issues were discovered in this sprint.</td>
+  <td>End-user is able to use the M5Stack as a pedometer and view total step count.</td>
+  <td>Parsing?</td>
+  <td>...</td>
 </tr>
 <tr>
   <td>M5Stack</td>
   <td>Developed step counter on M5Stack using external library to interpret gyroscope data. Implemented basic communication mechanism </td>
+  <td>getting a library to work?</td>
   <td></td>
 </tr>
 </table>
 
 **Reflections**
-making this, gave us a first idea how to build this...
-we realized how important a nice UI is druing inital user testing, also during testing we realized that a user will not find the UI as iniuitive as the designer/coder might have thought
-also we realized that it is important to prioritize and stick to the tests defined by the MVP and not get sidetracked by additiional features
+In this first "coding" sprint we were able to build a first mock-up view of product. In convinced us how powerful the agile methodology is, in that it allows you to produce working code and produce a tangible outcome quickly. Also, we realized how important user testing and feedback is: things that were obvious to the coder/designer such as how to navigate a website or the M5 were not as intuitive to a new user as one would think.
+Most importantly we realized that it will be highly important to prioritize and stick to the tests defined by the MVP and not get side-tracked by additional features in order to deliver our product in time.
 
 **WIP:**
 * Improve the accuracy of the step count
 
 
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
-Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project, and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
+Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
 
-### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4) (Chris)
-
-The next key user-story is that of the sponsor, so in the next sprint we should focus on delivering a web interface where a sponsor can sign-up and create challenges for the end-user. 
-We must keep a secondary focus on beginning to design an interface for our Desktop server from where the Admin can monitor the performance of the product.
+### Sprint 3 : [Alpha Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/7) Release (30.3-6.4)
 
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
-
-**User Stories Implemented:**
-* The sponsor is now able to create an account and create new challenges through our web interface.
-* The end-user is now able to create an account and enrol in challenges on our web interface.
-* We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
-* The Admin can now visualize product performance (dummy) data in the Desktop app
+Furthermore we wanted to integrate the other user-stories (sponsor & admin): Delivering a web interface where a sponsor can sign-up and create challenges for the end-user and an interface for our Desktop server from where the Admin can monitor the performance of the product.
 
 **DONE:**
 * Improved the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
-* Web able to send and receive dummy data from the broker
+* The end-user is now able to create an account and enrol in challenges on our web interface.
+* We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
+* The Admin can now visualize product performance (dummy) data in the Desktop app
 
-**WIP:**
-* All subsystems provide a basic version of the agreed visualization
-
-**User stories to Prioritize in next sprint**
-At this point each of our user stories has been at least partially delivered, so our work will now focus on improve each of the user stories.
-The next task is to work on our user interfaces in order to improve user experience across all user-stories.
-
+**Issues**
 <table>
 <tr>
   <th>Technology</th>
@@ -152,19 +136,30 @@ The next task is to work on our user interfaces in order to improve user experie
 </tr>
 <tr>
   <td>Web</td>
-  <td>Built functioning protoype that allows for navigation between pages and send & receive dummy data.</td>
-  <td>Data retention turned out to be very challenging as the react state and all JS variables are reset when loading a now page. Also, passing arguments between react components, is tricky as the exact path the user takes is unknown, and the variables passed might not have been initalized yet. </td>
-  <td> As a solution redirects instead of URL links were used for navigation (this way the react app does not reload from scratch) and the user_name variable was made global so that it was accessible for all classes and did not needed to passed through all the componets.</td>
+  <td>Built functioning prototype that allows for navigation between pages and send & receive dummy data.</td>
+  <td>Data retention turned out to be very challenging as the react state and all JS variables are reset when loading a now page. Also, passing arguments between react components, is tricky as the exact path the user takes is unknown, and the variables passed might not have been initialized yet. </td>
+  <td> As a solution redirects instead of URL links were used for navigation (this way the react app does not reload from scratch) and the user_name variable was made global so that it was accessible for all classes and did not needed to passed through all the components.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
   <td></td>
   <td></td>
+  <td></td>
 </tr>
 </table>
 
+**Reflections**
+As described above we all faced challenging issues as we extended the functionality of our sub-systems. This was when the value of coding in pairs became most evident to us: The other person could not only review and challenge your code, but with two person familiar with the details of a system we were able to find solutions significantly quicker.
+The release of the alpha version also sharpened our view on what we still had to do for our beta release: it was less about extending the product and adding many more features but more on getting the basics right: improving the reliability and delivering an intuitive visualization (again the user tests showed that the best functionality is worth little without an intuitive design/handling).
+
+**WIP:**
+* All subsystems provide a basic version of the agreed visualization
+
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) (Davide)
+At this point each of our user stories has been at least partially delivered, so our work will now focus on improve each of the user stories.
+The next task is to work on our user interfaces in order to improve user experience across all user-stories.
+
 The goal of this sprint was be to get to advance our prototye, which fixed interaction issues that arose during the sprint review on 6th of April. During this sprint, mainly with the End-User in mind, we decided to focus on improving design and visuals as well as extending basic functionalities. This included viewing their statistics on the M5Stack, and the creation of custom challenges for Sponsors on the Web.
 
 **User Stories Implemented:**
@@ -306,8 +301,9 @@ The goal of this sprint was to clean up our code, and implement any final featur
 </tr>
   <tr>
   <td>Web</td>
-  <td>Fixed issues with redirects for users and sponsors</td>
-  <td>Refactored conditional redirect logic for user and sponsor</td>
+  <td>Sponsor</td>
+  <td>The conditional redirects for users and sponsors did not work properly in life testing.</td>
+  <td>Refactored conditional redirect logic for user and sponsor and tested the code with the processing team. It turned out our initial solution was working for the standard test case but could not handle all real world situations becuase of an inccorect assumption on the user path.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
