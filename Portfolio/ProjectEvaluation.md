@@ -41,6 +41,7 @@ Indeed, our team was able to successfully follow the Agile development cycle. We
 Finally, which is perhaps is the greatest measure of our success, is how well our team worked together and how much we learnt. Our working practices will be explored further, but each of our team is now confident in many aspects of software engineering as well as the ability to work well in a group. We will now consider the success of each of our key subsystems. 
 
 #### M5 ####
+In order to ensure the success of perhaps the most important subsytem, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. In order to do this, we ensured that we first had a pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature indiviiually, and during each sprint, rather than all at once, the M5 team was able to quickly adapt to changes in requirements. 
 
 #### Web ####
 
