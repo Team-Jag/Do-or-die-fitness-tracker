@@ -75,7 +75,7 @@ To allow the user to count and keep track of their steps between sessions, we ne
 * Created web design and mock-up pages
 * Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy cp5 elements
 
-**Issues**
+#### Issues ####
 <table>
 <tr>
   <th>Technology</th>
@@ -97,7 +97,7 @@ To allow the user to count and keep track of their steps between sessions, we ne
 </tr>
 </table>
 
-**Reflections**
+#### Reflections ####
 In this first "coding" sprint we were able to build a first mock-up view of product. In convinced us how powerful the agile methodology is, in that it allows you to produce working code and produce a tangible outcome quickly. Also, we realized how important user testing and feedback is: things that were obvious to the coder/designer such as how to navigate a website or the M5 were not as intuitive to a new user as one would think.
 Most importantly we realized that it will be highly important to prioritize and stick to the tests defined by the MVP and not get side-tracked by additional features in order to deliver our product in time.
 
@@ -120,7 +120,7 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 * We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
 * The Admin can now visualize product performance (dummy) data in the Desktop app
 
-**Issues**
+#### Issues ####
 <table>
 <tr>
   <th>Technology</th>
@@ -130,7 +130,7 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>User is able view and select challenges, sponsor can add new challenges, user is also able to create new profile. Admin can see basic charts showing analytics of dummy data.</td>
+  <td>User is able view and select challenges, sponsor can add new challenges, user is also able to create new profile.</td>
   <td>As data sent from the web to create new profile did not add default values for other required data (e.g. remaining_sec), the system will crash if a request for this faulty data was fetched and attempted to be sent.</td>
   <td>As the issue encountered was due to the lack of testing on how the API handles null JSON objects, future implementations should include relevant testing. However, due to limited time for the project, this was not carried out and the extent of the implementation of a working system was only for the sake of the demo.</td>
 </tr>
@@ -148,8 +148,8 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 </tr>
 </table>
 
-**Reflections**
-As described above we all faced challenging issues as we extended the functionality of our sub-systems. This was when the value of coding in pairs became most evident to us: The other person could not only review and challenge your code, but with two person familiar with the details of a system we were able to find solutions significantly quicker.
+#### Reflections ####
+As described above we all faced challenging issues as we extended the functionality of our sub-systems. This was when the value of coding in pairs became most evident to us: the other person could not only review and challenge your code, but with two people familiar with the details of a system we were able to find solutions significantly quicker.
 The release of the alpha version also sharpened our view on what we still had to do for our beta release: it was less about extending the product and adding many more features but more on getting the basics right: improving the reliability and delivering an intuitive visualization (again the user tests showed that the best functionality is worth little without an intuitive design/handling).
 
 **WIP:**
@@ -213,32 +213,17 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 
 
 ### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) (Grace)
-The goal of this sprint was to release the Beta version of our product, and push it to the master branch. During this sprint we were able to replace the dummy data for challenges that we had on the M5Stack. Also, the database was now able to automatically update when the user reached a goal of the challenge that they had enrolled in and appropriately add the time reward to the user's account. 
 
-**User Stories Implemented:**
-* User now able to see real-time challenge data on M5 stack and on the Web
-* Animation for Bean now based on life left on M5 stack
-* Death screen if the time left is zero on M5 stack
-* Admin can see a list of all users and proportion of players currently alive
+Previously, an issue was found while implementing the communication protocols on the M5Stack in which its consequences would be highly disruptive, since it meant that we had to re-design the protocol between desktop and M5. However, a solution was found before this sprint was carried out. As we have established our MVP in previous sprints, we determined as a group that we were nearly ready to release the Beta version of our product (which would be pushed to the master branch). We decided that the following user stories which still needed improvements before official release were mainly focused on user experience such as: **(1)** animation of the Bean sprite reflecting health levels (in which only the desktop back-end will perform calculations of time left for each user) and displaying its death on the M5Stack, **(2)** being able to view interactive and real-time challenge data on the Web, and lastly, **(3)** the admin being able to track total users enrolled and proportion of players currently alive.
 
-**DONE:**
-* MQTT message length issue resolved 
+**New features implemented:**
 * Replaced dummy data with appropriate server requests on M5 stack for challenges
-* Implemented life timer countdown in desktop user API
+* Life timer countdowns for all users in desktop user API
 * Database automatically updated when user reaches any goal of challenges enrolled and adds rewards
-* Improved sprite animation: fequency and height of bounces linearly scales with time left
+* Improved sprite animation: frequency and height of bounces linearly scales with time left
 * M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down
 
-**WIP:**
-* Implement interaction feature on M5 stack
-* Replace statistics dummy data with data from server on M5 stack
-* Add sponsor API to desktop
-* Adding new user should initialise user data with default values
-
-**User stories to prioritize for next sprint**
-Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
-It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
-
+#### Key implementation issues found: ####
 <table>
 <tr>
   <th>Technology</th>
@@ -248,21 +233,26 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>Desktop</td>
-  <td>User is able to see life timer countdown and finishing challenges will add rewards to health. Admin can see statistics updating in real time as the proportion of currently "alive" users changes.</td>
-  <td>As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
+  <td>User is able to see life timer countdown and finishing challenges will add rewards to health.</td>
+  <td>The timer counts down each user 'remaining_sec' every second only when the system is running. As this is only a prototype, we decided not to implement a 'real' timer which would countdown even when the system is down. It was implemented this way just for convenience for the demo, so dummy data does not have to be initialised new every time.</td>
+  <td>For future implementations, the design of user data would need to be reassessed as a timestamp for when data was accessed/updated is required. This would allow the system to calculate the time left based on that stamp, instead of requiring the system to update the time remaining for each user every second.</td>
 </tr>
 <tr>
   <td>Web</td>
   <td>Sponsor should be redirected to challenge creation page and user should be able to select his own profile picture.</td>
   <td>If we wanted the users to have complete control over the choice of profile picture, that would mean users uploading links to the images from elsewhere on the internet, but we have no database to physically store images uploaded from their local systems. However the problem with this is that viruses can be embedded into images online and so a malicious person could choose to harm the website/system using this method. As a result, we decided to have the users pick from a small selection of images stored already in the source files.</td>
+  <td></td>
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td></td>
+  <td>User can interactively view Bean's bounciness as how much health it has?</td>
+  <td>Animation sprite issue</td>
   <td></td>
 </tr>
 </table>
 
+#### Reflections ####
+During this sprint meeting, we only briefly attempted to integrate our systems, web and desktop, to view that the timer was counting down properly. In hindsight, we did not extensively test all possible communication protocols, and also did not resolve whether the web was initialising default values within other fields when creating a new user profile. The latter was quickly realised before the next sprint was held and decided that the desktop will handle data initialisation instead. We also realised the importance of establishing a constantly updated communication protocol, as during integration, it was clear that changes of data types from String to Int was not implemented yet in the Web when creating new challenges, which was in turn rejected by the database API. As a result, we went through the [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt) together to clarify potential misunderstandings. We then decided for the next sprint, an interaction feature was needed on the M5Stack, statistics dummy data physically stored on the M5Stack should be fetched from the database instead, and a sponsor API should be implemented to the database API to fetch sponsor data.
 
 ### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4)
 Since the majority of user features had already been implemented we decided to focus on the sponsor and admin views, as well as synchronisity between all three systems, for this sprint. To allow the admins to see the user statistics reflected on the statistic view so that they can better monitor user activity, a search bar feature was implemented to find the user data from the local files. In order the admins to track the popularity of the app, additional charts were created over differing time periods (daily, weekly, monthly) in the desktop application. The purpose of a sponsor account is to create challenges for players and as such, the sponsors on the web upon account creation (where the end-user can now decide if they are a user or a sponsor) get redirected to the challenge creation page instead of the profile page.
