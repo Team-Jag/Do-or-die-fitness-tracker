@@ -6,7 +6,7 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
 
 ## Table of Contents
 - [**Reflective discussion on the success of the project**](#reflective-discussion-on-the-success-of-the-project)
-  - [General reflection of success](
+  - [General reflection of success](#general-reflection-of-success)
 - [**Discussion of future work**](#discussion-of-future-work)
   - [Currency, shop and customization](#currency-shop-and-customization)
   - [Connect M5Stack to a user account](#connect-m5stack-to-a-user-account)
