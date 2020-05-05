@@ -57,15 +57,15 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
 * Design a basic UI interface mockup for admin user story
 
-**Reflections**We agreed that our MVP consisits of the following things....
-(ANA)
+**Reflections**
+In this sprint the most important aspect was to finalise our design and evaluate how effective it was in allowing us to implement the product most conforming to our use cases. As we were still in the design stage, this sprint facilitated many changes, such as the basic UI layout and the communication protocol between devices. Defining the overall structure was crucial for future progress, which was why we prioritised these goals to make sure our progress was fast during further sprints as every member of the team was sure what features needed to be implemented next. We also defined out minimum viable product (MVP) for our next sprint; to make sure we had enough features for a product that satisfied minimum customer requirements as defined through our user stories during the design stage. In defining our goals clearly for the next sprint, we would have a product which could be evaluated by users based on feedback which could further inform our implementation decisions for future sprints. For our product, this involved prioritising the core of our product experience, the end-user story, and having a fully functional pedometer able to count steps during the next sprint.
 
 **WIP:**
 * Implementation of communication protocol 
 
 ### Sprint 2 : First Prototype (9.3-16.3)
 The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
-To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. 
+To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story.
 
 **DONE:**
 * M5 Stack able to count steps
