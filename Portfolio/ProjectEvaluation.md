@@ -181,7 +181,7 @@ However, once we all began to get in to the habit of following the above work cy
 ### COMMUNICATION TOOLS
 
 While our group communicated most frequently through Facebook messenger, due to it being the most popular messaging platform amongst our group, we chose to use [Slack](https://slack.com/intl/en-gb/) to keep track of more important messages. 
-![SlackImages/slack.png) 
+![Slack](Images/slack.png) 
 The main channels that we used in our Slack organisation were core_functionalities, general, issues, and ideas. 
 * **core_functionalities**: this channel was used to keep track of our MQTT request types, and our diagrams on how we planned for our subsystems to interact. 
 * **general**: this channel was used for more general questions, resources, and important messages that we did not want to loose in our messenger chat. 
