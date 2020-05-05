@@ -50,14 +50,15 @@ In the follow section we will break down our goals of each sprint, list what was
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously.
 
-**DONE:**
+**Key meeting points:**
 * Defined and agreed on overall infrastructure (shared on Slack)
 * Defined minimum viable product (MVP) with functions/classes/variables
 * Defined interactions between subsystems including a first iteration of the request types and their JSON syntax 
 * Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
 * Design a basic UI interface mockup for admin user story
 
-**Reflections**We agreed that our MVP consisits of the following things....
+#### Reflections ####
+We agreed that our MVP consisits of the following things....
 (ANA)
 
 **WIP:**
@@ -67,15 +68,15 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
 To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story. 
 
-**DONE:**
-* M5 Stack able to count steps
+**New features implemented:**
+* M5Stack able to count steps (pedometer functionality)
 * M5Stack able to send a notification to Desktop server for each new step
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
 * M5 able to process message from processing and display total steps
 * Created web design and mock-up pages
-* Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy cp5 elements
+* Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy Control-P5 elements
 
-#### Issues ####
+#### Key implementation issues found: ####
 <table>
 <tr>
   <th>Technology</th>
@@ -86,8 +87,8 @@ To allow the user to count and keep track of their steps between sessions, we ne
 <tr>
   <td>Desktop</td>
   <td>End-user is able to use the M5Stack as a pedometer and view total step count.</td>
-  <td>Parsing?</td>
-  <td>...</td>
+  <td>Initital design of step_count was stored as a string, which was redundant as this makes it more difficult to increment step count.</td>
+  <td>Changed data type stored in step_count into an integer.</td>
 </tr>
 <tr>
   <td>M5Stack</td>
@@ -113,14 +114,14 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
 Furthermore we wanted to integrate the other user-stories (sponsor & admin): Delivering a web interface where a sponsor can sign-up and create challenges for the end-user and an interface for our Desktop server from where the Admin can monitor the performance of the product.
 
-**DONE:**
-* Improved the view for the M5 stack (including the above additions of the Bean sprite and the health bar)
-* Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges
+**New features implemented:**
+* Improved the view for the M5Stack (including the above additions of the Bean sprite and the health bar).
+* Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges.
 * The end-user is now able to create an account and enrol in challenges on our web interface.
 * We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
-* The Admin can now visualize product performance (dummy) data in the Desktop app
+* The Admin can now visualize product performance (dummy) data in the Desktop app.
 
-#### Issues ####
+#### Key implementation issues found: ####
 <table>
 <tr>
   <th>Technology</th>
@@ -256,16 +257,17 @@ Previously, an issue was found while implementing the communication protocols on
 During this sprint meeting, we only briefly attempted to integrate our systems, web and desktop, to view that the timer was counting down properly. In hindsight, we did not extensively test all possible communication protocols, and also did not resolve whether the web was initialising default values within other fields when creating a new user profile. The latter was quickly realised before the next sprint was held and decided that the desktop will handle data initialisation instead. We also realised the importance of establishing a constantly updated communication protocol, as during integration, it was clear that changes of data types from String to Int was not implemented yet in the Web when creating new challenges, which was in turn rejected by the database API. As a result, we went through the [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt) together to clarify potential misunderstandings. We then decided for the next sprint, an interaction feature was needed on the M5Stack, statistics dummy data physically stored on the M5Stack should be fetched from the database instead, and a sponsor API should be implemented to the database API to fetch sponsor data.
 
 ### Sprint 6 : [Version 1.0](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/115) Release (20.3-27.4)
-Since the majority of user features had already been implemented we decided to focus on the sponsor and admin views, as well as synchronisity between all three systems, for this sprint. To allow the admins to see the user statistics reflected on the statistic view so that they can better monitor user activity, a search bar feature was implemented to find the user data from the local files. In order the admins to track the popularity of the app, additional charts were created over differing time periods (daily, weekly, monthly) in the desktop application. The purpose of a sponsor account is to create challenges for players and as such, the sponsors on the web upon account creation (where the end-user can now decide if they are a user or a sponsor) get redirected to the challenge creation page instead of the profile page.
+Since the majority of user features had already been implemented we decided to focus on the sponsor and admin views, as well as synchronisity between all three systems, for this sprint. To allow the admins to see the user statistics reflected on the statistic view so that they can better monitor user activity, a search bar feature was implemented to find the user data from the local files. In order for the admins to track the popularity of the app, additional charts were also created over differing time periods (daily, weekly, monthly) in the desktop application. The purpose of a sponsor account is to create challenges for players and as such, the sponsors on the web upon account creation (where the end-user can now decide if they are a user or a sponsor) get redirected to the challenge creation page instead of the profile page.
 
 The goal of this sprint was to clean up and refactor our code, and implement any final features before releasing Version 1.0 of our product.
 
-**DONE:**
+**New features implemented:**
 * Replaced dummy data with appropriate server requests on M5 stack for statistics
-* Added statistics data into user.json
+* Added dummy statistics data (i.e. weekly_record of step count) into users.json
 * Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data
-* Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values
+* Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values of health and step count
 
+#### Key implementation issues found: ####
 <table>
 <tr>
   <th>Technology</th>
@@ -276,14 +278,14 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 <tr>
   <td>Desktop</td>
   <td>New end-user will be automatically enrolled to a maximum of 10 available challenges.</td>
-  <td>As there was a limit of in what the M5Stack is able to parse from JSON Arrays, a limit of 10 challenges for each user was determined. However, no extensive testing (including attempts in integration to select more than 10 challenges from the web) has been done to ensure correct implementation.</td>
-  <td>How was issue handled</td>
+  <td>An issue was discovered in Sprint 4 where the M5Stack could not receive MQTT payloads when JSONArray challenge_id was sent with the user data.</td>
+  <td>A limit of 10 challenges for each user was established to ensure data communication from the desktop to the M5Stack will be received. However, no extensive testing (including attempts in integration to select more than 10 challenges from the web) has been done to ensure correct implementation</td>
 </tr>
 <tr>
   <td></td>
-  <td>All user, sponsor, and challenges data can be viewed in real-time through requests between devices. The admin can now access profile information for a specific user and see challenges they have completed and are currently enrolled in.</td>
-  <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web. We tried to investigate the problem, it seemed that the issue lies in how we implemented the refreshDashboard for the admin.</td>
-  <td>How was issue handled</td>
+  <td>The admin can now access and view all user, sponsor, and challenges information in real-time.</td>
+  <td>During our attempts at integrating all systems for our video demo, the desktop app frequently crashed when large amounts of requests were received from the web.</td>
+  <td>As the crash only happens when trying to integrate real-time data communication between systems, we rationalised the errors to be coming from Processing not being able to handle large amounts of synchronous request types. However, the errors were hard to pin-point when the system is running alone as it does not crash anymore, hence this issue still remains open.</td>
 </tr>
   <tr>
   <td>Web</td>
@@ -306,15 +308,10 @@ As seen in the table above, all systems faced issues in implementation of key us
 The release of the 1.0 version signified the end of creating features to instead focus on polishing existing features while ironing out the final bugs and warnings remaining in certain edge use cases. To deliver an end-user ready product not only with the basics created during alpha and beta phase, but also the embellishments and add-ons to each system (Desktop, M5, Web) since beta for the final delivery.
 
 ### Sprint 7 : Version 1.1 (optional) and Write-Up (27.4-4.5) 
-The goal of this sprint will be to do the write-up, as well as address any issues that arise from the release of Version 1.0 and implement any final features. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) to continue using the same Agile working methods that we had development of our software. Furthermore we shot a short demo video of our product.
+On our last leg of the deployment in the Agile development cycle, the goal of this final sprint will be to finish the documentation, as well as address any issues that arise from the release of Version 1.0 for quality assurance, and implement any final features. As our system has integrated adequately for the demo in the previous sprint, and the Web and Desktop teams are content with the outcome, only the M5Stack added an additional interaction feature. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) focused solely on documentation, to continue using the same Agile working methods that we used to develop our software. Furthermore, to display how our systems would work together and how they would be used, we shot a short demo video of our product.
 
-**DONE:**
-* Implemented interaction feature on M5 stack
-* Completed wirite up
-* Copleted demo video
-
-**Reflections**
-See [detailed project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success)
+**Reflections:** 
+This is covered in detail in [project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success).
 
 ## Details of design evaluation
 
