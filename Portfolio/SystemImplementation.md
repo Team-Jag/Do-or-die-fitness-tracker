@@ -157,35 +157,26 @@ The release of the alpha version also sharpened our view on what we still had to
 
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) (Davide)
-At this point each of our user stories has been at least partially delivered, so our work will now focus on improve each of the user stories.
-The next task is to work on our user interfaces in order to improve user experience across all user-stories.
-
-The goal of this sprint was be to get to advance our prototye, which fixed interaction issues that arose during the sprint review on 6th of April. During this sprint, mainly with the End-User in mind, we decided to focus on improving design and visuals as well as extending basic functionalities. This included viewing their statistics on the M5Stack, and the creation of custom challenges for Sponsors on the Web.
-
-**User Stories Implemented:**
-* Basic animation for Bean sprite implemented
-* User can see the challenges that they are enrolled in on M5 stack (dummy data)
-* User can see basic statistics about their step count on M5 stack (dummy data)
-* Web can see their full user information and challenges if they are logged in (dummy data)
-* Web can create new customised challenges for all users
-* Admin can see charts of total users, challenges, sponsors
-* Admin dashboard pulls data from backend database API
+The only user-story left to complete was that of the sponsor, so in this sprint our Web team focused on developing the key functionality of creating custom challenges and sending them to the desktop server to be made available to the end-user.
+The first iteration of our other user-stories has been delivered, so for our other teams this sprint focused mainly on improving the quality of the user-stories we had already delivered, rather than layering new functionality on top of subpar unpolished foundations.
+Therefore, for the M5Stack and the Processing App, the goal of this sprint was to improving design and visuals as well as extending our interfaces.
 
 **DONE:**
+* Basic animations for Bean sprite implemented on M5Stack
+* User can see the challenges that they are enrolled in on M5 stack (dummy data)
+* User can see basic statistics about their step count on M5 stack (dummy data)
+* User can see their full information and challenges if they are logged in on our website (dummy data)
+* Sponsor can create new customised challenges for all users on our website
+* Admin can see charts of total users, challenges, sponsors on our Desktop app
+* Admin dashboard pulls data from backend database API
 * All subsystems able to receive, process and send the intended MQTT commands
 * All subsystems provide a basic version of the agreed visualization 
-* M5 home view enhanced with animation 
-* Implementation of statistic and challenge view on M5 stack, had to use dummy data due to the MQTT message length issue
 * Agreed on how user death would work across subsystems
 
 **WIP:**
 * MQTT message length issue with M5 Stack 
 * Real data for statistics and challenges on M5 stack
 * All subsytems to handle user death 
-
-**User stories to prioritize for next sprint**
-Now that our devices are communicating effectively and the data is displayed properly on each of our subsystems, our focus is going to be on polishing our systems and replace dummy data with real data obtained with appropriate requests from device to device.
-It sould also be made evident on the M5Stack when the Bean's health reaches zero. 
 
 <table>
 <tr>
@@ -207,10 +198,16 @@ It sould also be made evident on the M5Stack when the Bean's health reaches zero
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td></td>
-  <td>When attempting to replace Challenges and Statistics dummy data on the M5Stack with appropriate requests on the MQTT Topics, we found that the M5Stack ignored all messages on the MQTT Topic that were above a certain length.</td>
+  <td>End-User is able to visualize their data on the M5Stack</td>
+  <td>When attempting to replace Challenges and Statistics dummy data on the M5Stack with appropriate requests on the MQTT Topic, we found that the M5Stack ignored all messages on the MQTT Topic that were above a certain length.</td>
+  <td>We tried to fix this issue by reducing the length of the JSON packages however this proved unfeasible since the limit of character after which messages would be ignored was way too low (113).
+  We looked for other solutions online unsuccesfully, therefore we weren't able to complete this feature during this sprint and had to stick with the dummy data.</td>
 </tr>
 </table>
+
+**Reflections**
+Since our comminication mechanisms had already been tested and proven to work in our previous sprints, this sprint promised to be one of the lower workloads sprints, at least for our M5Stack and Desktop teams.
+However the arisal of the MQTT message length issue knocked all our hopes down, and made the life of our M5Stack team very hard. However thanks to our Agile development strategy, we were able to quickly come up with a contingency plan to rework our shared contract in the eventuality that our M5Stack team weren't able to rapidly find a solution to that problem. 
 
 
 ### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) (Grace)
@@ -246,9 +243,9 @@ Previously, an issue was found while implementing the communication protocols on
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td>User can interactively view Bean's bounciness as how much health it has?</td>
-  <td>Animation sprite issue</td>
-  <td></td>
+  <td>End-User is able to visualize their data on the M5Stack</td>
+  <td>The M5Stack's PubSub library completely ignores messages over a certain character length.</td>
+  <td>Thankfully, we realized that this wasn't exactly a bug, but a feature of the library which allows the M5Stack to ignore messages that are too long and would cause overflow problems. The maximum limit of a messages however can easily be changed by #defining the threshold before importing the library.</td>
 </tr>
 </table>
 
@@ -295,9 +292,11 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td>Implement interaction feature on M5 stack</td>
-  <td></td>
-  <td></td>
+  <td>End-user is emotionally invested in the Bean's wellness due to its pet-like features and animations.</td>
+  <td>Due to the M5Stack's slow screen drawing library, the Bean's animations are noticeably flickery.</td>
+  <td>We explored Arduino's examples where fast animation was implemented and we realized that those examples edited the frames a byte at a time. 
+  Due to our time constraints we decided changing our draw() methods to be byte-by-byte was way out of our realistic scope, so instead we applied simpler improvements: firstly we made it so only the sections where movement had taken place were re-drawn, by storing the old position of the Bean after each move() call. That provided a noticeable reduction in flickering however we weren't happy with it yet so we also decided to control the refresh rate by incuding timers to all our draw() methods. 
+  Even though there is still a slight flicker in our animation, we decided that for our prototype such a small imperfection was acceptable.</td>
 </tr>
 </table>
 
