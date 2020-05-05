@@ -48,7 +48,7 @@ As one of the key foundations of Agile software development is to have self-orga
 In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. 
 
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
-The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously.
+The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously. Additionally, we decided on goals to prioritise in order to arrive at a minimum viable product by the next sprint.
 
 **DONE:**
 * Defined and agreed on overall infrastructure (shared on Slack)
