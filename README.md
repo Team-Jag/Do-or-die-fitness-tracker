@@ -11,11 +11,11 @@ Get out. Get active. Have fun. Keep your Bean alive.
     .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
     .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
-    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Portfolio</a>
     . 
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#references">References</a>
+ .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
   </p>
 
 ## The Product
@@ -33,9 +33,6 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * [Graciela Putri](https://github.com/gracielawp) : <tl19232@bristol.ac.uk>
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
-
-## Acknowledgments
-We are incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 ## Portfolio
 In our portfolio we will analyse all aspects of the development of our product, from how we designed the system, to how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are defined below. 
@@ -82,6 +79,10 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
 
 [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
+
+
+## Acknowledgments
+We are incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 
 
