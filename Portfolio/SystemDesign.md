@@ -76,7 +76,7 @@ Finally, in order to ensure the success of the product, we knew that we needed t
 </tr>
 </table>
 
-A further break down of the user stories can be seen in our [Gantt chart](Images/updated_gantt.png). However, the main ones are outlined in this use case diagram:
+The main user stories are outlined in this usecase diagram:
 
 <p align="center">
 <img src="Images/dotuml.png" width=60%>
