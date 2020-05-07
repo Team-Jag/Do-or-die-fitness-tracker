@@ -74,7 +74,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
 
 ## Acknowledgments
-A big thank you to everyones code and libraries who we used during this project, referenced above. We are also incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
+A big thank you to everyone whose code and libraries we used during this project, referenced above. We are also incredibly thankful for the support and guidance of our lecturers Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 <p align="center">
 <img src="Portfolio/Images/invertedLogo.png" width=25%>
