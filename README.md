@@ -1,12 +1,14 @@
 <h1 align="center">Do or Die Fitness Tracker</h1>
 
 <p align="center">
+  Get out. Get active. Keep your Bean alive. 
+  </p>
+
+<p align="center">
 <img src="Portfolio/Images/logo.png" width=85%>
 </p>
 
-<p align="center">
-  Get out. Get active. Keep your Bean alive. 
-  </p>
+
 
 
 ## Product Description
