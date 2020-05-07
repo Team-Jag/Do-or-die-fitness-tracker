@@ -1,14 +1,14 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed) [![commits](https://img.shields.io/github/commit-activity/y/Team-Jag/Do-or-die-fitness-tracker?color=gree)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/commits/develop)
 <h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
 </h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed) [![commits](https://img.shields.io/github/commit-activity/y/Team-Jag/Do-or-die-fitness-tracker?color=gree)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/commits/develop)
+
 
 <p align="center">
 Get out. Get active. Have fun. Keep your Bean alive. 
 </p>
 
-
-
+[Product Description](#product-description) . [Team Members](#team-members) . [Acknowledgments](#acknowledgments) . [Portfolio](#portfolio) . [Built With](#built-with)
 
 ## Product Description
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
