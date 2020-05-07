@@ -8,11 +8,15 @@ Get out. Get active. Have fun. Keep your Bean alive.
 
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
-    .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
-    .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Portfolio</a>
+      .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The System</a>
+   .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The User</a>
+ .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Want To Learn More?</a>
     . 
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
+ .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/amy-readMeUpdate/README.md#acknowledgments--references">Acknowledgments & References</a>
   </p>
 
@@ -23,6 +27,10 @@ If setting your own goals is not enough motivation, meet our Sponsors! With new 
 
 The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
+## The System 
+
+## The User
+
 ## The Team
 
 * [Davide Bernardi](https://github.com/DavideBernardi) : <db16981@bristol.ac.uk>
@@ -32,7 +40,7 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
-## Portfolio
+## Want to Learn More?
 In our portfolio we will analyse all aspects of the development of our product, from how we designed the system, to how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are defined below. 
 
 ## 1. [System Design](Portfolio/SystemDesign.md)
