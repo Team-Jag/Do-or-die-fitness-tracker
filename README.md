@@ -1,7 +1,10 @@
 <h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
-  Get out. Get active. Have fun. Keep your Bean alive. 
 </h1>
 
+
+<p align="center">
+Get out. Get active. Have fun. Keep your Bean alive. 
+</p>
 
 
 
