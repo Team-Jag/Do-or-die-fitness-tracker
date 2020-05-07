@@ -1,6 +1,7 @@
 <h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
 </h1>
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker)
 
 <p align="center">
 Get out. Get active. Have fun. Keep your Bean alive. 
