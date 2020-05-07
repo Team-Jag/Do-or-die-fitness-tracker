@@ -13,9 +13,7 @@ Get out. Get active. Have fun. Keep your Bean alive.
     .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Portfolio</a>
     . 
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#references">References</a>
- .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/amy-readMeUpdate/README.md#acknowledgments--references">Acknowledgments & References</a>
   </p>
 
 ## The Product
