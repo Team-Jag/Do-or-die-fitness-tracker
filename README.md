@@ -1,13 +1,31 @@
-![DoOrDieLogo](Portfolio/Images/logo.png)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed) [![commits](https://img.shields.io/github/commit-activity/y/Team-Jag/Do-or-die-fitness-tracker?color=gree)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/commits/develop)
+<h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
+</h1>
 
-## Product Description
+<p align="center">
+Get out. Get active. Have fun. Keep your Bean alive. 
+</p>
+
+ <p align="center">
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Portfolio</a>
+    . 
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#references">References</a>
+ .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
+  </p>
+
+## The Product
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
 
 If setting your own goals is not enough motivation, meet our Sponsors! With new challenges weekly, and amazing prizes up for grabs, there's even more reason to keep your Bean's health level up. On top of that, once you register with Do or Die you can access your account details on our website where you can keep track of long term progress, and challenge your friends along the way. 
 
 The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
-## Team Members
+## The Team
 
 * [Davide Bernardi](https://github.com/DavideBernardi) : <db16981@bristol.ac.uk>
 * [Chris Buehler](https://github.com/Chris19138) : <christoph.buehler.2019@bristol.ac.uk>
@@ -15,9 +33,6 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 * [Graciela Putri](https://github.com/gracielawp) : <tl19232@bristol.ac.uk>
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
-
-## Acknowledgments
-We are incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 ## Portfolio
 In our portfolio we will analyse all aspects of the development of our product, from how we designed the system, to how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are defined below. 
@@ -46,26 +61,21 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflection on working practices of our group
 
 ## References
-
 #### M5Stack Libraries & Referenced Code
-[M5Stack Default Library](https://github.com/m5stack/M5Stack)
-
-[WiFi Library](https://github.com/m5stack/M5Stack)
-
-[Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
-
-[MQTT Communcation Library](https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h)
-
-[Time Library](https://github.com/PaulStoffregen/Time)
-
-[MPU9250 Pedometer Class](https://github.com/m5stack/M5Stack/blob/master/examples/Fire/M5StackFire_MPU9250/M5StackFire_MPU9250.ino)
+* [M5Stack Default Library](https://github.com/m5stack/M5Stack)
+* [WiFi Library](https://github.com/m5stack/M5Stack)
+* [Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
+* [MQTT Communcation Library](https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h)
+* [Time Library](https://github.com/PaulStoffregen/Time)
+* [MPU9250 Pedometer Class](https://gist.github.com/botamochi6277/7bfc4e15443cfbaa3ab9882f6a953868#file-dualmpu9250basic-ino)
 
 #### Processing Libraries
-[ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
+* [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
+* [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
 
-[MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
+## Acknowledgments
+A big thank you to everyones code and libraries who we used during this project, referenced above. We are also incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
-
-
-
-
+<p align="center">
+<img src="Portfolio/Images/invertedLogo.png" width=25%>
+</p>
