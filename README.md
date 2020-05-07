@@ -2,13 +2,23 @@
 <h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
 </h1>
 
-
-
 <p align="center">
 Get out. Get active. Have fun. Keep your Bean alive. 
 </p>
 
-[Product Description](#product-description) . [Team Members](#team-members) . [Acknowledgments](#acknowledgments) . [Portfolio](#portfolio) . [Built With](#built-with)
+ <p align="center">
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description">Product Description</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#team-members">Team Members</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Portfolio</a>
+    . 
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#references">References</a>
+  </p>
+
+[Product Description](#product-description) . [Team Members](#team-members) . [Acknowledgments](#acknowledgments) . [Portfolio](#portfolio) . [References](#references) 
 
 ## Product Description
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
@@ -55,7 +65,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Discussion of future work
 * Reflection on working practices of our group
 
-## Built With
+## References
 
 #### M5Stack Libraries & Referenced Code
 [M5Stack Default Library](https://github.com/m5stack/M5Stack)
