@@ -59,7 +59,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflection on working practices of our group
 
 ## Acknowledgments & References
-A big thank you to everyone whose code and libraries we used during this project, referenced below. We are also incredibly thankful for the support and guidance of our lecturers Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
+A big thank you to everyone whose code and libraries we used during this project, referenced below. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 #### M5Stack Libraries & Referenced Code
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
