@@ -77,5 +77,5 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 
 
 
-
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/Team-Jag/Do-or-die-fitness-tracker)
 
