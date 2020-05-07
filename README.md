@@ -84,7 +84,3 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 ## Acknowledgments
 We are incredibly thankful for the support and guidance of Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
-
-
-[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/Team-Jag/Do-or-die-fitness-tracker)
-
