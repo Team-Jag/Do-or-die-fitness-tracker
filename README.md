@@ -1,4 +1,13 @@
-![DoOrDieLogo](Portfolio/Images/logo.png)
+<h1 align="center">Do or Die Fitness Tracker</h1>
+
+<p align="center">
+<img src="Portfolio/Images/logo.png" width=85%>
+</p>
+
+<p align="center">
+  Get out. Get active. Keep your Bean alive. 
+  </p>
+
 
 ## Product Description
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
