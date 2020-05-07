@@ -9,7 +9,7 @@ Get out. Get active. Have fun. Keep your Bean alive.
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
     .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#team-members">Team Members</a>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
     .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#acknowledgments">Acknowledgments</a>
     .
@@ -25,7 +25,7 @@ If setting your own goals is not enough motivation, meet our Sponsors! With new 
 
 The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
-## Team Members
+## The Team
 
 * [Davide Bernardi](https://github.com/DavideBernardi) : <db16981@bristol.ac.uk>
 * [Chris Buehler](https://github.com/Chris19138) : <christoph.buehler.2019@bristol.ac.uk>
