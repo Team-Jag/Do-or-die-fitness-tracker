@@ -60,7 +60,9 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Discussion of future work
 * Reflection on working practices of our group
 
-## References
+## Acknowledgments & References
+A big thank you to everyone whose code and libraries we used during this project, referenced below. We are also incredibly thankful for the support and guidance of our lecturers Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
+
 #### M5Stack Libraries & Referenced Code
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
 * [WiFi Library](https://github.com/m5stack/M5Stack)
@@ -72,9 +74,6 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 #### Processing Libraries
 * [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
 * [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
-
-## Acknowledgments
-A big thank you to everyone whose code and libraries we used during this project, referenced above. We are also incredibly thankful for the support and guidance of our lecturers Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 <p align="center">
 <img src="Portfolio/Images/invertedLogo.png" width=25%>
