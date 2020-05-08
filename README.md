@@ -35,7 +35,7 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 ## The Process
 In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
 
-## 1. [System Design](Portfolio/SystemDesign.md)
+### 1. [System Design](Portfolio/SystemDesign.md)
 View our [system design document](Portfolio/SystemDesign.md) to see:
 * Product requirements
 * User requirements for key subsystems
@@ -46,13 +46,13 @@ View our [system design document](Portfolio/SystemDesign.md) to see:
 * Details of the data persistence mechanisms in use
 * Details of web technologies in use
 
-## 2. [System Implementation](Portfolio/SystemImplementation.md)
+### 2. [System Implementation](Portfolio/SystemImplementation.md)
 View our [system implementation document](Portfolio/SystemImplementation.md) to see:
 * Breakdown of our project into sprints
 * Design evaluation
 * Social and ethical implications of our work
 
-## 3. [Project Evaluation](Portfolio/ProjectEvaluation.md)
+### 3. [Project Evaluation](Portfolio/ProjectEvaluation.md)
 View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
