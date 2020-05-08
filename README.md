@@ -16,7 +16,9 @@
  .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
  . 
-  <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#acknowledgments--references">Acknowledgments & References</a>
+  <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#built-with">Built With</a>
+ . 
+  <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#acknowledgments">Acknowledgments</a>
   </p>
   
 
@@ -71,9 +73,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
-## Acknowledgments & References
-A big thank you to everyone whose code and libraries we used during this project, referenced below. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
-
+## Built With
 #### M5Stack Libraries & Referenced Code
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
 * [WiFi Library](https://github.com/m5stack/M5Stack)
@@ -85,6 +85,9 @@ A big thank you to everyone whose code and libraries we used during this project
 #### Processing Libraries
 * [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
 * [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
+
+## Acknowledgments
+A big thank you to everyone whose code and libraries we used during this project, referenced above. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
 <p align="center">
 <img src="Portfolio/Images/invertedLogo.png" width=25%>
