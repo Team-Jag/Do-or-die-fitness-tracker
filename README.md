@@ -28,13 +28,13 @@ If setting your own goals is not enough motivation, meet our Sponsors! With new 
 The goal is simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## The User
-When designing Do or Die we had one goal in mind: making fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, and very little on helping those new to fitness get in to it, so [the team](#the-team) wanted to make a fitness product that doubled as a game. 
+When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, and very little on helping those new to fitness get in to it, so [the team](#the-team) wanted to make a fitness product that doubled as a game. By doing these we create new incentives and rewards for an individual to improve their own health. 
 
-In order to guide you through our user-centered approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how the system can be used. So, meet Mario! 
+In order to guide you through our user-centered approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
 
 > I'm Mario. I am in my 20's, love to play games and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
-Using Mario as our focus case study, while also highlighting how other user-types can use our system, we will guide you through the process of making Do or Die. 
+Using Mario as our focus use case, while also highlighting how other user groups can use our system, we will guide you through the process of making Do or Die. 
 
 ## The Process
 In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
