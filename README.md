@@ -1,10 +1,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed)
-<h1 align="center"><img src="Portfolio/Images/logo.png" width=85%>
-</h1>
 
-<p align="center">
-Get out. Get active. Have fun. Keep your Bean alive. 
+<p align="center"><img src="Portfolio/Images/invertedLogo.png" width=35%>
 </p>
+
+<h1 align="center"> Do or Die Fitness Tracker</h1>
+
+<p align="center"><b> A fitness tracker with a twist. </p></b>
 
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
