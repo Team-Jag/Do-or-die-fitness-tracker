@@ -200,16 +200,16 @@ React is ideal to implement object oriented design. Our website consists of func
 
 * [**MQTT Class**](../Web/src/views/examples/MQTTclient.js) - This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
 
-  * encapsulates - it hides the detail of the server communication from the other components
-  * acts abstract - with a simple interface that can be called by all components
-  * inherits its basic methods from the react components
-  * is polymorphic - it can handle all sorts of data: from profile to challenge data  
+  * encapsulates - it hides the detail of the server communication from the other components.
+  * acts abstract - with a simple interface that can be called by all components.
+  * inherits its basic methods from the react components.
+  * is polymorphic - it can handle all sorts of data: from profile to challenge data  .
 * [**Landing Page**](../Web/src/views/examples/LandingPage.js) - Contains all the static content and the MQTT instance for creating a new profile.
 * [**Login Page**](../Web/src/views/examples/LoginPage.js) - Contains the static UI + a MQTT instance to handle the Login.
 * [**Profile Page**](../Web/src/views/examples/ProfilePage.js) - Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for.
 * [**Challenge Choice Page**](../Web/src/views/examples/ChallengeChoicePage.js) - Contains a MQTT instance which lets the user sign up for challenges.
 * [**Challenge Creation Page**](../Web/src/views/examples/ChallengePage.js) - Contains a MQTT instance which lets the sponsor create new challenges for users.
-* [**Common static components such as headers, navbars or footers**](../Web/src/components/Navbars/ExamplesNavbar.js) which can be integrated in all of the views
+* [**Common static components such as headers, navbars or footers**](../Web/src/components/Navbars/ExamplesNavbar.js) which can be integrated in all of the views.
 
 During our development process more and more of the functionality and code moved from the page specific classes to the MQTT class. While our initial "ideal" design would have the page specific content inside the respective page class, we faced the issue that all the variables/states are lost when navigating to the next page. Moving functionality to the MQTT class alowed us to retain the critical data. Furthermore, the introduction of a global variable 'user_name' allowed us to retain the user name without the use of cookies.
 
