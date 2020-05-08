@@ -8,8 +8,6 @@ Get out. Get active. Have fun. Keep your Bean alive.
 
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
-      .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The System</a>
    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The User</a>
     . 
@@ -27,8 +25,6 @@ Do or Die is a wearable fitness tracker, designed to inspire users to get active
 If setting your own goals is not enough motivation, meet our Sponsors! With new challenges weekly, and amazing prizes up for grabs, there's even more reason to keep your Bean's health level up. On top of that, once you register with Do or Die you can access your account details on our website where you can keep track of long term progress, and challenge your friends along the way. 
 
 The goal is therefore simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
-
-## The System 
 
 ## The User
 
