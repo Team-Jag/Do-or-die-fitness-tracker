@@ -16,11 +16,10 @@ Get out. Get active. Have fun. Keep your Bean alive.
   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">The Process</a>
  .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
+ . 
+  <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/amy-readMeUpdate/README.md#acknowledgments--references">Acknowledgments & References</a>
   </p>
   
-   <p align="center"> 
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/amy-readMeUpdate/README.md#acknowledgments--references">Acknowledgments & References</a>
-  </p>
 
 ## The Product
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is the your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
@@ -33,17 +32,8 @@ The goal is therefore simple, keep the Bean's health bar above zero by getting o
 
 ## The User
 
-## The Team
-
-* [Davide Bernardi](https://github.com/DavideBernardi) : <db16981@bristol.ac.uk>
-* [Chris Buehler](https://github.com/Chris19138) : <christoph.buehler.2019@bristol.ac.uk>
-* [Amy Conroy](https://github.com/amyconroy) : <ac16888@bristol.ac.uk>
-* [Graciela Putri](https://github.com/gracielawp) : <tl19232@bristol.ac.uk>
-* [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
-* [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
-
-## Want to Learn More?
-In our portfolio we will analyse all aspects of the development of our product, from how we designed the system, to how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are defined below. 
+## The Process
+In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
 
 ## 1. [System Design](Portfolio/SystemDesign.md)
 View our [system design document](Portfolio/SystemDesign.md) to see:
@@ -67,6 +57,15 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * Reflective discussion of the success of the project
 * Discussion of future work
 * Reflection on working practices of our group
+
+## The Team
+
+* [Davide Bernardi](https://github.com/DavideBernardi) : <db16981@bristol.ac.uk>
+* [Chris Buehler](https://github.com/Chris19138) : <christoph.buehler.2019@bristol.ac.uk>
+* [Amy Conroy](https://github.com/amyconroy) : <ac16888@bristol.ac.uk>
+* [Graciela Putri](https://github.com/gracielawp) : <tl19232@bristol.ac.uk>
+* [Anastasia Shmyglya](https://github.com/a-shmyg) : <ge19548@bristol.ac.uk>
+* [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
 ## Acknowledgments & References
 A big thank you to everyone whose code and libraries we used during this project, referenced below. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
