@@ -13,12 +13,12 @@ Get out. Get active. Have fun. Keep your Bean alive.
    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The User</a>
     . 
+  <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">The Process</a>
+ .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The Team</a>
   </p>
   
    <p align="center"> 
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">Want To Learn More?</a>
-     .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/amy-readMeUpdate/README.md#acknowledgments--references">Acknowledgments & References</a>
   </p>
 
