@@ -9,7 +9,7 @@ Get out. Get active. Have fun. Keep your Bean alive.
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
    .
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-team">The User</a>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-user">The User</a>
     . 
   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#portfolio">The Process</a>
  .
