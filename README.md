@@ -34,7 +34,7 @@ When designing Do or Die we had one goal in mind: make fitness fun. Many of the 
 
 In order to guide you through our user-centered approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
 
-> I'm Mario. I am in my 20's, love to play games and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
+> I'm Mario. I am in my 20's, love to play games, and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
 Using Mario as our focus use case, while also highlighting how other user groups can use our system, we will guide you through the process of making Do or Die. 
 
