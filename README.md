@@ -5,7 +5,7 @@
 
 <h1 align="center"> Do or Die Fitness Tracker</h1>
 
-<p align="center"><b> A fitness tracker with a twist. </p></b>
+<p align="center"><b> A fitness tracker with a twist. Built with <a href="https://github.com/m5stack">M5Stack</a>, <a href="https://github.com/facebook/react ">React</a>, and <a href="https://github.com/processing">Processing.</a> </p></b>
 
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
