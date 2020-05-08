@@ -5,7 +5,7 @@
 
 <h1 align="center"> Do or Die Fitness Tracker</h1>
 
-<p align="center"><b> A fitness tracker with a twist. Built with <a href="https://github.com/m5stack">M5Stack</a>, <a href="https://github.com/facebook/react ">React</a>, and <a href="https://github.com/processing">Processing.</a> </p></b>
+<p align="center"><b> A fitness tracker with a twist. Built with <a href="https://github.com/m5stack">M5Stack</a>, <a href="https://github.com/facebook/react">React</a>, and <a href="https://github.com/processing">Processing.</a> </p></b>
 
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
@@ -74,7 +74,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
 ## Built With
-#### M5Stack Libraries & Referenced Code
+#### [M5Stack](https://github.com/m5stack) Libraries & Referenced Code
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
 * [WiFi Library](https://github.com/m5stack/M5Stack)
 * [Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
@@ -82,9 +82,12 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [Time Library](https://github.com/PaulStoffregen/Time)
 * [MPU9250 Pedometer Class](https://gist.github.com/botamochi6277/7bfc4e15443cfbaa3ab9882f6a953868#file-dualmpu9250basic-ino)
 
-#### Processing Libraries
+#### [Processing](https://github.com/processing) Libraries
 * [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
-* [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
+* [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)'
+
+#### [React](https://github.com/facebook/react) Template 
+* [Now UI Kit](https://demos.creative-tim.com/now-ui-kit/index.html)
 
 ## Acknowledgments
 A big thank you to everyone whose code and libraries we used during this project, referenced above. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
