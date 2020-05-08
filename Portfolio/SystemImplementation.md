@@ -51,29 +51,29 @@ In the follow section we will break down our goals of each sprint, list what was
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously. Additionally, we decided on goals to prioritise in order to arrive at a minimum viable product by the next sprint.
 
 **Key meeting points:**
-* Defined and agreed on overall infrastructure (shared on Slack)
-* Defined minimum viable product (MVP) with functions/classes/variables
-* Defined interactions between subsystems including a first iteration of the request types and their JSON syntax 
-* Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol)
-* Design a basic UI interface mockup for admin user story
+* Defined and agreed on overall infrastructure (shared on Slack).
+* Defined minimum viable product (MVP) with functions/classes/variables.
+* Defined interactions between subsystems including a first iteration of the request types and their JSON syntax.
+* Establish Github protocol (including how we would use the project board, as well as pull request and issue protocol).
+* Design a basic UI interface mockup for admin user story.
 
 **Reflections**
 In this sprint the most important aspect was to finalise our design and evaluate how effective it was in allowing us to implement the product most conforming to our use cases. As we were still in the design stage, this sprint facilitated many changes, such as the basic UI layout and the communication protocol between devices. Defining the overall structure was crucial for future progress, which was why we prioritised these goals to make sure our progress was fast during further sprints as every member of the team was sure what features needed to be implemented next. We also defined our minimum viable product (MVP) for our next sprint; to make sure we had enough features for a product that satisfied minimum customer requirements as defined through our user stories during the design stage. In defining our goals clearly for the next sprint, we would have a product which could be evaluated by users based on feedback which could further inform our implementation decisions for future sprints. During this stage we experienced several issues in terms of deciding on what we wanted to work on first. Eventially, for our product we decided to prioritise the end-user story, the core of our product experience as this will be the use case most commonly interacted with. This involved having a fully functioning pedometer able to count steps by the end of the next sprint.
 
 **WIP:**
-* Implementation of communication protocol 
+* Implementation of communication protocol.
 
 ### Sprint 2 : First Prototype (9.3-16.3)
 The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
 To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story.
 
 **New features implemented:**
-* M5Stack able to count steps (pedometer functionality)
-* M5Stack able to send a notification to Desktop server for each new step
-* Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5
-* M5 able to process message from processing and display total steps
-* Created web design and mock-up pages
-* Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy Control-P5 elements
+* M5Stack able to count steps (pedometer functionality).
+* M5Stack able to send a notification to Desktop server for each new step.
+* Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5.
+* M5 able to process message from processing and display total steps.
+* Created web design and mock-up pages.
+* Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy Control-P5 elements.
 
 #### Key implementation issues found: ####
 <table>
@@ -102,7 +102,7 @@ In this first "coding" sprint we were able to build a first mock-up view of prod
 Most importantly we realized that it will be highly important to prioritize and stick to the tests defined by the MVP and not get side-tracked by additional features in order to deliver our product in time.
 
 **WIP:**
-* Improve the accuracy of the step count
+* Improve the accuracy of the step count.
 
 
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
@@ -153,7 +153,7 @@ As described above we all faced challenging issues as we extended the functional
 The release of the alpha version also sharpened our view on what we still had to do for our beta release: it was less about extending the product and adding many more features but more on getting the basics right: improving the reliability and delivering an intuitive visualization (again the user tests showed that the best functionality is worth little without an intuitive design/handling).
 
 **WIP:**
-* All subsystems provide a basic version of the agreed visualization
+* All subsystems provide a basic version of the agreed visualization.
 
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) (Davide)
@@ -162,21 +162,21 @@ The first iteration of our other user-stories has been delivered, so for our oth
 Therefore, for the M5Stack and the Processing App, the goal of this sprint was to improving design and visuals as well as extending our interfaces.
 
 **DONE:**
-* Basic animations for Bean sprite implemented on M5Stack
-* User can see the challenges that they are enrolled in on M5 stack (dummy data)
-* User can see basic statistics about their step count on M5 stack (dummy data)
-* User can see their full information and challenges if they are logged in on our website (dummy data)
-* Sponsor can create new customised challenges for all users on our website
-* Admin can see charts of total users, challenges, sponsors on our Desktop app
-* Admin dashboard pulls data from backend database API
-* All subsystems able to receive, process and send the intended MQTT commands
-* All subsystems provide a basic version of the agreed visualization 
-* Agreed on how user death would work across subsystems
+* Basic animations for Bean sprite implemented on M5Stack.
+* User can see the challenges that they are enrolled in on M5 stack (dummy data).
+* User can see basic statistics about their step count on M5 stack (dummy data).
+* User can see their full information and challenges if they are logged in on our website (dummy data).
+* Sponsor can create new customised challenges for all users on our website.
+* Admin can see charts of total users, challenges, sponsors on our Desktop app.
+* Admin dashboard pulls data from backend database API.
+* All subsystems able to receive, process and send the intended MQTT commands.
+* All subsystems provide a basic version of the agreed visualization.
+* Agreed on how user death would work across subsystems.
 
 **WIP:**
-* MQTT message length issue with M5 Stack 
-* Real data for statistics and challenges on M5 stack
-* All subsytems to handle user death 
+* MQTT message length issue with M5 Stack.
+* Real data for statistics and challenges on M5 stack.
+* All subsytems to handle user death. 
 
 <table>
 <tr>
@@ -215,11 +215,11 @@ However the arisal of the MQTT message length issue knocked all our hopes down, 
 Previously, an issue was found while implementing the communication protocols on the M5Stack in which its consequences would be highly disruptive, since it meant that we had to re-design the protocol between desktop and M5. However, a solution was found before this sprint was carried out. As we have established our MVP in previous sprints, we determined as a group that we were nearly ready to release the Beta version of our product (which would be pushed to the master branch). We decided that the following user stories which still needed improvements before official release were mainly focused on user experience such as: **(1)** animation of the Bean sprite reflecting health levels (in which only the desktop back-end will perform calculations of time left for each user) and displaying its death on the M5Stack, **(2)** being able to view interactive and real-time challenge data on the Web, and lastly, **(3)** the admin being able to track total users enrolled and proportion of players currently alive.
 
 **New features implemented:**
-* Replaced dummy data with appropriate server requests on M5 stack for challenges
-* Life timer countdowns for all users in desktop user API
-* Database automatically updated when user reaches any goal of challenges enrolled and adds rewards
-* Improved sprite animation: frequency and height of bounces linearly scales with time left
-* M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down
+* Replaced dummy data with appropriate server requests on M5 stack for challenges.
+* Life timer countdowns for all users in desktop user API.
+* Database automatically updated when user reaches any goal of challenges enrolled and adds rewards.
+* Improved sprite animation: frequency and height of bounces linearly scales with time left.
+* M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down.
 
 #### Key implementation issues found: ####
 <table>
@@ -258,10 +258,10 @@ Since the majority of user features had already been implemented we decided to f
 The goal of this sprint was to clean up and refactor our code, and implement any final features before releasing Version 1.0 of our product.
 
 **New features implemented:**
-* Replaced dummy data with appropriate server requests on M5 stack for statistics
-* Added dummy statistics data (i.e. weekly_record of step count) into users.json
-* Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data
-* Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values of health and step count
+* Replaced dummy data with appropriate server requests on M5 stack for statistics.
+* Added dummy statistics data (i.e. weekly_record of step count) into users.json.
+* Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data.
+* Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values of health and step count.
 
 #### Key implementation issues found: ####
 <table>
@@ -341,8 +341,6 @@ The end-user first follows easily laid out instructions on the Web page to creat
 For the sponsor use case, this is very similar except the only device they interact with is the Web. The sponsor creates an account, logs in, and publishes challenges. 
 
 Implementing the admin use case, we aimed to maximise the amount of useful information on the screen, without letting the admin become overwhelmed. Charts are clearly labelled according to what metric they belong to, and search bar is clear and easy to find. 
-
-#### Reliability
 
 ### User Testing and Evaluation
 The one key concept that our team kept coming back to was that our product was made for someone, and thus our main focus was on the end-user when designing and implementing our product. If the end-user was not happy, or not able to use our product, then there would be no need for the admin or the sponsor. While our user testing was affected by our move to remote working, prior to this we used this method to evaluate our design extensively during each sprint. We had our peers and friends use different aspects of our product, and comment on what they liked and did not like. Moreover, we watched how they interacted with the different parts of our system in order to see what needed to potentially be changed, and what could be made easier so that the user did not feel like accessing different parts of our system were a chore. 
