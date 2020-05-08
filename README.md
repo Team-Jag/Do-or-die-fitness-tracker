@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed)
 
-<p align="center"><img src="Portfolio/Images/logo.png" width=80%>
+<p align="center"><img src="Portfolio/Images/logo.png">
 </p>
 
 <p align="center"><b> A fitness tracker with a twist. Built with <a href="https://github.com/m5stack">M5Stack</a>, <a href="https://github.com/facebook/react">React</a>, and <a href="https://github.com/processing">Processing</a>. </p></b>
