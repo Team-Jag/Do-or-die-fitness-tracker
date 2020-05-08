@@ -74,7 +74,11 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [Oliver Skeates](https://github.com/OliSkeates) : <an19572@bristol.ac.uk>
 
 ## Built With
-#### [M5Stack](https://github.com/m5stack) Libraries & Referenced Code
+* [M5Stack](https://github.com/m5stack)
+* [Processing](https://github.com/processing)
+* [React](https://github.com/facebook/react) 
+
+#### M5Stack Libraries & Referenced Code
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
 * [WiFi Library](https://github.com/m5stack/M5Stack)
 * [Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
@@ -82,11 +86,11 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [Time Library](https://github.com/PaulStoffregen/Time)
 * [MPU9250 Pedometer Class](https://gist.github.com/botamochi6277/7bfc4e15443cfbaa3ab9882f6a953868#file-dualmpu9250basic-ino)
 
-#### [Processing](https://github.com/processing) Libraries
+#### Processing Libraries
 * [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
-* [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)'
+* [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
 
-#### [React](https://github.com/facebook/react) Template 
+#### React Template 
 * [Now UI Kit](https://demos.creative-tim.com/now-ui-kit/index.html)
 
 ## Acknowledgments
