@@ -176,6 +176,8 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 * All subsystems provide a basic version of the agreed visualization.
 * Agreed on how user death would work across subsystems.
 
+> **Mario:** The Bean on my M5Stack is even better and makes me feel more attached to it, as it now jumps across the screen!
+
 <table>
 <tr>
   <th>Technology</th>
@@ -223,6 +225,8 @@ Previously, an issue was found while implementing the communication protocols on
 * Improved sprite animation: frequency and height of bounces linearly scales with time left.
 * M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down.
 
+> **Mario:** I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet this goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. 
+
 #### Key implementation issues found: ####
 <table>
 <tr>
@@ -264,6 +268,8 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 * Added dummy statistics data (i.e. weekly_record of step count) into users.json.
 * Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data.
 * Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values of health and step count.
+
+> **Mario:** I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. 
 
 #### Key implementation issues found: ####
 <table>
