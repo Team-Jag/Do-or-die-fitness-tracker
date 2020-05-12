@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE) [![HitCount](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker.svg)](http://hits.dwyl.com/Team-Jag/Do-or-die-fitness-tracker) [![Milestones](https://img.shields.io/github/milestones/all/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/milestones?state=closed) [![contributors](https://img.shields.io/github/contributors/Team-Jag/Do-or-die-fitness-tracker)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/graphs/contributors) [![PR](https://img.shields.io/github/issues-pr-closed-raw/Team-Jag/Do-or-die-fitness-tracker?color=blue)](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pulls?q=is%3Apr+is%3Aclosed)
 
+
 <p align="center"><img src="Portfolio/Images/circleLogo.png"width=22%>
 </p>
 
