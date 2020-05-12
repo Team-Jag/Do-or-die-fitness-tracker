@@ -41,7 +41,7 @@ The above diagram, copied from this [website](https://hackernoon.com/a-case-stud
 ## Breakdown of project into sprints
 We organised our work as a series of one-week sprints from early March to mid-May. While we knew from the beginning that we would have weekly sprints, the main focus of each sprint was typically dictated by what was left in the backlog from the week before. Anything remaining in the backlog, was therefore, prioritised for the following sprint. We reviewed our product at the end of each week, using methods that will be described [below](#details-of-design-evaluation). Our main goal at the end of each sprint was to constantly produce a working product. The requirements for that sprint, in line with the Agile method, were dictated at the beginning and did not change during the week. The list of requirements acted to outline our tests, and ensure that our systems were able to be integrated successfully at the end of each sprint. As this was a rapid timeline to produce a working prototype, we knew that we wanted to aim for a 'release' of our product at the end of each sprint after the 30th of March. After defining our architecture in the first sprint, we aimed to see how much work we could achieve in terms of implementing the system in the second sprint. This then helped us to ensure we set realistic requirements and goals for each successive sprint. 
 
-We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “WIP” (Work-in-progress) or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
+We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “Backlog" or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
 
 As one of the key foundations of Agile software development is to have self-organising teams, we knew that it was important to collectively focus on the most important user stories to be implemented during each sprint. We were confident in our capabilities to successfully maintain a minimum viable product during each week's sprint. In order to keep this clear, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). We used the Kanban board to keep it clear which requirements needed to be done, what people were currently working on, and what was completed. We also added a backlog column for features that we pushed for later iterations. Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](Images/updated_gantt.png)
@@ -61,7 +61,7 @@ The goal of this sprint was to agree upon our architecture and the interactions 
 **Reflections**
 In this sprint the most important aspect was to finalise our design and evaluate how effective it was in allowing us to implement the product most conforming to our use cases. As we were still in the design stage, this sprint facilitated many changes, such as the basic UI layout and the communication protocol between devices. Defining the overall structure was crucial for future progress, which was why we prioritised these goals to make sure our progress was fast during further sprints as every member of the team was sure what features needed to be implemented next. We also defined our minimum viable product (MVP) for our next sprint; to make sure we had enough features for a product that satisfied minimum customer requirements as defined through our user stories during the design stage. In defining our goals clearly for the next sprint, we would have a product which could be evaluated by users based on feedback which could further inform our implementation decisions for future sprints. During this stage we experienced several issues in terms of deciding on what we wanted to work on first. Eventially, for our product we decided to prioritise the end-user story, the core of our product experience as this will be the use case most commonly interacted with. This involved having a fully functioning pedometer able to count steps by the end of the next sprint.
 
-**WIP:**
+**Backlog:**
 * Implementation of communication protocol.
 
 ### Sprint 2 : First Prototype (9.3-16.3)
@@ -104,9 +104,8 @@ To allow the user to count and keep track of their steps between sessions, we ne
 In this first "coding" sprint we were able to build a first mock-up view of product. In convinced us how powerful the agile methodology is, in that it allows you to produce working code and produce a tangible outcome quickly. Also, we realized how important user testing and feedback is: things that were obvious to the coder/designer such as how to navigate a website or the M5 were not as intuitive to a new user as one would think.
 Most importantly we realized that it will be highly important to prioritize and stick to the tests defined by the MVP and not get side-tracked by additional features in order to deliver our product in time.
 
-**WIP:**
+**Backlog:**
 * Improve the accuracy of the step count.
-
 
 ### NO SPRINT : Fight COVID-19 (16.3-30.3) 
 Due to COVID-19, the team agreed to push all work to the backlog and not meet until after the deadline. As our team followed an Agile method for development, each of the sub-teams worked to ensure that we had completed what we had previously agreed to before continuing meetings the following Monday. This also allowed for us to restructure the goals of our project and ensure that the way we had prioritised user stories was sufficient for ensuring our MVP. 
@@ -157,16 +156,15 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 As described above we all faced challenging issues as we extended the functionality of our sub-systems. This was when the value of coding in pairs became most evident to us: the other person could not only review and challenge your code, but with two people familiar with the details of a system we were able to find solutions significantly quicker.
 The release of the alpha version also sharpened our view on what we still had to do for our beta release: it was less about extending the product and adding many more features but more on getting the basics right: improving the reliability and delivering an intuitive visualization (again the user tests showed that the best functionality is worth little without an intuitive design/handling).
 
-**WIP:**
+**Backlog:**
 * All subsystems provide a basic version of the agreed visualization.
-
 
 ### Sprint 4 : Resolving Issues and Enhancing Features (6.4-13.4) 
 The only user-story left to complete was that of the sponsor, so in this sprint our Web team focused on developing the key functionality of creating custom challenges and sending them to the desktop server to be made available to the end-user.
 The first iteration of our other user-stories has been delivered, so for our other teams this sprint focused mainly on improving the quality of the user-stories we had already delivered, rather than layering new functionality on top of subpar unpolished foundations.
 Therefore, for the M5Stack and the Processing App, the goal of this sprint was to improving design and visuals as well as extending our interfaces.
 
-**DONE:**
+**New Features Implemented:**
 * Basic animations for Bean sprite implemented on M5Stack.
 * User can see the challenges that they are enrolled in on M5 stack (dummy data).
 * User can see basic statistics about their step count on M5 stack (dummy data).
@@ -177,11 +175,6 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 * All subsystems able to receive, process and send the intended MQTT commands.
 * All subsystems provide a basic version of the agreed visualization.
 * Agreed on how user death would work across subsystems.
-
-**WIP:**
-* MQTT message length issue with M5 Stack.
-* Real data for statistics and challenges on M5 stack.
-* All subsytems to handle user death. 
 
 <table>
 <tr>
@@ -214,6 +207,10 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 Since our comminication mechanisms had already been tested and proven to work in our previous sprints, this sprint promised to be one of the lower workloads sprints, at least for our M5Stack and Desktop teams.
 However the arisal of the MQTT message length issue knocked all our hopes down, and made the life of our M5Stack team very hard. However thanks to our Agile development strategy, we were able to quickly come up with a contingency plan to rework our shared contract in the eventuality that our M5Stack team weren't able to rapidly find a solution to that problem. 
 
+**Backlog:**
+* MQTT message length issue with M5 Stack.
+* Real data for statistics and challenges on M5 stack.
+* All subsytems to handle user death. 
 
 ### Sprint 5 : [Beta Version](https://github.com/Team-Jag/Do-or-die-fitness-tracker/pull/44) Release (13.4-20.4) 
 
