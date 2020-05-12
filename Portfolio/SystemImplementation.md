@@ -76,6 +76,8 @@ To allow the user to count and keep track of their steps between sessions, we ne
 * Created web design and mock-up pages.
 * Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy Control-P5 elements.
 
+> **Mario:** I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack!
+
 #### Key implementation issues found: ####
 <table>
 <tr>
@@ -117,9 +119,11 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 **New features implemented:**
 * Improved the view for the M5Stack (including the above additions of the Bean sprite and the health bar).
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges.
-* The end-user is now able to create an account and enrol in challenges on our web interface.
+* The end-user is now able to create an account and enroll in challenges on our web interface.
 * We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
 * The Admin can now visualize product performance (dummy) data in the Desktop app.
+
+> **Mario:** I am more attached to my M5Stack as I can see my Bean, and therefore feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enroll in challenges for the first time. This motivates me even more to get active. 
 
 #### Key implementation issues found: ####
 <table>
