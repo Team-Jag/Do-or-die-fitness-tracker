@@ -7,7 +7,7 @@ In the following section we will reflect on the design of our product. By the en
 ## Table of Contents
 - [**Product Requirements**](#product-requirements) 
   - [Ideation and Concept Development](#ideation-and-concept-development)
-  - [User Types](#user-types)
+  - [Stakeholders](#stakeholders)
   - [Key Subsystems](#key-subsystems)
 - [**User Requirements for Key Subsystems**](#user-requirements-for-each-subsystem)
   - [Desktop system requirements](#desktop-system-requirements)
@@ -31,7 +31,7 @@ In the following section we will reflect on the design of our product. By the en
 - [**Details of Web Technologies in Use**](#details-of-web-technologies-in-use)
 - [**Conclusion**](#conclusion)
 
-## Product Requirements
+## PRODUCT REQUIREMENTS
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
 ### Ideation and Concept Development
 
@@ -43,9 +43,9 @@ While initially our team explored a number of fun and potentially successful pro
 
 A key requirement for the success of this project is maintaining the end-user's motivation that goes beyond just meeting a daily step goal, as this would eventually become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the Bean alive and no more, thus placing a ceiling on their potential benefit from our product. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which will further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
-### User Types
+### Stakeholders
 
-After decided what we wanted Do or Die to look like as a product, we began exploring who who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and requirements that were the basis of the development of our system. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. 
+After decided what we wanted Do or Die to look like as a product, we began exploring who who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and requirements that were the basis of the development of our system. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. These user stories that influenced the [requirements of each subsystem](#user-requirements-for-each-subsystem) will be explained in detail later on in our report. 
 
 Our first user group, and the centre of our product, is the end-user. This is the person that is using our product to get fit, invest time and energy into gaining health for the Bean thereby increasing their own health. This person will likely either be someone who is interested in getting active, but lacks the motivation. Or someone who is already active, and would like an extra challenge or an additional motivator to push themselves even further. Regardless of why they were using our fitness tracker, we knew that each user had to be able to do a number of things to see a benefit. This includes the ability to track their steps, know the current health of their Bean, enroll in challenges, and track their overall progress. The key theme of our end-user user type is that they are experiencing some type of challenge. Whether they are setting their own daily goals, or enrolling in challenges, they should be able to track their progress and see the adition of 'life' to the health bar of their Bean. This was the core concept underpinning our product, and what would ensure our success. To further refine our focus of what the end-user would need to be able to do with our product, we first conceptualized what [Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user) (the star of our fictional user story) would want to do with our proudct: 
 
