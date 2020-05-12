@@ -31,7 +31,7 @@ In the following section we will reflect on the design of our product. By the en
 - [**Details of Web Technologies in Use**](#details-of-web-technologies-in-use)
 - [**Conclusion**](#conclusion)
 
-## Product Requirements
+## PRODUCT REQUIREMENTS
 Our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) is an Internet of Things (IoT) product that we designed to operate across three different platforms; the M5Stack, the Web, and a Management Dashboard. 
 ### Ideation and Concept Development
 
