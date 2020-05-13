@@ -14,7 +14,7 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Sprint 4 : Resolving issues and enhancing features (6.4-13.4)](#sprint-4--resolving-issues-and-enhancing-features-64-134)
   - [Sprint 5 : Beta version release (13.4-20.4)](#sprint-5--beta-version-release-134-204)
   - [Sprint 6 : Version 1.0 release (20.3-27.4)](#sprint-6--version-10-release-203-274)
-  - [Sprint 7 : Version 1.1 (optional) and write-up (27.4-4.5)](#sprint-7--version-11-optional-and-write-up-274-45)
+  - [Sprint 7 : Write-up (27.4-4.5)](#sprint-7--write-up-274-45)
 - [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation)
   - [Initial Evaluation](#initial-evaluation)
   - [Evaluating the Quality Requirements](#evaluating-the-quality-requirements)
