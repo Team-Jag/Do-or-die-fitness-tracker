@@ -14,7 +14,7 @@ Now that we have highlighted how we settled on the [design of our system](System
   - [Sprint 4 : Resolving issues and enhancing features (6.4-13.4)](#sprint-4--resolving-issues-and-enhancing-features-64-134)
   - [Sprint 5 : Beta version release (13.4-20.4)](#sprint-5--beta-version-release-134-204)
   - [Sprint 6 : Version 1.0 release (20.3-27.4)](#sprint-6--version-10-release-203-274)
-  - [Sprint 7 : Version 1.1 (optional) and write-up (27.4-4.5)](#sprint-7--version-11-optional-and-write-up-274-45)
+  - [Sprint 7 : Write-up (27.4-4.5)](#sprint-7--write-up-274-45)
 - [**Details of design evaluation (techniques used & limitations)**](#details-of-design-evaluation)
   - [Initial Evaluation](#initial-evaluation)
   - [Evaluating the Quality Requirements](#evaluating-the-quality-requirements)
@@ -46,7 +46,7 @@ We met in person or talk as a group over Google hangouts each Monday at 3pm for 
 As one of the key foundations of Agile software development is to have self-organising teams, we knew that it was important to collectively focus on the most important user stories to be implemented during each sprint. We were confident in our capabilities to successfully maintain a minimum viable product during each week's sprint. In order to keep this clear, we created a Gantt chart to be used between each of the teams working on the different subsystems. This was used in conjunction with our project's [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1). We used the Kanban board to keep it clear which requirements needed to be done, what people were currently working on, and what was completed. We also added a backlog column for features that we pushed for later iterations. Both of these features were useful to keep our work user focused, while ensuring cohesion between each subsystem. 
 ![Updated Gantt Chart](Images/updated_gantt.png)
 
-In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. We will also refer back to our fictional user [Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user) during each sprint to show what has changed, and how the user can interact with our subsystem. 
+In the follow section we will break down our goals of each sprint, list what was completed per subsystem, the key user stories implemented, and what remained in our Backlog in terms of WIP. We will also refer back to our fictional user [Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user) during each sprint to show what has changed, and how the end-user, sponsor, and admin can now interact with our product.
 
 ### Sprint 1 : Define Architecture & Interactions (2.3-9.3) 
 The goal of this sprint was to agree upon our architecture and the interactions so that the workstream would know how to design their sub-systems. During this sprint we decided on how we would move forward in developing our product. This included the creation of our Github repository, and beginning to familiarise ourselves with how we would use different features including the Kanban boards, Pull Requests and Issues. This also included the ideation stage, and definition of the communication protocol between devices so that different teams could begin implementation autonomously. Additionally, we decided on goals to prioritise in order to arrive at a minimum viable product by the next sprint.
@@ -68,7 +68,7 @@ In this sprint the most important aspect was to finalise our design and evaluate
 The most important of our user stories is that of the end-user, so our first sprint should focus on delivering a fitness tracking feature onto the M5Stack in the form of a simple step counter. 
 To allow the user to count and keep track of their steps between sessions, we need to make the step data persistent, so we also need to develop a basic first version of our desktop server. Furthermore, we wanted to create a first view for out end-users and sponsors. Therefore, the goal of this sprint was to create a basic proof of concept to demonstrate the key feature of incrementing step count, a vital user requirement of the end-user story.
 
-**New features implemented:**
+#### New features implemented: 
 * M5Stack able to count steps (pedometer functionality).
 * M5Stack able to send a notification to Desktop server for each new step.
 * Desktop able to process the notification, increment the total steps and ensure data persisted, and sends the updated user profile back to the M5.
@@ -76,7 +76,16 @@ To allow the user to count and keep track of their steps between sessions, we ne
 * Created web design and mock-up pages.
 * Decided on a UI interface for admin user story, and made a mock-up Processing interface using dummy Control-P5 elements.
 
-> **Mario:** I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack!
+<table>
+<tr>
+  <th>Stakeholders</th>
+  <th>Updated Use Case</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack!</td>
+</tr>
+</table>
 
 #### Key implementation issues found: ####
 <table>
@@ -115,14 +124,31 @@ Due to COVID-19, the team agreed to push all work to the backlog and not meet un
 The goal of this sprint was to release the Alpha version of our product, by pushing our MVP to the master branch. This involved ensuring all subsystems could receive, process, and send the intended MQTT commands. During this sprint, our main goal was to ensure that all three subsystems could interact with each other, and were accurately conforming to the [shared contract](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Documentation/Mqtt_request_types.txt). 
 Furthermore we wanted to integrate the other user-stories (sponsor & admin): Delivering a web interface where a sponsor can sign-up and create challenges for the end-user and an interface for our Desktop server from where the Admin can monitor the performance of the product.
 
-**New features implemented:**
+#### New features implemented:
 * Improved the view for the M5Stack (including the above additions of the Bean sprite and the health bar).
 * Desktop database API able to add challenge to user, sends challenges enrolled by user, add new user sent from web, and add new challenges.
 * The end-user is now able to create an account and enroll in challenges on our web interface.
 * We added a Bean sprite on the M5Stack's interface, without animation, along with a health bar representing its remaining life. This should elicit an emotional response in the user leading to an increase in motivation.
 * The Admin can now visualize product performance (dummy) data in the Desktop app.
 
-> **Mario:** I am more attached to my M5Stack as I can see my Bean, and therefore feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enroll in challenges for the first time. This motivates me even more to get active. 
+<table>
+<tr>
+  <th>Stakeholders</th>
+  <th>Updated Use Case</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td>I am more attached to my M5Stack as I can see my Bean, and therefore feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enroll in challenges for the first time. This motivates me even more to get active. </td>
+</tr>
+<tr>
+  <td>Sponsor</td>
+  <td>I can create an account on the web.</td>
+</tr>
+<tr>
+  <td>Admin</td>
+  <td>I can now see product performance in the Desktop app, including general data on the userbase.</td>
+</tr>
+</table>
 
 #### Key implementation issues found: ####
 <table>
@@ -164,7 +190,7 @@ The only user-story left to complete was that of the sponsor, so in this sprint 
 The first iteration of our other user-stories has been delivered, so for our other teams this sprint focused mainly on improving the quality of the user-stories we had already delivered, rather than layering new functionality on top of subpar unpolished foundations.
 Therefore, for the M5Stack and the Processing App, the goal of this sprint was to improving design and visuals as well as extending our interfaces.
 
-**New Features Implemented:**
+#### New Features Implemented:
 * Basic animations for Bean sprite implemented on M5Stack.
 * User can see the challenges that they are enrolled in on M5 stack (dummy data).
 * User can see basic statistics about their step count on M5 stack (dummy data).
@@ -176,8 +202,26 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 * All subsystems provide a basic version of the agreed visualization.
 * Agreed on how user death would work across subsystems.
 
-> **Mario:** The Bean on my M5Stack is even better and makes me feel more attached to it, as it now jumps across the screen!
+<table>
+<tr>
+  <th>Stakeholders</th>
+  <th>Updated Use Case</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td>The Bean on my M5Stack is even better and makes me feel more attached to it, as it now jumps across the screen!</td>
+</tr>
+<tr>
+  <td>Sponsor</td>
+  <td>I am now able to log on to the website and create new challenges for the users.</td>
+</tr>
+<tr>
+  <td>Admin</td>
+  <td>I can now see all the users, available challenges, and the sponsors that have signed up to use our product in the Desktop app. I can also see updated data from the users.</td>
+</tr>
+</table>
 
+#### Key implementation issues found: ####
 <table>
 <tr>
   <th>Technology</th>
@@ -218,14 +262,23 @@ However the arisal of the MQTT message length issue knocked all our hopes down, 
 
 Previously, an issue was found while implementing the communication protocols on the M5Stack in which its consequences would be highly disruptive, since it meant that we had to re-design the protocol between desktop and M5. However, a solution was found before this sprint was carried out. As we have established our MVP in previous sprints, we determined as a group that we were nearly ready to release the Beta version of our product (which would be pushed to the master branch). We decided that the following user stories which still needed improvements before official release were mainly focused on user experience such as: **(1)** animation of the Bean sprite reflecting health levels (in which only the desktop back-end will perform calculations of time left for each user) and displaying its death on the M5Stack, **(2)** being able to view interactive and real-time challenge data on the Web, and lastly, **(3)** the admin being able to track total users enrolled and proportion of players currently alive.
 
-**New features implemented:**
+#### New features implemented:
 * Replaced dummy data with appropriate server requests on M5 stack for challenges.
 * Life timer countdowns for all users in desktop user API.
 * Database automatically updated when user reaches any goal of challenges enrolled and adds rewards.
 * Improved sprite animation: frequency and height of bounces linearly scales with time left.
 * M5 stack handles user death by printing a death screen once, and then executing empty loops until shut down.
 
-> **Mario:** I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet this goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. 
+<table>
+<tr>
+  <th>Stakeholders</th>
+  <th>Updated Use Case</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td>I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet this goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. </td>
+</tr>
+</table>
 
 #### Key implementation issues found: ####
 <table>
@@ -263,13 +316,22 @@ Since the majority of user features had already been implemented we decided to f
 
 The goal of this sprint was to clean up and refactor our code, and implement any final features before releasing Version 1.0 of our product.
 
-**New features implemented:**
+#### New features implemented:
 * Replaced dummy data with appropriate server requests on M5 stack for statistics.
 * Added dummy statistics data (i.e. weekly_record of step count) into users.json.
 * Implemented sponsor API in desktop and push new challenge from web will add challenge to sponsor data.
 * Desktop automatically enrols new user to a maximum of 10 challenges, and initialises default values of health and step count.
 
-> **Mario:** I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. 
+<table>
+<tr>
+  <th>Stakeholders</th>
+  <th>Updated Use Case</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td>I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. </td>
+</tr>
+</table>
 
 #### Key implementation issues found: ####
 <table>
