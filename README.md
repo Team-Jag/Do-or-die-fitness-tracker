@@ -12,6 +12,8 @@
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-user">The User</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-stakeholders">The Stakeholders</a>
     . 
   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-process">The Process</a>
  .
@@ -41,6 +43,8 @@ In order to guide you through our user-centered approach to designing our system
 > I'm Mario. I am in my 20's, love to play games, and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
 Using Mario as our focus use case, while also highlighting how other user groups can use our system, we will guide you through the process of making Do or Die. 
+
+## The Stakeholders
 
 ## The Process
 In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
