@@ -58,6 +58,7 @@ View our [system design document](Portfolio/SystemDesign.md) to see:
 
 ### 2. [System Implementation](Portfolio/SystemImplementation.md)
 View our [system implementation document](Portfolio/SystemImplementation.md) to see:
+* Software design cycle
 * Breakdown of our project into sprints
 * Design evaluation
 * Social and ethical implications of our work
