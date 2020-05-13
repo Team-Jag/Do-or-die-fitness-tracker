@@ -108,7 +108,7 @@ Most importantly we realized that it will be highly important to prioritize and 
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td>Mario</td>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack!</td>
 </tr>
 <tr>
@@ -178,7 +178,7 @@ The release of the alpha version also sharpened our view on what we still had to
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td>Mario</td>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I am more attached to my M5Stack as I can see my Bean, and therefore feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enroll in challenges for the first time. This motivates me even more to get active. </td>
 </tr>
 <tr>
@@ -248,7 +248,7 @@ However the arisal of the MQTT message length issue knocked all our hopes down, 
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td>Mario</td>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>The Bean on my M5Stack is even better and makes me feel more attached to it, as it now jumps across the screen!</td>
 </tr>
 <tr>
@@ -315,7 +315,7 @@ During this sprint meeting, we only briefly attempted to integrate our systems, 
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td>Mario</td>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet this goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. </td>
 </tr>
 <tr>
@@ -388,7 +388,7 @@ The release of the 1.0 version signified the end of creating features to instead
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td>Mario</td>
+  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. </td>
 </tr>
 <tr>
