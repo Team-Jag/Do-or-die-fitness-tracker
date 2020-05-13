@@ -12,6 +12,8 @@
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-user">The User</a>
+    .
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-stakeholders">The Stakeholders</a>
     . 
   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-process">The Process</a>
  .
@@ -42,6 +44,9 @@ In order to guide you through our user-centered approach to designing our system
 
 Using Mario as our focus use case, while also highlighting how other user groups can use our system, we will guide you through the process of making Do or Die. 
 
+## The Stakeholders
+In addition to our end-user, the design of our system also focused around two other user types: the Administrator, and the Sponsor. Using our Management Dashboard, made using Processing, the Admin can track individual and general user statistics as well as user details. Our second stakeholder, the Sponsor, uses the website to create challenges for the end-user. This sponsor is likely a local businesss owner, looking to generate more exposure by creating challenges directly linked to their own business or product. You can learn more about our [Stakeholders](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#stakeholders), and how they influenced the [requirements](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#user-requirements-for-each-subsystem) for our key subsystems, in the [System Design](Portfolio/SystemDesign.md) section of our Portfolio.
+
 ## The Process
 In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
 
@@ -58,6 +63,7 @@ View our [system design document](Portfolio/SystemDesign.md) to see:
 
 ### 2. [System Implementation](Portfolio/SystemImplementation.md)
 View our [system implementation document](Portfolio/SystemImplementation.md) to see:
+* Software design cycle
 * Breakdown of our project into sprints
 * Design evaluation
 * Social and ethical implications of our work
