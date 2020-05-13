@@ -85,14 +85,6 @@ To allow the user to count and keep track of their steps between sessions, we ne
   <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack!</td>
 </tr>
-<tr>
-  <td>Sponsor</td>
-  <td> </td>
-</tr>
-<tr>
-  <td>Admin</td>
-  <td> </td>
-</tr>
 </table>
 
 #### Key implementation issues found: ####
@@ -150,11 +142,11 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 </tr>
 <tr>
   <td>Sponsor</td>
-  <td> </td>
+  <td>I can create an account on the web.</td>
 </tr>
 <tr>
   <td>Admin</td>
-  <td> </td>
+  <td>I can now see product performance in the Desktop app, including general data on the userbase.</td>
 </tr>
 </table>
 
@@ -221,11 +213,11 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 </tr>
 <tr>
   <td>Sponsor</td>
-  <td> </td>
+  <td>I am now able to log on to the website and create new challenges for the users.</td>
 </tr>
 <tr>
   <td>Admin</td>
-  <td> </td>
+  <td>I can now see all the users, available challenges, and the sponsors that have signed up to use our product in the Desktop app. I can also see updated data from the users.</td>
 </tr>
 </table>
 
@@ -286,14 +278,6 @@ Previously, an issue was found while implementing the communication protocols on
   <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet this goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. </td>
 </tr>
-<tr>
-  <td>Sponsor</td>
-  <td> </td>
-</tr>
-<tr>
-  <td>Admin</td>
-  <td> </td>
-</tr>
 </table>
 
 #### Key implementation issues found: ####
@@ -346,14 +330,6 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 <tr>
   <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
   <td>I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. </td>
-</tr>
-<tr>
-  <td>Sponsor</td>
-  <td> </td>
-</tr>
-<tr>
-  <td>Admin</td>
-  <td> </td>
 </tr>
 </table>
 
