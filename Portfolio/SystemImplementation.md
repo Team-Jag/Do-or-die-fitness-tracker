@@ -5,7 +5,7 @@ Now that we have highlighted how we decided on the [design of our system](System
 
 ## Table of Contents
 
-- [**Software Development Cycle**](#software-development-cycle)
+- [**Software Development Strategy**](#software-development-strategy)
 - [**Breakdown of project into sprints**](#breakdown-of-project-into-sprints)
   - [Sprint 1 : Define architecture & interactions (2.3-9.3)](#sprint-1--define-architecture--interactions-23-93)
   - [Sprint 2 : First prototype (9.3-16.3)](#sprint-2--first-prototype-93-163)
@@ -29,8 +29,10 @@ Now that we have highlighted how we decided on the [design of our system](System
   - [Data usage](#data-usage)
   - [Social implications](#social-implications)
   
-## Software Development Cycle
-Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development cycle that we used. Our team chose to follow an [Agile model for development](https://learn.marsdd.com/article/product-development-using-agile-methodology-for-software-development/), that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](ProjectEvaluation.md). 
+## Software Development Strategy
+Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development strategy that we used. We knew that in order to ensure a successful implemenetation of our product, we would need to adopt a software development strategy. This would ensure that we were able to successfuly mitigate any risks, ensure smooth and continous work-flow, and avoid any other distruptions to our development. 
+
+Our team chose to follow an [Agile model for development](https://learn.marsdd.com/article/product-development-using-agile-methodology-for-software-development/), that is focusing on incremental and iterative development. One of the key aspects of Agile development is active user involvement, which affected the way that we evaluated our designs. Using this method, we ensured that we always had a valuable product in the master branch of our Github. Our Github processes will be explained in further detail when we [evaluate our project](ProjectEvaluation.md). 
 
 Using the Agile model allowed for faster software development. At the beginning of each sprint we decided the features that we would implement during that sprint, the tests that we expected each subsystem to pass, and the user stories that we expected to be satisfied by the implementation of those features. During each iteration we defined the requirements based on the backlog from previous sprints, and test user feedback. We then designed the software based on the requirements that we had established as a group, before coming back together during our weekly sprint review to undertake quality assurance testing and intergration testing. We then integrated our product by merging all changes to the master branch of our Github. Finally, we evaluated our previous version before defining the requirements for the next sprint. 
 
