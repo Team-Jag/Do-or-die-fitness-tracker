@@ -380,7 +380,8 @@ The release of the 1.0 version signified the end of creating features to instead
 On our last leg of the deployment in the Agile development cycle, the goal of this final sprint will be to finish the documentation, as well as address any issues that arise from the release of Version 1.0 for quality assurance, and implement any final features. As our system has integrated adequately for the demo in the previous sprint, and the Web and Desktop teams are content with the outcome, only the M5Stack added an additional interaction feature. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) focused solely on documentation, to continue using the same Agile working methods that we used to develop our software. Furthermore, to display how our systems would work together and how they would be used, we shot a short demo video of our product.
 
 **Reflections:** 
-This is covered in detail in [project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success).
+
+Final reflections can be viewed in the [project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success) section.
 
 ## Details of design evaluation
 
