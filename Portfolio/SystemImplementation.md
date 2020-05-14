@@ -392,14 +392,23 @@ The goal of this sprint was to clean up and refactor our code, and implement any
 #### Reflections ####
 As seen in the table above, all systems faced issues in implementation of key user stories. By utilizing pair programming as outlined in agile development, we were able to resolve these issues far quicker than by leaving any given individual alone on the issue, furthermore the agile method allowed the frequent release of test driven builds centred around quality over anything else, which for this sprint was the most important aspect.
 
-The release of the 1.0 version signified the end of creating features to instead focus on polishing existing features while ironing out the final bugs and warnings remaining in certain edge use cases. To deliver an end-user ready product not only with the basics created during alpha and beta phase, but also the embellishments and add-ons to each system (Desktop, M5, Web) since beta for the final delivery.
+The release of the 1.0 version signified the end of creating features to instead focus on polishing existing features while ironing out the final bugs and warnings remaining in certain edge use cases. To deliver an end-user ready product not only with the basics created during alpha and beta phase, but also the embellishments and add-ons to each system (Desktop, M5, Web) since beta for the final delivery. Please see Sprint 7 for the full list of items that remain in the backlog after the development of our proof of concept. 
 
 ### Sprint 7 : Write-Up (27.4-4.5) 
-On our last leg of the deployment in the Agile development cycle, the goal of this final sprint will be to finish the documentation, as well as address any issues that arise from the release of Version 1.0 for quality assurance, and implement any final features. As our system has integrated adequately for the demo in the previous sprint, and the Web and Desktop teams are content with the outcome, only the M5Stack added an additional interaction feature. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) focused solely on documentation, to continue using the same Agile working methods that we used to develop our software. Furthermore, to display how our systems would work together and how they would be used, we shot a short demo video of our product.
+On our last leg of the deployment in the Agile development cycle, the goal of this final sprint will be to finish the documentation, as well as address any issues that arise from the release of Version 1.0 for quality assurance, and implement any final features. As our system has integrated adequately for the demo in the previous sprint, and the Web and Desktop teams are content with the outcome, only the M5Stack added an additional interaction feature. In order to undertake the writing of our portfolio, our group chose to create a second [Kanban board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/2) focused solely on documentation, to continue using the same Agile working methods that we used to develop our software. Furthermore, to display how our systems would work together and how they would be used, we shot a short demo video of our product. Finally, our initial features that made up our [product description](https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product) were kept in the backlog, which can be viewed on our [Kanban Board](https://github.com/Team-Jag/Do-or-die-fitness-tracker/projects/1), as well as in our [open issues](https://github.com/Team-Jag/Do-or-die-fitness-tracker/issues). These features are to be implemented in future sprints before further release to the public. 
 
 **Reflections:** 
 
 Final reflections can be viewed in the [project evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md#general-reflection-of-success) section.
+
+**Backlog:**
+* Improve animation on the M5Stack, which includes removing the flicker. 
+* Allow the end-user to update their profile picture. 
+* Retain the user-name of the end-user in the react app when the browser is refreshed. 
+* Continue the timer countdown even when the system goes down. 
+* Further extensive null testing in the desktop. 
+* Add extra animation to the M5Stack with the interact button. 
+* Remove the processing warnings. 
 
 ## Details of design evaluation
 
