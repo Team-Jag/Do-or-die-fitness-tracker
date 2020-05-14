@@ -462,6 +462,6 @@ There are possible concerns on how personal fitness data can be used in the futu
 ### Social implications
 As our platform relies on both rewards and punishments, in the forms of increasing the life timer and the Bean dying respectively, there may be implications on the user's state of mental health. Attachment to the Bean and its impending doom and subsequent death might lead to a sense of significant loss. Additional potential stressors include the leaderboard ranking system implemented based on the number of steps taken by the user that can be viewed on the website. The user then might relate their fitness levels with their rankings, which might discourage them further to attempt exercising if they are constantly stuck with low rankings. Additionally, addiction to our gamified fitness tracker might be possible, although this is not clear whether this could be an issue as we only require healthy activities to play our product.
 
-- [Previous: System Design](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md)
-- [Next: Project Evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md)
-- [ReadMe](https://github.com/Team-Jag/Do-or-die-fitness-tracker)
+- [Previous Section: System Design](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md)
+- [Next Section: Project Evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md)
+- [Back to ReadMe](https://github.com/Team-Jag/Do-or-die-fitness-tracker)
