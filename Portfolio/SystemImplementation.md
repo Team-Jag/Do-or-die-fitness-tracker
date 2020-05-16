@@ -122,9 +122,9 @@ To allow the user to count and keep track of their steps between sessions, we ne
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td>Developed step counter on M5Stack using external library to interpret gyroscope data. Implemented basic communication mechanism </td>
-  <td>getting a library to work?</td>
-  <td></td>
+  <td>End-user is able to use the M5Stack as a pedometer and view total step count.</td>
+  <td>We had some issues with merging the Pedometer external code with our MQTT communication code, rather than simply copy-pasting the Pedometer code into our main loop(), as that would make our code very hard to read and debug.</td>
+  <td>We stored the pedometer code in a separate Class and made it so it simply changes a flag in the main loop() when a step is taken.</td>
 </tr>
 </table>
 
@@ -191,9 +191,9 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
 </tr>
 <tr>
   <td>M5Stack</td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td>User is able to view the Bean's remaining 'health'.</td>
+  <td>At first we attempted to build our own HealthBar class using only the basic shapes library in arduino.</td>
+  <td>Eventually though we were able to find a ProgressBar() method which was part of the default library. So we made a simple wrapper class Bar.h which uses the ProgressBar() method to produce the Bean's health bar (and can be used for other tasks in the coming sprints). The Bar.h class also handles other minor things such as the bar's refresh rate (to reduce flickering) and places a border around the bar for clarity. </td>
 </tr>
 </table>
 
