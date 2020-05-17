@@ -33,7 +33,7 @@ Do or Die is a wearable fitness tracker, designed to inspire users to get active
 
 If setting your own goals is not enough motivation, meet our Sponsors! With new challenges added to the website weekly, and amazing rewards up for grabs, there's even more reason to keep your Bean's health level up. On top of that, once you register for Do or Die you can access your account details on our website where you can keep track of long term progress, and challenge your friends along the way. 
 
-The goal is simple, keep the Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
+The goal is simple, keep Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## The User
 When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, and very little on helping those new to fitness get in to it, so [the team](#the-team) wanted to make a fitness product that doubled as a game. By doing these we create new incentives and rewards for an individual to improve their own health. 
