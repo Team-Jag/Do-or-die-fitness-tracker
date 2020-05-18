@@ -102,7 +102,7 @@ To allow the user to count and keep track of their steps between sessions, we ne
 </tr>
 <tr>
   <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
-  <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack, it's great to be able to measure my progress but it doesn't reliably update the step counter as I walk around. The interface looks quite plain though, I wish there was more to look at on the stack. </td>
+  <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack, it's great to be able to measure my progress but it doesn't reliably update the step counter as I walk around. The interface looks quite plain though, I wish there was more to look at on the Stack. </td>
 </tr>
 </table>
 
