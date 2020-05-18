@@ -24,7 +24,7 @@
   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#acknowledgments">Acknowledgments</a>
   </p>
   
-<p align="center"><img src="Portfolio/Images/product.gif"width=85%>
+<p align="center"><img src="Portfolio/Images/keydevices.gif"width=85%>
 </p>
   
 
