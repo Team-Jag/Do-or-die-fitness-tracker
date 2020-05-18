@@ -38,14 +38,14 @@ The goal is simple, keep Bean's health bar above zero by getting out and getting
 ## The User
 When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, and very little on helping those new to fitness get in to it, so [the team](#the-team) wanted to make a fitness product that doubled as a game. By doing these we create new incentives and rewards for an individual to improve their own health. 
 
-In order to guide you through our user-centered approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
+In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
 
 > I'm Mario. I am in my 20's, love to play video games, and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
 Using Mario as our focus use case, while also highlighting how other user groups can use our system, we will guide you through the process of making Do or Die. 
 
 ## The Stakeholders
-In addition to our end-user, the design of our system also focused around two other user types: the Administrator, and the Sponsor. Using our Management Dashboard, made using Processing, the Admin can track individual and general user statistics as well as user details. Our second stakeholder, the Sponsor, uses the website to create challenges for the end-user. This sponsor is likely a local businesss owner, looking to generate more exposure by creating challenges directly linked to their own business or product. You can learn more about our [Stakeholders](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#stakeholders), and how they influenced the [requirements](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#user-requirements-for-each-subsystem) for our key subsystems, in the [System Design](Portfolio/SystemDesign.md) section of our Portfolio.
+In addition to our end-user, the design of our system also focused around two other user types: the Administrator, and the Sponsor. Using our Management Dashboard, made using Processing, the Admin can track individual and general user statistics as well as user details. Our second stakeholder, the Sponsor, uses the website to create challenges for the end-user. This sponsor is likely a local business owner, looking to generate more exposure by creating challenges directly linked to their own business or product. You can learn more about our [Stakeholders](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#stakeholders), and how they influenced the [requirements](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#user-requirements-for-each-subsystem) for our key subsystems, in the [System Design](Portfolio/SystemDesign.md) section of our Portfolio.
 
 ## The Process
 In our portfolio we will analyse all aspects of the process of developing our product. This starts our ideation process, moving to how we designed the system, and finally how it was implemented. To ensure the success of our project, we had to allow for fully integrate each of our key subsystems, and they will therefore be explained and evaluated in tandem. We will also discuss potential areas for future work, how our team worked remotely, and how successful we felt that our project was. Each of the subsections of our portfolio are detailed below. 
@@ -92,12 +92,12 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 * [M5Stack Default Library](https://github.com/m5stack/M5Stack)
 * [WiFi Library](https://github.com/m5stack/M5Stack)
 * [Supplementary WiFi Library for ESP32](https://github.com/espressif/arduino-esp32/blob/master/tools/sdk/include/esp32/esp_wifi.h)
-* [MQTT Communcation Library](https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h)
+* [MQTT Communication Library](https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h)
 * [Time Library](https://github.com/PaulStoffregen/Time)
 * [MPU9250 Pedometer Class](https://gist.github.com/botamochi6277/7bfc4e15443cfbaa3ab9882f6a953868#file-dualmpu9250basic-ino)
 
 #### Processing Libraries
-* [ControlP5 Processing Libary](http://www.sojamo.de/libraries/controlP5/)
+* [ControlP5 Processing Library](http://www.sojamo.de/libraries/controlP5/)
 * [MQTT Communication Library](https://github.com/256dpi/processing-mqtt)
 
 #### React Template 
