@@ -11,6 +11,8 @@
  <p align="center">
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-product">The Product</a>
    .
+   <a href="https://www.youtube.com/watch?v=74kG-16TF0g&feature=youtu.be">The Trailer</a>
+    .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-user">The User</a>
     .
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/#the-stakeholders">The Stakeholders</a>
@@ -27,7 +29,7 @@
 <p align="center"><img src="Portfolio/Images/product.gif"width=85%>
 </p>
 
-<p align="center"><a href="https://www.youtube.com/watch?v=74kG-16TF0g&feature=youtu.be">Click Here to View our Product Trailer</a></p>
+<p align="center"<a href="https://www.youtube.com/watch?v=74kG-16TF0g&feature=youtu.be">Watch The Trailer Here</a></p>
 
   
 
