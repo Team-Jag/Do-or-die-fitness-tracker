@@ -423,7 +423,7 @@ Potential limitations of using the evaluation matrix are the chance of concentra
 We knew when designing our system initially that we wanted to focus largely on the non-functional requirements. These included the security of our system, the maintainability, the ease of use, and the reliability of our system as a whole. This relied in large part on testing our system in an integrated manner, which will be explored further below. However, we will first consider each of these "non-functional" requirements and how evaluating them during our sprints changed the design of our system. 
 
 #### Security
-From the design stage (link to design doc here?) to the implementation stage, security was considered an integral part of the system as a whole. Implementing the database class as abstract and private allowed for request validation before the persistent files were accessed, which separates the physical data from other devices. This lowers the chance of injection attacks, and consequently having unvalidated data reflected back to the user (cross-site scripting on the web side, arbitrary code injection on the M5 side). Additionally, this separatation protects the database files themselves from being malformed and causing a Denial of Service attack or non-malicious issues stemming from malformed requests.
+From the [design stage](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md) to the implementation stage, security was considered to be an integral part of the system as a whole. Implementing the database class as abstract and private allowed for request validation before the persistent files were accessed, which separates the physical data from other devices. This lowers the chance of injection attacks, and consequently having unvalidated data reflected back to the user (cross-site scripting on the web side, arbitrary code injection on the M5 side). Additionally, this separatation protects the database files themselves from being malformed and causing a Denial of Service attack or non-malicious issues stemming from malformed requests.
 
 Additionally, we took great care in implementing the M5 device as stateless. While lacking authentication, even if the device was stolen or lost, user information can be removed as everything is stored on the back-end of the processing app.
 
@@ -433,7 +433,7 @@ While our team was a relatively small team, and could easily maintain our produc
 Code was implemented with modularity in mind, which allowed each device team to update their subsystem without breaking the entire codebase. 
 
 #### Ease of Use
-At each stage of the implementation process, we aimed to conform to user specifications outlined in the design documentation (link to design doc?). However in doing so, we also aimed to make the features of each device as easily accessible to the relevant user story as possible.
+At each stage of the implementation process, we aimed to conform to user specifications outlined in the [design documentation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md). However in doing so, we also aimed to make the features of each device as easily accessible to the relevant user story as possible.
 
 The end-user first follows easily laid out instructions on the Web page to create an account. The end-user turns on the M5 stack, connects it to the internet, then has no further setup steps required. The device is ready to be used and begin counting steps and accepting challenges.
 
