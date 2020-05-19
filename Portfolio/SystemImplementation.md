@@ -231,7 +231,8 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
   <td>The Bean avatar on my M5Stack is even better and makes me feel more attached to it, as it now animates by jumping across the screen. Unfortunately the progress I make towards the challenges I enrolled in on the website don't update, so I'd like that to be fixed so I can receive the rewards from all the challenges I've completed. </td>
 </tr>
 <tr>
-  <td>Sponsor</td>
+  <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=30%><p align="center">
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">Jimmy (Sponsor)</p></a></td>
   <td>I am now able to log on to the website and create new challenges for the users.</td>
 </tr>
 <tr>
