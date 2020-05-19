@@ -106,6 +106,9 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 #### React Template 
 * [Now UI Kit](https://demos.creative-tim.com/now-ui-kit/index.html)
 
+### Images
+* Images for persona cards were found on [Pexels](https://www.pexels.com/) with CC0 license which requires no attribution for personal or commercial use.
+
 ## Acknowledgments
 A big thank you to everyone whose code and libraries we used during this project, referenced above. We are also incredibly thankful for the support and guidance of our lecturers: Simon Lock, Tom Bale, Pete Bennett, and Paul O'Dowd. We have learnt so much from them, and are excited to implement the skills that they have taught us in our future careers. 
 
