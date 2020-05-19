@@ -48,14 +48,21 @@ After decided what we wanted Do or Die to look like as a product, we began explo
 
 In order to ensure that our customer's point of view was at the forefront of our design, we developed three [proto-personas](https://uxmag.com/articles/using-proto-personas-for-executive-alignment). These personas informed our customer-centric point of view as to the design and implementation of our product, and can be seen below. The inclusion of the proto-personas ensured that our system had a customer focused designed at all stages, which will be explored in the implementation of our system as well. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. These user stories that influenced the [requirements of each subsystem](#user-requirements-for-each-subsystem) will be explained in detail later on in our report. 
 
+#### End-User
+<p align="center">
+<img src="Images/sponsortemplate.png">
+</p>
+
 Our first user group, and the centre of our product, is the end-user. Our proto-persona who encapsulated the end-user user type, was Mario. In general, this is the person that is using our product to get fit, invest time and energy into gaining health for the Bean and thereby increasing their own health. This person will likely either be someone who is interested in getting active but lacks the motivation, or someone who is already active and would like an extra challenge or an additional motivator to push themselves even further. Regardless of why they were using our fitness tracker, we knew that each user had to be able to do a number of things to see a benefit. This includes the ability to track their steps, know the current health of their Bean, enrol in challenges, and track their overall progress. The key theme of our end-user user type is that they are experiencing some type of challenge. Whether they are setting their own daily goals, or enrolling in challenges, they should be able to track their progress and see the addition of 'life' to the health bar of their Bean. This was the core concept underpinning our product, and what would ensure our success. 
 
+#### Sponsor
 <p align="center">
 <img src="Images/sponsortemplate.png">
 </p>
 
 Our second user type was a sponsor. The proto-persona for sponsor was Jimmy Hardcore, who is young and active - and keen to get involved in new technologies. In general, this person was likely a local gym owner, or business owner, who was looking for exposure for their business. We imagined it more likely to be a fitness business, as that would work well with our product and the type of customer base that we were likely to attract. Sponsors should be able to create challenges for our users to enrol in, which would likely advertise their business in some way (i.e. 'The Bristol Gym Challenge'). This would generate a significant amount of exposure for local business. In return for completing a challenge, a sponsor would reward extra 'life' to the user's Bean. A sponsor must be able to create a profile on the web in order to create challenges, and they should be able to track the users enrolled in the challenges. 
 
+#### Admin
 <p align="center">
 <img src="Images/AMITA.png">
 </p>
