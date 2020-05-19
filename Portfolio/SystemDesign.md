@@ -51,7 +51,15 @@ Our first user group, and the centre of our product, is the end-user. This is th
 
 > I am looking for an app that gets me active. I love to play video games, and hate exercising. But, I really enjoyed playing with Pokemon Go as I found it got me up and out of the house. It'd be great to have something like that, but with fitness as my main goal. It would also be fun to challenge my friends if possible, as we are all really competitive. While I like the idea of having on a small screen on my wrist for when I'm on the go, I think it would be good if I can check my stats and other things like challenges on a bigger interface - either an app, or a website. 
 
+<p align="center">
+<img src="Images/sponsortemplate.png">
+</p>
+
 Our second user type was a sponsor. This person was likely a local gym owner, or business owner, who was looking for exposure for their business. We imagined it more likely to be a fitness business, as that would work well with our product and the type of customer base that we were likely to attract. Sponsors should be able to create challenges for our users to enrol in, which would likely advertise their business in some way (i.e. 'The Bristol Gym Challenge'). This would generate a significant amount of exposure for local business. In return for completing a challenge, a sponsor would reward extra 'life' to the user's Bean. A sponsor must be able to create a profile on the web in order to create challenges, and they should be able to track the users enrolled in the challenges. 
+
+<p align="center">
+<img src="Images/AMITA.png">
+</p>
 
 Finally, in order to ensure the success of the product, we knew that we needed to have an admin user type. This person would be responsible for tracking the playerbase; for example if the product is successful, or if we are losing users. The admin would be the person responsible for deciding whether the product needs to be modified, or adapted based on these statistics. Moreover, the admin would be in charge of fixing any issues that may arise from the users and the sponsors. This may include the pedometer not working correctly, a user's inability to sign up to challenges due to an issue on the backend, or a need to change/delete a user's details. In order to ensure the success of the product, the admin must be able to view a number of statistics relating to the userbase. This includes total numbers of currently 'dead' users, weekly statistics, and monthly statistics. The admin must also be able to pull up an individual user's profile to be able to adequately address any issues. 
 
