@@ -73,7 +73,7 @@ In order to ensure that our customer's point of view was at the forefront of our
 
 #### End-User
 <p align="center">
-<img src="Images/sponsortemplate.png">
+<img src="Images/mario.png">
 </p>
 
 Our first user group, and the centre of our product, is the end-user. Our proto-persona who encapsulated the end-user user type, was Mario. In general, this is the person that is using our product to get fit, invest time and energy into gaining health for the Bean and thereby increasing their own health. This person will likely either be someone who is interested in getting active but lacks the motivation, or someone who is already active and would like an extra challenge or an additional motivator to push themselves even further. Regardless of why they were using our fitness tracker, we knew that each user had to be able to do a number of things to see a benefit. This includes the ability to track their steps, know the current health of their Bean, enrol in challenges, and track their overall progress. The key theme of our end-user user type is that they are experiencing some type of challenge. Whether they are setting their own daily goals, or enrolling in challenges, they should be able to track their progress and see the addition of 'life' to the health bar of their Bean. This was the core concept underpinning our product, and what would ensure our success. 
