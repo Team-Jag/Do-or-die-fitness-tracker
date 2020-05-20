@@ -41,7 +41,7 @@ The goal is simple, keep Bean's health bar above zero by getting out and getting
 ## The User
 When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, and very little on helping those new to fitness get in to it, so [the team](#the-team) wanted to make a fitness product that doubled as a game. By doing these we create new incentives and rewards for an individual to improve their own health. 
 
-In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
+In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, [meet Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user)! 
 
 > I'm Mario. I am in my 20's, love to play video games, and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
