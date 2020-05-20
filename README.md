@@ -39,7 +39,7 @@ If setting your own goals is not enough motivation, meet our Sponsors! With new 
 The goal is simple, keep Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## The User
-When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, with very little focus on helping those new to fitness. Therefore ou team](#the-team) wanted to make a fitness product that doubled as a game to fill that niche. By doing these we create new incentives and rewards for an individual to improve their own health. 
+When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, with very little focus on helping those new to fitness. Therefore our [team](#the-team) wanted to make a fitness product that doubled as a game to fill that niche. By doing these we create new incentives and rewards for an individual to improve their own health. 
 
 In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet Mario! 
 
