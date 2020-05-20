@@ -125,7 +125,7 @@ We are confident in the success of the current product that we have developed, h
 ## Group working practices
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
 
-### AGILE COMMUNICATION 
+### Agile Communication
 
 Our working process was highly centred on the Agile principle, which are evident in a number of our working practices. We also focused mainly on using the Kanban framework, as it ensured that we had a full transparency of the work that was left to be done. We also chose to implement some methods of the Scrum process in our team, in particular organising weekly code sprints with the aim of deploying a working version of our code at the end of each sprint. In terms of individual work, we chose to pair-program in respect to each of our key subsystems (web, management dashboard, and m5 stack). 
 
@@ -137,13 +137,13 @@ Our group measured our progress by working at a constant pace, and constantly en
 
 These releases were planned in advance, by utilising the milestone feature on Github we were able to work towards each milestone and prioritise which issues had to be addressed before our first release. To ensure that all the work was transparent, we utilised the Kanban project board on Github in combination with Github issues. This will be addressed later on in this section. 
 
-**KANBAN AND SCRUM FRAMEWORKS**
+**Kanban and Scrum Fameworks**
 
 We mainly used the Scrum framework to ensure that we had an Agile working practice. One team member acted as the Scrum master, dictating the timelines on Github and ensuring that they were outlined on Slack as well. This ensured that we had a clear agreement amongst our team as to when our deliverables were expected by, and which user stories we were currently focused on implementing. 
 
 The deliverables in our group were determined by the [sprints that we set](SystemImplementation.md), which were typically a week long but during the switch to remote working include a two week sprint. In order to delegate and prioritize our week, we used the Kanban project board on Github. Each one of our sprints relied on the success of the one before, as we aimed to push a deliverable product to our Master branch on Github every two sprints. 
 
-### GITHUB PROCCESS
+### Github Process
 
 After moving to a remote working practices, we realized that our team would only benefit from learning more about the proper [Github flow](https://guides.github.com/introduction/flow/) to ensure that we were able to work effectively and in an Agile manner while working in different countries. While this did slow our team down at times, we quickly saw the benefits of working from a develop branch, and only pushing our minimum viable product to the master branch at the end of most weeks. 
 
@@ -178,7 +178,7 @@ The greatest negative to our team's use of Github was the relative inexperience 
 
 However, once we all began to get in to the habit of following the above work cycle the success became clear and our progress began to accelerate. Github allowed for greater test-driven development and fewer avoidable mistakes, as we were able to test and deploy pieces of code to the branch workflow. Similarly, there was less confusion as to who was responsible for which parts of the project. On the whole, our team feels more confident in how to use Github effectively and found in greatly improved our remote working. 
 
-### COMMUNICATION TOOLS
+### Communication Tools
 
 While our group communicated most frequently through Facebook messenger, due to it being the most popular messaging platform amongst our group, we chose to use [Slack](https://slack.com/intl/en-gb/) to keep track of more important messages. 
 ![Slack](Images/slack.png) 
@@ -194,7 +194,7 @@ Slack was incredibly useful for linking our Google accounts, Github project, and
 
 However, towards the end of our project and as our team began to use Github more frequently we found that we used our Slack channel less. This meant that most of our communication moved back to Facebook messenger for quick messages, but important issues and other 'to dos' were put in our Github repository. It is likely that if our team were to grow to allow for larger development, Slack would be incredibly useful. 
 
-### MANAGEMENT OF ISSUES
+### Management of Issues
 
 By linking cards on our Project board with Github issues, it became easy to see who was responsible for what and what level of priority they had (based on which milestone we aimed to have them completed for). In the beginning, a large part of our working issues came from the lack of communication between each of the group members, and an unclear direction of where we saw the project going. In order to rectify this, we began to implement frequent stand-ups for 10-15 minutes between lectures to ensure that we were on the same page in terms of the work that was currently being undertaken. 
 
@@ -204,7 +204,7 @@ During our weekly video call meetings, we were also able to test each of the sub
 
 ![Group Meeting](Images/groupMeetings.JPG) 
 
-### OVERALL REFLECTION ON GROUP WORKING PRACTICES
+### Overall Reflection on Group Working Practices
 
 While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
 
