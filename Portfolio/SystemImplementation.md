@@ -1,5 +1,5 @@
 ![Do or Die System Implementation](Images/SystemImpLogo.png)
-# System Implementation:
+# System Implementation
 
 Now that we have highlighted how we decided on the [design of our system](SystemDesign.md), we will explain how the key aspects of our system were implemented. We will demonstrate how we used the architectural design that we created for our system to meet and implement each of our user stories, as well as how we maintained a minimum viable product by breaking our project into sprints. We will also evaluate the design of our system, and highlight the social and ethical implications of our product. 
 
@@ -32,7 +32,7 @@ Now that we have highlighted how we decided on the [design of our system](System
   - [Data usage](#data-usage)
   - [Social implications](#social-implications)
   
-## Software Development Strategy
+## SOFTWARE DEVELOPMENT STRATEGY
 Prior to exploring how our team broke our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development strategy that we used. We knew that in order to ensure a successful implementation of our product, we would need to adopt a software development strategy. This would ensure that we were able to successfully mitigate any risks, ensure smooth and continuous work-flow, and avoid any other disruptions to our development.
 
 ### Software Methodology
@@ -56,7 +56,7 @@ At the beginning of each sprint we decided the features that we would implement 
 
 The above diagram, included from this [website](https://hackernoon.com/a-case-study-type-insight-into-agile-methodologies-for-software-development-cd5932c6), demonstrates the development cycle that our team followed during the creation of our product. 
 
-## Breakdown of project into sprints
+## BREAKDOWN OF PROJECT INTO SPRINTS
 We organised our work as a series of one-week sprints from early March to mid-May. While we knew from the beginning that we would have weekly sprints, the main focus of each sprint was typically dictated by what was left in the backlog from the week before. Anything remaining in the backlog, was therefore, prioritised for the following sprint. We reviewed our product at the end of each week, using methods that will be described [below](#details-of-design-evaluation). Our main goal at the end of each sprint was to constantly produce a working product. The requirements for that sprint, in line with the Agile method, were dictated at the beginning and did not change during the week. The list of requirements acted to outline our tests, and ensure that our systems were able to be integrated successfully at the end of each sprint. As this was a rapid timeline to produce a working prototype, we knew that we wanted to aim for a 'release' of our product at the end of each sprint after the 30th of March. After defining our architecture in the first sprint, we aimed to see how much work we could achieve in terms of implementing the system in the second sprint. This then helped us to ensure we set realistic requirements and goals for each successive sprint. 
 
 We met in person or talk as a group over Google hangouts each Monday at 3pm for a sprint review/retrospective. The work over from the last week was presented and discussed, with completed items marked as "done". The to-does for the coming week/sprint as well as the backlog for later sprints was agreed upon. The coding pairs for the different substreams had bilateral "stand-ups" to check on how the work is progressing and problem-solve. Also, we discussed interactions between subsystems as needed during the week. In the following week we listed all the items for the week as “Backlog" or “Done”. The backlog was moved to later sprints, with only items remaining in the done column in the end. 
@@ -429,7 +429,7 @@ Final reflections can be viewed in the [project evaluation](https://github.com/T
 * Add extra animation to the M5Stack with the interact button. 
 * Remove the processing warnings. 
 
-## Details of design evaluation
+## DETAILS OF DESIGN EVALUATION
 
 A key aspect of our software development cycle came from our weekly software and design evaluation during our meetings. Each of our techniques for evaluating our design will be considered in turn in the following section, as well as their limitations. Going hand in hand with our software design cycle and during each sprint, we also found that we had - in some ways - a design evaluation cycle. At the beginning of each sprint, we would have a preliminary design that we expected we would develop during that sprint. This included the user stories that we wanted to implement, and how we would do this. During the sprint we would implement these, as highlighted above, however within our design cycle we would then have a number of forms of evaluation at the end of our sprint. This stage of our design cycle allowed us to shape and form our requirements for the next sprint, as well as reprioritize the user stories where necessary. During the design evaluation phase, we would utilise a number of methods and techniques for evaluation. The main methods for our design evaluation involved some form of testing to ensure that our design was working as expected. 
 
@@ -482,9 +482,9 @@ We do recognize that there are certain limitations to this method, mainly that w
 
 ### Final Reflection on Evaluation
 
-Our team was happy in the effectiveness of this approach, as rather than waiting until the end of developing our software, we knew that we always had a minimum viable product in our master branch.
+Our team was happy in the effectiveness of this approach, as rather than waiting until the end of developing our software, we knew that we always had a minimum viable product in our master branch that was successfully integrated and meeting the goals we had set. 
 
-## Social and ethical implications
+## SOCIAL AND ETHICAL IMPLICATIONS
 ### Code of ethics
 To ensure that we develop software for the greater good, we follow the [BCS Code of Conduct](https://www.bcs.org/membership/become-a-member/bcs-code-of-conduct/) in developing our software. Hence, regarding our prototype software, we will address **public interest** (social benefits, data privacy and security), how we uphold our **professional competence and integrity**, **duty to relevant authority**, and **duty to the professions** in the following sections:
 

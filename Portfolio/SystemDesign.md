@@ -49,7 +49,7 @@ A key requirement for the success of this project is maintaining the end-user's 
 ### Stakeholders
 After decided what we wanted Do or Die to look like as a product, we began exploring who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and [requirements](#user-requirements-for-each-subsystem) that were the basis of the development of our system. 
 
-In order to ensure that our customer's point of view was at the forefront of our design, we developed three [proto-personas](https://uxmag.com/articles/using-proto-personas-for-executive-alignment), each of which represent a different user-type. These personas informed our customer-centric point of view as to the design and implementation of our product, and can be seen below. The inclusion of the proto-personas ensured that our system had a customer focused design at all stages, which will be explored in the implementation of our system as well. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. These user stories that influenced the [requirements of each subsystem](#user-requirements-for-each-subsystem) will be explained in detail later on in our report. 
+In order to ensure that our customer's point of view was at the forefront of our design, we developed three [proto-personas](https://uxmag.com/articles/using-proto-personas-for-executive-alignment), each of which represent a different user-type. These personas informed our customer-centric point of view as to the design and implementation of our product, and can be seen below. The inclusion of the proto-personas ensured that our system had a customer focused design at all stages, which will be explored in the implementation of our system as well. Prior to explaining how the user stories influenced the [requirements of each subsystem](#user-requirements-for-each-subsystem), we will explain each user type and they're associated proto-persona that we kept at the centre of our design process. 
 
 #### End-User
 <p align="center">
@@ -186,10 +186,17 @@ However, before exploring each of these mechanisms in further detail, it is impo
 
 Communication between devices was devised to be as simple as possible to avoid unnecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Our shared contract will be explored in further detail [below](#details-of-the-communication-protocols-in-use). Unit testing each subsystem allowed us to be confident that individual components were working correctly, which allowed for ease of integration during each sprint. 
 
-![Architecture](Images/architecture-UML.png)
+<p align="center">
+<img src="Images/architecture-UML.png" width=70%>
+</p>
+
 The above diagram demonstrates dependencies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed receives a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistent storage, and it is a modularity concern as there is a strict contract devices must adhere to, in order to add or request data. 
 
-![Sequence Diagram](Images/finalsequence.png)
+
+<p align="center">
+<img src="Images/finalsequence.png" width=60%>
+</p>
+
 The above diagram demonstrates the sequential interaction between devices for the duration of a end-user story. First, the user enrolls through the web application and creates a profile. This is added to the database, the M5 stack is turned on and user profile for that device is pulled. The main game loop then begins, as each step incrementation is pushed back to the database, time is calculated on the back-end, and pulled back to the M5 device to diplay health. This loop continues until the M5 stack device is turned off.
 
 **System Validation** 
@@ -381,7 +388,7 @@ Our IoT product was developed utilising the M5Stack platform, as a result of thi
 
 To implement the MQTT communication protocol in our IoT product, we used [HiveMQ](https://www.hivemq.com). Our team established two topics, 'doordie_web' and 'doordie_steps'. Only one request type uses 'doordie_steps', which is detailed below in the communication protocol section. 
 
-Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match of both parameters. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below.
+Due to variability of payload attributes and sizes (especially concerning challenges), we made the decision to make a unifying request "type" parameter. For almost all request types, we chose to include a "user" parameter. Together, these two parameters allow our subsystems to ignore all messages in that topic unless there is an exact match of both parameters. Our shared contract, which was a list of all valid request types made between devices is found in [MQTT_request_types.txt](/Documentation/Mqtt_request_types.txt). This shared contract ensured clear communication between team members working on the different subsystems. We will expand on the key communication protocols and the request types below, however please see the sequence diagram in the above [architecture](#architecture-of-the-entire-system) section for a higher level view. 
 
 ### DESKTOP AND M5STACK
 
