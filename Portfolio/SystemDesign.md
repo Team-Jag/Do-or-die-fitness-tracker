@@ -47,30 +47,7 @@ While initially our team explored a number of fun and potentially successful pro
 A key requirement for the success of this project is maintaining the end-user's motivation beyond meeting a daily step goal, as this would eventually become repetitive and boring. We recognized that this had the potential to lead to a fitness plateau as the user would walk enough to keep the virtual pet alive and no more, thus placing a ceiling on their potential benefit from our product. To solve this we introduced the idea of challenges, to make exercise closer to a game with concrete objectives and rewards, and introduce an element of competition which would further encourage end-users to use the product longer. We considered letting users themselves upload challenges and compete against each other, however with a large playerbase we thought this would create an overwhelming amount of challenges (a scaling issue), and also remove incentive to create challenges with a suitably difficult effort/reward ratio. At the end of the ideation and creation process, we felt that the concept of our [Do or Die fitness tracker](https://github.com/Team-Jag/Do-or-die-fitness-tracker#product-description) was not too ambiguous, nor too specific, and allowed for the perfect amount of growth and development when following an Agile development process. 
 
 ### Stakeholders
-After decided what we wanted Do or Die to look like as a product, we began exploring who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and [requirements](#user-requirements-for-each-subsystem) that were the basis of the development of our system. The three stakeholders key interactions with our system can be summarised in the following table:
-
-<table>
-<tr>
-  <th><b>End-User</b></th>
-  <th><b>Admin</b></th>
-  <th><b>Sponsor</b></th>
-</tr>
-<tr>
-  <td>The user walks around with the M5Stack on their arm, which counts their steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left</td>
-  <td>The admin can utilise the management dashboard to track statistics of users, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product</td>
-  <td>The sponsor uses the website to create a profile, and set challenges for the average user to enrol in them.</td>
-</tr>
-<tr>
-  <td>The user can use the web to enrol in challenges set by sponsors, and view their total steps and health</td>
-  <td>The admin can use the management dashboard to view issues set by users on the website</td>
-  <td>The sponsor is able to use these challenges as a way to promote their business and brand.</td>
-</tr>
-<tr>
-  <td>The user can increase the Bean's health by either completing challenges or walking</td>
-  <td>The admin can use the web to track web traffic over time</td>
-  <td>N/A</td>
-</tr>
-</table>
+After decided what we wanted Do or Die to look like as a product, we began exploring who would use our system, and how they would use it. Ultimately, we came to the conclusion that we would have three main user groups: the Admin, Sponsor, and End-User. These three user groups ensured that our product had a user-centred focus, and defined our test cases and [requirements](#user-requirements-for-each-subsystem) that were the basis of the development of our system. 
 
 In order to ensure that our customer's point of view was at the forefront of our design, we developed three [proto-personas](https://uxmag.com/articles/using-proto-personas-for-executive-alignment), each of which represent a different user-type. These personas informed our customer-centric point of view as to the design and implementation of our product, and can be seen below. The inclusion of the proto-personas ensured that our system had a customer focused design at all stages, which will be explored in the implementation of our system as well. Each of these user types will be explained in detail, as well as example user stories that we kept at the centre of our design process. These user stories that influenced the [requirements of each subsystem](#user-requirements-for-each-subsystem) will be explained in detail later on in our report. 
 
@@ -113,6 +90,31 @@ In order to analyse the userbase, as well as store and have access to user data,
 
 * **Web Application** : 
 Finally, to complement the M5Stack and allow the users and sponsors to enrol in challenges, as well as view their statistics more in depth, it was necessary to have a web application. On the website the user can view general statistics like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
+
+The three stakeholders key interactions with our system can be summarised in the following table:
+
+<table>
+<tr>
+  <th><b>End-User</b></th>
+  <th><b>Admin</b></th>
+  <th><b>Sponsor</b></th>
+</tr>
+<tr>
+  <td>The user walks around with the M5Stack on their arm, which counts their steps, and displays the health bar of the Bean. The health bar is reflective of how much time the user has left</td>
+  <td>The admin can utilise the management dashboard to track statistics of users, sponsors, and challenges in order to ensure the success of the product and see how others are interacting with the product</td>
+  <td>The sponsor uses the website to create a profile, and set challenges for the average user to enrol in them.</td>
+</tr>
+<tr>
+  <td>The user can use the web to enrol in challenges set by sponsors, and view their total steps and health</td>
+  <td>The admin can use the management dashboard to view issues set by users on the website</td>
+  <td>The sponsor is able to use these challenges as a way to promote their business and brand.</td>
+</tr>
+<tr>
+  <td>The user can increase the Bean's health by either completing challenges or walking</td>
+  <td>The admin can use the web to track web traffic over time</td>
+  <td>N/A</td>
+</tr>
+</table>
 
 How we planned for each user to interact with our system is broken down in this sequence diagram: 
 <p align="center">
