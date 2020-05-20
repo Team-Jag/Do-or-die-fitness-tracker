@@ -86,6 +86,9 @@ Implementation would require adding this M5Stack_ID field to our data schema and
 
 Since this feature would need to come online before release, we couldn't evaluate it with user feedback. However a good metric for this type of "login features" is how many clicks/actions it takes the user to go from start-up to a system ready for use, so that would probably be what we would use to optimise this feature. 
 
+### Competition Feature 
+One feature that we wanted to implement was the ability for end-users to make their own challenges to be able to compete against friends, or to simply challenge their friends - with the winner getting the reward. This is a feature that we thought of when deciding what the end-user would like to get out of our feature, and would further create incentives for the users. This would involve changing our challenge feature on the website to allow users to add friends, or simply allowing them to make private challenges and invite their friends to participate. These features would have to be explored with further user testing. 
+
 ### Module specific improvements 
 The features discussed above are things that, to be implemented, would need non-trivial work done on each of our subsystems. We will now consider individual changes and improvements for each module.
 
