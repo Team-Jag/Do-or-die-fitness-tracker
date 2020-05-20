@@ -265,7 +265,8 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 <tr>
   <td>Desktop</td>
   <td>Admin now has access to real data analytics pulled from the database, and can track flat totals of sponsors, users and challenges.</td>
-  <td></td>
+  <td> N/A </td>
+  <td> N/A </td>
 </tr>
 <tr>
   <td>Web</td>
@@ -308,7 +309,7 @@ Previously, an issue was found while implementing the communication protocols on
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=28%>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=25%>
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
       <br>Mario (End-User)</a></td></td>
   <td>I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet these goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. The step counter still isn't perfect and I can't see how I've performed in the past so I don't know if I have improved overall or not with my Bean, it would be great if I could see some more of my own performance data somewhere on the device. </td>
