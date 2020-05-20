@@ -1,6 +1,6 @@
 ![Do or Die Project Evaluation](Images/projectEvalLogo.png)
 
-# Project Evaluation:
+# Project Evaluation
 
 In the following section, we will evaluate both the [design](Portfolio/SystemDesign.md) and [implementation](Portfolio/SystemImplementation.md) of our product. We will critically analyse the success of our project, including issues that still remain in the implementation of our product. We will also discuss areas for future work and evaluate how our group worked, especially in light of the move to remote working. 
 
@@ -17,14 +17,14 @@ In the following section, we will evaluate both the [design](Portfolio/SystemDes
   - [Summary](#summary)
 - [**Discussion of group working practices**](#group-working-practices)
   - [Agile communication](#agile-communication)
-  - [Github process](#github-proccess)
+  - [Github process](#github-process)
   - [Communication tools](#communication-tools)
   - [Management of issues](#management-of-issues)
   - [Overall reflection](#overall-reflection-on-group-working-practices)
 - [**Reflection on the effect of COVID-19 on the project**](#reflection-on-the-effect-of-covid-19-on-the-project)
 - [**Conclusion**](#conclusion)
 
-## Reflective discussion on the success of the project
+## REFLECTIVE DISCUSSION ON THE SUCCESS OF THE PROJECT
 
 ### General reflection of success
 
@@ -59,7 +59,7 @@ In the next section we will discuss future areas of work, including items that w
 In our first sprint we did a good job at defining the MVP, agreeing on the over design and the interactions between the subsystems. This set us to work independently and made the success of project resistant to the initial Corona disruption: it did not matter where each of us was, we all knew exactly what we had to do. As a result our alpha version was complete relatively fast and satisfied most of the MVP requirements. We then agreed as a group which additional features we would implement for the beta version. Unfortunately in this second iteration we did not follow the same rigor when designing the system, we all were confident that we know "our systems" and adding some new features would be "easy". We paid the price for that complacency a couple of weeks later, before the release of our beta version: during the final end-to-end test some of the subsystems would crash and each of us had to spend a couple of hours to identify the bugs in their systems. Amazingly they all turned out the be easy to fix: they all originated from misunderstanding between our sub-groups (e.g. different spelling in the request types or different understanding of the  exact purpose of the request). This remined us of how important a system design with clear requirements and test cases is when working in a group. Had we invested an hour more into the design in that second iteration, it would have saved us countless hours of finding and fixing bugs.
 
  
-## Discussion of future work 
+## DISCUSSION OF FUTURE WORK
 In general, due to our time constrains, in our project we rushed through big chunks of what would be a normal design process, completely skipping the Discover and Define parts for example. So, the first step for any kind of future work would be to first do extensive market research to better understand where the Do or Die Fitness Tracker fits in the Product Space, what our Target market is, and whether there are existing companies that could be classified as our competitors.
 
 Below we will consider some additional features that would make our product more viable, how we came up with the feature, and how it would fit in our current design. We will also consider how we would develop it, implement it, and what methods we would use to evaluate it.
@@ -127,7 +127,7 @@ We would not remove our Processing interface though, we would also try to expand
 ### Summary
 We are confident in the success of the current product that we have developed, however with additional funding and more time we believe that the above features would improve customer retention and ensure the long-term success of Do or Die. While we currently have a solid proof of concept, we would like to expand our code base and further test additional features with a large user-base. The wonderful thing about Do or Die is that it is incredibly versatile, and thus we would be able to respond to the needs of the market. Whether this means the addition of something such as a Period Tracker for personal health, or even the addition of a drink tracker for the user's trips to the pub; we know that Do or Die can do it all. By developing our product with the main goal of improving user's health, we have not limited ourselves to a simple step tracker. Depending on the needs of our user, we would be ready and able to expand our functionalities. 
 
-## Group working practices
+## GROUP WORKING PRACTICES
 Our group undertook an Agile workflow while completing our project. This allowed us to embrace changing requirements, and ensured that when our working methods had to become remote, we were prepared and did not fall behind. Our working practices, methods for communication, and their relative success in terms of our group's working practice, will be considered in turn. 
 
 ### Agile Communication
@@ -210,7 +210,7 @@ During our weekly video call meetings, we were also able to test each of the sub
 ### Overall Reflection on Group Working Practices
 While Agile was a new concept to most members of our group, and some of us were hesitant to focus our work around it, we found that it was incredibly beneficial especially when our working practices changed in mid-March. Without in-person interactions, we relied heavily on the Kanban board and our weekly Google Hangout meetings that our code sprints were focused around. This allowed for us to adapt to issues as they arose, and ensure that we constantly had a working product in our master branch. Moreover, it kept each member of the team on the same page as to what work everyone else was doing, and we made for clear communication that we did not feel was affected to drastically by our move to working remotely. 
 
-## Reflection on the effect of COVID-19 on the project
+## REFLECTION ON THE EFFECT OF COVID-19 ON THE PROJECT
 The coronavirus crisis lasting over the past few months has had multiple effects on the working practices of this project. In general our team worked effectively using remote working tools such as Slack and Github mentioned above. The primary issue was communication problems and a lack of clarity for project direction, which we aimed to mitigate as much as possible using remote working tools to facilitate regular meetings.
 
 Due to isolation from university infrastructure the team was heavily reliant on local machines and internet being usable. Despite best efforts to maintain a constant level of communication throughout the project the team was affected by connectivity issues such as local internet becoming slow or unusable, and hardware issues of local machines. Due to our effective use of Github, local data loss was not a problem and allowed us to ensure our work was maintained. 
