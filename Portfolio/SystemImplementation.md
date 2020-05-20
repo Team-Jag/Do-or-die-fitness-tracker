@@ -160,7 +160,8 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
   <td>I am more attached to my M5Stack as I can see my Bean avatar, and feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enrol in challenges for the first time. This motivates me even more to get active. I'm glad that the interface on the Stack has improved but it remains static, so I'd prefer the Bean avatar to be more interactive and animated when I use the Stack. </td>
 </tr>
 <tr>
-  <td>Sponsor</td>
+    <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=30%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">Jimmy (Sponsor)</a></td>
   <td>I can create an account on the web.</td>
 </tr>
 <tr>
