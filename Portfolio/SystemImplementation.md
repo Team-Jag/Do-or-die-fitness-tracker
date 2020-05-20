@@ -235,16 +235,21 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+   <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td>
   <td>The Bean avatar on my M5Stack is even better and makes me feel more attached to it, as it now animates by jumping across the screen. Unfortunately the progress I make towards the challenges I enrolled in on the website don't update, so I'd like that to be fixed so I can receive the rewards from all the challenges I've completed. </td>
 </tr>
 <tr>
-  <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=30%>
-    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">Jimmy (Sponsor)</a></td>
+  <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">
+      <br>Jimmy (Sponsor)</a></td>
   <td>I am now able to log on to the website and create new challenges for the users.</td>
 </tr>
 <tr>
-  <td>Admin</td>
+  <td><img src="/Portfolio/Images/amita_portrait.jpg" width=30%>
+   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor"> 
+     <br>Amita (Admin)</a></td>
   <td>I can now see all the users, available challenges, and the sponsors that have signed up to use our product in the Desktop app. I can also see updated data from the users.</td>
 </tr>
 </table>
