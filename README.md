@@ -106,7 +106,7 @@ View our [project evaluation](Portfolio/ProjectEvaluation.md) to see:
 #### React Template 
 * [Now UI Kit](https://demos.creative-tim.com/now-ui-kit/index.html)
 
-### Images
+#### Images
 * Images for persona cards were found on [Pexels](https://www.pexels.com/) with CC0 license which requires no attribution for personal or commercial use.
 
 ## Acknowledgments
