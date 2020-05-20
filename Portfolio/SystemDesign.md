@@ -187,9 +187,11 @@ However, before exploring each of these mechanisms in further detail, it is impo
 Communication between devices was devised to be as simple as possible to avoid unnecessary complexity, with the concept of a common contract of User, Challenge and Sponsor classes being consistent across all devices to make the project as maintainable as possible. Our shared contract will be explored in further detail [below](#details-of-the-communication-protocols-in-use). Unit testing each subsystem allowed us to be confident that individual components were working correctly, which allowed for ease of integration during each sprint. 
 
 ![Architecture](Images/architecture-UML.png)
+
 The above diagram demonstrates dependencies and communication between all devices of our project. Every request passes through the database API on the Processing app, and when needed receives a request to pull information from the database. No device has access to storage apart from the API. This is a security concern as it allows only valid requests to alter files in persistent storage, and it is a modularity concern as there is a strict contract devices must adhere to, in order to add or request data. 
 
 ![Sequence Diagram](Images/finalsequence.png)
+
 The above diagram demonstrates the sequential interaction between devices for the duration of a end-user story. First, the user enrolls through the web application and creates a profile. This is added to the database, the M5 stack is turned on and user profile for that device is pulled. The main game loop then begins, as each step incrementation is pushed back to the database, time is calculated on the back-end, and pulled back to the M5 device to diplay health. This loop continues until the M5 stack device is turned off.
 
 **System Validation** 
