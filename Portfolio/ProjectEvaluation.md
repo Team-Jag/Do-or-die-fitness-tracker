@@ -41,16 +41,18 @@ Indeed, our team was able to successfully follow the Agile development cycle. We
 Finally, which is perhaps is the greatest measure of our success, is how well our team worked together and how much we learnt. Our working practices will be explored further, but each of our team is now confident in many aspects of software engineering as well as the ability to work well in a group. We will now consider the success of each of our key subsystems. 
 
 #### M5 ####
-In order to ensure the success of perhaps the most important subsystem, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. In order to do this, we ensured that we first had a pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature individually,  and during each sprint, rather than all at once, the M5 team was able to quickly adapt to changes in requirements. 
+
+In order to ensure the success of perhaps the most important subsystem, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. To do this, we ensured that we first had a pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature individually,  and during each sprint, rather than all at once, the M5 team was able to quickly adapt to changes in requirements. We therefore did not have the opportunity to implement the final 'feature' for the M5Stack, the interaction feature. However, this was of low priority and did not affect user experience, and therefore was pushed to the backlog. This decision was made in line with the Agile methodology. 
 
 #### Web ####
 
 In the web sub-team our approach was "very agile" in the sense that we had very short cycles with little consideration for the implications of design choices on other planned features. The advantage was that we had a first working version of the website within a day and the first integration with the other systems after a week. However, with every new cycle the need to refactor code increased, as the limitations of the initial design choices became clear. This method worked great because it allowed us to deliver a working prototype in weeks, at the same time it showed us that systems intended for long term use need flexibility in their design and fundamental design choices must take into account the requirements of the system as a whole.
 
 #### Desktop ####
-The desktop team also followed agile processes in line with user story implementation defined within sprints each week. Due to the separate nature of back and front ends of this subsystem (each of which can be considered subsystems in its own right) this meant a mostly large modularity in implementation as each section could be developed separately. However as mentioned earlier, the primary dependency between modules was request type which caused bugs when request spellings had minor differences ("pull sponsor" vs "pull sponsors"). This caused significant challenge in hunting down these specific bugs for the desktop team, but additionally caused issues during integration tests for the other teams as all communication must pass through the desktop app to access persistent data. 
 
-In the next section we will discuss future areas of work; including items that were pushed to the backlog. 
+The desktop team also followed Agile processes in line with user story implementation defined within sprints each week. Due to the separate nature of back and front ends of this subsystem (each of which can be considered subsystems in its own right) this meant a mostly large modularity in implementation as each section could be developed separately. However as mentioned earlier, the primary dependency between modules was request type which caused bugs when request spellings had minor differences ("pull sponsor" vs "pull sponsors"). This caused significant challenge in hunting down these specific bugs for the desktop team, but additionally caused issues during integration tests for the other teams as all communication must pass through the desktop app to access persistent data. 
+
+In the next section we will discuss future areas of work, including items that were pushed to the backlog for future sprints. 
 
 #### Overall Design ####
 
