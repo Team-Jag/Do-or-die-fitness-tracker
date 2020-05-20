@@ -34,14 +34,14 @@
 ## The Product
 Do or Die is a wearable fitness tracker, designed to inspire users to get active and have fun while doing so. There to motivate you is your new friend Bean, found on the face of your fitness tracker. The more active you are, the more time that is added to Bean's health bar. However, if you fail to meet your step goals, Bean's health bar will slowly decrease. So be careful as once the health bar reaches zero, Bean will die. Get active, meet your step goals, and keep Bean alive. 
 
-If setting your own goals is not enough motivation, meet our Sponsors! With new challenges added to the website weekly, and amazing rewards up for grabs, there's even more reason to keep your Bean's health level up. Once you register for Do or Die you can access your account details on our website where you can keep track of long term progress, and challenge your friends along the way. 
+If setting your own goals is not enough motivation, meet our Sponsors! With new challenges added to the website weekly, and amazing rewards up for grabs, there's even more reason to keep your Bean's health level up. On top of that, once you register for Do or Die you can access your account details on our website where you can keep track of long term progress.
 
 The goal is simple, keep Bean's health bar above zero by getting out and getting active. This is Do or Die, do you have what it takes?
 
 ## The User
 When designing Do or Die we had one goal in mind: make fitness fun. Many of the fitness trackers already on the market focus heavily on those who are already active, with very little focus on helping those new to fitness. Therefore our [team](#the-team) wanted to make a fitness product that doubled as a game to fill that niche. We create new incentives and rewards for an individual to improve their own health. 
 
-In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, meet [Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user)! 
+In order to guide you through our user-centred approach to designing our system, as well as the implementation, we will be focusing on a single user to show you how our product can be used. So, [meet Mario](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user)! 
 
 > I'm Mario. I am in my 20's, love to play video games, and am very competitive. Recently I have been interested in getting more active but find myself getting bored really easily, and find it hard to stay motivated.  
 
