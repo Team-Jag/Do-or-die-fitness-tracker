@@ -363,7 +363,9 @@ The goal of this sprint was to clean up and refactor our code, and implement any
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td></td>
   <td>I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. The only thing I wish could be improved is the screen on the Stack flickers as it animates, other than that this tracker is amazing. </td>
 </tr>
 </table>
