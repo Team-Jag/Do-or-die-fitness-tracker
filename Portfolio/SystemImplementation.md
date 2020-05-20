@@ -156,19 +156,19 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><img src="/Portfolio/Images/mario_portrait.jpg" height=30%>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
       <br>Mario (End-User)</a></td>
   <td>I am more attached to my M5Stack as I can see my Bean avatar, and feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enrol in challenges for the first time. This motivates me even more to get active. I'm glad that the interface on the Stack has improved but it remains static, so I'd prefer the Bean avatar to be more interactive and animated when I use the Stack. </td>
 </tr>
 <tr>
-    <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" height=30%>
+    <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=20%>
     <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">
       <br>Jimmy (Sponsor)</a></td>
   <td>I can create an account on the web.</td>
 </tr>
 <tr>
-  <td><img src="/Portfolio/Images/amita_portrait.jpg" height=30%>
+  <td><img src="/Portfolio/Images/amita_portrait.jpg" width=30%>
    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor"> 
      <br>Amita (Admin)</a></td>
   <td>I can now see product performance in the Desktop app, including general data on the userbase.</td>
