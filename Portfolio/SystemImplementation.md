@@ -101,7 +101,9 @@ To allow the user to count and keep track of their steps between sessions, we ne
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td>
   <td>I am now able to use my M5Stack to count my steps, and see the steps updated each time on my Stack, it's great to be able to measure my progress but it doesn't reliably update the step counter as I walk around. The interface looks quite plain though, I wish there was more to look at on the Stack. </td>
 </tr>
 </table>
@@ -156,15 +158,21 @@ Furthermore we wanted to integrate the other user-stories (sponsor & admin): Del
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td>
   <td>I am more attached to my M5Stack as I can see my Bean avatar, and feel much more attached to it. I am also excited, as it feels like I can do more with my purchase! I can log in to the website, and enrol in challenges for the first time. This motivates me even more to get active. I'm glad that the interface on the Stack has improved but it remains static, so I'd prefer the Bean avatar to be more interactive and animated when I use the Stack. </td>
 </tr>
 <tr>
-  <td>Sponsor</td>
+    <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">
+      <br>Jimmy (Sponsor)</a></td>
   <td>I can create an account on the web.</td>
 </tr>
 <tr>
-  <td>Admin</td>
+  <td><img src="/Portfolio/Images/amita_portrait.jpg" width=30%>
+   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor"> 
+     <br>Amita (Admin)</a></td>
   <td>I can now see product performance in the Desktop app, including general data on the userbase.</td>
 </tr>
 </table>
@@ -227,15 +235,21 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+   <td><img src="/Portfolio/Images/mario_portrait.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td>
   <td>The Bean avatar on my M5Stack is even better and makes me feel more attached to it, as it now animates by jumping across the screen. Unfortunately the progress I make towards the challenges I enrolled in on the website don't update, so I'd like that to be fixed so I can receive the rewards from all the challenges I've completed. </td>
 </tr>
 <tr>
-  <td>Sponsor</td>
+  <td><img src="/Portfolio/Images/man-holding-basketb-2085739.jpg" width=20%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor">
+      <br>Jimmy (Sponsor)</a></td>
   <td>I am now able to log on to the website and create new challenges for the users.</td>
 </tr>
 <tr>
-  <td>Admin</td>
+  <td><img src="/Portfolio/Images/amita_portrait.jpg" width=30%>
+   <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#sponsor"> 
+     <br>Amita (Admin)</a></td>
   <td>I can now see all the users, available challenges, and the sponsors that have signed up to use our product in the Desktop app. I can also see updated data from the users.</td>
 </tr>
 </table>
@@ -251,7 +265,8 @@ Therefore, for the M5Stack and the Processing App, the goal of this sprint was t
 <tr>
   <td>Desktop</td>
   <td>Admin now has access to real data analytics pulled from the database, and can track flat totals of sponsors, users and challenges.</td>
-  <td></td>
+  <td> N/A </td>
+  <td> N/A </td>
 </tr>
 <tr>
   <td>Web</td>
@@ -294,7 +309,9 @@ Previously, an issue was found while implementing the communication protocols on
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=25%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td></td>
   <td>I can now view my challenges on my M5Stack, and no longer just have to log on to the website to do that. I also get the actual rewards for each challenge, and am finally feeling more motivated to meet these goals! I also know when my Bean is closer to death, because it starts to bounce less and less. When I don't reach my goals and let my life timer run out however, the screen updates to a death screen to let me know that my Bean has died. The step counter still isn't perfect and I can't see how I've performed in the past so I don't know if I have improved overall or not with my Bean, it would be great if I could see some more of my own performance data somewhere on the device. </td>
 </tr>
 </table>
@@ -347,7 +364,9 @@ The goal of this sprint was to clean up and refactor our code, and implement any
   <th>Updated Use Case</th>
 </tr>
 <tr>
-  <td><a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker#the-user">Mario (End-User)</a></td>
+  <td><img src="/Portfolio/Images/mario_portrait.jpg" width=25%>
+    <a href="https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md#end-user">
+      <br>Mario (End-User)</a></td></td>
   <td>I can now see my statistics accurately on my M5Stack, which means that I don't have to log on to the web and no longer just see my total step count. I can see weekly and monthly averages in my statistics tab. My M5Stack is now a great step tracker, letting me know all totals, has an accurate Bean with great animation, and I can go through each of the challenges I enrolled in on the web. The only thing I wish could be improved is the screen on the Stack flickers as it animates, other than that this tracker is amazing. </td>
 </tr>
 </table>
