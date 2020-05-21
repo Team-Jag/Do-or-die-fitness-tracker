@@ -42,7 +42,7 @@ Finally, which is perhaps is the greatest measure of our success, is how well ou
 
 #### M5 ####
 
-In order to ensure the success of perhaps the most important subsystem, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. To do this, we ensured that we first had a pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature individually,  and during each sprint, rather than all at once, the M5 team was able to quickly adapt to changes in requirements. We therefore did not have the opportunity to implement the final 'feature' for the M5Stack, the interaction feature. However, this was of low priority and did not affect user experience, and therefore was pushed to the backlog. This decision was made in line with the Agile methodology. 
+In order to ensure the success of the subsystem providing the core of our user experience, the M5Stack team had to prioritise the end-user stories that we implemented in each sprint. To do this, we ensured that we first had a working pedometer before moving on to adding animation and then further features including challenges and statistics. By implementing each feature individually, and during each sprint rather than all at once, the M5 team was able to quickly adapt to changes in requirements. We therefore did not have the opportunity to implement the final 'feature' for the M5Stack, the interaction feature. However, this was of low priority and did not affect user experience, and therefore was pushed to the backlog. This decision was made in line with the Agile methodology. 
 
 #### Web ####
 
