@@ -31,6 +31,7 @@ Now that we have highlighted how we developed on the [design of our system](Syst
   - [Data privacy and security](#data-privacy-and-security)
   - [Data usage](#data-usage)
   - [Social implications](#social-implications)
+- [**Conclusion**](#conclusion)
   
 ## SOFTWARE DEVELOPMENT STRATEGY
 Prior to exploring how our team split our project in to sprints, and how we evaluated our designs, it is first necessary to explain the development strategy that we used. We knew that in order to ensure a successful implementation of our product, we would need to adopt a software development strategy. This would ensure that we were able to successfully mitigate any risks, ensure smooth and continuous work-flow, and avoid any other disruptions to our development.
@@ -501,6 +502,9 @@ There are possible concerns on how personal fitness data can be used in the futu
 
 ### Social implications
 As our platform relies on both rewards and punishments, in the forms of increasing the life timer and the Bean dying respectively, there may be implications on the user's state of mental health. Attachment to the Bean and its impending doom and subsequent death might lead to a sense of significant loss. Additional potential stressors include the leaderboard ranking system implemented based on the number of steps taken by the user that can be viewed on the website. The user then might relate their fitness levels with their rankings, which might discourage them further to attempt exercising if they are constantly stuck with low rankings. Additionally, addiction to our gamified fitness tracker might be possible, although this is not clear whether this could be an issue as we only require healthy activities to play our product.
+
+## CONCLUSION 
+In conclusion, the proof of concept for Do or Die was implemented effectively, well-tested, and was created with a user focus. This is evident through our prioritising of user stories during each sprint, our extensive testing strategies and our consideration of social and ethical issues. Our team is satisfied that our use of the Agile methodology ensured our success, and allowed for the successful implementation of our proof of concept. 
 
 - [Previous Section: System Design](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/SystemDesign.md)
 - [Next Section: Project Evaluation](https://github.com/Team-Jag/Do-or-die-fitness-tracker/blob/develop/Portfolio/ProjectEvaluation.md)
