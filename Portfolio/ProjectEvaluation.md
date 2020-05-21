@@ -46,7 +46,7 @@ In order to ensure the success of the subsystem providing the core of our user e
 
 #### Web ####
 
-In the web sub-team our approach was "very agile" in the sense that we had very short cycles with little consideration for the implications of design choices on other planned features. The advantage was that we had a first working version of the website within a day and the first integration with the other systems after a week. However, with every new cycle the need to refactor code increased, as the limitations of the initial design choices became clear. This method worked great because it allowed us to deliver a working prototype in weeks, at the same time it showed us that systems intended for long term use need flexibility in their design and fundamental design choices must take into account the requirements of the system as a whole.
+In the web sub-team our approach was in line with the Agile methodology in the sense that we had very short cycles with little consideration for the implications of design choices on other planned features. The advantage was that we had a first working version of the website within a day and the first integration with the other systems after a week. However, with every new cycle the need to refactor code increased, as did our awareness of the limitations of initial design choices. This method worked well because it allowed us to deliver a working prototype in weeks, while at the same time it showed us that systems intended for long term use need flexibility in their design and fundamental design choices that must take into account the requirements of the system as a whole.
 
 #### Desktop ####
 
