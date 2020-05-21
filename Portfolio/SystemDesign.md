@@ -70,7 +70,7 @@ Our second user type was a sponsor. The proto-persona for sponsor was Jimmy Hard
 <img src="Images/AMITA.png">
 </p>
 
-Finally, in order to ensure the success of the product, we knew that we needed to have an admin user type. Our proto-persona for admin was Amita Smith, who would be is the data analyst. In general, this person would be responsible for tracking the playerbase; for example if the product is successful, or if we are losing users. The admin would be the person responsible for deciding whether the product needs to be modified, or adapted based on these statistics. Moreover, the admin would be in charge of fixing any issues that may arise from the users and the sponsors. This may include the pedometer not working correctly, a user's inability to sign up to challenges due to an issue on the backend, or a need to change/delete a user's details. In order to ensure the success of the product, the admin must be able to view a number of statistics relating to the userbase. This includes total numbers of currently 'dead' users, weekly statistics, and monthly statistics. The admin must also be able to pull up an individual user's profile to be able to adequately address any issues. 
+Finally, in order to ensure the success of the product, we knew that we needed to have an admin user type. Our proto-persona for admin was Amita Smith, who is the data analyst for Do or Die. In general, this person would be responsible for tracking the playerbase; for example if the product is successful, or if we are losing users. The admin would be the person responsible for deciding whether the product needs to be modified, or adapted based on these statistics. Moreover, the admin would be in charge of fixing any issues that may arise from the users and the sponsors. This may include the pedometer not working correctly, a user's inability to sign up to challenges due to an issue on the backend, or a need to change/delete a user's details. In order to ensure the success of the product, the admin must be able to view a number of statistics relating to the userbase. This includes total numbers of currently 'dead' users, weekly statistics, and monthly statistics. The admin must also be able to pull up an individual user's profile to be able to adequately address any issues. 
 
 The main user stories are outlined in this use case diagram:
 
@@ -80,16 +80,16 @@ The main user stories are outlined in this use case diagram:
 
 ### Key Subsystems
 
-Now that it is clear who are target users are, and how we saw them using our system, it is necessary to define the key subsystems that make up our product. Each of these subsystems became necessary to ensuring the success of Do or Die as a product: 
+Now that it is clear who are target users are, and how we saw them using our system, it is necessary to define the key subsystems that make up our product prior to explaining how their requirements were developed based on the user types. Each of these subsystems became necessary to ensuring the success of Do or Die as a product: 
 
 * **Internet of Things Device** : 
 The key aspect of our product design was the IoT device, which was an M5Stack. This was an Arduino compatible device that we used to create a pedometer. The M5Stack will be worn on the user's wrist as a fitness tracker, and is capable of sending steps to the database. As it has a screen, it is possible to display the Bean and other statistics. This device worked well for our desired goals because it contains a gyroscope which can be used as a pedometer, and Wi-Fi capabilities to pull information from the central database.
 
 * **Desktop Application** : 
-In order to analyse the userbase, as well as store and have access to user data, we created a Processing application which functions as a back-end. We implemented a Management Dashboard to be used by the Admin on the desktop application. The back end of this subsystem sends and receives requests from MQTT client topics, parsing to make sure request is not malformed, storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
+In order to analyse the userbase, as well as store and have access to user data, we created a Processing application which functions as a back-end. We implemented a Management Dashboard to be used by the Admin on the desktop application. The back end of this subsystem sends and receives requests from MQTT client topics; parsing to make sure request is not malformed, as well as storing user, sponsor and challenge information in a central database, and visualising general consumer data such as total users of the app. 
 
 * **Web Application** : 
-Finally, to complement the M5Stack and allow the users and sponsors to enrol in challenges, as well as view their statistics more in depth, it was necessary to have a web application. On the website the user can view general statistics like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
+To complement the M5Stack, allow the users to enrol in and sponsors to create challenges, and for the users to view their statistics more in depth; it was necessary to have a web application. On the website the user can view general statistics like their ranking across our users, their total steps, and can enrol in challenges. Sponsors can also use the website to create challenges.
 
 The three stakeholders key interactions with our system can be summarised in the following table:
 
@@ -116,7 +116,7 @@ The three stakeholders key interactions with our system can be summarised in the
 </tr>
 </table>
 
-How we planned for each user to interact with our system is broken down in this sequence diagram: 
+We then took these key user stories, the three key subsystems, and planned how each user would interact with our product. This can be seen broken down in this sequence diagram: 
 <p align="center">
 <img src="Images/userSequence.png" width=60%>
 </p>
@@ -127,51 +127,51 @@ Before explaining in more depth [how our subsystems work together](#architecture
 To break each of the three key subsystems down further before any substantive work began, we outlined the key requirements for each system in order to understand what was eventually necessary to develop a Minimum Viable Product (MVP). This also ensured each of the team members were aware of the key functionalities of each subsystem. These will be explored in turn, before we analyse the final architecture of our system, and finally each of the key components of our architecture.
 
 ### M5Stack System Requirements
-The M5Stack is the primary device that the end-user interacts with, and for that reason we were mainly focused on the End-User group. In order to ensure that we implemented the end-user's stories, we split our requirements into the back-end and front-end to focus on both the accuracy of our product, and the appeal to the end-user. 
+The M5Stack is the primary device that the end-user interacts with, and for that reason the development of the M5Stack focused mainly around the end-user, [Mario](#end-user). In order to ensure that we implemented the end-user's stories, we split our requirements into the back-end and front-end to focus on both the accuracy of our product, and the appeal to the end-user. 
 
 **Back-End**
 
-* The end-user's main goal when using this product is to be able to track their fitness level, and for that reason the M5Stack must have a pedometer to be able to accurately count the end-user's steps.
-* In order for the end-user's steps to be tracked between session, the M5 must be able to communicate with the server using the shared communication contract.
+* Mario's main goal when using this product is to be able to track their fitness level, and for that reason the M5Stack must have a pedometer to be able to accurately count the end-user's steps.
+* In order for the Mario's steps to be tracked between session, the M5 must be able to communicate with the server using the shared communication contract.
 
 **Front-End**
 
-* To ensure customer retention, the M5Stack must implement an engaging and appealing interface.
-* As the end-user is interested in getting healthy and this relies on the user knowing how active they have been, the M5Stack should display a live step count.
-* The M5Stack should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement.
+* To ensure customer retention, the M5Stack must implement an engaging and appealing interface. Mario is interested in video games, and so we knew that an avatar with animation would interest him. 
+* As the Mario is interested in getting healthy and this relies on the user knowing how active they have been, the M5Stack should display a live step count.
+* The M5Stack should display an adorable sprite (called Bean) to create an attachment with the end-user, and ensure long-term engagement. Due to Mario's age he was likely someone who grew up with, or around the phase of [Tamagotchi](https://tamagotchi.com), so we were inspired by that when developing Bean. 
 * As the product has been gamified, the M5Stack must have a health bar which accurately reflects how much health the Bean has left.
-* To reflect the user's success and ensure they continue to meet their goals, Bean's animations and general liveliness should reflect its remaining life (i.e. it should move less when it is closer to death).
-* To allow for the user to know what goals they have, the M5Stack should display the challenges that the user is enrolled in.
-* In order for the end-user to track their progress, the M5Stack should display the user's statistics.
+* To reflect Mario's success and ensure they continue to meet their goals, Bean's animations and general liveliness should reflect its remaining life (i.e. it should move less when it is closer to death).
+* To allow for Mario to know what goals they have, the M5Stack should display the challenges that he is enrolled in.
+* In order for Mario to track their progress, the M5Stack should display the his statistics.
 
 ### Desktop System Requirements
 
-As explained above, the Desktop Application needs to act as the administration interface for data visualisation. It was developed to create a back-end to deal with sending and receiving requests. We also created front-end to track and visualize total users, sponsors and challenges currently available.
+As explained above, the Desktop Application needs to act as the administration interface for data visualisation. This will be used by the [admin](#admin) stakeholder. It was developed to create a back-end to deal with sending and receiving requests. We also created front-end to track and visualize total users, sponsors and challenges currently available.
 
 **Data visualisation UI (front-end)**
 
-* In order for the admin to track user data, the front-end needs to pull flat totals from the database for current users, sponsors, and available challenges to draw accurate statistics.
-* To allow for the admin to see relevant changes in the userbase in an intuitive way, the interface must be able to split this  quantitative data based on a time frame, showing changes over daily, weekly and monthly periods.
-* If there are specific issues, the admin must be able to track them down. Therefore, the front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
+* In order for Amita to track user data, the front-end needs to pull flat totals from the database for current users, sponsors, and available challenges to draw accurate statistics.
+* To allow for Amita to see relevant changes in the userbase in an intuitive way, the interface must be able to split this  quantitative data based on a time frame, showing changes over daily, weekly and monthly periods.
+* If there are specific issues, Amita must be able to track them down. Therefore, the front-end interface must be able to look at statistics for any specific user, such as how much time they have left and global steps taken.
 
 **Data processing back-end**
 
-* To provide accurate statistics for the admin (front-end), the system must be capable of processing JSON requests efficiently from both the web application and the M5Stack.
-* To ensure the admin retains control of the userbase and product, the back-end must also be able to insert new users, sponsors and challenges into the central database, while retaining this data in a persistent manner. 
-* In order for the end-user to have an accurate step count, the system must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
-* To allow for the end-user to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed and sends the required data back to any device that requests.
+* To provide accurate statistics for Amita (front-end), the system must be capable of processing JSON requests efficiently from both the web application and the M5Stack.
+* To ensure Amita retains control of the userbase and product, the back-end must also be able to insert new users, sponsors and challenges into the central database, while retaining this data in a persistent manner. 
+* In order for Mario to have an accurate step count, the system must be able to listen on the correct MQTT client topic for step updates for each user, and update records accordingly.
+* To allow for Mario to know how much health their Bean has left, the system also calculates the life time remaining for each user's avatar based on step updates and time elapsed and sends the required data back to any device that requests.
 * To ensure that there is no discordant data between applications, data is only stored in this system and any data required by other applications will be sent by this system.
-* To ensure that the sponsor's see success from their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
+* To ensure that the sponsors see the success of their challenges, and to ensure that the user's remain motivated, the system should automatically add rewards if user has met required goals in any challenges enrolled.
 
 ### Web System Requirements
-The web application should act as the primary interface for the sponsor to interact with our product. The end-user would also use this application to handle everything related to challenges and their profile. 
+The web application should act as the primary interface for the [sponsor](#sponsor) to interact with our product. The end-user would also use this application to handle everything related to challenges and their profile. 
 
-* Both the end-user and the sponsor must be able to log in to the website, thus the web application must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server.
-* To ensure that the end-user is able to access their profile and individual data, the website must send a request to the server for the user profile and all their challenge, and render that information. 
-* In order for the end-user to personalize their account, the web must render a profile picture depending on the user name (the profile picture will be available on the webserver). 
-* The end-user must be able to enrol in challenges. Therefore, the website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge. 
+* Both Mario and [Jimmy](#sponsor), the sponsor, must be able to log in to the website. Thus, the web application must be able to retain the username upon creation/login and in case of a sign-up send the new profile information to the server.
+* To ensure that Mario is able to access their profile and individual data, the website must send a request to the server for the user profile and all their challenge, and render that information. 
+* In order for Mario to personalize his account, the web must render a profile picture depending on the user name (the profile picture will be available on the webserver). 
+* Mario must be able to enrol in challenges. Therefore, the website must request all challenges from the server, render all of them (dynamically) and inform the server if a user has selected a challenge. 
 * In order to ensure consistency across our system and for the user between their M5Stack and the web, the information requested and rendered) must be updated regularly (i.e. send a new request to the server every second and render the updated data on the screen). 
-* To allow for the sponsor to generate new challenges, the website must have an input form for new challenges. The input of the sponsor gets validated (e.g. did the user complete all fields) and upon submission the new challenge will be sent to the server. 
+* To allow for Jimmy to generate new challenges, the website must have an input form for new challenges. The input of Jimmy gets validated (e.g. did the user complete all fields) and upon submission the new challenge will be sent to the server. 
 
 ## ARCHITECTURE OF THE ENTIRE SYSTEM
 As has been outlined above, it is clear who our user groups are as well as how they will interact with each of our key subsystems and what each of the key subsystems must be able to do. However, to be able to deliver our user stories and final product, we needed our architecture to include the sending and storage of data: 
