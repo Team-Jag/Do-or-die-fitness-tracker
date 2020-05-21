@@ -206,7 +206,7 @@ It was important to be sure that every aspect of our system had the correct purp
 This refers to correctly implementing features based on subsystem specifications as defined by our user stories. We verified our product via Agile Github practices (mentioned in System Implementation and Evaluation sections) to make sure subsystems interacted correctly and we had a full working product. By following specifications laid out during the validation state, we made sure each subsystem was designed to conform to our shared contract, and each feature was tested extensively using local unit tests. 
 
 ## OBJECT-ORIENTED DESIGN OF KEY SUBSYSTEMS
-In the following section, we will reflect on the final design of each of our key subsystems at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests that we had passed as well as failed. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
+In the following section, we will reflect on the final design of each of our key subsystems as they were at the conclusion of our final sprint. While our [initial UML diagram](Images/first_uml.png) from one of our first meetings was limited, during each sprint the object oriented design of each subsystem changed depending on the tests from that sprint. In this section, we will explain the final design, while considering where there could be room for improvement during future sprints.
 
 ### DESKTOP DESIGN
 
@@ -215,11 +215,11 @@ The above diagram shows dependencies and relationships between classes in the Pr
 
 Key classes for desktop app include:
 
-* [**database**](../desktop/management_dashboard/data.pde) - this is a private class which deals with writing and reading persistent data stored on disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change the core database. The database class follows the Liskov substitution principle, as it does not care what type of data request comes in (between sponsor, user and challenge types) and abstractly performs operations on the persistent data files depending on parameters it recieves.
-* [**data classes**](../desktop/management_dashboard/data.pde) - these classes act as the database API that retrieve and update user, sponsor, and challenge information (with each data type having their separate API respectively to ensure encapsulation of the database class). Having separate classes for each type of data allowed for modularity when modifying request types was necessary during the project in response to new features or use case needs. Request types and the data types requested are stored as constants (static final Strings) to ensure the communication contract is followed precisely.
-* [**events.pde**](../desktop/management_dashboard/events.pde) - this class receives and processes MQTT payloads, then passes on information into View class to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the View class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
-* [**tests.pde**](../desktop/management_dashboard/tests.pde) - the test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly from all devices.
-* [**view.pde**](../desktop/management_dashboard/view.pde) - this class deals with data visualisation from parsed user.json, challenge.json and sponsor.json. Contains helper functions for building the UI, building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates View in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
+* [**database:**](../desktop/management_dashboard/data.pde) This is a private class which deals with writing and reading persistent data stored on the disk. Encapsulation of this class makes the back-end modular and allows altering of the data classes and other elements of the program without needing to change the core database. The database class follows the Liskov substitution principle, as it does not care what type of data request comes in (between sponsor, user and challenge types) and abstractly performs operations on the persistent data files depending on parameters it recieves.
+* [**data classes:**](../desktop/management_dashboard/data.pde) These classes act as the database API that retrieve and update user, sponsor, and challenge information (with each data type having their separate API respectively to ensure encapsulation of the database class). Having separate classes for each type of data allowed for modularity when modifying request types was necessary during the project in response to new features or use case needs. Request types and the data types requested are stored as constants (static final Strings) to ensure the communication contract is followed precisely.
+* [**events.pde:**](../desktop/management_dashboard/events.pde) This class receives and processes MQTT payloads, then passes on information into View class to rebuild UI with every new request, and into the database API to either publish (pull type requests) information into MQTT client topics or update (push type requests) the database. This class also contains event listeners for buttons and lists in the UI, and any time an event occurs (such as data being added) the View class is refreshed. This was done to enable changing statistics to be visualised in real time as opposed to after a restart.
+* [**tests.pde:**](../desktop/management_dashboard/tests.pde) The test class contains unit tests to ensure edge cases are handled gracefully. This is necessary for future integration, to have confidence that all requests work correctly from all devices.
+* [**view.pde:**](../desktop/management_dashboard/view.pde) This class deals with data visualisation from parsed user.json, challenge.json, and sponsor.json. Contains helper functions for building the UI, building expanded lists and building charts using local JSON files obtained by requesting data from the respective APIs. The class is by necessity accessed by Events which contains listeners for incoming requests (this updates View in real time when new data is added) and for buttons in the UI (for interactivity and selecting what information the admin wants).
 
 ### WEB DESIGN
 
@@ -228,18 +228,17 @@ Key classes for desktop app include:
 For more detail on web technologies see [**Details of Web Technologies in Use Section**](#details-of-web-technologies-in-use) below.
 React is ideal to implement object oriented design. Our website consists of functional components (classes - one for each site/view) and an MQTT class which is integrated into the different views.
 
-* [**MQTT Class**](../Web/src/views/examples/MQTTclient.js) - This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
-
+* [**MQTT Class:**](../Web/src/views/examples/MQTTclient.js) This class handles all communication with our "server" and the associated rendering. You will find a call for the MQTT class in all the following components. The class:
   * encapsulates - it hides the detail of the server communication from the other components.
   * acts abstract - with a simple interface that can be called by all components.
   * inherits its basic methods from the react components.
   * is polymorphic - it can handle all sorts of data: from profile to challenge data  .
-* [**Landing Page**](../Web/src/views/examples/LandingPage.js) - Contains all the static content and the MQTT instance for creating a new profile.
-* [**Login Page**](../Web/src/views/examples/LoginPage.js) - Contains the static UI + a MQTT instance to handle the Login.
-* [**Profile Page**](../Web/src/views/examples/ProfilePage.js) - Contains a MQTT instance which renders the full profile incl. a dynamic profile picture and  the challenges the user has signed up for.
-* [**Challenge Choice Page**](../Web/src/views/examples/ChallengeChoicePage.js) - Contains a MQTT instance which lets the user sign up for challenges.
-* [**Challenge Creation Page**](../Web/src/views/examples/ChallengePage.js) - Contains a MQTT instance which lets the sponsor create new challenges for users.
-* [**Common static components such as headers, navbars or footers**](../Web/src/components/Navbars/ExamplesNavbar.js) which can be integrated in all of the views.
+* [**Landing Page:**](../Web/src/views/examples/LandingPage.js) Contains all the static content and the MQTT instance for creating a new profile.
+* [**Login Page:**](../Web/src/views/examples/LoginPage.js) Contains the static UI and a MQTT instance to handle the Login.
+* [**Profile Page:**](../Web/src/views/examples/ProfilePage.js) Contains a MQTT instance which renders the full profile including a dynamic profile picture and the challenges the user has signed up for.
+* [**Challenge Choice Page:**](../Web/src/views/examples/ChallengeChoicePage.js) Contains a MQTT instance which lets the user sign up for challenges.
+* [**Challenge Creation Page:**](../Web/src/views/examples/ChallengePage.js) Contains a MQTT instance which lets the sponsor create new challenges for users.
+* [**Common static components such as headers, navbars or footers:**](../Web/src/components/Navbars/ExamplesNavbar.js) which can be integrated in all of the views.
 
 During our development process more and more of the functionality and code moved from the page specific classes to the MQTT class. While our initial "ideal" design would have the page specific content inside the respective page class, we faced the issue that all the variables/states are lost when navigating to the next page. Moving functionality to the MQTT class allowed us to retain the critical data. Furthermore, the introduction of a global variable 'user_name' allowed us to retain the user name without the use of cookies.
 
@@ -248,14 +247,14 @@ As a downside, our MQTT class is therefore rather complex and long, which is why
 ### M5STACK DESIGN
 
 ![m5-uml](Images/M5_Design.png)
-On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design. Now we will explore the classes implemented in the front and back-end of the M5Stack, explaining as we go how we went from the design on the left to the implementation on the right. 
+On the left we show what our plan was for our M5Stack design, on the right we show what the end product actually ended up looking like. Clearly Arduino is not the best for Object Oriented Design. However, we will explore the classes implemented in the front and back-end of the M5Stack, explaining how we went from the design on the left to the implementation on the right. 
 
 #### Back-End
 
 Since our M5Stack is a non-persistent machine with well-developed animations, our back-end classes are straight-forward. In the back-end, we need to read in the data from the Gyroscope and use it to detect when the user takes a step. By counting steps we are able to approximately estimate the end-user's fitness level and reflect it in the Bean's health bar (calculated based on time) which is the very essence of our product. To do this, we need to send and receive the JSON messages to the persistent database in the form that was agreed upon in our shared contract. This allows the M5Stack to be a non-persistent machine by pulling and pushing all the necessary data from and to the Desktop server.
 
 * [**Pedometer.h:**](../m5/Main/Pedometer.h) This class accurately counts the steps taken by the user using the Gyroscope inside the M5Stack.
-Since this was a required component of our minimum viable product, we had to develop this as quickly as possible so instead of designing a gyroscope data analyser ourselves, we resorted to an external library for this feature (MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016).
+Since this was a required component of our minimum viable product, we had to develop this as quickly as possible so instead of designing a gyroscope data analyser ourselves, we resorted to an external library for this feature ([MPU9250 Basic Example Code by Kris, Modified by Brent Wilkins July 19, 2016](https://gist.github.com/botamochi6277/7bfc4e15443cfbaa3ab9882f6a953868#file-dualmpu9250basic-ino)).
 This allowed us to quickly bring step-tracking online without spending too much time on it, and it gave us the time needed to develop more efficient communication systems and more dynamic animations as detailed below.
 However, due to this the pedometer had data reading issues, such as sometimes counting a single step twice or mistaking a simple twitch of the arm for a step. This means we would most likely have to write our own more accurate version before releasing this product to the public. An example of a design improvement would be accounting for gravity during the acceleration to know which direction is towards the ground, and only counting steps as bounces in the direction of gravity. This would solve the inaccuracies of steps being counted when the user is moving their arms, and also prevent cheating by just moving the pedometer by hand.
 
@@ -266,7 +265,7 @@ When implementing this class, we did not prioritise the readability of the code 
 
 #### Front-End
 
-Initially our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polymorphism were too hard to implement effectively and in Arduino so the 'View' abstract class does not actually exist in our code. However, it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
+Initially our idea for the M5Stack Front-End Classes was to have a central abstract class View which would execute all of the printing and drawing to screen. We quickly discovered that things like abstract classes, inheritance and polymorphism were too hard to implement effectively in Arduino. So, the 'View' abstract class does not actually exist in our code. However, it is still useful to conceptualize our View classes as belonging to a figurative abstract class since they have the same methods and attributes.
 
 <p align="center">
 <img src="Images/M5_ViewExplained.png" width=85%>
