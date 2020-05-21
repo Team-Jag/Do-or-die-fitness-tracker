@@ -1,3 +1,5 @@
+SHARED COMMUNICATION CONTRACT FOR EACH OF THE KEY SUBSYSTEMS.
+
 MQTT Channels:
 Steps: doordie_steps
 Web: doordie_web
